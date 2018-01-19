@@ -1,0 +1,103 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StateController : MonoBehaviour
+{
+    public State currentState;
+    private State originalState;
+
+    [HideInInspector] public Data data;
+    [HideInInspector] public Animator anim;
+    [HideInInspector] public SpriteRenderer sprRend;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public Collider2D coll;
+    [HideInInspector] public float stateTimer;
+
+    void Awake()
+    {
+        originalState = currentState;
+        SetStateTimer();
+    }
+
+    void Start()
+    {
+        data = GetComponent<Data>();
+        anim = GetComponent<Animator>();
+        sprRend = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<Collider2D>();
+        currentState.DoEntryAction(this);
+    }
+
+    public void ResetStateController()
+    {
+        currentState = originalState;
+    }
+
+    void Update()
+    {
+        currentState.UpdateState(this);
+    }
+
+    void FixedUpdate()
+    {
+        currentState.FixedUpdateState(this);
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        currentState.CheckCollisionEnter(this, coll);
+    }
+
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        currentState.CheckCollisionExit(this, coll);
+    }
+
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        currentState.CheckCollisionStay(this, coll);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        currentState.CheckTriggerEnter(this, other);
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        currentState.CheckTriggerExit(this, other);
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        currentState.CheckTriggerStay(this, other);
+    }
+
+    public void TransitionToState(State nextState)
+    {
+        if (nextState == null)
+            return;
+
+        currentState.DoExitAction(this);
+        currentState = nextState;
+        if (currentState.hasExitTime)
+        {
+            SetStateTimer();
+        }
+        currentState.DoEntryAction(this);
+    }
+
+    private void SetStateTimer()
+    {
+        if (currentState.useRandomTimer)
+        {
+            stateTimer = Random.Range(currentState.minTime, currentState.maxTime);
+        }
+        else
+        {
+            stateTimer = currentState.exitTimer;
+        }
+    }
+}
