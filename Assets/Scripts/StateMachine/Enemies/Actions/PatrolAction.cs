@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "StateMachine/Action/Enemies/PatrolAction")]
+[CreateAssetMenu(menuName = "StateMachine/Action/Enemy/PatrolAction")]
 public class PatrolAction : StateAction {
 
     public LayerMask mask;

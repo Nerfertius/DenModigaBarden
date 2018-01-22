@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyData : Data {
-    [HideInInspector] public bool playerFound = false;
+    [HideInInspector] public Transform player = null; // Set by SightCollider script
 
     public float speed;
-    public float weight;
+    public float chaseSpeed;
     
-
     private Collider2D sightColl;
 
     private void Start()

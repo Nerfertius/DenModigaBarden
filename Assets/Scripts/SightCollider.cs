@@ -12,13 +12,19 @@ public class SightCollider : MonoBehaviour {
         eData = GetComponentInParent<EnemyData>();
     }
 
-    private void OnCollisionEnter2D(Collision2D coll)
+    private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.collider.tag == "Player")
+        if (coll.tag == "Player")
         {
-            eData.playerFound = true;
+            eData.player = coll.transform;
         }
+    }
 
-        Debug.Log(eData.playerFound);
+    private void OnTriggerExit2D(Collider2D coll)
+    {
+        if (coll.tag == "Player")
+        {
+            eData.player = null;
+        }
     }
 }
