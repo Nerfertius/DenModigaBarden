@@ -7,6 +7,6 @@ public class PlayerTestAction : StateAction {
 
     public override void Act(StateController controller)
     {
-        Debug.Log("troll");
+        
     }
 }

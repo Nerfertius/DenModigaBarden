@@ -14,6 +14,7 @@ public class NPCTalkAction : StateAction {
         if (data.playerInRange)
         {
             data.start = true;
+            data.endOfConv = false;
             if (data.text == null)
             {
                 data.text = Instantiate(textPrefab, controller.gameObject.transform.position, new Quaternion(), GameObject.Find("WorldSpaceCanvas").transform).GetComponent<Text>();

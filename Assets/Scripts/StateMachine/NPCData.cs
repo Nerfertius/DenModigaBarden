@@ -11,5 +11,5 @@ public class NPCData : Data{
     [HideInInspector] public bool endOfConv = false;
     [HideInInspector] public Text text = null;
 
-    public bool playerInRange = false;
+    [HideInInspector] public bool playerInRange = false;
 }
