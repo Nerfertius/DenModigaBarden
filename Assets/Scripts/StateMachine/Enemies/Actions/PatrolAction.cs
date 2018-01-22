@@ -4,12 +4,14 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "StateMachine/Action/Enemies/PatrolAction")]
 public class PatrolAction : StateAction {
+
+    public LayerMask mask;
+
     public override void Act(StateController controller)
     {
         UpdateDirection(controller);
 
-        if (NextToWall(controller))
-        {
+        if (NextToWall(controller)) {
             FlipDirection(controller);
         }
 
@@ -18,27 +20,29 @@ public class PatrolAction : StateAction {
 
     private void UpdateDirection(StateController controller)
     {
-        if (controller.data.facingRight)
-        {
+        if (controller.data.facingRight) {
             controller.data.currentDirection = new Vector2(1, 0);
-        }
-        else
-        {
+        } else {
             controller.data.currentDirection = new Vector2(-1, 0);
         }
     }
 
     private bool NextToWall(StateController controller)
     {
-        RaycastHit2D hit = Physics2D.Raycast(controller.transform.position, controller.data.currentDirection, 0.5f);
+        RaycastHit2D hit = Physics2D.Raycast(controller.transform.position, controller.data.currentDirection, 0.525f, mask);
 
         return (hit);
     }
 
     private void FlipDirection(StateController controller)
     {
-        controller.sprRend.flipX = !controller.sprRend.flipX;
         controller.data.facingRight = !controller.data.facingRight;
+
+        if (controller.data.facingRight) {
+            controller.transform.rotation = Quaternion.Euler(0, 0, 0);
+        } else {
+            controller.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
     }
 
     private void Patrol(StateController controller)
