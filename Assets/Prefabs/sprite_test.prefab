@@ -100,10 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 2.36
-  speedMod: 0
+  speedMod: 40
   jumpPower: 300
   climbSpeed: 2.88
-  climbing: 0
 --- !u!212 &212259372139745844
 SpriteRenderer:
   m_ObjectHideFlags: 1
