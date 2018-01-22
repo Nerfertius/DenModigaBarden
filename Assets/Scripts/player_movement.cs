@@ -9,7 +9,7 @@ public class player_movement : MonoBehaviour
 	[Range(100, 500)] public float jumpPower;
 	[Range(0, 10)] public float climbSpeed;
 
-	public bool climbing;
+	private bool climbing;
 	private bool grounded;
 	private float moveHorizontal;
 	private float moveVertical;
