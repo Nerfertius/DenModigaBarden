@@ -13,8 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entryAction: {fileID: 0}
   exitAction: {fileID: 0}
-  actions: []
-  transitions: []
+  actions:
+  - {fileID: 11400000, guid: 07b23c9e94617004c94e925b469edb6f, type: 2}
+  transitions:
+  - condition: {fileID: 11400000, guid: 2f39cbadc54db444ca742e0813533f62, type: 2}
+    trueState: {fileID: 11400000, guid: 0de8ac7cdcc24244dae5e5279a680342, type: 2}
+    falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: 41a814cf04a15bd4ea8e93b941ffa79e, type: 2}
+    trueState: {fileID: 11400000, guid: 5d1f0db53815e9641916cb81db8c5aeb, type: 2}
+    falseState: {fileID: 0}
   hasExitTime: 0
   exitTimer: 0
   useRandomTimer: 0
