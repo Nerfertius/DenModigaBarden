@@ -8,6 +8,8 @@ public class player_movement : MonoBehaviour
 	[Range(0,100)] public float speedMod;
 	[Range(100, 500)] public float jumpPower;
 	[Range(0, 10)] public float climbSpeed;
+	public Transform groundCheck;
+	public LayerMask groundLayer;
 
 	private bool climbing;
 	private bool grounded;
@@ -65,18 +67,12 @@ public class player_movement : MonoBehaviour
 
 	private void Update()
 	{
+		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+
 		if (Input.GetKeyDown(KeyCode.Space) && grounded == true && climbing == false)
 		{
 			body.AddForce(new Vector2(0, jumpPower));
 			grounded = false;
-		}
-	}
-
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.gameObject.CompareTag("Ground") && grounded == false)
-		{
-			grounded = true;
 		}
 	}
 
