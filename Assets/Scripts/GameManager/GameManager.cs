@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
             current.exit();
         current = next;
         current.enter();
-        ChangeState(current);
+        if(ChangeState != null)
+            ChangeState(current);
     }
 }
