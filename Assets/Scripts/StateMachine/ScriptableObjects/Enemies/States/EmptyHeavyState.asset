@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
+  m_Name: EmptyHeavyState
+  m_EditorClassIdentifier: 
+  entryAction: {fileID: 0}
+  exitAction: {fileID: 0}
+  actions: []
+  transitions:
+  - condition: {fileID: 11400000, guid: 4095e9bcbb6788f468d96cda42becf64, type: 2}
+    trueState: {fileID: 11400000, guid: 28234d39ad21ee340841ec48fc4d117f, type: 2}
+    falseState: {fileID: 0}
+  hasExitTime: 0
+  exitTimer: 0
+  useRandomTimer: 0
+  minTime: 0
+  maxTime: 0
+  nextState: {fileID: 0}
