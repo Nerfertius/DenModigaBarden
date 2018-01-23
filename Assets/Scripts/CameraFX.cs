@@ -4,24 +4,67 @@ using UnityEngine;
 
 public class CameraFX : MonoBehaviour {
 
+    private static CameraFX instance;
     private static SpriteRenderer screenFade;
-    private static float alpha;
+
+    public float fadeSpeed;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
 	private void Start ()
     {
         screenFade = transform.GetChild(0).GetComponent<SpriteRenderer>();
 	}
 
+    // For Debug
+    /*
     private void Update()
     {
-        alpha = Mathf.PingPong(Time.time, 1);
-        StartFadeProcess(1);
+        if (Input.GetKeyDown(KeyCode.Q)){
+            FadeIn();
+        } else if (Input.GetKeyDown(KeyCode.R)){
+            FadeOut();
+        }
+    }
+    */
 
-        Debug.Log(alpha);
+    public static void FadeIn()
+    {
+        instance.StopAllCoroutines();
+        instance.StartCoroutine("FadeInFX");
     }
 
-    public static void StartFadeProcess(float duration)
+    public static void FadeOut()
     {
-        screenFade.color = new Color(screenFade.color.r, screenFade.color.g, screenFade.color.b, alpha);
+        instance.StopAllCoroutines();
+        instance.StartCoroutine("FadeOutFX");
+    }
+
+    IEnumerator FadeInFX()
+    {
+        for (float value = screenFade.color.a; value <= 1; value += 0.01f * fadeSpeed)
+        {
+            Color c = screenFade.color;
+            c.a = value;
+            c.a = Mathf.Clamp01(c.a);
+            screenFade.color = c;
+
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+    IEnumerator FadeOutFX()
+    {
+        for (float value = screenFade.color.a; value >= 0; value -= 0.01f * fadeSpeed)
+        {
+            Color c = screenFade.color;
+            c.a = value;
+            c.a = Mathf.Clamp01(c.a);
+            screenFade.color = c;
+
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }
