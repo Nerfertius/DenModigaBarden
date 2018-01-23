@@ -23,6 +23,10 @@ public class NPCTalkAction : StateAction {
                 data.text.transform.position = controller.gameObject.transform.position;
                 data.text.enabled = true;
             }
+            AudioSource talk = controller.GetComponent<AudioSource>();
+            if (data.talkSound == null && talk) {
+                data.talkSound = talk;
+            }
             resetVar(data);
         }
         else {
@@ -65,8 +69,11 @@ public class NPCTalkAction : StateAction {
             else
             {
                 char next = getNext(data, data.texts[data.currentText], data.textSpeed);
-                if (next != '\0')
+                if (next != '\0') {
                     data.text.text += next;
+                    if (data.talkSound && next != ' ')
+                        data.talkSound.Play();
+                }
                 if (data.currentChar >= data.texts[data.currentText].Length)
                     data.finished = true;
             }
