@@ -22,8 +22,10 @@ public class PatrolAction : StateAction {
     {
         if (controller.data.facingRight) {
             controller.data.currentDirection = new Vector2(1, 0);
+            controller.transform.rotation = Quaternion.Euler(0, 0, 0);
         } else {
             controller.data.currentDirection = new Vector2(-1, 0);
+            controller.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
