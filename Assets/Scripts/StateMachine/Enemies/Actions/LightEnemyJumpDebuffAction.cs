@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "StateMachine/Action/Enemies/LightEnemyJumpDebuffAction")]
+[CreateAssetMenu(menuName = "StateMachine/Action/Enemy/LightEnemyJumpDebuffAction")]
 public class LightEnemyJumpDebuffAction : StateAction {
 
     //public float Duration = 5f;  state handles this
     public float FloatHeight = 3f;
     public float FloatSpeed = 1f;
 
-    private float? StartingHeight = null;
+    private float? StartingHeight = null; // need to be somewhere else (wont work with multiple enemies)
 
 
     public override void FixedAct(StateController controller) {

@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Heavy Enemy Jump Debuff Action Entry
-  m_EditorClassIdentifier: Assembly-CSharp::HeavyEnemyJumpDebuffActionEntry
+  m_Script: {fileID: 11500000, guid: d5a4f8ffd574e2c4f8fa0778e309647a, type: 3}
+  m_Name: Heavy Enemy Jump
+  m_EditorClassIdentifier: 
   JumpForce: 350

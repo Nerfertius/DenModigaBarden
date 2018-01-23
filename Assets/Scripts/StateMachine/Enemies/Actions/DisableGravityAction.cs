@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "StateMachine/Action/Enemies/DisableGravityAction")]
+[CreateAssetMenu(menuName = "StateMachine/Action/Enemy/DisableGravityAction")]
 public class DisableGravityAction : StateAction {
 
     public override void ActOnce(StateController controller) {

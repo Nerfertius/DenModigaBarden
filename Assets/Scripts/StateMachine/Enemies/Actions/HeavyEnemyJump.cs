@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "StateMachine/Action/Enemies/HeavyEnemyJumpDebuffActionEntry")]
-public class HeavyEnemyJumpDebuffActionEntry : StateAction {
+[CreateAssetMenu(menuName = "StateMachine/Action/Enemy/HeavyEnemyJump")]
+[System.Serializable]
+public class HeavyEnemyJump : StateAction {
 
     public float JumpForce = 350;
 
