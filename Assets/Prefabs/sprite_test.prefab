@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 61469887102302648}
   - component: {fileID: 50255105391700734}
   - component: {fileID: 114801258866693832}
+  - component: {fileID: 114919316236887334}
   m_Layer: 0
   m_Name: sprite_test
   m_TagString: Untagged
@@ -131,11 +132,41 @@ MonoBehaviour:
   maxSpeed: 2.36
   speedMod: 40
   jumpPower: 300
-  climbSpeed: 2.88
+  climbSpeed: 2.1
   groundCheck: {fileID: 4044594221233254}
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &114919316236887334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1957833235746410}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d891b4ab61c454e92f0c49dbf72d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0}
+  currentDirection: {x: 0, y: 0}
+  facingRight: 0
+  maxSpeed: 2.36
+  speedMod: 40
+  jumpPower: 280
+  climbSpeed: 2.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  climbing: 0
+  grounded: 0
+  moveHorizontal: 0
+  moveVertical: 0
+  movement: {x: 0, y: 0}
+  body: {fileID: 0}
+  groundCheck: {fileID: 0}
+  ladderBottom: {fileID: 0}
+  ladderTop: {fileID: 0}
 --- !u!212 &212259372139745844
 SpriteRenderer:
   m_ObjectHideFlags: 1

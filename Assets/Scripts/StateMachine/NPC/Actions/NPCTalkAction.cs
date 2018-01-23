@@ -23,6 +23,7 @@ public class NPCTalkAction : StateAction {
                 data.text.transform.position = controller.gameObject.transform.position;
                 data.text.enabled = true;
             }
+            resetVar(data);
         }
         else {
             data.text.enabled = false;
@@ -35,6 +36,7 @@ public class NPCTalkAction : StateAction {
         if (Input.GetKeyDown(KeyCode.E) && !data.start)
         {
             data.start = true;
+            textSize(data);
             resetVar(data);
         }
         if (Input.GetKeyDown(KeyCode.E) && data.finished && data.currentText < data.texts.Length)
@@ -83,6 +85,26 @@ public class NPCTalkAction : StateAction {
         return '\0';
     }
 
+    private void textSize(NPCData data) {
+        int fontSize = data.fontSize;
+
+        if (fontSize == 0) {
+            int len = data.texts[data.currentText].Length;
+            if (len < 35) {
+                fontSize = 64;
+            } else if (len < 54) {
+                fontSize = 48;
+            } else if (len < 135) {
+                fontSize = 32;
+                //  if (len < 265)
+            } else {
+                fontSize = 24;
+            }
+        }
+
+        data.text.fontSize = fontSize;
+    }
+
     private void resetConv(NPCData data)
     {
         resetVar(data);
@@ -98,5 +120,7 @@ public class NPCTalkAction : StateAction {
         data.curTime = 0;
         data.nextChar = 0;
         data.currentChar = 0;
+        if(!data.endOfConv && data.currentText < data.texts.Length)
+            textSize(data);
     }
 }

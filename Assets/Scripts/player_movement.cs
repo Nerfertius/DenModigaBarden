@@ -30,6 +30,7 @@ public class player_movement : MonoBehaviour
 	{
 		if (climbing == false)
 		{
+			//Walk state
 			moveHorizontal = Input.GetAxis("Horizontal");
 			movement = new Vector2(moveHorizontal, 0);
 			body.AddForce(movement * speedMod);
@@ -48,6 +49,7 @@ public class player_movement : MonoBehaviour
 		}
 		else if (climbing == true)
 		{
+			//Climb state
 			moveVertical = Input.GetAxis("Vertical");
 			transform.Translate(new Vector2(0, moveVertical) * climbSpeed * Time.deltaTime);
 			if (transform.position.y < ladderBottom.transform.position.y - 0.1f)
@@ -67,8 +69,10 @@ public class player_movement : MonoBehaviour
 
 	private void Update()
 	{
+		//AirState
 		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
+		//WalkState
 		if (Input.GetKeyDown(KeyCode.Space) && grounded == true && climbing == false)
 		{
 			body.AddForce(new Vector2(0, jumpPower));
@@ -78,6 +82,8 @@ public class player_movement : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		//WalkState
+		//AirState
 		if (collision.CompareTag("Ladder") && climbing == false)
 		{
 			ladderBottom = collision.transform.parent.GetChild(0).gameObject;
@@ -87,21 +93,31 @@ public class player_movement : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
+		//WalkState
+		//AirState
 		if (collision.CompareTag("Ladder") && climbing == false)
 		{
-			if (Input.GetKey(KeyCode.W) && transform.position.y < ladderBottom.transform.position.y)
+			if (Input.GetKey(KeyCode.W) && transform.position.y < ladderBottom.transform.position.y)	//Bottom
 			{
-				transform.position = collision.transform.position;
 				body.isKinematic = true;
 				body.velocity = Vector2.zero;
 				climbing = true;
+				transform.position = new Vector2(collision.transform.position.x, collision.transform.position.y);
 			}
-			else if (Input.GetKey(KeyCode.S) && transform.position.y > ladderTop.transform.position.y)
+			else if (Input.GetKey(KeyCode.S) && transform.position.y > ladderTop.transform.position.y)	//Top
 			{
-				transform.position = new Vector2(collision.transform.position.x, collision.transform.position.y + 0.5f);
 				body.isKinematic = true;
 				body.velocity = Vector2.zero;
 				climbing = true;
+				transform.position = new Vector2(collision.transform.position.x, collision.transform.position.y + 0.5f);
+			}
+																										//Between
+			else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W)) && transform.position.y < ladderTop.transform.position.y && transform.position.y > ladderBottom.transform.position.y)
+			{
+				body.isKinematic = true;
+				body.velocity = Vector2.zero;
+				climbing = true;
+				transform.position = new Vector2(collision.transform.position.x, transform.position.y);
 			}
 		}
 	}

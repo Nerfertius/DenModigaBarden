@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class NPCData : Data{
     [TextArea] public string[] texts;
     public float textSpeed = 20;
+    public int fontSize = 0;
     [HideInInspector] public int currentText = 0, currentChar = 0;
     [HideInInspector] public float curTime = 0, nextChar = 0;
     [HideInInspector] public bool start = false;
