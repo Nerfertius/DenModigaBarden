@@ -8,7 +8,7 @@ public class PlayerAirAction : StateAction
     public override void ActOnce(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        data.body.isKinematic = false;
+        data.body.gravityScale = 1;
     }
     public override void FixedAct(StateController controller)
     {

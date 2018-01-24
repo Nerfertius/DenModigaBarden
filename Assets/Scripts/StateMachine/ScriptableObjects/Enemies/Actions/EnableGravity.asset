@@ -9,5 +9,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1efd61255d1400f4cb84f47be69fd925, type: 3}
-  m_Name: Light Enemy Jump Debuff Action Exit
+  m_Name: EnableGravity
   m_EditorClassIdentifier: 

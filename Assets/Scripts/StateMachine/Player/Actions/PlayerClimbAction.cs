@@ -9,7 +9,7 @@ public class PlayerClimbAction : StateAction
     {
         PlayerData data = (PlayerData)controller.data;
         data.climbing = true;
-        data.body.isKinematic = true;
+        data.body.gravityScale = 0;
         data.body.velocity = Vector2.zero;
         if (data.transform.position.y > data.ladderTop.transform.position.y)
         {

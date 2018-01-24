@@ -8,7 +8,7 @@ public class PlayerJumpAction : StateAction
     public override void ActOnce(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        data.body.isKinematic = false;
+        data.body.gravityScale = 1;
         if (data.climbing == false)
         {
             data.body.velocity = new Vector2(data.body.velocity.x, 0);

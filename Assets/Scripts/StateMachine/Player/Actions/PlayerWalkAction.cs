@@ -9,7 +9,7 @@ public class PlayerWalkAction : StateAction
     {
         PlayerData data = (PlayerData)controller.data;
         data.climbing = false;
-        data.body.isKinematic = false;
+        data.body.gravityScale = 1;
     }
 
     public override void FixedAct(StateController controller)
