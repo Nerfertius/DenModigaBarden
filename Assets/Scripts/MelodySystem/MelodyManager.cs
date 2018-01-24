@@ -14,6 +14,10 @@ public class NewBehaviourScript : MonoBehaviour {
 
     public KeyCode ActivateKey = KeyCode.E;
 
+    //add prefabs in inspector
+    public static MelodyProjectile SleepProjectile;
+    public static MelodyProjectile MagicResistProjectile;
+    public static MelodyProjectile JumpProjectile;
 
     public void Start() {
         Notes = new Note[4];
@@ -34,7 +38,7 @@ public class NewBehaviourScript : MonoBehaviour {
             PlayedNotes.RemoveFirst();
         }
 
-
+        
 
 
         //CheckForMelody();
@@ -42,6 +46,10 @@ public class NewBehaviourScript : MonoBehaviour {
     }
 
     public void CheckForMelody() {
+        foreach (Melody melody in melodies) {
+            if (melody.CheckMelody(PlayedNotes)) {
 
+            }
+        }
     }
 }

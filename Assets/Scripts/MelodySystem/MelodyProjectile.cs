@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SongProjectile : MonoBehaviour {
+public class MelodyProjectile : MonoBehaviour {
 
     public Melody.MelodyID melodyID;
 

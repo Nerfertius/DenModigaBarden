@@ -14,7 +14,7 @@ public class Melody {
     public Note[] Notes;
 
 
-    public bool CheckForMelody(LinkedList<Note> notesPlayed) {
+    public bool CheckMelody(LinkedList<Note> notesPlayed) {
 
         int shortest = Mathf.Min(Notes.Length, notesPlayed.Count);
         int longest = Mathf.Max(Notes.Length, notesPlayed.Count);

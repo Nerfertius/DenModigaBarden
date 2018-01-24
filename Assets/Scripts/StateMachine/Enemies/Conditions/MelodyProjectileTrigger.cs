@@ -9,7 +9,7 @@ public class MelodyProjectileTrigger : Condition {
 
     public override bool? CheckTriggerEnter(StateController controller, Collider2D coll) {
         //SongProjectile
-        SongProjectile projectile = coll.GetComponent<SongProjectile>();
+        MelodyProjectile projectile = coll.GetComponent<MelodyProjectile>();
 
 
         if (projectile != null && projectile.melodyID == melodyID) {
