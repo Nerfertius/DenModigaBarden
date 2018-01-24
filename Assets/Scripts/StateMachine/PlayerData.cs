@@ -34,12 +34,9 @@ public class PlayerData : Data
     public class MelodyManagerData {
         public LinkedList<Melody> melodies;
 
-
         public int MaxSavedNotes = 5;
         private LinkedList<Note> PlayedNotes;
         private Note[] Notes;
-
-
 
         //add prefabs in inspector
         public GameObject SleepProjectile;
