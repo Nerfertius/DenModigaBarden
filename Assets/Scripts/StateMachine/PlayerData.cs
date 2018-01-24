@@ -21,8 +21,6 @@ public class PlayerData : Data
 	[HideInInspector] public Vector2 movement;
 	[HideInInspector] public Rigidbody2D body;
 	[HideInInspector] public Transform groundCheck;
-    [HideInInspector] public State currentState;
-    [HideInInspector] public State previousState;
 
     [HideInInspector] public GameObject ladderBottom;
 	[HideInInspector] public GameObject ladderTop;

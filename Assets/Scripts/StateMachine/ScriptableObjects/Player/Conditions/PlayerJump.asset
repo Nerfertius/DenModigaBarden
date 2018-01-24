@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0ae917de5ce114bb57610c396de3aa, type: 3}
-  m_Name: PlayerClimbJumpAction
+  m_Script: {fileID: 11500000, guid: aeb3564110c7f1a4b9abd50d8331f97f, type: 3}
+  m_Name: PlayerJump
   m_EditorClassIdentifier: 

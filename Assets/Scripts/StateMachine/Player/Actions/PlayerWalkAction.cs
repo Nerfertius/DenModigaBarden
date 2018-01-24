@@ -24,15 +24,4 @@ public class PlayerWalkAction : StateAction {
 			}
 		}
 	}
-
-	//public override void Act(StateController controller)
-	//{
-	//	PlayerData data = (PlayerData)controller.data;
-
-	//	if (Input.GetKeyDown(KeyCode.Space))
-	//	{
-	//		data.body.AddForce(new Vector2(0, data.jumpPower));
-	//		data.grounded = false;
-	//	}
-	//}
 }
