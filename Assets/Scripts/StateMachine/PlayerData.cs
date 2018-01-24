@@ -25,6 +25,9 @@ public class PlayerData : Data
     [HideInInspector] public GameObject ladderBottom;
 	[HideInInspector] public GameObject ladderTop;
 
+    // Variables used by Camera
+    [HideInInspector] public bool inTransit;
+    [HideInInspector] public Vector2 targetPos;
 
 	void Start ()
 	{
