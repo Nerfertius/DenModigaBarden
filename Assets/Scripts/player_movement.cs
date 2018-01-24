@@ -52,6 +52,7 @@ public class player_movement : MonoBehaviour
 			//Climb state
 			moveVertical = Input.GetAxis("Vertical");
 			transform.Translate(new Vector2(0, moveVertical) * climbSpeed * Time.deltaTime);
+
 			if (transform.position.y < ladderBottom.transform.position.y - 0.1f)
 			{
 				transform.position = new Vector2(transform.position.x, ladderBottom.transform.position.y);
@@ -102,7 +103,7 @@ public class player_movement : MonoBehaviour
 				body.isKinematic = true;
 				body.velocity = Vector2.zero;
 				climbing = true;
-				transform.position = new Vector2(collision.transform.position.x, collision.transform.position.y);
+				transform.position = new Vector2(collision.transform.position.x, transform.position.y);
 			}
 			else if (Input.GetKey(KeyCode.S) && transform.position.y > ladderTop.transform.position.y)	//Top
 			{

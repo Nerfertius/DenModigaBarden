@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5ce99214b9b7f4cb3520d51a21306d, type: 3}
-  m_Name: PlayerTestAction
+  m_Script: {fileID: 11500000, guid: d8846304714c22e4aad30db5d969dc81, type: 3}
+  m_Name: PlayerClimbOff
   m_EditorClassIdentifier: 

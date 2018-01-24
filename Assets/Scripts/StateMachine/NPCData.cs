@@ -11,6 +11,7 @@ public class NPCData : Data{
     [HideInInspector] public bool finished = false;
     [HideInInspector] public bool endOfConv = false;
     [HideInInspector] public Text text = null;
+    [HideInInspector] public AudioSource talkSound = null;
 
     [HideInInspector] public bool playerInRange = false;
 }

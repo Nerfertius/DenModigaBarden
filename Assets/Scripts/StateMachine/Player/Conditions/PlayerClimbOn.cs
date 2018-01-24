@@ -28,7 +28,7 @@ public class PlayerClimbOn : Condition
 			{
 				data.body.isKinematic = true;
 				data.body.velocity = Vector2.zero;
-				data.transform.position = new Vector2(other.transform.position.x, other.transform.position.y);
+				data.transform.position = new Vector2(other.transform.position.x, data.transform.position.y);
 				return true;
 			}
 			//Top

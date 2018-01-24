@@ -17,7 +17,7 @@ public class CameraFX : MonoBehaviour {
 	private void Start ()
     {
         screenFade = transform.GetChild(0).GetComponent<SpriteRenderer>();
-	}
+    }
 
     // For Debug
     /*
