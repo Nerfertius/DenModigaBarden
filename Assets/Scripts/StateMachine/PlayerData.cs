@@ -21,15 +21,19 @@ public class PlayerData : Data
 	[HideInInspector] public Vector2 movement;
 	[HideInInspector] public Rigidbody2D body;
 	[HideInInspector] public Transform groundCheck;
-    [HideInInspector] public State currentState;
-    [HideInInspector] public State previousState;
 
     [HideInInspector] public GameObject ladderBottom;
 	[HideInInspector] public GameObject ladderTop;
 
+
+    // Variables used by Camera
+    [HideInInspector] public bool inTransit;
+    [HideInInspector] public Vector2 targetPos;
+
     [HideInInspector] public MelodyManagerData melodyManagerData = new MelodyManagerData();
     public class MelodyManagerData {
         public LinkedList<Melody> melodies;
+
 
         public int MaxSavedNotes = 5;
         private LinkedList<Note> PlayedNotes;

@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "StateMachine/State")]
 public class State : ScriptableObject {
 
-	public StateAction entryAction;
-	public StateAction exitAction;
+	public StateAction[] entryActions;
+	public StateAction[] exitActions;
 	public StateAction[] actions;
 	public Transition[] transitions;
 
@@ -54,19 +54,21 @@ public class State : ScriptableObject {
 		}
 	}
 
-	public void DoEntryAction (StateController controller)
-	{
-		if (entryAction != null) {
-			entryAction.ActOnce (controller);
-		}
+	public void DoEntryActions (StateController controller)
+    {
+        for (int i = 0; i < entryActions.Length; i++)
+        {
+            entryActions[i].ActOnce(controller);
+        }
 	}
 
-	public void DoExitAction (StateController controller)
+	public void DoExitActions (StateController controller)
 	{
-		if (exitAction != null) {
-			exitAction.ActOnce(controller);
-		}
-	}
+        for (int i = 0; i < exitActions.Length; i++)
+        {
+            exitActions[i].ActOnce(controller);
+        }
+    }
 
 	public void CheckCollisionEnter (StateController controller, Collision2D coll)
 	{

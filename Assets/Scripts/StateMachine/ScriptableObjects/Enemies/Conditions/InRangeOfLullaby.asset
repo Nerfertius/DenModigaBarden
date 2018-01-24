@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278444a757afc8d48b52f8e8c4eed314, type: 3}
   m_Name: InRangeOfLullaby
   m_EditorClassIdentifier: 
-  tagName: 
+  tagName: Lullaby

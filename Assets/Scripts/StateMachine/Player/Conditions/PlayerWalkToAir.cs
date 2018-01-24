@@ -8,10 +8,10 @@ public class PlayerWalkToAir : Condition
     public override bool? CheckCondition(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        if (Input.GetKeyDown(KeyCode.Space) || data.grounded)
-		{
-			return true;
-		}
-		return false;
-	}
+        if (!data.grounded)
+        {
+            return true;
+        }
+        return false;
+    }
 }

@@ -27,7 +27,7 @@ public class StateController : MonoBehaviour
         sprRend = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
-        currentState.DoEntryAction(this);
+        currentState.DoEntryActions(this);
     }
 
     public void ResetStateController()
@@ -80,13 +80,13 @@ public class StateController : MonoBehaviour
         if (nextState == null)
             return;
 
-        currentState.DoExitAction(this);
+        currentState.DoExitActions(this);
         currentState = nextState;
         if (currentState.hasExitTime)
         {
             SetStateTimer();
         }
-        currentState.DoEntryAction(this);
+        currentState.DoEntryActions(this);
     }
 
     private void SetStateTimer()

@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: HeavyEnemyJumpDebuffState
   m_EditorClassIdentifier: 
-  entryAction: {fileID: 11400000, guid: 1354daf53599806419940ea2f3ae2865, type: 2}
-  exitAction: {fileID: 0}
+  entryActions: []
+  exitActions: []
   actions: []
   transitions:
   - condition: {fileID: 11400000, guid: c935f20e8f40ea7439d0ac3e9bc02d70, type: 2}

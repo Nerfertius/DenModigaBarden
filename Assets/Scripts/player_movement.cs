@@ -74,7 +74,7 @@ public class player_movement : MonoBehaviour
 		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
 		//WalkState
-		if (Input.GetKeyDown(KeyCode.Space) && grounded == true && climbing == false)
+		if (Input.GetButtonDown("Jump") && grounded == true && climbing == false)
 		{
 			body.AddForce(new Vector2(0, jumpPower));
 			grounded = false;
@@ -98,14 +98,14 @@ public class player_movement : MonoBehaviour
 		//AirState
 		if (collision.CompareTag("Ladder") && climbing == false)
 		{
-			if (Input.GetKey(KeyCode.W) && transform.position.y < ladderBottom.transform.position.y)	//Bottom
+			if (Input.GetAxisRaw("Vertical") == 1 && transform.position.y < ladderBottom.transform.position.y)	//Bottom
 			{
 				body.isKinematic = true;
 				body.velocity = Vector2.zero;
 				climbing = true;
 				transform.position = new Vector2(collision.transform.position.x, transform.position.y);
 			}
-			else if (Input.GetKey(KeyCode.S) && transform.position.y > ladderTop.transform.position.y)	//Top
+			else if (Input.GetAxisRaw("Vertical") == -1 && transform.position.y > ladderTop.transform.position.y)	//Top
 			{
 				body.isKinematic = true;
 				body.velocity = Vector2.zero;
@@ -113,7 +113,7 @@ public class player_movement : MonoBehaviour
 				transform.position = new Vector2(collision.transform.position.x, collision.transform.position.y + 0.5f);
 			}
 																										//Between
-			else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W)) && transform.position.y < ladderTop.transform.position.y && transform.position.y > ladderBottom.transform.position.y)
+			else if ((Input.GetAxisRaw("Vertical") == -1 || Input.GetAxisRaw("Vertical") == 1) && transform.position.y < ladderTop.transform.position.y && transform.position.y > ladderBottom.transform.position.y)
 			{
 				body.isKinematic = true;
 				body.velocity = Vector2.zero;

@@ -45,11 +45,11 @@ public class CameraFX : MonoBehaviour {
 
     IEnumerator FadeInFX()
     {
+        Color c = screenFade.color;
+
         for (float value = screenFade.color.a; value <= 1; value += 0.01f * fadeSpeed)
         {
-            Color c = screenFade.color;
-            c.a = value;
-            c.a = Mathf.Clamp01(c.a);
+            c.a = Mathf.Clamp01(value);
             screenFade.color = c;
 
             yield return new WaitForSeconds(0.01f);
@@ -57,11 +57,11 @@ public class CameraFX : MonoBehaviour {
     }
     IEnumerator FadeOutFX()
     {
+        Color c = screenFade.color;
+
         for (float value = screenFade.color.a; value >= 0; value -= 0.01f * fadeSpeed)
         {
-            Color c = screenFade.color;
-            c.a = value;
-            c.a = Mathf.Clamp01(c.a);
+            c.a = Mathf.Clamp01(value);
             screenFade.color = c;
 
             yield return new WaitForSeconds(0.01f);
