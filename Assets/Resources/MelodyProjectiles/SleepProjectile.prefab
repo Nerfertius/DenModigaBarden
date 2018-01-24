@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50922912514693488}
   - component: {fileID: 114439961664931180}
   m_Layer: 0
-  m_Name: SleepMelody projectile
+  m_Name: SleepProjectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

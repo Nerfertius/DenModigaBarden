@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50030563465239638}
   - component: {fileID: 61214654015873244}
   - component: {fileID: 114550160570768918}
+  - component: {fileID: 114080816336634044}
   m_Layer: 0
   m_Name: HeavyEnemyTest
   m_TagString: Untagged
@@ -88,6 +89,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114080816336634044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842549100157360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1dfbc8ca9f293545bb2a3c5c7152ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0}
+  currentDirection: {x: 0, y: 0}
+  facingRight: 0
+  player: {fileID: 0}
+  speed: 0
+  chaseSpeed: 0
 --- !u!114 &114550160570768918
 MonoBehaviour:
   m_ObjectHideFlags: 1

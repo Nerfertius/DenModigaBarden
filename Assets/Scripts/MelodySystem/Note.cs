@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Note {
 
-    public KeyCode KeyCode;
+    public string Button;
 
     public int NoteID;
 
-    public Note(int NoteID, KeyCode keycode) {
-        this.KeyCode = keycode;
+    public Note(int NoteID, string button) {
+        this.Button = button;
         this.NoteID = NoteID;
     }
 }
