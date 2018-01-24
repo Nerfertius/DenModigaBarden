@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnableGravityAction : StateAction {
 
     public override void ActOnce(StateController controller) {
-        //enable gravity
-        controller.GetComponent<Rigidbody2D>().gravityScale = 1; //Get default gravity scale
+        controller.GetComponent<Rigidbody2D>().gravityScale = controller.data.melodyDebuffValues.defaultGravityScale; //Get default gravity scale
     }
 }

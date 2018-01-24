@@ -9,13 +9,9 @@ public class LightEnemyJumpDebuffAction : StateAction {
     public float FloatHeight = 3f;
     public float FloatSpeed = 1f;
 
-    private float? StartingHeight = null; // need to be somewhere else (wont work with multiple enemies)
-
 
     public override void FixedAct(StateController controller) {
-        if(StartingHeight == null) {
-            StartingHeight = controller.transform.position[1];
-        }
+        float StartingHeight = controller.data.melodyDebuffValues.debuffStartPos.y;
 
         if (controller.transform.position.y < StartingHeight + FloatHeight) {
             controller.transform.Translate(0, FloatSpeed * Time.deltaTime, 0);

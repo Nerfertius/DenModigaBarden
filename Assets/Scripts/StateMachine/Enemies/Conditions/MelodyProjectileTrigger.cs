@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "StateMachine/Condition/Enemies/MelodyProjectileTrigger")]
+[CreateAssetMenu(menuName = "StateMachine/Condition/Enemy/MelodyProjectileTrigger")]
 public class MelodyProjectileTrigger : Condition {
 
     public Melody.MelodyID melodyID;

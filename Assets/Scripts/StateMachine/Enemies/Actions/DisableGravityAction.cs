@@ -6,7 +6,7 @@ using UnityEngine;
 public class DisableGravityAction : StateAction {
 
     public override void ActOnce(StateController controller) {
-        //disable gravity
+        controller.data.melodyDebuffValues.defaultGravityScale = controller.GetComponent<Rigidbody2D>().gravityScale;
         controller.GetComponent<Rigidbody2D>().gravityScale = 0;
     }
 }
