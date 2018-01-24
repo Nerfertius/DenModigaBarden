@@ -9,6 +9,16 @@ public class PlayerClimbAction : StateAction
     {
         PlayerData data = (PlayerData)controller.data;
         data.climbing = true;
+        data.body.isKinematic = true;
+        data.body.velocity = Vector2.zero;
+        if (data.transform.position.y > data.ladderTop.transform.position.y)
+        {
+            data.transform.position = new Vector2(data.ladderBottom.transform.position.x, data.ladderTop.transform.position.y - 0.5f);
+        }
+        else 
+        {
+            data.transform.position = new Vector2(data.ladderBottom.transform.position.x, data.transform.position.y);
+        }
     }
 
     public override void FixedAct(StateController controller)

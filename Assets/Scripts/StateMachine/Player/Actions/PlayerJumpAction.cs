@@ -8,8 +8,10 @@ public class PlayerJumpAction : StateAction
     public override void ActOnce(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        if (!data.climbing)
+        data.body.isKinematic = false;
+        if (data.climbing == false)
         {
+            data.body.velocity = new Vector2(data.body.velocity.x, 0);
             data.body.AddForce(new Vector2(0, data.jumpPower));
         }
         else
@@ -18,6 +20,5 @@ public class PlayerJumpAction : StateAction
             data.body.AddForce(new Vector2(data.moveHorizontal, data.jumpPower));
             data.climbing = false;
         }
-        data.body.isKinematic = false;
     }
 }
