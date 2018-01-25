@@ -15,8 +15,6 @@ public class PlayerData : Data
 	public LayerMask groundLayer;
 
 
-	[HideInInspector] public bool climbing;
-	[HideInInspector] public bool grounded;
 	[HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;
 	[HideInInspector] public Vector2 movement;
@@ -26,7 +24,10 @@ public class PlayerData : Data
     [HideInInspector] public GameObject ladderBottom;
 	[HideInInspector] public GameObject ladderTop;
 
-    [HideInInspector] public bool jumping;
+    /*[HideInInspector]*/ public bool jumping;
+    /*[HideInInspector]*/ public bool falling;
+    [HideInInspector] public bool climbing;
+    [HideInInspector] public bool grounded;
 
     // Variables used by Camera
     [HideInInspector] public bool inTransit;

@@ -10,7 +10,8 @@ public class PlayerAirToWalk : Condition
         PlayerData data = (PlayerData)controller.data;
         if (!data.jumping)
         {
-            return Physics2D.OverlapCircle(data.groundCheck.position, 0.15f, data.groundLayer);
+            data.grounded = Physics2D.OverlapCircle(data.groundCheck.position, 0.15f, data.groundLayer);
+            return data.grounded;
         }
         return null;
     }
