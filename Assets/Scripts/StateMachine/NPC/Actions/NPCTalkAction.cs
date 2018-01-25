@@ -4,39 +4,49 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "StateMachine/Action/NPC/NPCTalkAction")]
-public class NPCTalkAction : StateAction {
+public class NPCTalkAction : StateAction
+{
 
     public GameObject textPrefab;
+    private char[] whitelist = { };
+    private char[] blacklist;
 
     public override void ActOnce(StateController controller)
     {
         NPCData data = (NPCData)controller.data;
+        blacklist = new char[] { ' ', '\0', '\n' };
+
         if (data.playerInRange)
         {
             data.start = true;
             data.endOfConv = false;
+            Vector2 pos = controller.transform.position;
             if (data.text == null)
             {
-                data.text = Instantiate(textPrefab, controller.gameObject.transform.position, new Quaternion(), GameObject.Find("WorldSpaceCanvas").transform).GetComponent<Text>();
+                data.text = Instantiate(textPrefab, GameObject.Find("WorldSpaceCanvas").transform).GetComponentInChildren<Text>();
             }
-            else {
-                data.text.transform.position = controller.gameObject.transform.position;
-                data.text.enabled = true;
-            }
+            pos.y += controller.GetComponent<SpriteRenderer>().size.y + 0.6f;
+            data.text.transform.parent.position = pos;
+            data.text.enabled = true;
+
             AudioSource talk = controller.GetComponent<AudioSource>();
-            if (data.talkSound == null && talk) {
+            if (data.talkSound == null && talk)
+            {
                 data.talkSound = talk;
+                data.basePitch = talk.pitch;
             }
             resetVar(data);
         }
-        else {
+        else
+        {
             data.text.enabled = false;
             resetConv(data);
         }
     }
 
-    public override void Act(StateController controller) {
-        NPCData data = (NPCData) controller.data;
+    public override void Act(StateController controller)
+    {
+        NPCData data = (NPCData)controller.data;
         if (Input.GetKeyDown(KeyCode.E) && !data.start)
         {
             data.start = true;
@@ -61,6 +71,8 @@ public class NPCTalkAction : StateAction {
         }
         if (data.start && !data.finished && data.currentChar < data.texts[data.currentText].Length)
         {
+            if (!data.text.transform.parent.gameObject.activeSelf)
+                data.text.transform.parent.gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && data.curTime > 0)
             {
                 data.text.text = data.texts[data.currentText];
@@ -69,10 +81,14 @@ public class NPCTalkAction : StateAction {
             else
             {
                 char next = getNext(data, data.texts[data.currentText], data.textSpeed);
-                if (next != '\0') {
+                if (next != '\0')
+                {
                     data.text.text += next;
-                    if (data.talkSound && next != ' ')
+                    if (data.talkSound && allowed(next))
+                    {
+                        data.talkSound.pitch = data.basePitch + Random.Range(-0.3f, 0.3f);
                         data.talkSound.Play();
+                    }
                 }
                 if (data.currentChar >= data.texts[data.currentText].Length)
                     data.finished = true;
@@ -92,24 +108,47 @@ public class NPCTalkAction : StateAction {
         return '\0';
     }
 
-    private void textSize(NPCData data) {
-        int fontSize = data.fontSize;
-
-        if (fontSize == 0) {
-            int len = data.texts[data.currentText].Length;
-            if (len < 35) {
-                fontSize = 64;
-            } else if (len < 54) {
-                fontSize = 48;
-            } else if (len < 135) {
-                fontSize = 32;
-                //  if (len < 265)
-            } else {
-                fontSize = 24;
+    private bool allowed(char character)
+    {
+        bool ret = false;
+        if (whitelist.Length > 0)
+        {
+            foreach (char c in whitelist)
+            {
+                if (character == c)
+                    return true;
             }
         }
+        else if (blacklist.Length > 0)
+        {
+            ret = true;
+            foreach (char c in blacklist)
+            {
+                if (character == c)
+                    return false;
+            }
+        }
+        return ret;
+    }
 
+    private void textSize(NPCData data)
+    {
+        int fontSize = data.fontSize > 0 ? data.fontSize : 64;
+        data.text.text = data.texts[data.currentText];
         data.text.fontSize = fontSize;
+        float height = data.text.rectTransform.rect.height;
+        float prefHeight = data.text.preferredHeight;
+        int times = 0;
+        while (prefHeight > height)
+        {
+            data.text.fontSize = data.text.fontSize - 8;
+            prefHeight = data.text.preferredHeight;
+
+            times++;
+            if (times > 10)
+                break;
+        }
+        data.text.text = "";
     }
 
     private void resetConv(NPCData data)
@@ -120,6 +159,7 @@ public class NPCTalkAction : StateAction {
         data.finished = false;
         data.text.text = "";
         data.endOfConv = true;
+        data.text.transform.parent.gameObject.SetActive(false);
     }
 
     private void resetVar(NPCData data)
@@ -127,7 +167,7 @@ public class NPCTalkAction : StateAction {
         data.curTime = 0;
         data.nextChar = 0;
         data.currentChar = 0;
-        if(!data.endOfConv && data.currentText < data.texts.Length)
+        if (!data.endOfConv && data.currentText < data.texts.Length)
             textSize(data);
     }
 }
