@@ -21,11 +21,11 @@ public class PlayerData : Data
 	[HideInInspector] public Rigidbody2D body;
 	[HideInInspector] public Transform groundCheck;
 
-    [HideInInspector] public GameObject ladderBottom;
-	[HideInInspector] public GameObject ladderTop;
+    /*[HideInInspector]*/ public Vector2 ladderBottom;
+	/*[HideInInspector]*/ public Vector2 ladderTop;
 
-    /*[HideInInspector]*/ public bool jumping;
-    /*[HideInInspector]*/ public bool falling;
+    [HideInInspector] public bool jumping;
+    [HideInInspector] public bool falling;
     [HideInInspector] public bool climbing;
     [HideInInspector] public bool grounded;
 
@@ -67,6 +67,8 @@ public class PlayerData : Data
 		groundCheck = transform.GetChild(0);
 		body = GetComponent<Rigidbody2D>();
 
+        ladderBottom = new Vector2(9999999999, 999999999);
+        ladderTop = new Vector2(9999999999, 999999999);
 
         melodyManagerData.Start();
 	}
