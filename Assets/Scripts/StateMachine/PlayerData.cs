@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerData : Data
 {
+    public float health = 3;
 	[Header("Movement Settings")]
 	[Range(0, 10)] public float maxSpeed;
 	[Range(0, 100)] public float speedMod;
