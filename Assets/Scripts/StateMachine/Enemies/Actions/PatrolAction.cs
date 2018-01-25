@@ -11,7 +11,7 @@ public class PatrolAction : StateAction {
     {
         UpdateDirection(controller);
 
-        if (NextToWall(controller)) {
+        if (NextToWall(controller) || OnEdge(controller)) {
             FlipDirection(controller);
         }
 
@@ -34,6 +34,22 @@ public class PatrolAction : StateAction {
         RaycastHit2D hit = Physics2D.Raycast(controller.transform.position, controller.data.currentDirection, 0.525f, mask);
 
         return (hit);
+    }
+
+    private bool OnEdge(StateController controller)
+    {
+        Vector2 offset;
+
+        if (controller.sprRend.flipX) {
+            offset = new Vector2(controller.coll.bounds.size.x, 0);
+        } else {
+            offset = new Vector2(-controller.coll.bounds.size.x, 0);
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)controller.transform.position + offset, Vector2.down, 5f, mask);
+        Debug.DrawRay(controller.transform.position + (Vector3)offset, Vector3.down, Color.red, 0.1f);
+        
+        return (hit.collider == null);
     }
 
     private void FlipDirection(StateController controller)
