@@ -7,10 +7,19 @@ public class GameManager : MonoBehaviour {
     public delegate void StateChange(GameState newState);
     public static event StateChange ChangeState;
 
-    private GameState current = null;
+    public GameState current = null;
 
     void Start() {
-        switchState(new PlayState(this));
+        if (current == null)
+        {
+            switchState(new PlayState(this));
+        }
+        else {
+            current.enter();
+            if (ChangeState != null)
+                ChangeState(current);
+        }
+
     }
 
     void Update() {
