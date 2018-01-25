@@ -31,7 +31,7 @@ public class PatrolAction : StateAction {
 
     private bool NextToWall(StateController controller)
     {
-        float offset = controller.coll.bounds.size.x * 0.51f;
+        float offset = controller.coll.bounds.size.x * 0.6f;
         RaycastHit2D hit = Physics2D.Raycast(controller.transform.position, controller.data.currentDirection, offset, mask);
 
         return (hit);
