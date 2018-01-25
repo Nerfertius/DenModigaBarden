@@ -11,12 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: PlayerIdle
   m_EditorClassIdentifier: 
-  entryAction: {fileID: 0}
-  exitAction: {fileID: 0}
+  entryActions:
+  - {fileID: 11400000, guid: a9485e21eca5ebe429634415dac1ef58, type: 2}
+  exitActions: []
   actions: []
   transitions:
-  - condition: {fileID: 11400000, guid: 005bf40ae01dcc74f9f5efa3344a511c, type: 2}
+  - condition: {fileID: 11400000, guid: fd318d5aa3efbc54ca1db01179e99147, type: 2}
     trueState: {fileID: 11400000, guid: 0de8ac7cdcc24244dae5e5279a680342, type: 2}
+    falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: d54251042a3d9cc4a861629c2e0a2938, type: 2}
+    trueState: {fileID: 11400000, guid: 1c825357ed673284999eb68e7409a3d1, type: 2}
+    falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: a3c4e70cf615df741901a9453f2f141c, type: 2}
+    trueState: {fileID: 11400000, guid: 5d1f0db53815e9641916cb81db8c5aeb, type: 2}
     falseState: {fileID: 0}
   hasExitTime: 0
   exitTimer: 0

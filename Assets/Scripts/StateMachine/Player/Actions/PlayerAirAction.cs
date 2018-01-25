@@ -5,6 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "StateMachine/Action/Player/PlayerAirAction")]
 public class PlayerAirAction : StateAction
 {
+    public override void ActOnce(StateController controller)
+    {
+        PlayerData data = (PlayerData)controller.data;
+        data.body.gravityScale = 1;
+    }
     public override void FixedAct(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;

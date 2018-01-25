@@ -11,15 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: PlayerAir
   m_EditorClassIdentifier: 
-  entryAction: {fileID: 11400000, guid: 5f2c18071e076594f820d4b92959d05b, type: 2}
-  exitAction: {fileID: 0}
+  entryActions:
+  - {fileID: 11400000, guid: a6d2aaba24732bb43b2616b3b58496d7, type: 2}
+  exitActions: []
   actions:
   - {fileID: 11400000, guid: d687222b3a9f9f64fa2b9e1884805159, type: 2}
   transitions:
-  - condition: {fileID: 11400000, guid: 99348ef40eea4d142b20538c792223de, type: 2}
+  - condition: {fileID: 11400000, guid: ace5ace121641d545a9a4775be4d7e2e, type: 2}
     trueState: {fileID: 11400000, guid: 0de8ac7cdcc24244dae5e5279a680342, type: 2}
     falseState: {fileID: 0}
-  - condition: {fileID: 11400000, guid: 5a8dc6450c5871346b85f7cb00e42680, type: 2}
+  - condition: {fileID: 11400000, guid: d54251042a3d9cc4a861629c2e0a2938, type: 2}
     trueState: {fileID: 11400000, guid: 1c825357ed673284999eb68e7409a3d1, type: 2}
     falseState: {fileID: 0}
   hasExitTime: 0

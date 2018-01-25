@@ -11,15 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: PlayerClimb
   m_EditorClassIdentifier: 
-  entryAction: {fileID: 0}
-  exitAction: {fileID: 0}
+  entryActions:
+  - {fileID: 11400000, guid: 07b23c9e94617004c94e925b469edb6f, type: 2}
+  exitActions: []
   actions:
   - {fileID: 11400000, guid: 07b23c9e94617004c94e925b469edb6f, type: 2}
   transitions:
-  - condition: {fileID: 11400000, guid: 2f39cbadc54db444ca742e0813533f62, type: 2}
+  - condition: {fileID: 11400000, guid: 9f9854cbcfb3326429abf928602efcdc, type: 2}
     trueState: {fileID: 11400000, guid: 0de8ac7cdcc24244dae5e5279a680342, type: 2}
     falseState: {fileID: 0}
-  - condition: {fileID: 11400000, guid: 41a814cf04a15bd4ea8e93b941ffa79e, type: 2}
+  - condition: {fileID: 11400000, guid: a3c4e70cf615df741901a9453f2f141c, type: 2}
     trueState: {fileID: 11400000, guid: 5d1f0db53815e9641916cb81db8c5aeb, type: 2}
     falseState: {fileID: 0}
   hasExitTime: 0

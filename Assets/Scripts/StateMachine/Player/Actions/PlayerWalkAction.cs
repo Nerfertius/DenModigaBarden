@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "StateMachine/Action/Player/PlayerWalkAction")]
-public class PlayerWalkAction : StateAction {
+public class PlayerWalkAction : StateAction
+{
+    public override void ActOnce(StateController controller)
+    {
+        PlayerData data = (PlayerData)controller.data;
+        data.climbing = false;
+        data.body.gravityScale = 1;
+    }
 
     public override void FixedAct(StateController controller)
     {

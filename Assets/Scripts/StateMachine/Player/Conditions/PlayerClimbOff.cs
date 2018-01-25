@@ -11,13 +11,10 @@ public class PlayerClimbOff : Condition
         if (data.transform.position.y < data.ladderBottom.transform.position.y - 0.1f)
         {
             data.transform.position = new Vector2(data.transform.position.x, data.ladderBottom.transform.position.y);
-            data.body.isKinematic = false;
             return true;
         }
-        else if (data.transform.position.y > data.ladderTop.transform.position.y)
+        else if (data.transform.position.y > data.ladderTop.transform.position.y + 0.3f)
         {
-            data.transform.position = new Vector2(data.transform.position.x, data.ladderTop.transform.position.y + 0.7f);
-            data.body.isKinematic = false;
             return true;
         }
         return false;
