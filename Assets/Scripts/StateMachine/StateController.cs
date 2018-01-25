@@ -79,7 +79,7 @@ public class StateController : MonoBehaviour
     {
         if (nextState == null)
             return;
-
+        
         currentState.DoExitActions(this);
         currentState = nextState;
         if (currentState.hasExitTime)

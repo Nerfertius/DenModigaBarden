@@ -140,5 +140,4 @@ public class State : ScriptableObject {
 			}
 		}
 	}
-
 }

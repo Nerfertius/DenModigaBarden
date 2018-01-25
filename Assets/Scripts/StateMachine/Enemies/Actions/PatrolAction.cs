@@ -22,11 +22,11 @@ public class PatrolAction : StateAction {
     {
         if (controller.data.facingRight) {
             controller.data.currentDirection = new Vector2(1, 0);
-            controller.transform.rotation = Quaternion.Euler(0, 0, 0);
         } else {
             controller.data.currentDirection = new Vector2(-1, 0);
-            controller.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+
+        controller.sprRend.flipX = controller.data.facingRight;
     }
 
     private bool NextToWall(StateController controller)
@@ -39,17 +39,13 @@ public class PatrolAction : StateAction {
     private void FlipDirection(StateController controller)
     {
         controller.data.facingRight = !controller.data.facingRight;
-
-        if (controller.data.facingRight) {
-            controller.transform.rotation = Quaternion.Euler(0, 0, 0);
-        } else {
-            controller.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
+        controller.sprRend.flipX = controller.data.facingRight;
     }
 
     private void Patrol(StateController controller)
     {
         EnemyData eData = (EnemyData)controller.data;
-        controller.rb.velocity = controller.data.currentDirection * eData.speed * Time.deltaTime;
+        Vector2 velocity = controller.data.currentDirection * eData.speed * Time.deltaTime;
+        controller.rb.MovePosition((Vector2)controller.transform.position + velocity);
     }
 }
