@@ -26,6 +26,7 @@ public class PlayerData : Data
     [HideInInspector] public GameObject ladderBottom;
 	[HideInInspector] public GameObject ladderTop;
 
+    [HideInInspector] public bool jumping;
 
     // Variables used by Camera
     [HideInInspector] public bool inTransit;
@@ -68,4 +69,17 @@ public class PlayerData : Data
 
         melodyManagerData.Start();
 	}
+
+    public void Pause()
+    {
+        StartCoroutine(TimePause());
+    }
+
+    IEnumerator TimePause()
+    {
+        float time = 1f;
+        jumping = true;
+        yield return new WaitForSeconds(time);
+        jumping = false;
+    }
 }
