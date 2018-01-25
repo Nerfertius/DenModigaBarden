@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461975651749938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.23, y: 0.46, z: 0}
+  m_LocalPosition: {x: 0.205, y: 0.419, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4444355401631654}
@@ -166,6 +166,7 @@ MonoBehaviour:
   groundCheck: {fileID: 0}
   ladderBottom: {fileID: 0}
   ladderTop: {fileID: 0}
+  jumping: 0
   inTransit: 0
   targetPos: {x: 0, y: 0}
 --- !u!212 &212082342265056826

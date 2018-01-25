@@ -79,7 +79,8 @@ public class StateController : MonoBehaviour
     {
         if (nextState == null)
             return;
-        
+
+        Debug.Log(currentState + " -> " + nextState);
         currentState.DoExitActions(this);
         currentState = nextState;
         if (currentState.hasExitTime)

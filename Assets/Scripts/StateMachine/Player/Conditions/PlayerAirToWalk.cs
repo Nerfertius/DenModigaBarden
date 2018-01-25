@@ -8,6 +8,10 @@ public class PlayerAirToWalk : Condition
     public override bool? CheckCondition(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        return Physics2D.OverlapCircle(data.groundCheck.position, 0.2f, data.groundLayer);
+        if (!data.jumping)
+        {
+            return Physics2D.OverlapCircle(data.groundCheck.position, 0.15f, data.groundLayer);
+        }
+        return null;
     }
 }
