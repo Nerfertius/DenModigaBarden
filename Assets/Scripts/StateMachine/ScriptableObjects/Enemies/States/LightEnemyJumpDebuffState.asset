@@ -11,8 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: LightEnemyJumpDebuffState
   m_EditorClassIdentifier: 
-  entryAction: {fileID: 11400000, guid: cf01d7ed748a62049a5367ffd94dd76b, type: 2}
-  exitAction: {fileID: 11400000, guid: b01d02e3aeb8af64d84b2179c5820a0b, type: 2}
+  entryActions:
+  - {fileID: 11400000, guid: 3d2ce469d6e4a4845bf1b628b89c24d0, type: 2}
+  - {fileID: 11400000, guid: cf01d7ed748a62049a5367ffd94dd76b, type: 2}
+  exitActions:
+  - {fileID: 11400000, guid: b01d02e3aeb8af64d84b2179c5820a0b, type: 2}
   actions:
   - {fileID: 11400000, guid: 7c2ba6f1b9ba0544a95364f990cd6eac, type: 2}
   transitions: []
