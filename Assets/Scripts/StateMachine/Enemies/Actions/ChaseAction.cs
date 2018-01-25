@@ -21,7 +21,7 @@ public class ChaseAction : StateAction
                 eData.currentDirection = new Vector2(-1, 0);
             }
 
-            Vector2 velocity = eData.currentDirection * eData.chaseSpeed * Time.deltaTime;
+            Vector2 velocity = eData.currentDirection * eData.chaseSpeed * Time.fixedDeltaTime;
             controller.rb.MovePosition((Vector2)controller.transform.position + velocity);
         }
     }

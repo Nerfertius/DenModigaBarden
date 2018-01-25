@@ -31,7 +31,7 @@ public class State : ScriptableObject {
 	{
 		controller.stateTimer -= Time.deltaTime;
 		if (controller.stateTimer <= 0) {
-			controller.TransitionToState(nextState);
+			controller.TransitionToState(nextState, this);
 		}
 	}
 
@@ -134,9 +134,9 @@ public class State : ScriptableObject {
 	{
 		if (condition.HasValue) {
 			if ((bool)condition) {
-				controller.TransitionToState (transitions [arrayNumber].trueState);
+				controller.TransitionToState (transitions [arrayNumber].trueState, this);
 			} else {
-				controller.TransitionToState (transitions [arrayNumber].falseState);
+				controller.TransitionToState (transitions [arrayNumber].falseState, this);
 			}
 		}
 	}

@@ -62,7 +62,7 @@ public class PatrolAction : StateAction {
     private void Patrol(StateController controller)
     {
         EnemyData eData = (EnemyData)controller.data;
-        Vector2 velocity = controller.data.currentDirection * eData.speed * Time.deltaTime;
+        Vector2 velocity = controller.data.currentDirection * eData.speed * Time.fixedDeltaTime;
         controller.rb.MovePosition((Vector2)controller.transform.position + velocity);
     }
 }

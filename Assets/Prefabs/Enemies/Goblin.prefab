@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114024675775816678}
   - component: {fileID: 114252480835615534}
   - component: {fileID: 70932057371119722}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,8 +158,8 @@ MonoBehaviour:
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   player: {fileID: 0}
-  speed: 4
-  chaseSpeed: 8
+  speed: 2
+  chaseSpeed: 4
 --- !u!114 &114912403510576844
 MonoBehaviour:
   m_ObjectHideFlags: 1
