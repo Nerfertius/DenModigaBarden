@@ -2,14 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Note {
 
-    public string Button;
+    public enum NoteID {
+        Note1,
+        Note2,
+        Note3,
+        Note4,
+        Note5
+    }
 
-    public int NoteID;
+    [HideInInspector] public string Button;
+    public NoteID noteID;
 
-    public Note(int NoteID, string button) {
-        this.Button = button;
-        this.NoteID = NoteID;
+    public Note(NoteID noteID) {
+        this.noteID = noteID;
+
+        switch (noteID) {
+            case Note.NoteID.Note1:
+                Button = "Note1";
+                break;
+            case Note.NoteID.Note2:
+                Button = "Note2";
+                break;
+            case Note.NoteID.Note3:
+                Button = "Note3";
+                break;
+            case Note.NoteID.Note4:
+                Button = "Note4";
+                break;
+            case Note.NoteID.Note5:
+                Button = "Note5";
+                break;
+        }
+
     }
 }

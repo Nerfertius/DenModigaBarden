@@ -24,4 +24,4 @@ MonoBehaviour:
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
-  nextState: {fileID: 11400000, guid: 01deb2beb211d55418c412aaf4f5ae13, type: 2}
+  nextState: {fileID: 0}

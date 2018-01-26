@@ -13,9 +13,10 @@ public class MelodyProjectile : MonoBehaviour {
     private bool Alive = true;
 
 
-    public void Init(float Speed, bool FacingRight) {
-        this.Speed = Speed;
-        this.FacingRight = FacingRight;
+
+    public void Init(Vector3 pos, bool facingRight) {
+        this.transform.position = pos;
+        this.FacingRight = facingRight;
     }
 
     public void FixedUpdate() {

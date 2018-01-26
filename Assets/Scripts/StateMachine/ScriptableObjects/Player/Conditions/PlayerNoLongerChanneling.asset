@@ -8,9 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f347e4f96325e46901bd6a8607fac8, type: 3}
-  m_Name: Gained Ground
+  m_Script: {fileID: 11500000, guid: 8bb4d8922049e424e906740d902784cd, type: 3}
+  m_Name: PlayerNoLongerChanneling
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 768

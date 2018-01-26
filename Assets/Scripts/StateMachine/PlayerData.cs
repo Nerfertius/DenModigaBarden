@@ -30,30 +30,36 @@ public class PlayerData : Data
     [HideInInspector] public bool inTransit;
     [HideInInspector] public Vector2 targetPos;
 
-    [HideInInspector] public MelodyManagerData melodyManagerData = new MelodyManagerData();
+    public MelodyManagerData melodyManagerData = new MelodyManagerData();
+    [System.Serializable]
     public class MelodyManagerData {
-        public LinkedList<Melody> melodies;
+        public Melody[] melodies;
 
         public int MaxSavedNotes = 5;
-        private LinkedList<Note> PlayedNotes;
-        private Note[] Notes;
+        [HideInInspector] public LinkedList<Note> PlayedNotes;
+        [HideInInspector] public Note[] Notes;
 
         //add prefabs in inspector
-        public GameObject SleepProjectile;
-        public GameObject MagicResistProjectile;
-        public GameObject JumpProjectile;
+        [HideInInspector] public GameObject JumpMelodyProjectile;
+        [HideInInspector] public GameObject MagicResistMelodyProjectile;
+        [HideInInspector] public GameObject SleepMelodyProjectile;
+
+        [HideInInspector] public Melody.MelodyID? currentMelody = null;
 
         public void Start() {
             PlayedNotes = new LinkedList<Note>();
             Notes = new Note[5];
-            Notes[0] = new Note(0, "Note1");
-            Notes[1] = new Note(1, "Note2");
-            Notes[2] = new Note(2, "Note3");
-            Notes[3] = new Note(3, "Note4");
-            Notes[4] = new Note(4, "Note5");
-            SleepProjectile = Resources.Load("MelodyProjectiles/SleepProjectile") as GameObject;
-            MagicResistProjectile = Resources.Load("MelodyProjectiles/MagicResistProjectile") as GameObject;
-            JumpProjectile = Resources.Load("MelodyProjectiles/JumpProjectile") as GameObject;
+            Notes[0] = new Note(Note.NoteID.Note1);
+            Notes[1] = new Note(Note.NoteID.Note2);
+            Notes[2] = new Note(Note.NoteID.Note3);
+            Notes[3] = new Note(Note.NoteID.Note4);
+            Notes[4] = new Note(Note.NoteID.Note5);
+
+            //melodies.AddLast()
+
+            JumpMelodyProjectile = Resources.Load("MelodyProjectiles/JumpMelodyProjectile") as GameObject;
+            MagicResistMelodyProjectile = Resources.Load("MelodyProjectiles/MagicResistMelodyProjectile") as GameObject;
+            SleepMelodyProjectile = Resources.Load("MelodyProjectiles/SleepMelodyProjectile") as GameObject;
         }
     }
 
