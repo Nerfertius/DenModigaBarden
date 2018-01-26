@@ -21,7 +21,11 @@ TagManager:
   - Ground
   - VirtualScreen
   - Enemy
+<<<<<<< HEAD
   - PlayerProjectile
+=======
+  - Player
+>>>>>>> Climb_hell
   - 
   - 
   - 

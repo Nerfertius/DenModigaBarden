@@ -12,6 +12,8 @@ public class PlayerClimbAction : StateAction
         data.body.gravityScale = 0;
         data.body.velocity = Vector2.zero;
 
+        Physics2D.IgnoreLayerCollision(data.playerLayer, data.climbFixLayer, true);
+
         //Bottom
         if (data.transform.position.y < data.ladderBottom.y)
         {
@@ -21,7 +23,7 @@ public class PlayerClimbAction : StateAction
         //Top
         if (data.transform.position.y > data.ladderTop.y)
         {
-            data.transform.position = new Vector2(data.ladderBottom.x, data.ladderTop.y - 0.3f);
+            data.transform.position = new Vector2(data.ladderBottom.x, data.ladderTop.y);
         }
         
         //Between
