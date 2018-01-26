@@ -15,17 +15,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
   - Blockable
   - Ground
   - VirtualScreen
   - Enemy
-<<<<<<< HEAD
   - PlayerProjectile
-=======
   - Player
->>>>>>> Climb_hell
+  - 
   - 
   - 
   - 
