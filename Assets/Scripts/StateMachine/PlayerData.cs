@@ -52,6 +52,7 @@ public class PlayerData : Data
 
         [HideInInspector] public Melody.MelodyID? currentMelody = null;
         [HideInInspector] public Melody.MelodyID? previousMelody = null;
+        [HideInInspector] public bool justStartedPlaying  = false;
 
         public void Start() {
             PlayedNotes = new LinkedList<Note>();

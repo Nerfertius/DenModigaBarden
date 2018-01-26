@@ -13,13 +13,9 @@ public class MelodyPlayed : Condition {
 
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {
-
-                    mData.currentMelody = melody.melodyID;
-                    mData.PlayedNotes.Clear();
                     return true;
                 }
             }
-            mData.PlayedNotes.Clear();
             return false;
         }
         return null;
