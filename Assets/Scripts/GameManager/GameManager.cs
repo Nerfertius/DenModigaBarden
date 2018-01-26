@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour {
             if (ChangeState != null)
                 ChangeState(current);
         }
-
     }
 
     void Update() {

@@ -14,6 +14,7 @@ public class PlayerData : Data
 	[Space(10)]
 	public LayerMask groundLayer;
 
+    [HideInInspector] public int[] items;
 
 	[HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;
@@ -69,6 +70,8 @@ public class PlayerData : Data
 
         ladderBottom = new Vector2(9999999999, 999999999);
         ladderTop = new Vector2(9999999999, 999999999);
+
+        items = new int[System.Enum.GetNames(typeof(ItemType)).Length];
 
         melodyManagerData.Start();
 	}
