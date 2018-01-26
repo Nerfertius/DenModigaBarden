@@ -8,12 +8,16 @@ public class PlayerClimbOff : Condition
     public override bool? CheckCondition(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
+
+        //Bottom
         if (data.transform.position.y < data.ladderBottom.y)
         {
             data.transform.position = new Vector2(data.transform.position.x, data.ladderBottom.y);
             return true;
         }
-        else if (data.transform.position.y > data.ladderTop.y - 0.3f)
+
+        //Top
+        else if (data.col.bounds.min.y > data.ladderTop.y)
         {
             return true;
         }

@@ -11,10 +11,8 @@ public class PlayerClimbAction : StateAction
         data.climbing = true;
         data.body.gravityScale = 0;
         data.body.velocity = Vector2.zero;
-        
-        int playerLayer = data.body.gameObject.layer;
-        int blockablesLayer = LayerMask.NameToLayer("Blockable");
-        Physics2D.IgnoreLayerCollision(playerLayer, blockablesLayer, true);
+
+        Physics2D.IgnoreLayerCollision(data.playerLayer, data.climbFixLayer, true);
 
         //Bottom
         if (data.transform.position.y < data.ladderBottom.y)

@@ -8,9 +8,6 @@ public class PlayerClimbExitAction : StateAction
     public override void ActOnce(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-
-        int playerLayer = data.body.gameObject.layer;
-        int blockablesLayer = LayerMask.NameToLayer("Blockable");
-        Physics2D.IgnoreLayerCollision(playerLayer, blockablesLayer, false);
+        Physics2D.IgnoreLayerCollision(data.playerLayer, data.climbFixLayer, false);
     }
 }
