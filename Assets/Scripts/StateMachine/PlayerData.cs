@@ -27,8 +27,7 @@ public class PlayerData : Data
 	[HideInInspector] public Transform groundCheck;
     [HideInInspector] public Collider2D col;
 
-    /*[HideInInspector]*/
-    public Vector2 ladderBottom;
+    /*[HideInInspector]*/ public Vector2 ladderBottom;
 	/*[HideInInspector]*/ public Vector2 ladderTop;
 
     [HideInInspector] public bool jumping;
