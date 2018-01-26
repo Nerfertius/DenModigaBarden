@@ -12,8 +12,6 @@ public class MelodyProjectile : MonoBehaviour {
 
     private bool Alive = true;
 
-
-
     public void Init(Vector3 pos, bool facingRight) {
         this.transform.position = pos;
         this.FacingRight = facingRight;

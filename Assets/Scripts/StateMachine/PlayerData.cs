@@ -8,7 +8,9 @@ public class PlayerData : Data
 	[Header("Movement Settings")]
 	[Range(0, 10)] public float maxSpeed;
 	[Range(0, 100)] public float speedMod;
-	[Range(100, 500)] public float jumpPower;
+    [Range(100, 500)] public float defaultjumpPower;
+    [Range(100, 500)] public float boostedjumpPower;
+    [HideInInspector] public float jumpPower;
 	[Range(0, 10)] public float climbSpeed;
 
 	[Space(10)]
@@ -36,7 +38,7 @@ public class PlayerData : Data
     public MelodyManagerData melodyManagerData = new MelodyManagerData();
     [System.Serializable]
     public class MelodyManagerData {
-        public Melody[] melodies;
+        [HideInInspector] public Melody[] melodies;
 
         public int MaxSavedNotes = 5;
         [HideInInspector] public LinkedList<Note> PlayedNotes;
@@ -48,18 +50,26 @@ public class PlayerData : Data
         [HideInInspector] public GameObject SleepMelodyProjectile;
 
         [HideInInspector] public Melody.MelodyID? currentMelody = null;
+        [HideInInspector] public Melody.MelodyID? previousMelody = null;
 
         public void Start() {
             PlayedNotes = new LinkedList<Note>();
             Notes = new Note[5];
-            Notes[0] = new Note(Note.NoteID.Note1);
-            Notes[1] = new Note(Note.NoteID.Note2);
-            Notes[2] = new Note(Note.NoteID.Note3);
-            Notes[3] = new Note(Note.NoteID.Note4);
-            Notes[4] = new Note(Note.NoteID.Note5);
+            Notes[0] = new Note(Note.NoteID.Note1, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
+            Notes[1] = new Note(Note.NoteID.Note2, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
+            Notes[2] = new Note(Note.NoteID.Note3, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
+            Notes[3] = new Note(Note.NoteID.Note4, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
+            Notes[4] = new Note(Note.NoteID.Note5, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
+
+            melodies = new Melody[3];
+            Note[] jump = { Notes[0], Notes[1] };
+            melodies[0] = new Melody(Melody.MelodyID.JumpMelody, jump);
+            Note[] sleep = { Notes[0], Notes[0], Notes[0]};
+            melodies[1] = new Melody(Melody.MelodyID.SleepMelody, sleep);
+            Note[] magicResist = { Notes[1], Notes[1], Notes[1] };
+            melodies[2] = new Melody(Melody.MelodyID.MagicResistMelody, magicResist);
 
             //melodies.AddLast()
-
             JumpMelodyProjectile = Resources.Load("MelodyProjectiles/JumpMelodyProjectile") as GameObject;
             MagicResistMelodyProjectile = Resources.Load("MelodyProjectiles/MagicResistMelodyProjectile") as GameObject;
             SleepMelodyProjectile = Resources.Load("MelodyProjectiles/SleepMelodyProjectile") as GameObject;
@@ -75,6 +85,8 @@ public class PlayerData : Data
 
         ladderBottom = new Vector2(9999999999, 999999999);
         ladderTop = new Vector2(9999999999, 999999999);
+
+        jumpPower = defaultjumpPower;
 
         melodyManagerData.Start();
 	}

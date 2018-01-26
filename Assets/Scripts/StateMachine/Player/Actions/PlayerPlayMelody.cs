@@ -13,6 +13,9 @@ public class PlayerPlayMelody : StateAction {
         foreach (Note note in mData.Notes) {
             if (Input.GetButtonDown(note.Button)) {
                 mData.PlayedNotes.AddLast(note);
+                AudioSource audio = data.GetComponent<AudioSource>();
+
+                audio.PlayOneShot(note.audio, 1);
             }
         }
 

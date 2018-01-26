@@ -14,6 +14,11 @@ public class Melody {
     public MelodyID melodyID;
     public Note[] Notes;
 
+    public Melody(MelodyID melodyID, Note[] notes) {
+        this.melodyID = melodyID;
+        this.Notes = notes;
+    }
+
 
     public bool CheckMelody(LinkedList<Note> notesPlayed) {
         LinkedListNode<Note> it = notesPlayed.Last;

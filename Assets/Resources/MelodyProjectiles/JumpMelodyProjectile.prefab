@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61471358477152568}
   - component: {fileID: 50922912514693488}
   - component: {fileID: 114439961664931180}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: JumpMelodyProjectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}

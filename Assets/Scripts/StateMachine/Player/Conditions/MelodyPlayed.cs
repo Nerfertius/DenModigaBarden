@@ -11,10 +11,9 @@ public class MelodyPlayed : Condition {
             PlayerData data = (PlayerData)controller.data;
             PlayerData.MelodyManagerData mData = data.melodyManagerData;
 
-            Debug.Log("hey");
-
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {
+
                     mData.currentMelody = melody.melodyID;
                     mData.PlayedNotes.Clear();
                     return true;

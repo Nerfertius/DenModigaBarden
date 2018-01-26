@@ -10,6 +10,5 @@ public class NoLongerChanneling : Condition {
         PlayerData.MelodyManagerData mData = data.melodyManagerData;
 
         return mData.currentMelody == null;
-
     }
 }

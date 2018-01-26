@@ -30,13 +30,11 @@ public class PlayerCastMelodyProjectile : StateAction {
                     newProjectile = Instantiate(mData.MagicResistMelodyProjectile);
                     break;
             }
-
-
-
             
             MelodyProjectile melodyProjectile = newProjectile.GetComponent<MelodyProjectile>();
             melodyProjectile.Init(controller.transform.position + offset, data.facingRight);
 
+            mData.previousMelody = mData.currentMelody;
             mData.currentMelody = null;
         }
     }

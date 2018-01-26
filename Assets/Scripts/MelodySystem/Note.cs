@@ -14,10 +14,13 @@ public class Note {
     }
 
     [HideInInspector] public string Button;
-    public NoteID noteID;
+    [HideInInspector] public NoteID noteID;
 
-    public Note(NoteID noteID) {
+    [HideInInspector] public AudioClip audio;
+
+    public Note(NoteID noteID, AudioClip audio) {
         this.noteID = noteID;
+        this.audio = audio;
 
         switch (noteID) {
             case Note.NoteID.Note1:
