@@ -9,16 +9,20 @@ public class ChaseAction : StateAction
     {
         EnemyData eData = (EnemyData)controller.data;
 
-        if(eData.player != null)
+        if (eData.player != null)
         {
+
             if (controller.transform.position.x < eData.player.position.x)
             {
-                controller.rb.velocity = new Vector2(eData.chaseSpeed, controller.rb.velocity.y) * Time.deltaTime;
+                eData.currentDirection = new Vector2(1, 0);
             }
             else
             {
-                controller.rb.velocity = new Vector2(-eData.chaseSpeed, controller.rb.velocity.y) * Time.deltaTime;
+                eData.currentDirection = new Vector2(-1, 0);
             }
+
+            Vector2 velocity = eData.currentDirection * eData.chaseSpeed * Time.fixedDeltaTime;
+            controller.rb.MovePosition((Vector2)controller.transform.position + velocity);
         }
     }
 }

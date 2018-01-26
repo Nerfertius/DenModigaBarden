@@ -11,7 +11,7 @@ public class PatrolAction : StateAction {
     {
         UpdateDirection(controller);
 
-        if (NextToWall(controller)) {
+        if (NextToWall(controller) || OnEdge(controller)) {
             FlipDirection(controller);
         }
 
@@ -22,34 +22,47 @@ public class PatrolAction : StateAction {
     {
         if (controller.data.facingRight) {
             controller.data.currentDirection = new Vector2(1, 0);
-            controller.transform.rotation = Quaternion.Euler(0, 0, 0);
         } else {
             controller.data.currentDirection = new Vector2(-1, 0);
-            controller.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+
+        controller.sprRend.flipX = controller.data.facingRight;
     }
 
     private bool NextToWall(StateController controller)
     {
-        RaycastHit2D hit = Physics2D.Raycast(controller.transform.position, controller.data.currentDirection, 0.525f, mask);
+        float offset = controller.coll.bounds.size.x * 0.6f;
+        RaycastHit2D hit = Physics2D.Raycast(controller.transform.position, controller.data.currentDirection, offset, mask);
 
         return (hit);
+    }
+
+    private bool OnEdge(StateController controller)
+    {
+        Vector2 offset;
+
+        if (controller.sprRend.flipX) {
+            offset = new Vector2(controller.coll.bounds.size.x * 0.5f, 0);
+        } else {
+            offset = new Vector2(-controller.coll.bounds.size.x * 0.5f, 0);
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)controller.transform.position + offset, Vector2.down, 1f, mask);
+        Debug.DrawRay(controller.transform.position + (Vector3)offset, Vector3.down, Color.red, 0.1f);
+        
+        return (hit.collider == null);
     }
 
     private void FlipDirection(StateController controller)
     {
         controller.data.facingRight = !controller.data.facingRight;
-
-        if (controller.data.facingRight) {
-            controller.transform.rotation = Quaternion.Euler(0, 0, 0);
-        } else {
-            controller.transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
+        controller.sprRend.flipX = controller.data.facingRight;
     }
 
     private void Patrol(StateController controller)
     {
         EnemyData eData = (EnemyData)controller.data;
-        controller.rb.velocity = controller.data.currentDirection * eData.speed * Time.deltaTime;
+        Vector2 velocity = controller.data.currentDirection * eData.speed * Time.fixedDeltaTime;
+        controller.rb.MovePosition((Vector2)controller.transform.position + velocity);
     }
 }

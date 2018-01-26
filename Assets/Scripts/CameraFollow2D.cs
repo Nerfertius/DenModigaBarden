@@ -14,8 +14,6 @@ public class CameraFollow2D : MonoBehaviour {
     bool transitioning = false;
     float posX, posY;
 
-    float pixelsPerUnit = 64f;
-
     void Start(){
     	Cursor.visible = !hideCursor;
     }

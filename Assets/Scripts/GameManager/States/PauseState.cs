@@ -7,7 +7,7 @@ public class PauseState : GameState {
 
     private Button resumeBtn, quitBtn;
     private Canvas pauseCanvas;
-    private string canvas = "UICanvas", resume = "ResumeBtn", quit = "QuitBtn";
+    private string canvas = "PauseCanvas", resume = "ResumeBtn", quit = "QuitBtn";
 
     public PauseState(GameManager gm)
     {

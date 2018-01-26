@@ -86,7 +86,7 @@ public class NPCTalkAction : StateAction
                     data.text.text += next;
                     if (data.talkSound && allowed(next))
                     {
-                        data.talkSound.pitch = data.basePitch + Random.Range(-0.3f, 0.3f);
+                        data.talkSound.pitch = data.basePitch + Random.Range(-data.pitchDeviation, data.pitchDeviation);
                         data.talkSound.Play();
                     }
                 }

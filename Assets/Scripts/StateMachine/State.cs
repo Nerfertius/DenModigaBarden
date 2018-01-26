@@ -31,7 +31,7 @@ public class State : ScriptableObject {
 	{
 		controller.stateTimer -= Time.deltaTime;
 		if (controller.stateTimer <= 0) {
-			controller.TransitionToState(nextState);
+			controller.TransitionToState(nextState, this);
 		}
 	}
 
@@ -43,6 +43,11 @@ public class State : ScriptableObject {
 	private void DoActions (StateController controller)
 	{
 		for (int i = 0; i < actions.Length; i++) {
+            if(actions[i] == null)
+            {
+                Debug.LogError(this + " is missing an action. Make sure no actions are null!");
+                return;
+            }
 			actions[i].Act(controller);
 		}
 	}
@@ -50,7 +55,12 @@ public class State : ScriptableObject {
 	private void DoFixedActions (StateController controller)
 	{
 		for (int i = 0; i < actions.Length; i++) {
-			actions[i].FixedAct(controller);
+            if (actions[i] == null)
+            {
+                Debug.LogError(this + " is missing an action. Make sure no actions are null!");
+                return;
+            }
+            actions[i].FixedAct(controller);
 		}
 	}
 
@@ -58,6 +68,11 @@ public class State : ScriptableObject {
     {
         for (int i = 0; i < entryActions.Length; i++)
         {
+            if (entryActions[i] == null)
+            {
+                Debug.LogError(this + " is missing an entry action. Make sure no actions are null!");
+                return;
+            }
             entryActions[i].ActOnce(controller);
         }
 	}
@@ -66,6 +81,11 @@ public class State : ScriptableObject {
 	{
         for (int i = 0; i < exitActions.Length; i++)
         {
+            if (exitActions[i] == null)
+            {
+                Debug.LogError(this + " is missing an exit action. Make sure no actions are null!");
+                return;
+            }
             exitActions[i].ActOnce(controller);
         }
     }
@@ -134,11 +154,10 @@ public class State : ScriptableObject {
 	{
 		if (condition.HasValue) {
 			if ((bool)condition) {
-				controller.TransitionToState (transitions [arrayNumber].trueState);
+				controller.TransitionToState (transitions [arrayNumber].trueState, this);
 			} else {
-				controller.TransitionToState (transitions [arrayNumber].falseState);
+				controller.TransitionToState (transitions [arrayNumber].falseState, this);
 			}
 		}
 	}
-
 }

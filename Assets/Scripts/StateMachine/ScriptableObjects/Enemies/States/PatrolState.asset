@@ -11,13 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: PatrolState
   m_EditorClassIdentifier: 
-  entryAction: {fileID: 0}
-  exitAction: {fileID: 0}
+  entryActions: []
+  exitActions: []
   actions:
   - {fileID: 11400000, guid: 70f43e3c6b8430841ae8b3a98a91a34b, type: 2}
   transitions:
   - condition: {fileID: 11400000, guid: 72fed25409cdb0246ac5f5a168d94ec3, type: 2}
-    trueState: {fileID: 11400000, guid: 54c86a15a6493e84f82928de85538c21, type: 2}
+    trueState: {fileID: 0}
     falseState: {fileID: 0}
   hasExitTime: 0
   exitTimer: 0
