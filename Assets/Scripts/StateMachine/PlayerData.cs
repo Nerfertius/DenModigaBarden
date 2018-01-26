@@ -54,6 +54,9 @@ public class PlayerData : Data
         [HideInInspector] public Melody.MelodyID? previousMelody = null;
         [HideInInspector] public bool justStartedPlaying  = false;
 
+        [HideInInspector] public float lastShotProjectileTime = 0;
+        public float projectileCooldown = 0.5f;
+
         public void Start() {
             PlayedNotes = new LinkedList<Note>();
             Notes = new Note[5];

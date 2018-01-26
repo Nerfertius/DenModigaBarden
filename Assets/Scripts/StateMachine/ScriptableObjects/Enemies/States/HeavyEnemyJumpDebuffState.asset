@@ -19,6 +19,9 @@ MonoBehaviour:
   - condition: {fileID: 11400000, guid: c935f20e8f40ea7439d0ac3e9bc02d70, type: 2}
     trueState: {fileID: 11400000, guid: 28f336da3047f314b9a472aaa9cf5191, type: 2}
     falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: 4095e9bcbb6788f468d96cda42becf64, type: 2}
+    trueState: {fileID: 11400000}
+    falseState: {fileID: 0}
   hasExitTime: 0
   exitTimer: 0
   useRandomTimer: 0
