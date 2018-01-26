@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Melody {
 
     public enum MelodyID {
@@ -13,25 +14,23 @@ public class Melody {
     public MelodyID melodyID;
     public Note[] Notes;
 
+    public Melody(MelodyID melodyID, Note[] notes) {
+        this.melodyID = melodyID;
+        this.Notes = notes;
+    }
+
 
     public bool CheckMelody(LinkedList<Note> notesPlayed) {
-
-        int shortest = Mathf.Min(Notes.Length, notesPlayed.Count);
-        int longest = Mathf.Max(Notes.Length, notesPlayed.Count);
-
-        int sizeDiff = longest - shortest;
-
         LinkedListNode<Note> it = notesPlayed.Last;
-
-        for(int i = Notes.Length; i >= 0; i--) {
-            if (Notes[i] != it.Value) {
-                return false;
-            }
-            if(it.Previous != null) {
+        if(it != null) {
+            for (int i = Notes.Length - 1; i >= 0; i--) {
+                if (it == null || Notes[i].noteID != it.Value.noteID) {
+                    return false;
+                }
                 it = it.Previous;
             }
+            return true;
         }
-        return true;
-
+        return false;
     }
 }

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entryActions:
   - {fileID: 11400000, guid: a6d2aaba24732bb43b2616b3b58496d7, type: 2}
-  exitActions:
-  - {fileID: 11400000, guid: c352ae6c3f0f0a3438be8a607cbae323, type: 2}
+  exitActions: []
   actions:
   - {fileID: 11400000, guid: d687222b3a9f9f64fa2b9e1884805159, type: 2}
   transitions:

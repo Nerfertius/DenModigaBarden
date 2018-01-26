@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67e10e48844fbb49a7218dbc138ffef, type: 3}
+  m_Name: PlayerCastMelodyProjectile
+  m_EditorClassIdentifier: 
+  SpawnOffset: {x: 1, y: 0, z: 0}

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
+  m_Name: PlayerChannelMelodyWalk
+  m_EditorClassIdentifier: 
+  entryActions:
+  - {fileID: 11400000, guid: fb90aa44e8f8b7e408453a87e5c2f5d6, type: 2}
+  - {fileID: 11400000, guid: e97e073416cc6e54cbda7810f873bac8, type: 2}
+  exitActions:
+  - {fileID: 11400000, guid: d25ca5dd60c69fb4995b1d4666340278, type: 2}
+  actions:
+  - {fileID: 11400000, guid: 6efa3df043cbd604e93ccd7e33fa0013, type: 2}
+  - {fileID: 11400000, guid: fb90aa44e8f8b7e408453a87e5c2f5d6, type: 2}
+  transitions:
+  - condition: {fileID: 11400000, guid: 84c95ee0dfb206f45951fe0629168e3d, type: 2}
+    trueState: {fileID: 11400000, guid: 0de8ac7cdcc24244dae5e5279a680342, type: 2}
+    falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: a3c4e70cf615df741901a9453f2f141c, type: 2}
+    trueState: {fileID: 11400000, guid: 0e670dfa69d13394a98aca704d1640c9, type: 2}
+    falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: fd318d5aa3efbc54ca1db01179e99147, type: 2}
+    trueState: {fileID: 0}
+    falseState: {fileID: 11400000, guid: 4e641ecf183adea4d8f8d53824e45e04, type: 2}
+  hasExitTime: 0
+  exitTimer: 0
+  useRandomTimer: 0
+  minTime: 0
+  maxTime: 0
+  nextState: {fileID: 0}

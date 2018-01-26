@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 61471358477152568}
   - component: {fileID: 50922912514693488}
   - component: {fileID: 114439961664931180}
-  m_Layer: 0
-  m_Name: JumpProjectile
+  m_Layer: 12
+  m_Name: MagicResistMelodyProjectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77655673558b554c93758970798dcbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  melodyID: 0
+  melodyID: 2
   Speed: 3
   FacingRight: 1
 --- !u!212 &212046339194291956
