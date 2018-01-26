@@ -14,7 +14,7 @@ public class PlayerJump : Condition
             data.falling = false;
             return true;
         }
-        else if (data.grounded == false)                                                                    //If not, you're falling
+        else if (data.grounded == false && data.climbing == false)                                          //If not, you're falling
         {
             data.falling = true;
             return true;

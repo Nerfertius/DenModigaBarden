@@ -19,7 +19,7 @@ public class PlayerClimbOn : Condition
     public override bool? CheckCondition(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        if (data.transform.position.x > data.ladderBottom.x - 0.5f && data.transform.position.x < data.ladderBottom.x + 0.5f)
+        if (data.transform.position.x > data.ladderBottom.x - 0.05f && data.transform.position.x < data.ladderBottom.x + 0.05f)
         {
             //Bottom
             if (Input.GetKey(KeyCode.W) && data.transform.position.y < data.ladderBottom.y)
