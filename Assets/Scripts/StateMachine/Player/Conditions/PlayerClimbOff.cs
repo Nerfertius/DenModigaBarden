@@ -13,7 +13,7 @@ public class PlayerClimbOff : Condition
             data.transform.position = new Vector2(data.transform.position.x, data.ladderBottom.y);
             return true;
         }
-        else if (data.transform.position.y > data.ladderTop.y + 0.3f)
+        else if (data.transform.position.y > data.ladderTop.y - 0.3f)
         {
             return true;
         }

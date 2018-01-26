@@ -13,9 +13,10 @@ public class PlayerData : Data
 
     [Space(10)]
 	public LayerMask groundLayer;
+    public LayerMask playerLayer;
 
 
-	[HideInInspector] public float moveHorizontal;
+    [HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;
 	[HideInInspector] public Vector2 movement;
 	[HideInInspector] public Rigidbody2D body;
