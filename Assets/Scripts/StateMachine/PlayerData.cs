@@ -11,7 +11,7 @@ public class PlayerData : Data
 	[Range(100, 500)] public float jumpPower;
 	[Range(0, 10)] public float climbSpeed;
 
-	[Space(10)]
+    [Space(10)]
 	public LayerMask groundLayer;
 
 
@@ -20,7 +20,7 @@ public class PlayerData : Data
 	[HideInInspector] public Vector2 movement;
 	[HideInInspector] public Rigidbody2D body;
 	[HideInInspector] public Transform groundCheck;
-
+    
     /*[HideInInspector]*/ public Vector2 ladderBottom;
 	/*[HideInInspector]*/ public Vector2 ladderTop;
 
