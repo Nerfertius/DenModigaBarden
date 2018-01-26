@@ -34,7 +34,7 @@ public class PatrolAction : StateAction {
         float offset = controller.coll.bounds.size.x * 0.6f;
         RaycastHit2D hit = Physics2D.Raycast(controller.transform.position, controller.data.currentDirection, offset, mask);
         
-        if(hit.collider != null && hit.collider.usedByEffector)
+        if(hit.collider != null && hit.collider.tag != "Ground")
         {
             return false;
         }
