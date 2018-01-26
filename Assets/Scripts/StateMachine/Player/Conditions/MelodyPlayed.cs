@@ -8,9 +8,10 @@ public class MelodyPlayed : Condition {
     public override bool? CheckCondition(StateController controller) {
         
         if (Input.GetButtonUp("PlayMelody")) {
-            Debug.Log("hey");
             PlayerData data = (PlayerData)controller.data;
             PlayerData.MelodyManagerData mData = data.melodyManagerData;
+
+            Debug.Log("hey");
 
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {

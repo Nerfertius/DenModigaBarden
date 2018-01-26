@@ -16,9 +16,6 @@ public class Melody {
 
 
     public bool CheckMelody(LinkedList<Note> notesPlayed) {
-
-        Debug.Log(notesPlayed.Count);
-
         LinkedListNode<Note> it = notesPlayed.Last;
         if(it != null) {
             for (int i = Notes.Length - 1; i >= 0; i--) {
