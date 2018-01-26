@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
-  m_Name: PatrolState
+  m_Name: GoblinPatrolState
   m_EditorClassIdentifier: 
   entryActions: []
   exitActions: []
@@ -17,7 +17,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70f43e3c6b8430841ae8b3a98a91a34b, type: 2}
   transitions:
   - condition: {fileID: 11400000, guid: 72fed25409cdb0246ac5f5a168d94ec3, type: 2}
-    trueState: {fileID: 0}
+    trueState: {fileID: 11400000, guid: 54c86a15a6493e84f82928de85538c21, type: 2}
+    falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: 08c71f1d52e75094490352d44cfb9209, type: 2}
+    trueState: {fileID: 11400000, guid: 1d3c57d757d88194aa144b1e467ac090, type: 2}
     falseState: {fileID: 0}
   hasExitTime: 0
   exitTimer: 0
