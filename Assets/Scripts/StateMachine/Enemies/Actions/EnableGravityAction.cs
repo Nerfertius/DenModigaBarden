@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnableGravityAction : StateAction {
 
     public override void ActOnce(StateController controller) {
-        controller.rb.gravityScale = controller.data.melodyDebuffValues.defaultGravityScale; //Get default gravity scale
+        MelodyInteractableData data = (MelodyInteractableData)controller.data;
+
+        controller.rb.gravityScale = data.melodyDebuffData.defaultGravityScale; //Get default gravity scale
     }
 }

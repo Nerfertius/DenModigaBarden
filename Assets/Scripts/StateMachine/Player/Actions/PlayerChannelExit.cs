@@ -10,8 +10,9 @@ public class PlayerChannelExit : StateAction
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyManagerData mData = data.melodyManagerData;
 
-        if(mData.currentMelody == null) {
-            if(mData.previousMelody == Melody.MelodyID.JumpMelody) {
+        if (mData.currentMelody == null || Input.GetButton("PlayMelody")) {
+            mData.currentMelody = null;
+            if (mData.previousMelody == Melody.MelodyID.JumpMelody) {
                 data.jumpPower = data.defaultjumpPower;
             }
         }

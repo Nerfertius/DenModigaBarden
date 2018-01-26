@@ -6,6 +6,8 @@ using UnityEngine;
 public class MelodyDebuffSavePosition : StateAction {
 
     public override void ActOnce(StateController controller) {
-        controller.data.melodyDebuffValues.debuffStartPos = (Vector2)controller.transform.position;
+        MelodyInteractableData data = (MelodyInteractableData)controller.data;
+
+        data.melodyDebuffData.debuffStartPos = (Vector2)controller.transform.position;
     }
 }

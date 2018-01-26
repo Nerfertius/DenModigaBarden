@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyData : Data {
+public class EnemyData : MelodyInteractableData {
     [HideInInspector] public Transform player = null; // Set by SightCollider script
 
     public float speed;
@@ -10,9 +10,8 @@ public class EnemyData : Data {
     
     private Collider2D sightColl;
 
-    private void Start()
-    {
-        if(transform.childCount != 0) { 
+    private void Start() {
+        if (transform.childCount != 0) {
             sightColl = GetComponentsInChildren<Collider2D>()[1];
         }
     }
