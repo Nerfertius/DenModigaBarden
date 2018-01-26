@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4193907132306398}
   - component: {fileID: 212082342265056826}
+  - component: {fileID: 70489536338543862}
   - component: {fileID: 50047347635933524}
   - component: {fileID: 114994033544878884}
   - component: {fileID: 114195153534707582}
-  - component: {fileID: 70489536338543862}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: sprite_test
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4444355401631654}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ground check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,16 +143,22 @@ MonoBehaviour:
   health: 3
   maxSpeed: 2.36
   speedMod: 40
+  defaultjumpPower: 0
+  boostedjumpPower: 0
   jumpPower: 280
   climbSpeed: 2.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 768
+  climbFixLayer: 0
+  playerLayer: 0
+  items: 
   moveHorizontal: 0
   moveVertical: 0
   movement: {x: 0, y: 0}
   body: {fileID: 0}
   groundCheck: {fileID: 0}
+  col: {fileID: 0}
   ladderBottom: {x: 0, y: 0}
   ladderTop: {x: 0, y: 0}
   jumping: 0
@@ -168,6 +174,7 @@ MonoBehaviour:
     JumpMelodyProjectile: {fileID: 0}
     MagicResistMelodyProjectile: {fileID: 0}
     SleepMelodyProjectile: {fileID: 0}
+    justStartedPlaying: 0
 --- !u!212 &212082342265056826
 SpriteRenderer:
   m_ObjectHideFlags: 1

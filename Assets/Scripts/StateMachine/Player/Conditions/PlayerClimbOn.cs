@@ -28,13 +28,13 @@ public class PlayerClimbOn : Condition
             }
 
             //Top
-            else if (Input.GetKey(KeyCode.S) && data.transform.position.y > data.ladderTop.y)
+            else if (Input.GetKey(KeyCode.S) && data.transform.position.y > data.ladderTop.y - 0.3f)
             {
                 return true;
             }
 
             //Between
-            else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W)) && data.transform.position.y < data.ladderTop.y && data.transform.position.y > data.ladderBottom.y)
+            else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W)) && data.transform.position.y < data.ladderTop.y - 0.3f && data.transform.position.y > data.ladderBottom.y)
             {
                 return true;
             }
