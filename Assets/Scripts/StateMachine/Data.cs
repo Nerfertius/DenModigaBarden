@@ -8,6 +8,9 @@ public abstract class Data : MonoBehaviour {
     [HideInInspector] public bool facingRight;
 
 
+    public void Start() {
+        melodyDebuffValues.defaultGravityScale = GetComponent<Rigidbody2D>().gravityScale;
+    }
 
     [HideInInspector] public MelodyDebuffValues melodyDebuffValues = new MelodyDebuffValues();
     public class MelodyDebuffValues {
