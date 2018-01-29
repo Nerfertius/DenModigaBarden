@@ -19,7 +19,7 @@ public class PlayerWalkAction : StateAction
 		data.movement = new Vector2(data.moveHorizontal, 0);
 		data.body.AddForce(data.movement * data.speedMod);
 
-        if (Mathf.Abs(data.body.velocity.x) > data.maxSpeed)
+		if (Mathf.Abs(data.body.velocity.x) > data.maxSpeed)
 		{
 			if (data.body.velocity.x > 0)
 			{

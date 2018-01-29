@@ -11,6 +11,7 @@ public class PlayerData : Data
     [Range(100, 500)] public float defaultjumpPower;
     [Range(100, 500)] public float boostedjumpPower;
     [Range(100, 500)] public float doubleJumpPower;
+    [HideInInspector] public float jumpPower;
 	[Range(0, 10)] public float climbSpeed;
 
     [Space(10)]
@@ -20,14 +21,11 @@ public class PlayerData : Data
     
     [HideInInspector] public int[] items;
 
-    [HideInInspector] public float jumpPower;
-    [HideInInspector] public float moveHorizontal;
+	[HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;
-    [HideInInspector] public bool direction;        //Right is true, left is false
-    [HideInInspector] public Vector2 movement;
+	[HideInInspector] public Vector2 movement;
 	[HideInInspector] public Rigidbody2D body;
-    [HideInInspector] public Vector2 startScale;
-    [HideInInspector] public Transform groundCheck;
+	[HideInInspector] public Transform groundCheck;
     [HideInInspector] public Collider2D col;
 
     /*[HideInInspector]*/ public Vector2 ladderBottom;
@@ -109,7 +107,6 @@ public class PlayerData : Data
 		groundCheck = transform.GetChild(0);
 		body = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
-        startScale = transform.localScale;
 
         climbFixLayer = LayerMask.NameToLayer("Blockable");
         playerLayer = LayerMask.NameToLayer("Player");
