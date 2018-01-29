@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class NPCData : Data{
@@ -14,6 +15,13 @@ public class NPCData : Data{
     [HideInInspector] public Text text = null;
     [HideInInspector] public AudioSource talkSound = null;
     [HideInInspector] public float basePitch = 1;
+
+    [HideInInspector]
+    public string currentString;
+    [HideInInspector]
+    public System.Collections.ArrayList currentTags = new System.Collections.ArrayList();
+    [HideInInspector]
+    public bool playSound = false;
 
     [HideInInspector] public bool playerInRange = false;
 }
