@@ -13,10 +13,12 @@ public class Melody {
 
     public MelodyID melodyID;
     public Note[] Notes;
+    public AudioClip audio;
 
-    public Melody(MelodyID melodyID, Note[] notes) {
+    public Melody(MelodyID melodyID, Note[] notes, AudioClip audio) {
         this.melodyID = melodyID;
         this.Notes = notes;
+        this.audio = audio;
     }
 
 

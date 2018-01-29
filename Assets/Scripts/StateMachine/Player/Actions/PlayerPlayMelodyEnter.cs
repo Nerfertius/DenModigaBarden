@@ -8,6 +8,9 @@ public class PlayerPlayMelodyEnter : StateAction {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
+
+        Melody m = mData.getMelody(mData.currentMelody);
+        //m.audio
         mData.PlayedNotes.Clear();
     }
 }
