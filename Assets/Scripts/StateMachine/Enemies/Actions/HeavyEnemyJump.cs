@@ -11,7 +11,7 @@ public class HeavyEnemyJump : StateAction {
     private Vector2 angle = new Vector2(0, 1);
 
     public override void ActOnce(StateController controller) {
-        controller.GetComponent<Rigidbody2D>().AddForce(angle * JumpForce);
+        controller.rb.AddForce(angle * JumpForce);
     }
 
 }

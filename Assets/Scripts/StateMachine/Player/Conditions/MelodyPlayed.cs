@@ -9,7 +9,7 @@ public class MelodyPlayed : Condition {
         
         if (Input.GetButtonUp("PlayMelody")) {
             PlayerData data = (PlayerData)controller.data;
-            PlayerData.MelodyManagerData mData = data.melodyManagerData;
+            PlayerData.MelodyData mData = data.melodyManagerData;
 
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {

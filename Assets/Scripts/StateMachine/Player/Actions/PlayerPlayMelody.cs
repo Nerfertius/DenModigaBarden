@@ -8,7 +8,7 @@ public class PlayerPlayMelody : StateAction {
 
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
-        PlayerData.MelodyManagerData mData = data.melodyManagerData;
+        PlayerData.MelodyData mData = data.melodyManagerData;
 
         foreach (Note note in mData.Notes) {
             if (Input.GetButtonDown(note.Button)) {

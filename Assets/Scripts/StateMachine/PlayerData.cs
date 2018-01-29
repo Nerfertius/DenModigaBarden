@@ -39,9 +39,11 @@ public class PlayerData : Data
     [HideInInspector] public bool inTransit;
     [HideInInspector] public Vector2 targetPos;
 
-    public MelodyManagerData melodyManagerData = new MelodyManagerData();
+    public MelodyData melodyManagerData = new MelodyData();
     [System.Serializable]
-    public class MelodyManagerData {
+    public class MelodyData {
+
+        [HideInInspector] public bool hasDoubleJump;
         [HideInInspector] public Melody[] melodies;
 
         public int MaxSavedNotes = 5;
