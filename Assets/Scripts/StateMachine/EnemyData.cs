@@ -7,20 +7,27 @@ public class EnemyData : MelodyInteractableData {
 
     public float speed;
     public float chaseSpeed;
-    public Rigidbody2D rb;
 
-
-    [HideInInspector] public float chaseTimer;
+    [HideInInspector] public Rigidbody2D rb;
 
     private Collider2D sightColl;
 
     protected virtual void Start() {
-        chaseTimer = 0;
-
         rb = GetComponent<Rigidbody2D>();
 
         if (transform.childCount != 0) {
             sightColl = GetComponentsInChildren<Collider2D>()[1];
+        }
+
+        facingRight = GetComponent<SpriteRenderer>().flipX;
+
+        if (facingRight)
+        {
+            currentDirection.x = 1;
+        }
+        else
+        {
+            currentDirection.x = -1;
         }
     }
 }

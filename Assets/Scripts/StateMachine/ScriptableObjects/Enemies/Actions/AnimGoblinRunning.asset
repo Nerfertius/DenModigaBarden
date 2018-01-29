@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cacbfedc27f6fb042923865b62a98a3e, type: 3}
   m_Name: AnimGoblinRunning
   m_EditorClassIdentifier: 
-  parameterName: 
-  value: 0
+  parameterName: Running
+  value: 1
