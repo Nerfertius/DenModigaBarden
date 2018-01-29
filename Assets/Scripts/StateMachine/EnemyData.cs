@@ -7,10 +7,14 @@ public class EnemyData : MelodyInteractableData {
 
     public float speed;
     public float chaseSpeed;
-    
+
+    [HideInInspector] public float chaseTimer;
+
     private Collider2D sightColl;
 
     private void Start() {
+        chaseTimer = 0;
+
         if (transform.childCount != 0) {
             sightColl = GetComponentsInChildren<Collider2D>()[1];
         }

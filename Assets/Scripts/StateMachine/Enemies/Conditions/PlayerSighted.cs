@@ -11,18 +11,15 @@ public class PlayerSighted : Condition {
     {
         EnemyData eData = (EnemyData) controller.data;
 
-        if (eData.player == null)
-            return false;
-
-        if (eData.currentDirection.x == 1 && eData.player.position.x < controller.transform.position.x)
-        {
+        if (eData.player == null) { 
             return false;
         }
-        else if (eData.currentDirection.x == -1 && eData.player.position.x > controller.transform.position.x)
-        {
+        else if (eData.currentDirection.x == 1 && eData.player.position.x < controller.transform.position.x){
             return false;
-        } else if (controller.transform.position.y + 2 < eData.player.position.y)
-        {
+        }
+        else if (eData.currentDirection.x == -1 && eData.player.position.x > controller.transform.position.x){
+            return false;
+        } else if (controller.transform.position.y + 2 < eData.player.position.y){
             return false;
         }
 
@@ -34,8 +31,7 @@ public class PlayerSighted : Condition {
         {
             hit = Physics2D.Linecast(controller.transform.position, eData.player.position, mask, -1);
         }
-
-
+        
         return (hit.collider.tag == "Player");
     }
 }

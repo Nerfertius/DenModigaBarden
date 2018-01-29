@@ -12,23 +12,21 @@ public class OnHitEffect : MonoBehaviour
 {
 
 	private SpriteRenderer sprRend;
-	private LayerMask startLayer;
 	private Color color;
 	private float timer;
 
 	public float activeTime;
-	public int layerNumber;
+    public string layerName;
 
 	void Awake ()
 	{
 		sprRend = GetComponent<SpriteRenderer>();
-		startLayer = gameObject.layer;
 		color = sprRend.color;
 		timer = activeTime;
 	}
 
 	void OnEnable(){
-		gameObject.layer = layerNumber;
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(layerName), true);
 	}
 
 	void Update ()
@@ -55,12 +53,8 @@ public class OnHitEffect : MonoBehaviour
 		//Resets timer
 		timer = activeTime;
 
-		// Restore layer
-		gameObject.layer = startLayer.value;
-	}
-
-	void OnValidate(){
-		layerNumber = Mathf.Clamp(layerNumber, 0, 31);
-	}
+        // Restore layer collission
+        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(layerName), false);
+    }
 }
 

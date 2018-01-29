@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114024675775816678}
   - component: {fileID: 114252480835615534}
   - component: {fileID: 70932057371119722}
+  - component: {fileID: 95437501612855878}
   m_Layer: 11
   m_Name: Goblin
   m_TagString: Untagged
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1735243106557284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.296, y: -2.51, z: 0}
+  m_LocalPosition: {x: 1.62, y: -0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4371107089967830}
@@ -125,6 +126,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   m_Size: {x: 0.6, y: 0.9}
   m_Direction: 0
+--- !u!95 &95437501612855878
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735243106557284}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2603b315d751e8648b83b6d4fcd992db, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114024675775816678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,6 +178,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   chaseSpeed: 4
+  chaseTimer: 0
 --- !u!114 &114912403510576844
 MonoBehaviour:
   m_ObjectHideFlags: 1
