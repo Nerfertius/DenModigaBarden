@@ -11,9 +11,14 @@ public class PlayerCastMelodyProjectile : StateAction {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
+        bool facingRight = true;
+
         if (Input.GetButtonDown("MelodyProjectileCast") && Time.realtimeSinceStartup > mData.lastShotProjectileTime + mData.projectileCooldown) {
             Vector3 offset = SpawnOffset;
-            if (!data.spriteRenderer.flipX) {
+
+            facingRight = data.transform.localScale.x > 0;
+
+            if (!facingRight) {
                 offset = Vector3.Scale(SpawnOffset, new Vector3(-1, 0, 0));
             }
 
@@ -31,8 +36,7 @@ public class PlayerCastMelodyProjectile : StateAction {
             }
             
             MelodyProjectile melodyProjectile = newProjectile.GetComponent<MelodyProjectile>();
-            melodyProjectile.Init(controller.transform.position + offset, data.facingRight);
-
+            melodyProjectile.Init(controller.transform.position + offset, facingRight);
             mData.lastShotProjectileTime = Time.realtimeSinceStartup;
         }
     }

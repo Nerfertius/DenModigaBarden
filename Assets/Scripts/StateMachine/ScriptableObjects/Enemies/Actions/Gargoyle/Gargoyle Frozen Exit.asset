@@ -8,8 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cacbfedc27f6fb042923865b62a98a3e, type: 3}
-  m_Name: AnimGoblinIdle
+  m_Script: {fileID: 11500000, guid: 878cda351c85b8d419da6897b23a8a0e, type: 3}
+  m_Name: Gargoyle Frozen Exit
   m_EditorClassIdentifier: 
-  parameterName: 
-  value: 0

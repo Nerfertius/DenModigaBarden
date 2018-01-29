@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
+  m_Name: GargoyleIdleState
+  m_EditorClassIdentifier: 
+  entryActions: []
+  exitActions: []
+  actions: []
+  transitions:
+  - condition: {fileID: 11400000, guid: f21e3ce5846315b4082dce720ea47a39, type: 2}
+    trueState: {fileID: 11400000, guid: 0313733c63ea5484a8b68844fd42e99d, type: 2}
+    falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: 72fed25409cdb0246ac5f5a168d94ec3, type: 2}
+    trueState: {fileID: 11400000, guid: 8b54666e4bd9e2c4b9ab2b1a1b5bc719, type: 2}
+    falseState: {fileID: 0}
+  hasExitTime: 0
+  exitTimer: 0
+  useRandomTimer: 0
+  minTime: 0
+  maxTime: 0
+  nextState: {fileID: 0}
