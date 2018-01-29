@@ -11,10 +11,9 @@ public class PlayerCastMelodyProjectile : StateAction {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
-
         if (Input.GetButtonDown("MelodyProjectileCast") && Time.realtimeSinceStartup > mData.lastShotProjectileTime + mData.projectileCooldown) {
             Vector3 offset = SpawnOffset;
-            if (!data.facingRight) {
+            if (!data.spriteRenderer.flipX) {
                 offset = Vector3.Scale(SpawnOffset, new Vector3(-1, 0, 0));
             }
 

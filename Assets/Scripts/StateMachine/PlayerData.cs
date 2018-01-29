@@ -40,6 +40,9 @@ public class PlayerData : Data
     [HideInInspector] public bool inTransit;
     [HideInInspector] public Vector2 targetPos;
 
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+
+
     public MelodyData melodyData = new MelodyData();
     [System.Serializable]
     public class MelodyData {
@@ -64,6 +67,15 @@ public class PlayerData : Data
 
         [HideInInspector] public float lastShotProjectileTime = 0;
         public float projectileCooldown = 0.5f;
+
+        public Melody getMelody(Melody.MelodyID? id) {
+            for (int i = 0; i < melodies.Length; i++) {
+                if (melodies[i].melodyID == id) {
+                    return melodies[i];
+                }
+            }
+            return null;
+        }
 
         public void Start() {
             PlayedNotes = new LinkedList<Note>();
@@ -109,6 +121,8 @@ public class PlayerData : Data
         jumpPower = defaultjumpPower;
 
         melodyData.Start();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
     public void Pause()
