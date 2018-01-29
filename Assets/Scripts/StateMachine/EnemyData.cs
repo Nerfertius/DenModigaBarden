@@ -14,7 +14,7 @@ public class EnemyData : MelodyInteractableData {
 
     private Collider2D sightColl;
 
-    private void Start() {
+    protected virtual void Start() {
         chaseTimer = 0;
 
         rb = GetComponent<Rigidbody2D>();
