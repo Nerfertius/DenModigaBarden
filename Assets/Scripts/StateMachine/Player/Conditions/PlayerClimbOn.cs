@@ -10,8 +10,8 @@ public class PlayerClimbOn : Condition
         if (other.CompareTag("Ladder"))
         {
             PlayerData data = (PlayerData)controller.data;
-            data.ladderBottom = other.transform.parent.GetChild(0).transform.position;
-            data.ladderTop = other.transform.parent.GetChild(1).transform.position;
+            data.ladderBottom = other.transform.GetComponentInParent<LadderBuilder>().bottomLadder.position;
+            data.ladderTop = other.transform.GetComponentInParent<LadderBuilder>().topLadder.position;
         }
         return null;
 	}

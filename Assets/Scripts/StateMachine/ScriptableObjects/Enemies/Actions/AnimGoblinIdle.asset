@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cacbfedc27f6fb042923865b62a98a3e, type: 3}
-  m_Name: MecanimGoblinIdle
+  m_Name: AnimGoblinIdle
   m_EditorClassIdentifier: 
   parameterName: 
   value: 0
