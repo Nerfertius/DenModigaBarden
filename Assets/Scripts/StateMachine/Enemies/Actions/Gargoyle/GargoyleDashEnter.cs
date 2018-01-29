@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GargoyleDashAction : MonoBehaviour {
+public class GargoyleDashEnter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

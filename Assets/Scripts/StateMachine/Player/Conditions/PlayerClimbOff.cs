@@ -10,14 +10,14 @@ public class PlayerClimbOff : Condition
         PlayerData data = (PlayerData)controller.data;
 
         //Bottom
-        if (data.transform.position.y < data.ladderBottom.y)
+        if (data.col.bounds.min.y < data.ladderBottom.GetComponent<Collider2D>().bounds.min.y)
         {
-            data.transform.position = new Vector2(data.transform.position.x, data.ladderBottom.y);
+            data.transform.position = new Vector2(data.transform.position.x, data.ladderBottom.position.y);
             return true;
         }
 
         //Top
-        else if (data.col.bounds.min.y > data.ladderTop.y)
+        else if (data.col.bounds.min.y > data.ladderTop.GetComponent<Collider2D>().bounds.max.y)
         {
             return true;
         }

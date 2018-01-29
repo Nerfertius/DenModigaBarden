@@ -15,21 +15,21 @@ public class PlayerClimbAction : StateAction
         Physics2D.IgnoreLayerCollision(data.playerLayer, data.climbFixLayer, true);
 
         //Bottom
-        if (data.transform.position.y < data.ladderBottom.y)
+        if (data.transform.position.y < data.ladderBottom.position.y)
         {
-            data.transform.position = new Vector2(data.ladderBottom.x, data.ladderBottom.y);
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.ladderBottom.position.y);
         }
 
         //Top
-        if (data.transform.position.y > data.ladderTop.y)
+        if (data.transform.position.y > data.ladderTop.position.y)
         {
-            data.transform.position = new Vector2(data.ladderBottom.x, data.ladderTop.y);
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.ladderTop.position.y);
         }
         
         //Between
         else 
         {
-            data.transform.position = new Vector2(data.ladderBottom.x, data.transform.position.y);
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.transform.position.y);
         }
     }
 
