@@ -4,6 +4,9 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "StateMachine/Condition/Enemy/PlayerSighted")]
 public class PlayerSighted : Condition {
+
+    public LayerMask mask;
+
     public override bool? CheckCondition(StateController controller)
     {
         EnemyData eData = (EnemyData) controller.data;
@@ -21,16 +24,12 @@ public class PlayerSighted : Condition {
         }
 
         RaycastHit2D hit;
-        if (controller.transform.position.y < eData.player.position.y - 0.3)
+        if (controller.transform.position.y < eData.player.position.y - 0.3f)
         {
-            hit = Physics2D.Linecast(controller.transform.position, eData.player.position);
-            Debug.Log("test2");
-            Debug.Log(hit.collider);
+            hit = Physics2D.Linecast(controller.transform.position, eData.player.position, mask, 0);
         } else
         {
-            hit = Physics2D.Linecast(controller.transform.position, eData.player.position, Physics2D.DefaultRaycastLayers, 0);
-            Debug.Log("test");
-            Debug.Log(hit.collider);
+            hit = Physics2D.Linecast(controller.transform.position, eData.player.position, mask, -1);
         }
 
 

@@ -11,10 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: GoblinLostTarget
   m_EditorClassIdentifier: 
-  entryActions: []
+  entryActions:
+  - {fileID: 11400000, guid: 1f13e97941819644db876bf142eec1c2, type: 2}
+  - {fileID: 11400000, guid: a7de05f455de4d140abaa49fc92c1a15, type: 2}
   exitActions: []
   actions: []
-  transitions: []
+  transitions:
+  - condition: {fileID: 11400000, guid: 08c71f1d52e75094490352d44cfb9209, type: 2}
+    trueState: {fileID: 11400000, guid: 9368847a8aa312a4d81b5f13fa0460cb, type: 2}
+    falseState: {fileID: 0}
   hasExitTime: 1
   exitTimer: 1
   useRandomTimer: 0
