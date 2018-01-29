@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 50047347635933524}
   - component: {fileID: 114994033544878884}
   - component: {fileID: 114195153534707582}
-  - component: {fileID: 82424486706367022}
   m_Layer: 13
   m_Name: sprite_test
   m_TagString: Player
@@ -54,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461975651749938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.98, y: -2.48, z: 0}
+  m_LocalPosition: {x: -6.6203575, y: -2.4612193, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4444355401631654}
@@ -109,86 +108,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   m_Size: {x: 0.6, y: 0.9}
   m_Direction: 0
---- !u!82 &82424486706367022
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461975651749938}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &114195153534707582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,9 +143,8 @@ MonoBehaviour:
   health: 3
   maxSpeed: 2.36
   speedMod: 40
-  defaultjumpPower: 300
-  boostedjumpPower: 300
-  doubleJumpPower: 0
+  defaultjumpPower: 0
+  boostedjumpPower: 0
   jumpPower: 280
   climbSpeed: 2.1
   groundLayer:
@@ -249,10 +167,7 @@ MonoBehaviour:
   grounded: 0
   inTransit: 0
   targetPos: {x: 0, y: 0}
-  melodyData:
-    hasDoubleJump: 0
-    doubleJumpAfterJumpCooldown: 0.1
-    doubleJumpAfterJumpCooldownJumpTime: 0
+  melodyManagerData:
     melodies: []
     MaxSavedNotes: 5
     Notes: []
@@ -260,8 +175,6 @@ MonoBehaviour:
     MagicResistMelodyProjectile: {fileID: 0}
     SleepMelodyProjectile: {fileID: 0}
     justStartedPlaying: 0
-    lastShotProjectileTime: 0
-    projectileCooldown: 0.5
 --- !u!212 &212082342265056826
 SpriteRenderer:
   m_ObjectHideFlags: 1

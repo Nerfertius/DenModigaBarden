@@ -65,15 +65,6 @@ public class PlayerData : Data
         [HideInInspector] public float lastShotProjectileTime = 0;
         public float projectileCooldown = 0.5f;
 
-        public Melody getMelody(Melody.MelodyID? id) {
-            for (int i = 0; i < melodies.Length; i++) {
-                if(melodies[i].melodyID == id) {
-                    return melodies[i];
-                }
-            }
-            return null;
-        }
-
         public void Start() {
             PlayedNotes = new LinkedList<Note>();
             Notes = new Note[5];
@@ -85,11 +76,11 @@ public class PlayerData : Data
 
             melodies = new Melody[3];
             Note[] jump = { Notes[0], Notes[1] };
-            melodies[0] = new Melody(Melody.MelodyID.JumpMelody, jump, Resources.Load("Melody Audio/JumpMelody") as AudioClip);
+            melodies[0] = new Melody(Melody.MelodyID.JumpMelody, jump);
             Note[] sleep = { Notes[0], Notes[0], Notes[0]};
-            melodies[1] = new Melody(Melody.MelodyID.SleepMelody, sleep, Resources.Load("Melody Audio/SleepMelody") as AudioClip);
+            melodies[1] = new Melody(Melody.MelodyID.SleepMelody, sleep);
             Note[] magicResist = { Notes[1], Notes[1], Notes[1] };
-            melodies[2] = new Melody(Melody.MelodyID.MagicResistMelody, magicResist, Resources.Load("Melody Audio/MagicResistMelody") as AudioClip);
+            melodies[2] = new Melody(Melody.MelodyID.MagicResistMelody, magicResist);
 
             //melodies.AddLast()
             JumpMelodyProjectile = Resources.Load("MelodyProjectiles/JumpMelodyProjectile") as GameObject;
