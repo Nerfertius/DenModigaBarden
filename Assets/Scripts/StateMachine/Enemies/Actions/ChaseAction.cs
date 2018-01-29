@@ -15,10 +15,14 @@ public class ChaseAction : StateAction
             if (controller.transform.position.x < eData.player.position.x)
             {
                 eData.currentDirection = new Vector2(1, 0);
+                eData.facingRight = true;
+                controller.sprRend.flipX = true;
             }
             else
             {
                 eData.currentDirection = new Vector2(-1, 0);
+                eData.facingRight = false;
+                controller.sprRend.flipX = false;
             }
 
             Vector2 velocity = eData.currentDirection * eData.chaseSpeed * Time.fixedDeltaTime;
