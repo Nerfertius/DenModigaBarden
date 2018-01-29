@@ -29,8 +29,8 @@ public class PlayerData : Data
     [HideInInspector] public Transform groundCheck;
     [HideInInspector] public Collider2D col;
 
-    /*[HideInInspector]*/ public Vector2 ladderBottom;
-	/*[HideInInspector]*/ public Vector2 ladderTop;
+    /*[HideInInspector]*/ public Transform ladderBottom;
+	/*[HideInInspector]*/ public Transform ladderTop;
 
     [HideInInspector] public bool jumping;
     [HideInInspector] public bool falling;
@@ -115,9 +115,6 @@ public class PlayerData : Data
 
         climbFixLayer = LayerMask.NameToLayer("Blockable");
         playerLayer = LayerMask.NameToLayer("Player");
-
-        ladderBottom = new Vector2(9999999999, 999999999);
-        ladderTop = new Vector2(9999999999, 999999999);
         
         items = new int[System.Enum.GetNames(typeof(ItemType)).Length];
         jumpPower = defaultjumpPower;

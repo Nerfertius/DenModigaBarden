@@ -10,8 +10,8 @@ public class PlayerClimbOn : Condition
         if (other.CompareTag("Ladder"))
         {
             PlayerData data = (PlayerData)controller.data;
-            data.ladderBottom = other.transform.GetComponentInParent<LadderBuilder>().bottomLadder.position;
-            data.ladderTop = other.transform.GetComponentInParent<LadderBuilder>().topLadder.position;
+            data.ladderBottom = other.transform.GetComponentInParent<LadderBuilder>().bottomLadder;
+            data.ladderTop = other.transform.GetComponentInParent<LadderBuilder>().topLadder;
         }
         return null;
 	}
@@ -19,26 +19,33 @@ public class PlayerClimbOn : Condition
     public override bool? CheckCondition(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        if (data.transform.position.x > data.ladderBottom.x - 0.05f && data.transform.position.x < data.ladderBottom.x + 0.05f)
+        if (data.ladderBottom == null && data.ladderTop == null)
         {
-            //Bottom
-            if (Input.GetKey(KeyCode.W) && data.transform.position.y < data.ladderBottom.y)
-            {
-                return true;
-            }
-
-            //Top
-            else if (Input.GetKey(KeyCode.S) && data.transform.position.y > data.ladderTop.y - 0.3f)
-            {
-                return true;
-            }
-
-            //Between
-            else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W)) && data.transform.position.y < data.ladderTop.y - 0.3f && data.transform.position.y > data.ladderBottom.y)
-            {
-                return true;
-            }
+            return null;
         }
-        return false;
+        else
+        {
+            if (data.transform.position.x > data.ladderBottom.position.x - 0.05f && data.transform.position.x < data.ladderBottom.position.x + 0.05f)
+            {
+                //Bottom
+                if (Input.GetKey(KeyCode.W) && data.transform.position.y < data.ladderBottom.position.y)
+                {
+                    return true;
+                }
+
+                //Top
+                else if (Input.GetKey(KeyCode.S) && data.transform.position.y > data.ladderTop.position.y - 0.3f)
+                {
+                    return true;
+                }
+
+                //Between
+                else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W)) && data.transform.position.y < data.ladderTop.position.y - 0.3f && data.transform.position.y > data.ladderBottom.position.y)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

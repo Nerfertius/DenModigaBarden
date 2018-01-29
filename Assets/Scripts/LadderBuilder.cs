@@ -14,6 +14,7 @@ public class LadderBuilder : MonoBehaviour
     void Start ()
     {
         bottomLadder = transform;
+        gameObject.GetComponent<SpriteRenderer>().sprite = ladder.GetComponent<SpriteRenderer>().sprite;
         BuildLadder();
 	}
 
