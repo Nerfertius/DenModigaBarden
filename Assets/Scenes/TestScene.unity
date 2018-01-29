@@ -1003,7 +1003,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4193907132306398, guid: a2d2f8f2ef4817e4c97da62b656cbabb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.53
+      value: -2.48
       objectReference: {fileID: 0}
     - target: {fileID: 4193907132306398, guid: a2d2f8f2ef4817e4c97da62b656cbabb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 788548854}
   - component: {fileID: 788548856}
   - component: {fileID: 788548855}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Room01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 1001361103}
   - component: {fileID: 1001361105}
   - component: {fileID: 1001361104}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Room02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,7 +1326,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1076127647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 167, y: 94, z: 0}
+  m_LocalPosition: {x: 503.5, y: 283, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -8,9 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a16d17b85d21f5489803b3d8fc3f06d, type: 3}
-  m_Name: PlayerSighted
+  m_Script: {fileID: 11500000, guid: 588be595efd88214690a5971ad6cad44, type: 3}
+  m_Name: ResetVelocity
   m_EditorClassIdentifier: 
-  mask:
-    serializedVersion: 2
-    m_Bits: 4294960073

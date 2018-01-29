@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerPlayMelodyEnter : StateAction {
     public override void ActOnce(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
-        PlayerData.MelodyData mData = data.melodyManagerData;
+        PlayerData.MelodyData mData = data.melodyData;
 
         mData.PlayedNotes.Clear();
     }

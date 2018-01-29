@@ -9,7 +9,7 @@ public class PlayerCastMelodyProjectile : StateAction {
 
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
-        PlayerData.MelodyData mData = data.melodyManagerData;
+        PlayerData.MelodyData mData = data.melodyData;
 
 
         if (Input.GetButtonDown("MelodyProjectileCast") && Time.realtimeSinceStartup > mData.lastShotProjectileTime + mData.projectileCooldown) {

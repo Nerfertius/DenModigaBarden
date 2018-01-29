@@ -8,7 +8,7 @@ public class PlayerChannelExit : StateAction
     public override void ActOnce(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        PlayerData.MelodyData mData = data.melodyManagerData;
+        PlayerData.MelodyData mData = data.melodyData;
 
         if (mData.currentMelody == null || Input.GetButton("PlayMelody")) {
 

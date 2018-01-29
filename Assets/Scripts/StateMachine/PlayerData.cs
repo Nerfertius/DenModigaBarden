@@ -10,6 +10,7 @@ public class PlayerData : Data
 	[Range(0, 100)] public float speedMod;
     [Range(100, 500)] public float defaultjumpPower;
     [Range(100, 500)] public float boostedjumpPower;
+    [Range(100, 500)] public float doubleJumpPower;
 	[Range(0, 10)] public float climbSpeed;
 
     [Space(10)]
@@ -41,11 +42,13 @@ public class PlayerData : Data
     [HideInInspector] public bool inTransit;
     [HideInInspector] public Vector2 targetPos;
 
-    public MelodyData melodyManagerData = new MelodyData();
+    public MelodyData melodyData = new MelodyData();
     [System.Serializable]
     public class MelodyData {
 
         [HideInInspector] public bool hasDoubleJump;
+        [HideInInspector] public float doubleJumpAfterJumpCooldown;
+        [HideInInspector] public float doubleJumpAfterJumpCooldownJumpTime = 0;
         [HideInInspector] public Melody[] melodies;
 
         public int MaxSavedNotes = 5;
@@ -85,6 +88,8 @@ public class PlayerData : Data
             JumpMelodyProjectile = Resources.Load("MelodyProjectiles/JumpMelodyProjectile") as GameObject;
             MagicResistMelodyProjectile = Resources.Load("MelodyProjectiles/MagicResistMelodyProjectile") as GameObject;
             SleepMelodyProjectile = Resources.Load("MelodyProjectiles/SleepMelodyProjectile") as GameObject;
+
+            doubleJumpAfterJumpCooldown = 0.3f;
         }
     }
 
@@ -106,7 +111,7 @@ public class PlayerData : Data
         items = new int[System.Enum.GetNames(typeof(ItemType)).Length];
         jumpPower = defaultjumpPower;
 
-        melodyManagerData.Start();
+        melodyData.Start();
 	}
 
     public void Pause()

@@ -17,6 +17,7 @@ public class PlayerAirEntry : StateAction
                 Debug.Log("hej");
                 data.body.velocity = new Vector2(data.body.velocity.x, 0);
                 data.body.AddForce(new Vector2(0, data.jumpPower));
+                
             }
             else if (data.climbing)
             {
@@ -25,6 +26,8 @@ public class PlayerAirEntry : StateAction
                 data.body.AddForce(new Vector2(data.moveHorizontal, data.jumpPower));
                 data.climbing = false;
             }
+            data.melodyData.hasDoubleJump = true;
+            data.melodyData.doubleJumpAfterJumpCooldownJumpTime = Time.realtimeSinceStartup;
             data.Pause();
         }
     }
