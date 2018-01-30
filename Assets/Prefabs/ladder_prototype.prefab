@@ -80,8 +80,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 1
   ladder: {fileID: 1431439196771214, guid: 1b7152355672b2e44809744193107240, type: 2}
+  blockableLayer:
+    serializedVersion: 2
+    m_Bits: 256
   bottomLadder: {fileID: 0}
   topLadder: {fileID: 0}
+  hasPlatformBehind: 0
 --- !u!212 &212971141560950226
 SpriteRenderer:
   m_ObjectHideFlags: 1
