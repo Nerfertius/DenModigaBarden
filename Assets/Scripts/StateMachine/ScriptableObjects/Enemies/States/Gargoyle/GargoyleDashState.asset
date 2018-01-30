@@ -11,10 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: GargoyleDashState
   m_EditorClassIdentifier: 
-  entryActions: []
+  entryActions:
+  - {fileID: 11400000, guid: 683469dbe7cf59b41a5cc8d8c944c939, type: 2}
   exitActions: []
-  actions: []
-  transitions: []
+  actions:
+  - {fileID: 11400000, guid: 99dabf33640e53840b7f9688a4221d4d, type: 2}
+  transitions:
+  - condition: {fileID: 11400000, guid: 71bbfe8e214056f40b56e9ac5622ed53, type: 2}
+    trueState: {fileID: 11400000, guid: 2b2d5c656d7925241929d07db8f889b4, type: 2}
+    falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: f21e3ce5846315b4082dce720ea47a39, type: 2}
+    trueState: {fileID: 11400000, guid: 5661957264b3e4f4a8629d519c779c1c, type: 2}
+    falseState: {fileID: 0}
   hasExitTime: 0
   exitTimer: 0
   useRandomTimer: 0

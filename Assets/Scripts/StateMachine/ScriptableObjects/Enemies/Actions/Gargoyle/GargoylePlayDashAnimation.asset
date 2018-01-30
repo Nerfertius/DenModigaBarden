@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 931ebcd896e26254aa0ab0dfee1b6019, type: 3}
-  m_Name: MagicResist Projectile Hit Trigger
+  m_Script: {fileID: 11500000, guid: 604eb1aee37c4b743805a614c6eadecc, type: 3}
+  m_Name: GargoylePlayDashAnimation
   m_EditorClassIdentifier: 
-  melodyID: 2
+  animationName: GargoyleDash
