@@ -28,7 +28,7 @@ public class PauseState : GameState {
     }
 
     public override void update() {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Cancel"))
             ResumeState();
     }
 
