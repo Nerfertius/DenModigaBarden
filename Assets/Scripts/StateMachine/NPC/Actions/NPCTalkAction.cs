@@ -14,18 +14,19 @@ public class NPCTalkAction : StateAction
     public override void ActOnce(StateController controller)
     {
         NPCData data = (NPCData)controller.data;
-        blacklist = new char[] { ' ', '\0', '\n' };
 
         if (data.playerInRange)
         {
+            blacklist = new char[] { ' ', '\0', '\n' };
             data.start = true;
             data.endOfConv = false;
-            Vector2 pos = controller.transform.position;
+            Vector3 pos = controller.transform.position;
             if (data.text == null)
             {
                 data.text = Instantiate(textPrefab, GameObject.Find("WorldSpaceCanvas").transform).GetComponentInChildren<Text>();
             }
             pos.y += controller.GetComponent<SpriteRenderer>().size.y + 0.6f;
+            pos.z = -4;
             data.text.transform.parent.position = pos;
             data.text.enabled = true;
 
@@ -80,14 +81,19 @@ public class NPCTalkAction : StateAction
             }
             else
             {
-                char next = getNext(data, data.texts[data.currentText], data.textSpeed);
-                if (next != '\0')
+                bool next = getNext(data, data.texts[data.currentText], data.textSpeed);
+                if (next)
                 {
-                    data.text.text += next;
-                    if (data.talkSound && allowed(next))
+                    data.text.text = data.currentString;
+                    for (int i = data.currentTags.Count - 1; i >= 0; i--)
+                    {
+                        data.text.text += "</" + data.currentTags[i] + ">";
+                    }
+                    if (data.talkSound && data.playSound)
                     {
                         data.talkSound.pitch = data.basePitch + Random.Range(-data.pitchDeviation, data.pitchDeviation);
                         data.talkSound.Play();
+                        data.playSound = false;
                     }
                 }
                 if (data.currentChar >= data.texts[data.currentText].Length)
@@ -96,16 +102,49 @@ public class NPCTalkAction : StateAction
         }
     }
 
-    private char getNext(NPCData data, string text, float speed)
+    private bool getNext(NPCData data, string text, float speed)
     {
         data.curTime += Time.deltaTime;
         if (data.curTime >= data.nextChar)
         {
+            char next = text[data.currentChar++];
+            if (next == '<')
+            {
+                if (text[data.currentChar] != '/')
+                {
+                    string[] tags = { "b", "i" };
+                    string start = text.Substring(data.currentChar, text.IndexOf('>', data.currentChar - 1) - data.currentChar);
+                    foreach (string tag in tags)
+                    {
+                        if ((start.Contains("color")) || start == tag)
+                        {
+                            data.currentTags.Add(start.Contains("color") ? "color" : tag);
+                            data.currentChar += start.Length + 1;
+                            data.currentString += next + start + ">";
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    data.currentString += "</" + data.currentTags[data.currentTags.Count - 1] + ">";
+                    data.currentChar = text.IndexOf('>', data.currentChar) + 1;
+                    data.currentTags.RemoveAt(data.currentTags.Count - 1);
+                }
+            }
+            else
+            {
+                data.currentString += next;
+                if (allowed(next))
+                {
+                    data.playSound = true;
+                }
+            }
             data.nextChar = data.curTime + (1 / speed);
-            return text[data.currentChar++];
+            return true;
         }
 
-        return '\0';
+        return false;
     }
 
     private bool allowed(char character)
@@ -167,6 +206,8 @@ public class NPCTalkAction : StateAction
         data.curTime = 0;
         data.nextChar = 0;
         data.currentChar = 0;
+        data.currentString = "";
+        data.currentTags.Clear();
         if (!data.endOfConv && data.currentText < data.texts.Length)
             textSize(data);
     }
