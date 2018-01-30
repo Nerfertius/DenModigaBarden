@@ -8,6 +8,8 @@ public class PlayerDoubleJump : StateAction {
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
 
+        Debug.Log(data.melodyData.hasDoubleJump);
+
         // Double jump
         if (Input.GetButtonDown("Jump") && data.melodyData.hasDoubleJump && 
             data.melodyData.currentMelody == Melody.MelodyID.JumpMelody &&
@@ -18,5 +20,4 @@ public class PlayerDoubleJump : StateAction {
             data.melodyData.hasDoubleJump = false;
         }
     }
-
 }

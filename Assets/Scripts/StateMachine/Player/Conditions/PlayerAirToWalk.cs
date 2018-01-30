@@ -11,7 +11,6 @@ public class PlayerAirToWalk : Condition
         if (!data.jumping)
         {
             data.grounded = Physics2D.OverlapCircle(data.groundCheck.position, 0.15f, data.groundLayer);
-            Debug.Log(data.grounded);
             return data.grounded;
         }
         return null;

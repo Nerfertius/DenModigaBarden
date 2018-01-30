@@ -19,7 +19,7 @@ MonoBehaviour:
   actions: []
   transitions: []
   hasExitTime: 1
-  exitTimer: 5
+  exitTimer: 10
   useRandomTimer: 0
   minTime: 0
   maxTime: 0

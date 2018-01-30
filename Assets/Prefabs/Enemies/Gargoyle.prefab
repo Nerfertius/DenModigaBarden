@@ -42,8 +42,6 @@ GameObject:
   - component: {fileID: 95462437470285310}
   - component: {fileID: 114367693822698130}
   - component: {fileID: 60890881138470964}
-  - component: {fileID: 60984560741862740}
-  - component: {fileID: 60199025301834988}
   - component: {fileID: 60771466991440520}
   m_Layer: 11
   m_Name: Gargoyle
@@ -99,38 +97,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!60 &60199025301834988
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1636036458769274}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1.4203205, y: -1.4807601}
-      - {x: -1.5384464, y: 0.05083573}
-      - {x: -1.3873482, y: 0.9680493}
-      - {x: -0.20878601, y: 1.3155742}
-      - {x: 0.5920353, y: 1.1644764}
-      - {x: 1.483511, y: -0.059417248}
-      - {x: 0.95467186, y: -0.52782106}
-      - {x: 1, y: -1.5703971}
 --- !u!60 &60503292154903128
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -183,14 +149,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.8446465, y: -0.83853865}
-      - {x: -2.1921368, y: -0.36202073}
-      - {x: -1.5020313, y: 0.17674065}
-      - {x: -0.38080788, y: 0.5357336}
-      - {x: 1.3833427, y: 0.53372306}
-      - {x: 1.9881134, y: 0.101138234}
-      - {x: 2.3193932, y: -0.14936924}
-      - {x: 2.4908714, y: -0.89377093}
+    - - {x: -2, y: -0.9}
+      - {x: -2, y: 0.07}
+      - {x: -0.92, y: 0.07}
+      - {x: -0.92, y: 0.52}
+      - {x: 1.94, y: 0.52}
+      - {x: 1.94, y: -0.16}
+      - {x: 2.48, y: -0.16}
+      - {x: 2.48, y: -0.9}
 --- !u!60 &60890881138470964
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -215,46 +181,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.4203205, y: -1.4807601}
-      - {x: -1.5384464, y: 0.05083573}
-      - {x: -1.3873482, y: 0.9680493}
-      - {x: -0.20878601, y: 1.3155742}
-      - {x: 0.5920353, y: 1.1644764}
-      - {x: 1.483511, y: -0.059417248}
-      - {x: 0.95467186, y: -0.52782106}
-      - {x: 1, y: -1.5703971}
---- !u!60 &60984560741862740
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1636036458769274}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1.8446465, y: -0.83853865}
-      - {x: -2.1921368, y: -0.36202073}
-      - {x: -1.5020313, y: 0.17674065}
-      - {x: -0.38080788, y: 0.5357336}
-      - {x: 1.3833427, y: 0.53372306}
-      - {x: 1.9881134, y: 0.101138234}
-      - {x: 2.3193932, y: -0.14936924}
-      - {x: 2.4908714, y: -0.89377093}
+    - - {x: 0.77, y: 0.56}
+      - {x: 1.46, y: 0.56}
+      - {x: 1.46, y: -0.08}
+      - {x: 1.01, y: -1.5}
+      - {x: -1.35, y: -1.5}
+      - {x: -1.35, y: 1.08}
+      - {x: 0.77, y: 1.08}
 --- !u!95 &95462437470285310
 Animator:
   serializedVersion: 3
@@ -309,7 +242,7 @@ MonoBehaviour:
   chaseSpeed: 0
   rb: {fileID: 50525118852681516}
   harmful: 1
-  idleCollider: {fileID: 60199025301834988}
+  idleCollider: {fileID: 60890881138470964}
   dashCollider: {fileID: 60771466991440520}
   transitFromFrozen: 1
 --- !u!114 &114394417030416494
