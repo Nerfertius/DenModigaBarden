@@ -23,7 +23,7 @@ public class PlayerClimbAction : StateAction
         //Top
         if (data.transform.position.y > data.ladderTop.position.y)
         {
-            data.transform.position = new Vector2(data.ladderBottom.position.x, data.ladderTop.position.y);
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.ladderTop.GetComponent<Collider2D>().bounds.max.y);
         }
         
         //Between

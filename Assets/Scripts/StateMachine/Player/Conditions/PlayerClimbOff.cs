@@ -16,8 +16,14 @@ public class PlayerClimbOff : Condition
             return true;
         }
 
-        //Top
-        else if (data.col.bounds.min.y > data.ladderTop.GetComponent<Collider2D>().bounds.max.y)
+        //Top with a platform behind
+        else if (data.ladderBottom.GetComponent<LadderBuilder>().hasPlatformBehind && data.col.bounds.min.y > data.ladderTop.GetComponent<Collider2D>().bounds.center.y)
+        {
+            return true;
+        }
+
+        //Top WITHOUT a platform behind
+        else if (data.ladderBottom.GetComponent<LadderBuilder>().hasPlatformBehind == false && data.col.bounds.min.y > data.ladderTop.GetComponent<Collider2D>().bounds.max.y)
         {
             return true;
         }
