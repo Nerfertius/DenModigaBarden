@@ -10,5 +10,6 @@ public class GargoyleDashEnter : StateAction {
 
         data.dashCollider.enabled = true;
         data.idleCollider.enabled = false;
+        data.transitFromFrozen = false;
     }
 }

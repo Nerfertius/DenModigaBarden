@@ -11,5 +11,6 @@ public class GargoyleFrozenExit : StateAction {
         data.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         data.gameObject.layer = 11; // Enemy
         data.harmful = true;
+        data.transitFromFrozen = true;
     }
 }

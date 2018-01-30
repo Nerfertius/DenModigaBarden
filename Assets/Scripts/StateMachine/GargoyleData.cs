@@ -8,10 +8,16 @@ public class GargoyleData : EnemyData {
     public PolygonCollider2D idleCollider;
     public PolygonCollider2D dashCollider;
 
-    /*protected override void Start() {
+    [HideInInspector] public bool transitFromFrozen = false;
+
+
+    protected override void Start() {
         base.Start();
 
+        currentDirection = new Vector3(currentDirection.x * -1, currentDirection.y);
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 
 
-    }*/
+
+    }
 }

@@ -19,18 +19,19 @@ public class EnemyData : MelodyInteractableData
 
         if (transform.childCount != 0)
         {
-            sightColl = GetComponentsInChildren<Collider2D>()[1];
+
+            sightColl = transform.GetChild(0).GetComponent<Collider2D>();
         }
 
         facingRight = GetComponent<SpriteRenderer>().flipX;
 
         if (facingRight)
         {
-            currentDirection.x = 1;
+            currentDirection.x = 1 * transform.localScale.x;
         }
         else
         {
-            currentDirection.x = -1;
+            currentDirection.x = -1 * transform.localScale.x;
         }
     }
 }

@@ -10,8 +10,8 @@ public class PlayerSighted : Condition {
     public override bool? CheckCondition(StateController controller)
     {
         EnemyData eData = (EnemyData) controller.data;
-
-        if (eData.player == null) { 
+        
+        if (eData.player == null) {
             return false;
         }
         else if (eData.currentDirection.x == 1 && eData.player.position.x < controller.transform.position.x){
@@ -22,7 +22,7 @@ public class PlayerSighted : Condition {
         } else if (controller.transform.position.y + 2 < eData.player.position.y){
             return false;
         }
-
+        
         RaycastHit2D hit;
         if (controller.transform.position.y < eData.player.position.y - 0.3f)
         {
