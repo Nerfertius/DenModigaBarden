@@ -7,7 +7,7 @@ public class EnemyData : MelodyInteractableData {
 
     public float speed;
     public float chaseSpeed;
-    public Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
 
 
     [HideInInspector] public float chaseTimer;

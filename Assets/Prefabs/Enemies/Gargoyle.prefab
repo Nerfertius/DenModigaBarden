@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4567855250069836}
   - component: {fileID: 114394417030416494}
-  - component: {fileID: 58464395801786330}
+  - component: {fileID: 60503292154903128}
   m_Layer: 2
   m_Name: Sight
   m_TagString: Untagged
@@ -39,9 +39,9 @@ GameObject:
   - component: {fileID: 212347468482563898}
   - component: {fileID: 50525118852681516}
   - component: {fileID: 114353636810500938}
-  - component: {fileID: 114749652944753612}
-  - component: {fileID: 70553678633211314}
   - component: {fileID: 95462437470285310}
+  - component: {fileID: 61868589510822710}
+  - component: {fileID: 114367693822698130}
   m_Layer: 11
   m_Name: Gargoyle
   m_TagString: Untagged
@@ -56,8 +56,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1636036458769274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.83, y: 2.79, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 20.33, y: -0.89, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4567855250069836}
   m_Father: {fileID: 0}
@@ -96,8 +96,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &58464395801786330
-CircleCollider2D:
+--- !u!60 &60503292154903128
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -105,14 +105,27 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 5
---- !u!70 &70553678633211314
-CapsuleCollider2D:
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1, y: 1}
+      - {x: 1, y: -1}
+      - {x: 7, y: -2}
+      - {x: 7, y: 2}
+--- !u!61 &61868589510822710
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -123,9 +136,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
-  m_Size: {x: 0.6, y: 0.9}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.92, y: 1.92}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 1.92, y: 1.92}
+  m_EdgeRadius: 0
 --- !u!95 &95462437470285310
 Animator:
   serializedVersion: 3
@@ -154,13 +177,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171b6f4c276ada4b9e1c8b666ba4edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 0}
+  currentState: {fileID: 11400000, guid: 2b2d5c656d7925241929d07db8f889b4, type: 2}
   data: {fileID: 0}
   anim: {fileID: 0}
   sprRend: {fileID: 0}
   rb: {fileID: 0}
   coll: {fileID: 0}
   stateTimer: 0
+--- !u!114 &114367693822698130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636036458769274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e944636f1bd850a468340cab317fe3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0}
+  currentDirection: {x: 0, y: 0}
+  facingRight: 0
+  player: {fileID: 0}
+  speed: 0
+  chaseSpeed: 0
+  rb: {fileID: 0}
+  chaseTimer: 0
 --- !u!114 &114394417030416494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,24 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0341605104ae44bac0734501da8f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114749652944753612
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1636036458769274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1dfbc8ca9f293545bb2a3c5c7152ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0}
-  currentDirection: {x: 0, y: 0}
-  facingRight: 0
-  player: {fileID: 0}
-  speed: 2
-  chaseSpeed: 4
-  chaseTimer: 0
 --- !u!212 &212347468482563898
 SpriteRenderer:
   m_ObjectHideFlags: 1
