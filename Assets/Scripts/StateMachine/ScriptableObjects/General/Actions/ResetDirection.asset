@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
-  setAuto: 0
+  setAuto: 1
