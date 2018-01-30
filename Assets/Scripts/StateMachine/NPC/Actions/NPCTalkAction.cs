@@ -48,13 +48,13 @@ public class NPCTalkAction : StateAction
     public override void Act(StateController controller)
     {
         NPCData data = (NPCData)controller.data;
-        if (Input.GetKeyDown(KeyCode.E) && !data.start)
+        if (Input.GetButtonDown("Interact") && !data.start)
         {
             data.start = true;
             textSize(data);
             resetVar(data);
         }
-        if (Input.GetKeyDown(KeyCode.E) && data.finished && data.currentText < data.texts.Length)
+        if (Input.GetButtonDown("Interact") && data.finished && data.currentText < data.texts.Length)
         {
             data.currentText++;
             if (data.currentText >= data.texts.Length)
@@ -66,7 +66,7 @@ public class NPCTalkAction : StateAction
             data.text.text = "";
             resetVar(data);
         }
-        if (Input.GetKeyDown(KeyCode.E) && data.finished)
+        if (Input.GetButtonDown("Interact") && data.finished)
         {
             resetConv(data);
         }
@@ -74,7 +74,7 @@ public class NPCTalkAction : StateAction
         {
             if (!data.text.transform.parent.gameObject.activeSelf)
                 data.text.transform.parent.gameObject.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E) && data.curTime > 0)
+            if (Input.GetButtonDown("Interact") && data.curTime > 0)
             {
                 data.text.text = data.texts[data.currentText];
                 data.finished = true;

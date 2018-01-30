@@ -8,7 +8,7 @@ public class NPCStartTalking : Condition
     public override bool? CheckCondition(StateController controller)
     {
         NPCData data = (NPCData)controller.data;
-        if (data.playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (data.playerInRange && Input.GetButtonDown("Interact"))
         {
             return true;
         }
