@@ -9,20 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
-  m_Name: EvilEyeFlying
+  m_Name: EvilEyeShooting
   m_EditorClassIdentifier: 
-  entryActions: []
-  exitActions: []
+  entryActions:
+  - {fileID: 11400000, guid: 0afd036f77eaac745b960c81cfe2b8af, type: 2}
+  exitActions:
+  - {fileID: 11400000, guid: 01cf90c5948dea14ba26bcce1c49ba98, type: 2}
   actions:
   - {fileID: 11400000, guid: 83d153e3c1686324da666805b8135d28, type: 2}
-  - {fileID: 11400000, guid: 222b9958c9653444a9658f1f134ed4cf, type: 2}
-  transitions:
-  - condition: {fileID: 11400000, guid: 72fed25409cdb0246ac5f5a168d94ec3, type: 2}
-    trueState: {fileID: 11400000, guid: d4ac1e413fcd51f4c906ca8e28ab1ae7, type: 2}
-    falseState: {fileID: 0}
-  hasExitTime: 0
-  exitTimer: 0
+  transitions: []
+  hasExitTime: 1
+  exitTimer: 1
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
-  nextState: {fileID: 0}
+  nextState: {fileID: 11400000, guid: 323ddac749dda1944b582fd0d668b412, type: 2}
