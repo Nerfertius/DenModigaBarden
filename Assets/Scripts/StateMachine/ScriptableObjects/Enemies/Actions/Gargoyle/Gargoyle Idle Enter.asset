@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 931ebcd896e26254aa0ab0dfee1b6019, type: 3}
-  m_Name: MagicResist Projectile Hit Trigger
+  m_Script: {fileID: 11500000, guid: 6a2edc9ea44bec244a9acb13088a247c, type: 3}
+  m_Name: Gargoyle Idle Enter
   m_EditorClassIdentifier: 
-  melodyID: 2

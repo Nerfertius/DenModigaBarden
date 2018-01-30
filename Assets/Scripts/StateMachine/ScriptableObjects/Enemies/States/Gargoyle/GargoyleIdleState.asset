@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: GargoyleIdleState
   m_EditorClassIdentifier: 
-  entryActions: []
+  entryActions:
+  - {fileID: 11400000, guid: abfb5afa9c6f3fd4a9ac695aba151045, type: 2}
+  - {fileID: 11400000, guid: a54dab5c072ec3f45bc1c5f4622e5733, type: 2}
   exitActions: []
   actions: []
   transitions:

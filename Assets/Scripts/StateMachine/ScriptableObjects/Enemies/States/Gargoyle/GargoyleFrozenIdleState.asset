@@ -11,13 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: GargoyleFrozenIdleState
   m_EditorClassIdentifier: 
-  entryActions: []
-  exitActions: []
+  entryActions:
+  - {fileID: 11400000, guid: d2ea7f431d014074c84fb187ab337e87, type: 2}
+  - {fileID: 11400000, guid: 10494cbea0c51e146b59f7fe2dda4632, type: 2}
+  exitActions:
+  - {fileID: 11400000, guid: 860dec1529ed57b499c7d7e30485dbc9, type: 2}
   actions: []
   transitions: []
-  hasExitTime: 0
-  exitTimer: 0
+  hasExitTime: 1
+  exitTimer: 5
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
-  nextState: {fileID: 0}
+  nextState: {fileID: 11400000, guid: 2b2d5c656d7925241929d07db8f889b4, type: 2}

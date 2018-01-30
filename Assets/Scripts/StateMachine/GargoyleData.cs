@@ -5,6 +5,8 @@ using UnityEngine;
 public class GargoyleData : EnemyData {
 
     [HideInInspector] public bool harmful;
+    public PolygonCollider2D idleCollider;
+    public PolygonCollider2D dashCollider;
 
     /*protected override void Start() {
         base.Start();

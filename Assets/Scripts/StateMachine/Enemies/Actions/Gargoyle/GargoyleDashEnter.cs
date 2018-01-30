@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GargoyleDashEnter : MonoBehaviour {
+[CreateAssetMenu(menuName = "StateMachine/Action/Enemy/Gargoyle/GargoyleDashEnter")]
+public class GargoyleDashEnter : StateAction {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override void ActOnce(StateController controller) {
+        GargoyleData data = (GargoyleData)controller.data;
+
+        data.dashCollider.enabled = true;
+        data.idleCollider.enabled = false;
+    }
 }
