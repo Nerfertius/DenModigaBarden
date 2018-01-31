@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "StateMachine/Action/Enemy/EvilEyeFlight")]
 public class EvilEyeFlight : StateAction
 {
-    public override void Act(StateController controller)
+    public override void FixedAct(StateController controller)
     {
         FlyingEnemyData eData = (FlyingEnemyData)controller.data;
 
