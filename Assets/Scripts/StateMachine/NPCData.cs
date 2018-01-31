@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class NPCData : Data{
+    public bool canWalk = false;
+    [HideInInspector] public float waitTime = 0;
     [TextArea] public string[] texts;
     public float textSpeed = 20;
     public int fontSize = 0;

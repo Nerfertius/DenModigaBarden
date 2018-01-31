@@ -49,6 +49,7 @@ public class PlayState : GameState
             }
             else
             {
+                //****************HEALTH****************
                 if (hp == null)
                 {
                     hp = playCanvas.transform.Find("HPBar").GetComponent<Image>();
@@ -58,6 +59,7 @@ public class PlayState : GameState
                     RectTransform rect = hp.rectTransform;
                     rect.sizeDelta = new Vector2((100 * playerData.health / 10), 10);
                 }
+                //****************ITEMS****************
                 for (int i = 0; i < lastValues.Length; i++)
                 {
                     if (lastValues[i] != playerData.items[i])
@@ -77,20 +79,24 @@ public class PlayState : GameState
                         itemIcons[i].GetComponentInChildren<Text>().text = "x" + playerData.items[i];
                     }
                 }
+                //****************NOTES****************
                 if (notesBg == null)
                     notesBg = playCanvas.transform.Find("UINotes").GetComponent<Image>();
                 if (player.currentState.name == "PlayerPlayMelody")
                 {
                     CanvasGroup cg = notesBg.GetComponent<CanvasGroup>();
                     cg.alpha = 1;
-                    if (notes == null) {
+                    if (notes == null)
+                    {
                         notes = new Image[5];
                         if (notesBg.transform.childCount == 0)
                         {
-
+                            //TODO: Generate images
                         }
-                        else {
-                            for (int i = 1; i <= notes.Length; i++) {
+                        else
+                        {
+                            for (int i = 1; i <= notes.Length; i++)
+                            {
                                 notes[i - 1] = notesBg.transform.Find("Note" + i).GetComponent<Image>();
                             }
                         }
@@ -98,9 +104,25 @@ public class PlayState : GameState
                     if (playerData.melodyData.PlayedNotes.Count > 0)
                     {
                         int i = 0;
-                        foreach (Note n in playerData.melodyData.PlayedNotes) {
+                        foreach (Note n in playerData.melodyData.PlayedNotes)
+                        {
                             Color c = notes[i].color;
-                            c.b = n.noteID == Note.NoteID.Note1 ? 1 : 0;
+                            //TODO: Change image sprite
+                            switch (n.noteID) {
+                                case Note.NoteID.Note1:
+                                    break;
+                                case Note.NoteID.Note2:
+                                    break;
+                                case Note.NoteID.Note3:
+                                    break;
+                                case Note.NoteID.Note4:
+                                    break;
+                                case Note.NoteID.Note5:
+                                    break;
+                                default:
+                                    break;
+
+                            }
                             c.a = 1;
                             notes[i].color = c;
                             i++;
@@ -108,20 +130,21 @@ public class PlayState : GameState
                     }
                     else
                     {
-                        for (int i = 0; i < notes.Length; i++) {
+                        for (int i = 0; i < notes.Length; i++)
+                        {
                             Color c = notes[i].color;
                             c.a = 0;
                             notes[i].color = c;
                         }
                     }
                 }
-                else {
+                else
+                {
                     CanvasGroup cg = notesBg.GetComponent<CanvasGroup>();
                     cg.interactable = false;
                     cg.alpha = 0;
                 }
             }
-
         }
         else
         {
@@ -135,7 +158,7 @@ public class PlayState : GameState
     public void findPlayer()
     {
         player = GameObject.FindWithTag("Player").GetComponent<StateController>();
-        if (player != null && player.data.GetType() == typeof(PlayerData))
+        if (player != null && player.data != null && player.data.GetType() == typeof(PlayerData))
         {
             playerData = (PlayerData)player.data;
             lastValues = new int[playerData.items.Length];
