@@ -14,7 +14,6 @@ public class PlayerAirEntry : StateAction
         {
             if (!data.climbing && !data.falling)
             {
-                Debug.Log("hej");
                 data.body.velocity = new Vector2(data.body.velocity.x, 0);
                 data.body.AddForce(new Vector2(0, data.jumpPower));
                 

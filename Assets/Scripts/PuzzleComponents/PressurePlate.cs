@@ -21,8 +21,11 @@ public class PressurePlate : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && anim.GetBool("PressedDown") == false && collision.gameObject.GetComponent<SpriteRenderer>().bounds.min.y > rend.bounds.max.y)
         {
+            for (int i = 0; i < componentList.Count; i++)
+            {
+                StartCoroutine(ActivateComponent(componentList[i]));
+            }
             anim.SetBool("PressedDown", true);
-            
         }
     }
 
@@ -30,6 +33,13 @@ public class PressurePlate : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && anim.GetBool("PressedDown") == true && collision.gameObject.GetComponent<SpriteRenderer>().bounds.min.y > rend.bounds.max.y)
         {
+            for (int i = 0; i < componentList.Count; i++)
+            {
+                if (componentList[i].returnOnLeave)
+                {
+                    StartCoroutine(DeactivateComponent(componentList[i]));
+                }
+            }
             anim.SetBool("PressedDown", false);
         }
     }
@@ -39,10 +49,26 @@ public class PressurePlate : MonoBehaviour
         if (component.delay > 0)
         {
             yield return new WaitForSeconds(component.delay);
+            component.obj.SendMessage("Activate");
+            print(component.message);
         }
         else
         {
-            
+            component.obj.SendMessage("Activate");
+            print(component.message);
+        }
+    }
+
+    IEnumerator DeactivateComponent(Component component)
+    {
+        if (component.delay > 0 && component.delayOnReturn)
+        {
+            yield return new WaitForSeconds(component.delay);
+            component.obj.SendMessage("Deactivate");
+        }
+        else
+        {
+            component.obj.SendMessage("Deactivate");
         }
     }
 }
@@ -52,5 +78,7 @@ public class Component
 {
     public GameObject obj;
     public float delay;
+    public string message;
     public bool returnOnLeave;
+    public bool delayOnReturn;
 }
