@@ -11,12 +11,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: NPCIdle
   m_EditorClassIdentifier: 
-  entryActions: []
+  entryActions:
+  - {fileID: 11400000, guid: 2e375160075f7af44839b0c6234656fe, type: 2}
   exitActions: []
-  actions: []
+  actions:
+  - {fileID: 11400000, guid: 2e375160075f7af44839b0c6234656fe, type: 2}
   transitions:
   - condition: {fileID: 11400000, guid: c2e0b5a761e174f4191ab8f714398585, type: 2}
     trueState: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
+    falseState: {fileID: 0}
+  - condition: {fileID: 11400000, guid: 12ab9c13f053d5446a92ab874f8a2aa8, type: 2}
+    trueState: {fileID: 11400000, guid: 2589847d3d6c5394181eaa951e3db136, type: 2}
     falseState: {fileID: 0}
   hasExitTime: 0
   exitTimer: 0

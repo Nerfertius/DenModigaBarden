@@ -20,11 +20,29 @@ GameObject:
   m_Component:
   - component: {fileID: 4284341693540182}
   - component: {fileID: 212306811479889292}
-  - component: {fileID: 58537305970427642}
   - component: {fileID: 114264822814296554}
   - component: {fileID: 114815195913277542}
-  m_Layer: 0
+  - component: {fileID: 50394114785198982}
+  - component: {fileID: 70297261289896048}
+  m_Layer: 14
   m_Name: NPCNoSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1617081376189450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4320064768526182}
+  - component: {fileID: 58442478479192416}
+  - component: {fileID: 114020330145982452}
+  m_Layer: 0
+  m_Name: TalkZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,18 +55,52 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1295917096203558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0.65, z: 0}
+  m_LocalPosition: {x: 13.09, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4320064768526182}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58537305970427642
-CircleCollider2D:
+--- !u!4 &4320064768526182
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617081376189450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4284341693540182}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50394114785198982
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1295917096203558}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &58442478479192416
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617081376189450}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -57,7 +109,33 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.2
+  m_Radius: 2
+--- !u!70 &70297261289896048
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1295917096203558}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.67, y: 1}
+  m_Direction: 0
+--- !u!114 &114020330145982452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617081376189450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49edc6f31a78b4408545036a99d9fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114264822814296554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,10 +150,13 @@ MonoBehaviour:
   startPos: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
+  canWalk: 0
+  waitTime: 0
   texts:
-  - Byt ut denna texten!
+  - Byt denna text
   textSpeed: 20
   fontSize: 0
+  pitchDeviation: 0.3
   currentText: 0
   currentChar: 0
   curTime: 0
@@ -86,6 +167,8 @@ MonoBehaviour:
   text: {fileID: 0}
   talkSound: {fileID: 0}
   basePitch: 1
+  currentString: 
+  playSound: 0
   playerInRange: 0
 --- !u!114 &114815195913277542
 MonoBehaviour:

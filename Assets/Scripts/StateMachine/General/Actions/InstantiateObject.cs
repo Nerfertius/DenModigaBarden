@@ -8,9 +8,16 @@ public class InstantiateObject : StateAction
     public GameObject gameObject;
     public Vector2 positionOffset;
 
+    public bool isChild;
+
     public override void ActOnce(StateController controller)
     {
-        GameObject.Instantiate(gameObject, (Vector2)controller.transform.position + positionOffset, controller.transform.rotation);
+        GameObject obj = GameObject.Instantiate(gameObject, (Vector2)controller.transform.position + positionOffset, controller.transform.rotation);
+
+        if (isChild)
+        {
+            obj.transform.parent = controller.transform;
+        }
     }
 
 }
