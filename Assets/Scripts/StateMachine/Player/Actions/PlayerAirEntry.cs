@@ -26,6 +26,7 @@ public class PlayerAirEntry : StateAction
                 data.body.AddForce(new Vector2(data.moveHorizontal, data.jumpPower));
                 data.climbing = false;
             }
+
             data.melodyData.hasDoubleJump = true;
             data.melodyData.doubleJumpAfterJumpCooldownJumpTime = Time.realtimeSinceStartup;
             data.Pause();
