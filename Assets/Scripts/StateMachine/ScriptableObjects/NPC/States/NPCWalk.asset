@@ -11,13 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: NPCWalk
   m_EditorClassIdentifier: 
-  entryActions: []
+  entryActions:
+  - {fileID: 11400000, guid: dc76a975ab0e951478fc2eb2c932c178, type: 2}
   exitActions: []
-  actions: []
-  transitions: []
-  hasExitTime: 0
+  actions:
+  - {fileID: 11400000, guid: dc76a975ab0e951478fc2eb2c932c178, type: 2}
+  transitions:
+  - condition: {fileID: 11400000, guid: c2e0b5a761e174f4191ab8f714398585, type: 2}
+    trueState: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
+    falseState: {fileID: 0}
+  hasExitTime: 1
   exitTimer: 0
-  useRandomTimer: 0
-  minTime: 0
-  maxTime: 0
-  nextState: {fileID: 0}
+  useRandomTimer: 1
+  minTime: 2
+  maxTime: 14
+  nextState: {fileID: 11400000, guid: b1d762ce8571ec147aac67aa5986228c, type: 2}

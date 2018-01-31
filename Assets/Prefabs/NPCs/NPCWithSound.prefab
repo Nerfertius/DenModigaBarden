@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4345834807993500}
   - component: {fileID: 58308341241912356}
+  - component: {fileID: 114530526661349780}
   m_Layer: 0
   m_Name: TalkZone
   m_TagString: Untagged
@@ -41,7 +42,7 @@ GameObject:
   - component: {fileID: 114285113425069846}
   - component: {fileID: 50431045450058984}
   - component: {fileID: 70261104872152602}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: NPCWithSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,6 +258,17 @@ MonoBehaviour:
   rb: {fileID: 0}
   coll: {fileID: 0}
   stateTimer: 0
+--- !u!114 &114530526661349780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1227095242921300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49edc6f31a78b4408545036a99d9fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212716653895120846
 SpriteRenderer:
   m_ObjectHideFlags: 1
