@@ -2,45 +2,64 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
+public class Lever : MonoBehaviour
 {
     [Header("Components")]
     public List<Component> componentList;
 
+    private bool playerIsNear;
     private float OFFSET = 0.2f;
     private Animator anim;
     private BoxCollider2D rend;
 
-    void Start ()
+    void Start()
     {
         anim = GetComponent<Animator>();
         rend = GetComponent<BoxCollider2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Player") && anim.GetBool("PressedDown") == false && collision.gameObject.GetComponent<SpriteRenderer>().bounds.min.y > rend.bounds.max.y)
+        if (Input.GetButtonDown("Interact") && playerIsNear)
         {
-            for (int i = 0; i < componentList.Count; i++)
+            print("Activating...");
+            if (anim.GetBool("Active"))
             {
-                StartCoroutine(ActivateComponent(componentList[i]));
+                print("true");
+                for (int i = 0; i < componentList.Count; i++)
+                {
+                    if (componentList[i].returnOnLeave)
+                    {
+                        StartCoroutine(DeactivateComponent(componentList[i]));
+                    }
+                }
+                anim.SetBool("Active", false);
             }
-            anim.SetBool("PressedDown", true);
+            else if (!anim.GetBool("Active"))
+            {
+                print("false");
+                for (int i = 0; i < componentList.Count; i++)
+                {
+                    StartCoroutine(ActivateComponent(componentList[i]));
+                }
+                anim.SetBool("Active", true);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerIsNear = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && anim.GetBool("PressedDown") == true && collision.gameObject.GetComponent<SpriteRenderer>().bounds.min.y > rend.bounds.max.y)
+        if (collision.CompareTag("Player"))
         {
-            for (int i = 0; i < componentList.Count; i++)
-            {
-                if (componentList[i].returnOnLeave)
-                {
-                    StartCoroutine(DeactivateComponent(componentList[i]));
-                }
-            }
-            anim.SetBool("PressedDown", false);
+            playerIsNear = false;
         }
     }
 
