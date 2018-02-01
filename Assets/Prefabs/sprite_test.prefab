@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50047347635933524}
   - component: {fileID: 114994033544878884}
   - component: {fileID: 114195153534707582}
+  - component: {fileID: 95186470628085012}
   m_Layer: 13
   m_Name: sprite_test
   m_TagString: Player
@@ -53,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461975651749938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6203575, y: -2.4612193, z: 0}
+  m_LocalPosition: {x: -0.98, y: -2.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4444355401631654}
@@ -108,6 +109,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   m_Size: {x: 0.6, y: 0.9}
   m_Direction: 0
+--- !u!95 &95186470628085012
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461975651749938}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32bc8f36efc446d44b98175f3734eacc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114195153534707582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,8 +161,9 @@ MonoBehaviour:
   health: 3
   maxSpeed: 2.36
   speedMod: 40
-  defaultjumpPower: 0
-  boostedjumpPower: 0
+  defaultjumpPower: 300
+  boostedjumpPower: 400
+  doubleJumpPower: 300
   jumpPower: 280
   climbSpeed: 2.1
   groundLayer:
@@ -156,18 +175,23 @@ MonoBehaviour:
   moveHorizontal: 0
   moveVertical: 0
   movement: {x: 0, y: 0}
+  startScale: {x: 0, y: 0}
   body: {fileID: 0}
   groundCheck: {fileID: 0}
   col: {fileID: 0}
-  ladderBottom: {x: 0, y: 0}
-  ladderTop: {x: 0, y: 0}
+  ladderBottom: {fileID: 0}
+  ladderTop: {fileID: 0}
   jumping: 0
   falling: 0
   climbing: 0
   grounded: 0
   inTransit: 0
   targetPos: {x: 0, y: 0}
-  melodyManagerData:
+  spriteRenderer: {fileID: 0}
+  melodyData:
+    hasDoubleJump: 0
+    doubleJumpAfterJumpCooldown: 0
+    doubleJumpAfterJumpCooldownJumpTime: 0
     melodies: []
     MaxSavedNotes: 5
     Notes: []
@@ -175,6 +199,8 @@ MonoBehaviour:
     MagicResistMelodyProjectile: {fileID: 0}
     SleepMelodyProjectile: {fileID: 0}
     justStartedPlaying: 0
+    lastShotProjectileTime: 0
+    projectileCooldown: 0.5
 --- !u!212 &212082342265056826
 SpriteRenderer:
   m_ObjectHideFlags: 1
