@@ -8,7 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604eb1aee37c4b743805a614c6eadecc, type: 3}
-  m_Name: PlayerAirAnimation
+  m_Script: {fileID: 11500000, guid: e01ca467d5c28194a97e2b9c0e256ab1, type: 3}
+  m_Name: JumpToAirAnimation
   m_EditorClassIdentifier: 
-  animationName: PlayerAir
+  animationToSwapOut: PlayerJump
+  animationToSwapIn: PlayerAir
