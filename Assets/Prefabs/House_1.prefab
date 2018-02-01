@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 212610580792575562}
   - component: {fileID: 114132615375102562}
   - component: {fileID: 61579018148480458}
+  - component: {fileID: 60924287823936922}
+  - component: {fileID: 60178038155837290}
   m_Layer: 0
   m_Name: House_1
   m_TagString: Untagged
@@ -36,12 +38,79 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1464587630565500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.351819, y: 2.9453783, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60178038155837290
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464587630565500}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6, y: 6}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -2.4331408, y: 2.115862}
+      - {x: -2.4654074, y: 1.9691615}
+      - {x: -2.3927069, y: 1.8212905}
+      - {x: -1.19415, y: 1.8152876}
+      - {x: -1.0377731, y: 1.9847898}
+      - {x: -2.0741034, y: 1.9896579}
+      - {x: -2.385396, y: 2.1439848}
+--- !u!60 &60924287823936922
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464587630565500}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6, y: 6}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.6455374, y: 2.5966096}
+      - {x: -0.5970621, y: 2.524066}
+      - {x: -0.47381878, y: 2.425455}
+      - {x: 0.93207264, y: 2.4186497}
+      - {x: 1.0299921, y: 2.5616431}
+      - {x: 1.0817633, y: 2.5663147}
+      - {x: 1.2102537, y: 2.17591}
+      - {x: 2.9943266, y: 0.34504223}
+      - {x: 2.9005308, y: 0.27830195}
+      - {x: 1.092556, y: 2.1445732}
+      - {x: -0.88865185, y: 2.1429524}
+      - {x: -0.6999836, y: 2.6006684}
 --- !u!61 &61579018148480458
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -78,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d05a6ada5e552941be4948011f0b3f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  houseLocation: {x: 0, y: 0}
+  houseLocation: {fileID: 0}
 --- !u!212 &212610580792575562
 SpriteRenderer:
   m_ObjectHideFlags: 1

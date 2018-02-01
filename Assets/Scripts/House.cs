@@ -13,19 +13,17 @@ public class House : MonoBehaviour
     {
         if (Input.GetButtonDown("EnterHouse") && playerNear)
         {
-            //StartCoroutine(EnterHouse());
+            StartCoroutine(EnterHouse());
         }
 	}
 
-    //IEnumerator EnterHouse()
-    //{
-    //    // FadeIn & FadeOut doesn't work
-
-    //    //CameraFX.FadeOut();
-    //    //player.transform.position = houseLocation.position;
-    //    //yield return new WaitForSeconds(2f);
-    //    //CameraFX.FadeIn();
-    //}
+    IEnumerator EnterHouse()
+    {
+        CameraFX.FadeIn();
+        player.transform.position = houseLocation.position;
+        yield return new WaitForSeconds(2f);
+        CameraFX.FadeOut();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
