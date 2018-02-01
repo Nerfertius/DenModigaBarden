@@ -6,7 +6,10 @@ public class Lever : MonoBehaviour
 {
     [Header("Components")]
     public List<Component> componentList;
+    public List<Lever> pairedObjects;
 
+    private bool active;
+    private bool pairedReady;
     private bool playerIsNear;
     private float OFFSET = 0.2f;
     private Animator anim;
@@ -20,30 +23,73 @@ public class Lever : MonoBehaviour
 
     private void Update()
     {
+        if (pairedObjects.Count > 0 && !pairedReady)
+        {
+            pairedReady = true;
+            for (int i = 0; i < pairedObjects.Count; i++)
+            {
+                if (pairedObjects[i].GetComponent<Animator>().GetBool("Active") == false)
+                {
+                    pairedReady = false;
+                    break;
+                }
+            }
+        }
+
         if (Input.GetButtonDown("Interact") && playerIsNear)
         {
-            print("Activating...");
-            if (anim.GetBool("Active"))
+            if (anim.GetBool("Active"))             //Turn off
             {
-                print("true");
-                for (int i = 0; i < componentList.Count; i++)
+                if (pairedObjects.Count > 0 && !pairedReady)
                 {
-                    if (componentList[i].returnOnLeave)
+                    for (int i = 0; i < componentList.Count; i++)
                     {
-                        StartCoroutine(DeactivateComponent(componentList[i]));
+                        if (componentList[i].returnOnLeave)
+                        {
+                            StartCoroutine(DeactivateComponent(componentList[i]));
+                        }
+                    }
+                }
+                else if (pairedObjects.Count == 0)
+                {
+                    for (int i = 0; i < componentList.Count; i++)
+                    {
+                        if (componentList[i].returnOnLeave)
+                        {
+                            StartCoroutine(DeactivateComponent(componentList[i]));
+                        }
                     }
                 }
                 anim.SetBool("Active", false);
             }
-            else if (!anim.GetBool("Active"))
+            else if (!anim.GetBool("Active"))      //Turn on
             {
-                print("false");
-                for (int i = 0; i < componentList.Count; i++)
+                if (pairedObjects.Count > 0 && pairedReady)
                 {
-                    StartCoroutine(ActivateComponent(componentList[i]));
+                    for (int i = 0; i < componentList.Count; i++)
+                    {
+                        StartCoroutine(ActivateComponent(componentList[i]));
+                    }
                 }
+                else if (pairedObjects.Count == 0)
+                {
+                    for (int i = 0; i < componentList.Count; i++)
+                    {
+                        StartCoroutine(ActivateComponent(componentList[i]));
+                    }
+                }
+                active = true;
                 anim.SetBool("Active", true);
             }
+        }
+
+        if (anim.GetBool("Active") && pairedObjects.Count > 0 && pairedReady && active)
+        {
+            for (int i = 0; i < componentList.Count; i++)
+            {
+                StartCoroutine(ActivateComponent(componentList[i]));
+            }
+            active = false;
         }
     }
 
