@@ -42,15 +42,15 @@ public class PlayerData : Data
     [HideInInspector] public Vector2 targetPos;
 
     [HideInInspector] public SpriteRenderer spriteRenderer;
-
+    [HideInInspector] public Animator anim;
+    [HideInInspector] public Rigidbody2D rb;
 
     public MelodyData melodyData = new MelodyData();
     [System.Serializable]
     public class MelodyData {
 
         [HideInInspector] public bool hasDoubleJump;
-        [HideInInspector] public float doubleJumpAfterJumpCooldown;
-        [HideInInspector] public float doubleJumpAfterJumpCooldownJumpTime = 0;
+        [HideInInspector] public Timer doubleJumpTimer;
         [HideInInspector] public Melody[] melodies;
 
         public int MaxSavedNotes = 5;
@@ -100,7 +100,7 @@ public class PlayerData : Data
             MagicResistMelodyProjectile = Resources.Load("MelodyProjectiles/MagicResistMelodyProjectile") as GameObject;
             SleepMelodyProjectile = Resources.Load("MelodyProjectiles/SleepMelodyProjectile") as GameObject;
 
-            doubleJumpAfterJumpCooldown = 0.3f;
+            doubleJumpTimer = new Timer(0.3f);
         }
     }
 
@@ -122,6 +122,8 @@ public class PlayerData : Data
         melodyData.Start();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
 	}
 
     public void Pause()

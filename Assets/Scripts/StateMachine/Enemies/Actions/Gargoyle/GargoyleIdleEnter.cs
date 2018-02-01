@@ -10,6 +10,8 @@ public class GargoyleIdleEnter : StateAction {
 
         data.dashCollider.enabled = false;
         data.idleCollider.enabled = true;
+
+        data.rb.velocity = new Vector2(0, data.rb.velocity.y);
     }
 
 }

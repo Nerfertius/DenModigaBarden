@@ -27,7 +27,7 @@ public class PlayerAirEntry : StateAction
             }
 
             data.melodyData.hasDoubleJump = true;
-            data.melodyData.doubleJumpAfterJumpCooldownJumpTime = Time.realtimeSinceStartup;
+            data.melodyData.doubleJumpTimer.StartTimer();
             data.Pause();
         }
     }

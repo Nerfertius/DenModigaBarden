@@ -30,5 +30,6 @@ public class PlayerWalkAction : StateAction
 				data.body.velocity = new Vector2(data.maxSpeed * -1, data.body.velocity.y);
 			}
 		}
+        data.anim.SetFloat("SpeedMultiplier", MathH.Normalize(data.rb.velocity.x / data.maxSpeed));
 	}
 }
