@@ -11,5 +11,4 @@ public class GargoyleDashAction : StateAction {
 
         data.transform.Translate(data.speed * Time.fixedDeltaTime * direction, 0, 0);
     }
-
 }
