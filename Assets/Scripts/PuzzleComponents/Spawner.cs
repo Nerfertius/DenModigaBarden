@@ -11,7 +11,6 @@ public class Spawner : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            print(child.ToString());
             spawnPoints.Add(child);
         }
     }
