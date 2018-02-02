@@ -10,6 +10,7 @@ public class EnemyData : MelodyInteractableData
     public float chaseSpeed;
 
     [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public StateController controller;
 
     private Collider2D sightColl;
 
@@ -43,6 +44,7 @@ public class EnemyData : MelodyInteractableData
         }
 
         colliders = GetComponents<Collider2D>();
+        controller = GetComponent<StateController>();
         playerCollisionFilter.layerMask = 13; // 13 = player
     }
 
@@ -54,18 +56,24 @@ public class EnemyData : MelodyInteractableData
     private void checkPlayerCollision() {
        
         foreach(Collider2D coll in colliders) {
-            
-            /*if(coll.enabled)
 
+            if (coll.enabled) {
 
-            Collider2D[] results = new Collider2D[1];
-            Physics2D.OverlapCollider(PlayerData.player.collider, playerCollisionFilter, results);
-            foreach (Collider2D collRes in results) {
-                if (coll.enabled && PlayerData.player.collider.IsTouching(coll)) {
-                    PlayerData.player.collidedWithEnemy(coll);
-                    break;
+                foreach(Collider2D thisColl in colliders) {
+                    Collider2D[] results = new Collider2D[1];
+                    Physics2D.OverlapCollider(thisColl, playerCollisionFilter, results);
+                    
+                    foreach (Collider2D collRes in results) {
+                        if(collRes != null) {
+                            if (collRes.tag == "Player") {
+                                PlayerData.player.collidedWithEnemy(coll);
+                                controller.OnTriggerStay2D(collRes);
+                                break;
+                            }
+                        }
+                    }
                 }
-            }*/
+            }
         }
     }
 }

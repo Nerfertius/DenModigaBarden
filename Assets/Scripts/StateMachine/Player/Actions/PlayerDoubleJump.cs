@@ -16,7 +16,6 @@ public class PlayerDoubleJump : StateAction {
         if (Input.GetButtonDown("Jump") && data.melodyData.hasDoubleJump && 
             data.melodyData.currentMelody == Melody.MelodyID.JumpMelody &&
             data.melodyData.doubleJumpTimer.TimeUp()) {
-
             data.body.velocity = new Vector2(data.body.velocity.x, 0);
             data.body.AddForce(new Vector2(0, data.doubleJumpPower));
 

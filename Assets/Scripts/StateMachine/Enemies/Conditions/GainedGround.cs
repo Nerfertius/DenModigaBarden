@@ -12,8 +12,6 @@ public class GainedGround : Condition {
     public LayerMask layerMask;
 
     public override bool? CheckCollisionEnter(StateController controller, Collision2D coll) {
-
-        
         Bounds bounds = coll.collider.bounds;
         if (coll.relativeVelocity.y > 0) {
             

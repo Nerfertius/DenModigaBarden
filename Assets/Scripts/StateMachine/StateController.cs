@@ -79,7 +79,7 @@ public class StateController : MonoBehaviour
     {
         if (nextState == null || sender != currentState)
             return;
-        
+
         currentState.DoExitActions(this);
 
         foreach(StateAction action in transitionActions) {
