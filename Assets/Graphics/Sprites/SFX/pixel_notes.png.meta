@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a282199f82c19c449863c8ac67efd307
-timeCreated: 1517231614
+timeCreated: 1517567572
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,7 @@ TextureImporter:
     21300002: pixel_notes_1
     21300004: pixel_notes_2
     21300006: pixel_notes_3
+    21300008: pixel_notes_4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -86,7 +87,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
+        y: 512
         width: 64
         height: 128
       alignment: 0
@@ -100,7 +101,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 384
         width: 64
         height: 128
       alignment: 0
@@ -114,7 +115,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 256
         width: 64
         height: 128
       alignment: 0
@@ -125,6 +126,20 @@ TextureImporter:
       tessellationDetail: 0
     - serializedVersion: 2
       name: pixel_notes_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pixel_notes_4
       rect:
         serializedVersion: 2
         x: 0

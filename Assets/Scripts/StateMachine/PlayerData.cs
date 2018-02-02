@@ -33,13 +33,16 @@ public class PlayerData : Data
     [HideInInspector] public Transform groundCheck;
     [HideInInspector] public Collider2D col;
 
-    /*[HideInInspector]*/ public Transform ladderBottom;
-	/*[HideInInspector]*/ public Transform ladderTop;
+    [HideInInspector] public Transform ladderBottom;
+	[HideInInspector] public Transform ladderTop;
 
     [HideInInspector] public bool jumping;
     [HideInInspector] public bool falling;
     [HideInInspector] public bool climbing;
     [HideInInspector] public bool grounded;
+
+    [HideInInspector] public ParticleSystem noteFX;
+    [HideInInspector] public ParticleSystem.TextureSheetAnimationModule noteAnim;
 
     // Variables used by Camera
     [HideInInspector] public bool inTransit;
@@ -88,11 +91,11 @@ public class PlayerData : Data
         public void Start() {
             PlayedNotes = new LinkedList<Note>();
             Notes = new Note[5];
-            Notes[0] = new Note(Note.NoteID.Note1, Resources.Load("Melody Audio/A.Final") as AudioClip);
-            Notes[1] = new Note(Note.NoteID.Note2, Resources.Load("Melody Audio/B.Final") as AudioClip);
-            Notes[2] = new Note(Note.NoteID.Note3, Resources.Load("Melody Audio/D.Final") as AudioClip);
-            Notes[3] = new Note(Note.NoteID.Note4, Resources.Load("Melody Audio/E.Final") as AudioClip);
-            Notes[4] = new Note(Note.NoteID.Note5, Resources.Load("Melody Audio/G.Final") as AudioClip);
+            Notes[0] = new Note(Note.NoteID.Note1, Resources.Load("Melody Audio/A.Final") as AudioClip, 0);
+            Notes[1] = new Note(Note.NoteID.Note2, Resources.Load("Melody Audio/B.Final") as AudioClip, 1);
+            Notes[2] = new Note(Note.NoteID.Note3, Resources.Load("Melody Audio/D.Final") as AudioClip, 2);
+            Notes[3] = new Note(Note.NoteID.Note4, Resources.Load("Melody Audio/E.Final") as AudioClip, 3);
+            Notes[4] = new Note(Note.NoteID.Note5, Resources.Load("Melody Audio/G.Final") as AudioClip, 4);
 
             melodies = new Melody[3];
             Note[] jump = { Notes[0], Notes[1] };
@@ -111,14 +114,14 @@ public class PlayerData : Data
         }
     }
 
-
-
     void Start ()
 	{
 		groundCheck = transform.GetChild(0);
 		body = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         startScale = transform.localScale;
+        noteFX = GetComponentInChildren<ParticleSystem>();
+        noteAnim = noteFX.textureSheetAnimation;
 
         climbFixLayer = LayerMask.NameToLayer("Blockable");
         playerLayer = LayerMask.NameToLayer("Player");

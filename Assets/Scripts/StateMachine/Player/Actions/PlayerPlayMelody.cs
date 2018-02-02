@@ -16,6 +16,12 @@ public class PlayerPlayMelody : StateAction {
 
                 data.audioSource.clip = note.audio;
                 data.audioSource.Play();
+
+                if (!data.noteFX.isPlaying)
+                {
+                    data.noteAnim.rowIndex = note.FXRowNumber;
+                    data.noteFX.Play();
+                }
             }
         }
 
