@@ -9,7 +9,7 @@ public class PlayerJump : Condition
     {
         PlayerData data = (PlayerData)controller.data;
         data.grounded = Physics2D.OverlapCircle(data.groundCheck.position, 0.15f, data.groundLayer);
-        if (Input.GetAxis("Jump") == 1)                                                                     //Are you jumping?
+        if (Input.GetButtonDown("Jump"))                                                                     //Are you jumping?
         {
             data.falling = false;
             return true;
