@@ -8,15 +8,11 @@ public class GargoyleData : EnemyData {
     public PolygonCollider2D idleCollider;
     public PolygonCollider2D dashCollider;
 
-    [HideInInspector] public bool transitFromFrozen = false;
+    [HideInInspector] public Vector2 velocityBeforeFrozen;
+
 
 
     protected override void Start() {
         base.Start();
-
-        
-
-
-
     }
 }

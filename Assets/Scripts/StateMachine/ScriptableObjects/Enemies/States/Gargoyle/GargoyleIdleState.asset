@@ -14,22 +14,27 @@ MonoBehaviour:
   entryActions:
   - {fileID: 11400000, guid: abfb5afa9c6f3fd4a9ac695aba151045, type: 2}
   - {fileID: 11400000, guid: a54dab5c072ec3f45bc1c5f4622e5733, type: 2}
-  - {fileID: 11400000, guid: 48426049ce32efa43ae99d8c18bd462f, type: 2}
   exitActions: []
   actions: []
   transitions:
   - condition: {fileID: 11400000, guid: f21e3ce5846315b4082dce720ea47a39, type: 2}
     trueState: {fileID: 11400000, guid: 0313733c63ea5484a8b68844fd42e99d, type: 2}
     falseState: {fileID: 0}
-  - condition: {fileID: 11400000, guid: 72fed25409cdb0246ac5f5a168d94ec3, type: 2}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 60dfe8976b5ce3041980f5b071ee1363, type: 2}
     trueState: {fileID: 11400000, guid: 8b54666e4bd9e2c4b9ab2b1a1b5bc719, type: 2}
     falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  conditionedActions:
   - condition: {fileID: 11400000, guid: 4095e9bcbb6788f468d96cda42becf64, type: 2}
-    trueState: {fileID: 11400000, guid: f48cc91368c78d74985ec8e09f95cb26, type: 2}
-    falseState: {fileID: 0}
+    actions:
+    - {fileID: 11400000, guid: 1354daf53599806419940ea2f3ae2865, type: 2}
   hasExitTime: 0
   exitTimer: 0
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
   nextState: {fileID: 0}
+  timeOutActions: []

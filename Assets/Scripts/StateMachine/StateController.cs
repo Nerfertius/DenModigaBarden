@@ -75,12 +75,17 @@ public class StateController : MonoBehaviour
         currentState.CheckTriggerStay(this, other);
     }
 
-    public void TransitionToState(State nextState, State sender)
+    public void TransitionToState(State nextState, State sender, StateAction[] transitionActions)
     {
         if (nextState == null || sender != currentState)
             return;
         
         currentState.DoExitActions(this);
+
+        foreach(StateAction action in transitionActions) {
+            action.ActOnce(this);
+        }
+        
         currentState = nextState;
         if (currentState.hasExitTime)
         {

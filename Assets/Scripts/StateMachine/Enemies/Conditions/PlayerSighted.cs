@@ -31,7 +31,6 @@ public class PlayerSighted : Condition {
         {
             hit = Physics2D.Linecast(controller.transform.position, eData.player.position, mask, -0.01f);
         }
-        
         return (hit.collider.tag == "Player");
     }
 }

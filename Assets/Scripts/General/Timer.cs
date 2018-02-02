@@ -13,7 +13,7 @@ public class Timer {
     }
 
     public void StartTimer() {
-        startTime = Time.realtimeSinceStartup;
+        startTime = Time.time;
     }
 
     public void SetDuration(float duration) {
@@ -21,6 +21,6 @@ public class Timer {
     }
 
     public bool TimeUp() {
-        return (Time.realtimeSinceStartup >= startTime + duration) ;
+        return (Time.time >= startTime + duration) ;
     }
 }

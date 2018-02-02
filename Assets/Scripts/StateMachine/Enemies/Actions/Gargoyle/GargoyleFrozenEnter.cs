@@ -8,10 +8,11 @@ public class GargoyleFrozenEnter : StateAction {
     public override void ActOnce(StateController controller) {
         GargoyleData data = (GargoyleData)controller.data;
 
+        data.velocityBeforeFrozen = data.rb.velocity;
+
         data.rb.constraints = RigidbodyConstraints2D.FreezeAll;
         data.gameObject.layer = 8; // Blockable
         data.harmful = false;
-        data.transitFromFrozen = true;
     }
 
 }

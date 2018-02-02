@@ -13,8 +13,13 @@ public class EnemyData : MelodyInteractableData
 
     private Collider2D sightColl;
 
+    public SightColliderAV sight;
+
     protected virtual void Start()
     {
+
+        sight = transform.GetComponentInChildren<SightColliderAV>();
+
         rb = GetComponent<Rigidbody2D>();
 
         if (transform.childCount != 0)

@@ -15,13 +15,12 @@ public class GargoyleDashEnter : StateAction {
     public override void ActOnce(StateController controller) {
         GargoyleData data = (GargoyleData)controller.data;
 
-
+        controller.rb.velocity = new Vector2(0, 0);
         controller.rb.AddForce(jumpAngle * JumpForce * controller.rb.mass);
         controller.rb.AddForce(dashAngle * controller.transform.localScale.x * DashForce * controller.rb.mass);
 
-
         data.dashCollider.enabled = true;
         data.idleCollider.enabled = false;
-        data.transitFromFrozen = false;
+        data.transform.Translate(new Vector3(0.8f * data.transform.localScale.x, 0, 0));
     }
 }
