@@ -44,6 +44,7 @@ public class PlayerData : Data
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator anim;
     [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public AudioSource audioSource;
 
     public MelodyData melodyData = new MelodyData();
     [System.Serializable]
@@ -81,11 +82,11 @@ public class PlayerData : Data
         public void Start() {
             PlayedNotes = new LinkedList<Note>();
             Notes = new Note[5];
-            Notes[0] = new Note(Note.NoteID.Note1, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
-            Notes[1] = new Note(Note.NoteID.Note2, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
-            Notes[2] = new Note(Note.NoteID.Note3, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
-            Notes[3] = new Note(Note.NoteID.Note4, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
-            Notes[4] = new Note(Note.NoteID.Note5, Resources.Load("Melody Audio/Note1 Placeholder") as AudioClip);
+            Notes[0] = new Note(Note.NoteID.Note1, Resources.Load("Melody Audio/A.Final") as AudioClip);
+            Notes[1] = new Note(Note.NoteID.Note2, Resources.Load("Melody Audio/B.Final") as AudioClip);
+            Notes[2] = new Note(Note.NoteID.Note3, Resources.Load("Melody Audio/D.Final") as AudioClip);
+            Notes[3] = new Note(Note.NoteID.Note4, Resources.Load("Melody Audio/E.Final") as AudioClip);
+            Notes[4] = new Note(Note.NoteID.Note5, Resources.Load("Melody Audio/G.Final") as AudioClip);
 
             melodies = new Melody[3];
             Note[] jump = { Notes[0], Notes[1] };
@@ -124,7 +125,9 @@ public class PlayerData : Data
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-	}
+        audioSource = GetComponent<AudioSource>();
+
+    }
 
     public void Pause()
     {
