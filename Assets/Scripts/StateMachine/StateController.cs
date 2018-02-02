@@ -45,32 +45,32 @@ public class StateController : MonoBehaviour
         currentState.FixedUpdateState(this);
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    public void OnCollisionEnter2D(Collision2D coll)
     {
         currentState.CheckCollisionEnter(this, coll);
     }
 
-    void OnCollisionExit2D(Collision2D coll)
+    public void OnCollisionExit2D(Collision2D coll)
     {
         currentState.CheckCollisionExit(this, coll);
     }
 
-    void OnCollisionStay2D(Collision2D coll)
+    public void OnCollisionStay2D(Collision2D coll)
     {
         currentState.CheckCollisionStay(this, coll);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         currentState.CheckTriggerEnter(this, other);
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    public void OnTriggerExit2D(Collider2D other)
     {
         currentState.CheckTriggerExit(this, other);
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    public void OnTriggerStay2D(Collider2D other)
     {
         currentState.CheckTriggerStay(this, other);
     }

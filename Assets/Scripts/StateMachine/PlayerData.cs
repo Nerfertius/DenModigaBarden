@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerData : Data
 {
+    //Statics
+    public static PlayerData player;
+
+    //Instance
     public float health = 3;
 	[Header("Movement Settings")]
 	[Range(0, 10)] public float maxSpeed;
@@ -44,7 +48,9 @@ public class PlayerData : Data
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator anim;
     [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public CapsuleCollider2D collider;
     [HideInInspector] public AudioSource audioSource;
+    [HideInInspector] public StateController controller;
 
     public MelodyData melodyData = new MelodyData();
     [System.Serializable]
@@ -126,7 +132,10 @@ public class PlayerData : Data
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
-
+        collider = GetComponent<CapsuleCollider2D>();
+        controller = GetComponent<StateController>();
+        // Statics
+        PlayerData.player = this;
     }
 
     public void Pause()
@@ -140,5 +149,11 @@ public class PlayerData : Data
         jumping = true;
         yield return new WaitForSeconds(time);
         jumping = false;
+    }
+
+    public void collidedWithEnemy(Collider2D other) {
+        // Do damage etc?
+        Debug.Log("collided with" + other.gameObject);
+        controller.OnTriggerStay2D(other);
     }
 }
