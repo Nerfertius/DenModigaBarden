@@ -41,7 +41,7 @@ public class PlayerData : Data
     [HideInInspector] public bool climbing;
     [HideInInspector] public bool grounded;
 
-    [HideInInspector] public ParticleSystem noteFX;
+    public ParticleSystem noteFX;
     [HideInInspector] public ParticleSystem.TextureSheetAnimationModule noteAnim;
 
     // Variables used by Camera
@@ -120,7 +120,6 @@ public class PlayerData : Data
 		body = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         startScale = transform.localScale;
-        noteFX = GetComponentInChildren<ParticleSystem>();
         noteAnim = noteFX.textureSheetAnimation;
 
         climbFixLayer = LayerMask.NameToLayer("Blockable");
