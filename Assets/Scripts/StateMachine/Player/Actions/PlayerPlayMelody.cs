@@ -13,10 +13,15 @@ public class PlayerPlayMelody : StateAction {
         foreach (Note note in mData.Notes) {
             if (Input.GetButtonDown(note.Button)) {
                 mData.PlayedNotes.AddLast(note);
-                data.GetComponent<AudioSource>();
 
                 data.audioSource.clip = note.audio;
                 data.audioSource.Play();
+
+                if (!data.noteFX.isPlaying)
+                {
+                    data.noteAnim.rowIndex = note.FXRowNumber;
+                    data.noteFX.Play();
+                }
             }
         }
 

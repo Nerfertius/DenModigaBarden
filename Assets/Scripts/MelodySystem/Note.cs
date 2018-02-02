@@ -17,10 +17,12 @@ public class Note {
     [HideInInspector] public NoteID noteID;
 
     [HideInInspector] public AudioClip audio;
+    [HideInInspector] public int FXRowNumber;
 
-    public Note(NoteID noteID, AudioClip audio) {
+    public Note(NoteID noteID, AudioClip audio, int FXRowNumber) {
         this.noteID = noteID;
         this.audio = audio;
+        this.FXRowNumber = FXRowNumber;
 
         switch (noteID) {
             case Note.NoteID.Note1:
