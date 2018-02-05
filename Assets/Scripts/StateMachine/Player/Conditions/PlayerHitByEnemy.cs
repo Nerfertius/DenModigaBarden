@@ -10,9 +10,6 @@ public class PlayerHitByEnemy : Condition {
         EnemyData dataE = coll.GetComponent<EnemyData>();
 
         if(dataE != null) {
-            Debug.Log("isenemy " + coll.tag == "Enemy" && data.hitInvincibilityTimer.TimeUp() && dataE.harmful);
-            Debug.Log("is not invincible " + data.hitInvincibilityTimer.TimeUp());
-            Debug.Log("ishatmful " + dataE.harmful);
             if (coll.tag == "Enemy" && data.hitInvincibilityTimer.TimeUp() && dataE.harmful) {
                 data.hitAngle = (data.transform.position - coll.transform.position).normalized;
                 return true;
