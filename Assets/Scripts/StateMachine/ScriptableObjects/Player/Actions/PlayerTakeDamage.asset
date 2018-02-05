@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dfd00e37af5b974cace1fe3bddeaea9, type: 3}
   m_Name: PlayerTakeDamage
   m_EditorClassIdentifier: 
+  knockbackForce: 300
