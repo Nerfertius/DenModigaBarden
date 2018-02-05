@@ -5,14 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class House : MonoBehaviour
 {
-    public string houseScene;
+    public Transform houseLocation;
+    public bool automatic;
     
     private GameObject player;
     private bool playerNear;
     
     void Update ()
     {
-        if (Input.GetButtonDown("EnterHouse") && playerNear)
+        if (Input.GetButtonDown("EnterHouse") && playerNear && !automatic)
+        {
+            StartCoroutine(EnterHouse());
+        }
+        if (playerNear && automatic)
         {
             StartCoroutine(EnterHouse());
         }
@@ -21,8 +26,9 @@ public class House : MonoBehaviour
     IEnumerator EnterHouse()
     {
         CameraFX.FadeIn();
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(houseScene);
+        yield return new WaitForSeconds(1f);
+        player.transform.position = houseLocation.position;
+        CameraFX.FadeOut();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

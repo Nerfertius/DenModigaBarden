@@ -21,7 +21,7 @@ public class LadderBuilder : MonoBehaviour
         bottomLadder = transform;
         GetComponent<SpriteRenderer>().sprite = ladderBottomSprite;
         BuildLadder();
-        
+
         hasPlatformBehind = Physics2D.OverlapBox(topLadder.position, topLadder.GetComponent<SpriteRenderer>().bounds.size * 0.5f, 0, blockableLayer);
 	}
 

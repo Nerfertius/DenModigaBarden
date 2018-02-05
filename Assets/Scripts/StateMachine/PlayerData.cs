@@ -33,14 +33,19 @@ public class PlayerData : Data
     [HideInInspector] public Transform groundCheck;
     [HideInInspector] public Collider2D col;
 
+    // Ladder
     [HideInInspector] public Transform ladderBottom;
 	[HideInInspector] public Transform ladderTop;
 
+    [HideInInspector] public Vector2 spawnLocation;
+
+    // Movement
     [HideInInspector] public bool jumping;
     [HideInInspector] public bool falling;
     [HideInInspector] public bool climbing;
     [HideInInspector] public bool grounded;
 
+    // Note particle system
     public ParticleSystem noteFX;
     [HideInInspector] public ParticleSystem.TextureSheetAnimationModule noteAnim;
 
