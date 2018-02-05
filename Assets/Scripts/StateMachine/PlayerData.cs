@@ -94,6 +94,8 @@ public class PlayerData : Data
         [HideInInspector] public float lastShotProjectileTime = 0;
         public float projectileCooldown = 0.5f;
 
+        public CircleCollider2D MelodyRange;
+
         public Melody getMelody(Melody.MelodyID? id) {
             for (int i = 0; i < melodies.Length; i++) {
                 if (melodies[i].melodyID == id) {
@@ -115,7 +117,7 @@ public class PlayerData : Data
             melodies = new Melody[3];
             Note[] jump = { Notes[0], Notes[1] };
             melodies[0] = new Melody(Melody.MelodyID.JumpMelody, jump);
-            Note[] sleep = { Notes[0], Notes[0], Notes[0]};
+            Note[] sleep = { Notes[2], Notes[2], Notes[2]};
             melodies[1] = new Melody(Melody.MelodyID.SleepMelody, sleep);
             Note[] magicResist = { Notes[1], Notes[1], Notes[1] };
             melodies[2] = new Melody(Melody.MelodyID.MagicResistMelody, magicResist);
@@ -151,6 +153,8 @@ public class PlayerData : Data
         audioSource = GetComponent<AudioSource>();
         collider = GetComponent<CapsuleCollider2D>();
         controller = GetComponent<StateController>();
+        melodyData.MelodyRange = transform.Find("MelodyRange").GetComponent<CircleCollider2D>();
+
         // Statics
         PlayerData.player = this;
 

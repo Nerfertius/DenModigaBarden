@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObject: {fileID: 1971273013760288, guid: ecc2c3c4bc81fe24fb93a4cc2f00bc56, type: 2}
   positionOffset: {x: 0, y: 0.6}
+  isChild: 1

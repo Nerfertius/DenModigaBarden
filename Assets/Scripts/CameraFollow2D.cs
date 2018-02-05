@@ -50,4 +50,12 @@ public class CameraFollow2D : MonoBehaviour {
         this.bottomRight = bottomRight;
         transitioning = true;
     }
+
+    public void UpdateToMapBounds()
+    {
+        posX = Mathf.Clamp(target.transform.position.x, topLeft.x, bottomRight.x);
+        posY = Mathf.Clamp(target.transform.position.y, bottomRight.y, topLeft.y);
+
+        transform.position = new Vector3(posX, posY, transform.position.z);
+    }
 }

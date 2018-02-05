@@ -23,4 +23,12 @@ public class Timer {
     public bool TimeUp() {
         return (Time.time >= startTime + duration) ;
     }
+
+    public float TimePassed() {
+        return Time.time - startTime;
+    }
+
+    public float TimePercentagePassed() {
+        return TimePassed() / duration;
+    }
 }

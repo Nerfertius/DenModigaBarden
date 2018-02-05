@@ -8,8 +8,7 @@ public class LightEnemyJumpDebuffAction : StateAction {
     //public float Duration = 5f;  state handles this
     public float FloatHeight = 3f;
     public float FloatSpeed = 1f;
-
-
+    
     public override void FixedAct(StateController controller) {
         MelodyInteractableData data = (MelodyInteractableData)controller.data;
 
