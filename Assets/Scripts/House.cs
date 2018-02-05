@@ -7,6 +7,7 @@ public class House : MonoBehaviour
 {
     public Transform houseLocation;
     public bool automatic;
+    public MapBoundary mb;
     
     private GameObject player;
     private bool playerNear;
@@ -27,7 +28,10 @@ public class House : MonoBehaviour
     {
         CameraFX.FadeIn();
         yield return new WaitForSeconds(1f);
+        print("player: " + player.transform.position + "..." + "Location: " + houseLocation.position);
         player.transform.position = houseLocation.position;
+        mb.UpdateMapBounds();
+        Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
         CameraFX.FadeOut();
     }
 
