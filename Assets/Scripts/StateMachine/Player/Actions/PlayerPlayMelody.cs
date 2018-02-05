@@ -17,13 +17,15 @@ public class PlayerPlayMelody : StateAction {
                 data.audioSource.clip = note.audio;
                 data.audioSource.Play();
 
-                if (!data.noteFX.isPlaying)
-                {
-                    data.noteAnim.rowIndex = note.FXRowNumber;
-                    data.noteFX.Play();
-                }
+                ParticleSystem m_fx = data.noteFX;
+                ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
+                Instantiate(m_fx, new Vector2(data.transform.position.x, data.spriteRenderer.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
+                m_anim.rowIndex = note.FXRowNumber;
+                m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
             }
         }
+
+
 
         while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
             mData.PlayedNotes.RemoveFirst();
