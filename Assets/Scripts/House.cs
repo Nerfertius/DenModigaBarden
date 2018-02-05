@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class House : MonoBehaviour
 {
-    public Transform houseLocation;
+    public string houseScene;
     
     private GameObject player;
     private bool playerNear;
@@ -20,9 +21,8 @@ public class House : MonoBehaviour
     IEnumerator EnterHouse()
     {
         CameraFX.FadeIn();
-        player.transform.position = houseLocation.position;
         yield return new WaitForSeconds(2f);
-        CameraFX.FadeOut();
+        SceneManager.LoadScene(houseScene);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
