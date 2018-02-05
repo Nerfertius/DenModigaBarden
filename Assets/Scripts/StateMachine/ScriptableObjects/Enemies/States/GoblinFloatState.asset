@@ -9,31 +9,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
-  m_Name: GoblinFalling
+  m_Name: GoblinFloatState
   m_EditorClassIdentifier: 
   entryActions:
   - {fileID: 11400000, guid: 3d2ce469d6e4a4845bf1b628b89c24d0, type: 2}
-  - {fileID: 11400000, guid: 1f13e97941819644db876bf142eec1c2, type: 2}
-  - {fileID: 11400000, guid: bdd6b8e21679ec34c9079be6c45f64f0, type: 2}
+  - {fileID: 11400000, guid: cf01d7ed748a62049a5367ffd94dd76b, type: 2}
   exitActions:
   - {fileID: 11400000, guid: b01d02e3aeb8af64d84b2179c5820a0b, type: 2}
-  actions: []
+  actions:
+  - {fileID: 11400000, guid: 7c2ba6f1b9ba0544a95364f990cd6eac, type: 2}
   transitions:
   - condition: {fileID: 11400000, guid: 4095e9bcbb6788f468d96cda42becf64, type: 2}
-    trueState: {fileID: 11400000, guid: d7d5b9158d3e28d41a2802130dbeef2c, type: 2}
-    falseState: {fileID: 0}
-    trueStateTransitionActions: []
-    falseStateTransitionActions: []
-  - condition: {fileID: 11400000, guid: 3cef5b6a5fdd841438af533478b6ad8d, type: 2}
-    trueState: {fileID: 11400000, guid: 518459fe2e5e624429982d4ab27e8905, type: 2}
+    trueState: {fileID: 11400000}
     falseState: {fileID: 0}
     trueStateTransitionActions: []
     falseStateTransitionActions: []
   conditionedActions: []
   hasExitTime: 1
-  exitTimer: 0.5
+  exitTimer: 5
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
-  nextState: {fileID: 11400000, guid: 1d3c57d757d88194aa144b1e467ac090, type: 2}
+  nextState: {fileID: 11400000, guid: 9368847a8aa312a4d81b5f13fa0460cb, type: 2}
   timeOutActions: []

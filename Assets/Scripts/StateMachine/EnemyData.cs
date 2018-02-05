@@ -11,6 +11,7 @@ public class EnemyData : MelodyInteractableData
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public StateController controller;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
 
     private Collider2D sightColl;
 
@@ -47,6 +48,7 @@ public class EnemyData : MelodyInteractableData
 
         colliders = GetComponents<Collider2D>();
         controller = GetComponent<StateController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         playerCollisionFilter.useLayerMask = true;
         playerCollisionFilter.layerMask = 1 << 13; // player layer = 13

@@ -16,6 +16,7 @@ public class MelodyPlayed : Condition {
 
                     mData.currentMelody = melody.melodyID;
                     mData.PlayedNotes.Clear();
+                    mData.MelodyRange.enabled = true;
                     return true;
                 }
             }
