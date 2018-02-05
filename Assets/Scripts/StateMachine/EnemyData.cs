@@ -19,6 +19,8 @@ public class EnemyData : MelodyInteractableData
 
     private ContactFilter2D playerCollisionFilter;
 
+    [HideInInspector] public bool harmful = true;
+
     protected virtual void Start()
     {
 
@@ -46,6 +48,7 @@ public class EnemyData : MelodyInteractableData
         colliders = GetComponents<Collider2D>();
         controller = GetComponent<StateController>();
         playerCollisionFilter.layerMask = 13; // 13 = player
+        harmful = true;
     }
 
     public void Update() {
@@ -53,24 +56,37 @@ public class EnemyData : MelodyInteractableData
     }
 
 
+    private bool isTouchingPlayer = false;
+
     private void checkPlayerCollision() {
        
         foreach(Collider2D coll in colliders) {
 
             if (coll.enabled) {
-
-                foreach(Collider2D thisColl in colliders) {
-                    Collider2D[] results = new Collider2D[1];
-                    Physics2D.OverlapCollider(thisColl, playerCollisionFilter, results);
+                Collider2D[] results = new Collider2D[1];
+                Physics2D.OverlapCollider(coll, playerCollisionFilter, results);
                     
-                    foreach (Collider2D collRes in results) {
-                        if(collRes != null) {
-                            if (collRes.tag == "Player") {
-                                PlayerData.player.collidedWithEnemy(coll);
+                foreach (Collider2D collRes in results) {
+                    if(collRes != null) {
+                        if (collRes.tag == "Player") {
+                                
+                            if (isTouchingPlayer) {
+                                PlayerData.player.controller.OnTriggerStay2D(coll);
                                 controller.OnTriggerStay2D(collRes);
-                                break;
+                                return;
+                           }
+                            else {
+                                PlayerData.player.controller.OnTriggerEnter2D(coll);
+                                controller.OnTriggerEnter2D(collRes);
+                                isTouchingPlayer = true;
+                                return;
                             }
                         }
+                    }
+                    if (isTouchingPlayer) {
+                        PlayerData.player.controller.OnTriggerExit2D(coll);
+                        controller.OnTriggerExit2D(collRes);
+                        isTouchingPlayer = false;
                     }
                 }
             }

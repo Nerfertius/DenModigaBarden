@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "StateMachine/ConditionedAction")]
 [System.Serializable]
 public class ConditionedAction{
 

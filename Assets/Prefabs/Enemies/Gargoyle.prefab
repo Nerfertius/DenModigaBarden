@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4567855250069836}
-  - component: {fileID: 114394417030416494}
   - component: {fileID: 60503292154903128}
+  - component: {fileID: 114357400913086340}
   m_Layer: 2
   m_Name: Sight
   m_TagString: Untagged
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 60771466991440520}
   m_Layer: 11
   m_Name: Gargoyle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,6 +223,18 @@ MonoBehaviour:
   rb: {fileID: 50525118852681516}
   coll: {fileID: 60890881138470964}
   stateTimer: -0.002569707
+--- !u!114 &114357400913086340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269616148733178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a6d4db9806753b478cc125ba4b2b2ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &114367693822698130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,21 +253,13 @@ MonoBehaviour:
   speed: 5
   chaseSpeed: 0
   rb: {fileID: 50525118852681516}
+  controller: {fileID: 0}
+  sight: {fileID: 0}
+  colliders: []
   harmful: 1
   idleCollider: {fileID: 60890881138470964}
   dashCollider: {fileID: 60771466991440520}
   velocityBeforeFrozen: {x: 0, y: 0}
---- !u!114 &114394417030416494
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1269616148733178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e0341605104ae44bac0734501da8f9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212347468482563898
 SpriteRenderer:
   m_ObjectHideFlags: 1

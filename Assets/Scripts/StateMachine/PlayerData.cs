@@ -48,6 +48,7 @@ public class PlayerData : Data
     [HideInInspector] public bool inTransit;
     [HideInInspector] public Vector2 targetPos;
 
+    // Components
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator anim;
     [HideInInspector] public Rigidbody2D rb;
@@ -55,6 +56,15 @@ public class PlayerData : Data
     [HideInInspector] public AudioSource audioSource;
     [HideInInspector] public StateController controller;
 
+
+    // Hit by enemies
+    public float hitInvincibilityDuration = 1f;
+    [HideInInspector] public Timer hitInvincibilityTimer;
+
+    [HideInInspector] public Vector2 hitAngle;
+
+
+    // Melody
     public MelodyData melodyData = new MelodyData();
     [System.Serializable]
     public class MelodyData {
@@ -139,6 +149,9 @@ public class PlayerData : Data
         controller = GetComponent<StateController>();
         // Statics
         PlayerData.player = this;
+
+        hitInvincibilityTimer = new Timer(hitInvincibilityDuration);
+        hitInvincibilityTimer.StartTimer();
     }
 
     public void Pause()
@@ -152,11 +165,5 @@ public class PlayerData : Data
         jumping = true;
         yield return new WaitForSeconds(time);
         jumping = false;
-    }
-
-    public void collidedWithEnemy(Collider2D other) {
-        // Do damage etc?
-        Debug.Log("collided with" + other.gameObject);
-        controller.OnTriggerStay2D(other);
     }
 }
