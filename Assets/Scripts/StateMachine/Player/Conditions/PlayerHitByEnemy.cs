@@ -12,6 +12,9 @@ public class PlayerHitByEnemy : Condition {
         if(dataE != null) {
             if (coll.tag == "Enemy" && data.hitInvincibilityTimer.TimeUp() && dataE.harmful) {
                 data.hitAngle = (data.transform.position - coll.transform.position).normalized;
+                if(data.hitAngle.magnitude == 0) {
+                    data.hitAngle = new Vector2(1, 1).normalized;
+                }
                 return true;
             }
 
