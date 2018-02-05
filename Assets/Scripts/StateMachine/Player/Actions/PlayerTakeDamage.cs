@@ -11,9 +11,17 @@ public class PlayerTakeDamage : StateAction {
         if (data.hitInvincibilityTimer.TimeUp()) {
             data.hitInvincibilityTimer.StartTimer();
 
+            data.rb.velocity = new Vector2(0, 0);
+
             // take damage
-            Vector2 knockbackDirection = new Vector2(data.hitAngle.x, 0).normalized;
-            data.rb.AddForce(knockbackDirection * 600 * data.rb.mass);
+
+            // only horizontal knockback
+            /*Vector2 knockbackDirection = new Vector2(data.hitAngle.x, 0).normalized;
+            data.rb.AddForce(knockbackDirection * 200 * data.rb.mass);
+            */
+            //allow vertical knockback
+            data.rb.AddForce(data.hitAngle * 200 * data.rb.mass);
+
         }
     }
 }
