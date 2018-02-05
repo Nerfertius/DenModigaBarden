@@ -47,11 +47,13 @@ public class EnemyData : MelodyInteractableData
 
         colliders = GetComponents<Collider2D>();
         controller = GetComponent<StateController>();
-        playerCollisionFilter.layerMask = 13; // 13 = player
+
+        playerCollisionFilter.useLayerMask = true;
+        playerCollisionFilter.layerMask = 1 << 13; // player layer = 13
         harmful = true;
     }
 
-    public void Update() {
+    public void FixedUpdate() {
         checkPlayerCollision();
     }
 
@@ -59,17 +61,19 @@ public class EnemyData : MelodyInteractableData
     private bool isTouchingPlayer = false;
 
     private void checkPlayerCollision() {
-       
-        foreach(Collider2D coll in colliders) {
+        
 
+        foreach(Collider2D coll in colliders) {
+            
             if (coll.enabled) {
                 Collider2D[] results = new Collider2D[1];
+
                 Physics2D.OverlapCollider(coll, playerCollisionFilter, results);
-                    
+                
                 foreach (Collider2D collRes in results) {
-                    if(collRes != null) {
+                    if (collRes != null) {
+                        
                         if (collRes.tag == "Player") {
-                                
                             if (isTouchingPlayer) {
                                 PlayerData.player.controller.OnTriggerStay2D(coll);
                                 controller.OnTriggerStay2D(collRes);
