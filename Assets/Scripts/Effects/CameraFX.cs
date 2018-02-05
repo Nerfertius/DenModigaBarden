@@ -20,7 +20,7 @@ public class CameraFX : MonoBehaviour {
     }
 
     // For Debug
-    /*
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)){
@@ -29,7 +29,7 @@ public class CameraFX : MonoBehaviour {
             FadeOut();
         }
     }
-    */
+    
 
     public static void FadeIn()
     {

@@ -11,16 +11,21 @@ public class House : MonoBehaviour
     
     private GameObject player;
     private bool playerNear;
-    
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     void Update ()
     {
         if (Input.GetButtonDown("EnterHouse") && playerNear && !automatic)
         {
             StartCoroutine(EnterHouse());
         }
-        if (playerNear && automatic)
+        else if (playerNear && automatic)
         {
-            StartCoroutine(EnterHouse());
+            
         }
 	}
 
@@ -40,7 +45,10 @@ public class House : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerNear = true;
-            player = collision.gameObject;
+            if (automatic)
+            {
+                StartCoroutine(EnterHouse());
+            }
         }
     }
 
@@ -49,7 +57,6 @@ public class House : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerNear = false;
-            player = null;
         }
     }
 }
