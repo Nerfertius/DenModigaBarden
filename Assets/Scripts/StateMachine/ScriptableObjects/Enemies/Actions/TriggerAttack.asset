@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a9a2d62f93791418d397f073a46063, type: 3}
   m_Name: TriggerAttack
   m_EditorClassIdentifier: 
-  parameterName: 
+  parameterName: Attack

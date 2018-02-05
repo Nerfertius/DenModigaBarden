@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43512e3051758e46be5b56bc0bd6971, type: 3}
   m_Name: SpawnEvilEyeProjectile
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 0}
+  gameObject: {fileID: 1534620546373458, guid: 8fdb811108b43534ca4062ad5eb919dd, type: 2}
   positionOffset: {x: 0, y: 0}
   isChild: 0
+  hasTarget: 1
