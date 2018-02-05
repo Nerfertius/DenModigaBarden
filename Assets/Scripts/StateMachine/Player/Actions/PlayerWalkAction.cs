@@ -30,6 +30,13 @@ public class PlayerWalkAction : StateAction
 				data.body.velocity = new Vector2(data.maxSpeed * -1, data.body.velocity.y);
 			}
 		}
-        data.anim.SetFloat("SpeedMultiplier", Mathf.Abs(data.rb.velocity.x / data.maxSpeed));
+
+        if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1)
+        {
+            data.anim.SetFloat("SpeedMultiplier", 1);
+        } else
+        {
+            data.anim.SetFloat("SpeedMultiplier", Mathf.Abs(data.rb.velocity.x / data.maxSpeed));
+        }
 	}
 }

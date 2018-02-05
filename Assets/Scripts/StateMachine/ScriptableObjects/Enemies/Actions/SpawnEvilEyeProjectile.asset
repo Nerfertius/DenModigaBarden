@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f43512e3051758e46be5b56bc0bd6971, type: 3}
-  m_Name: SpawnExclamationMark
+  m_Name: SpawnEvilEyeProjectile
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 1553650320025774, guid: 894b0ba00c0a55c40bb6fd6ff96c9f37, type: 2}
-  positionOffset: {x: 0, y: 0.6}
-  isChild: 1
+  gameObject: {fileID: 0}
+  positionOffset: {x: 0, y: 0}
+  isChild: 0
