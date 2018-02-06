@@ -8,22 +8,24 @@ public class PlayerClimbOff : Condition
     public override bool? CheckCondition(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
+        Collider2D botCol = data.ladderBottom.GetComponent<Collider2D>();
+        Collider2D topCol = data.ladderTop.GetComponent<Collider2D>();
+        float feet = data.collider.bounds.min.y;
 
         //Bottom
-        if (data.col.bounds.min.y < data.ladderBottom.GetComponent<Collider2D>().bounds.min.y)
+        if (feet < botCol.bounds.min.y)
         {
-            data.transform.position = new Vector2(data.transform.position.x, data.ladderBottom.position.y);
             return true;
         }
 
         //Top with a platform behind
-        else if (data.ladderBottom.GetComponent<LadderBuilder>().hasPlatformBehind && data.col.bounds.min.y > data.ladderTop.GetComponent<Collider2D>().bounds.center.y)
+        else if (data.ladderBottom.GetComponent<LadderBuilder>().hasPlatformBehind && feet > topCol.bounds.center.y)
         {
             return true;
         }
 
         //Top WITHOUT a platform behind
-        else if (data.ladderBottom.GetComponent<LadderBuilder>().hasPlatformBehind == false && data.col.bounds.min.y > data.ladderTop.GetComponent<Collider2D>().bounds.max.y)
+        else if (data.ladderBottom.GetComponent<LadderBuilder>().hasPlatformBehind == false && feet > topCol.bounds.max.y)
         {
             return true;
         }

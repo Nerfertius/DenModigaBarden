@@ -11,19 +11,20 @@ public class PlayerClimbAction : StateAction
         data.climbing = true;
         data.body.gravityScale = 0;
         data.body.velocity = Vector2.zero;
+        Collider2D topCol = data.ladderTop.GetComponent<Collider2D>();
 
         Physics2D.IgnoreLayerCollision(data.playerLayer, data.climbFixLayer, true);
 
         //Bottom
         if (data.transform.position.y < data.ladderBottom.position.y)
         {
-            data.transform.position = new Vector2(data.ladderBottom.position.x, data.ladderBottom.position.y);
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.transform.position.y);
         }
 
         //Top
         if (data.transform.position.y > data.ladderTop.position.y)
         {
-            data.transform.position = new Vector2(data.ladderBottom.position.x, data.ladderTop.GetComponent<Collider2D>().bounds.max.y);
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.transform.position.y);
         }
         
         //Between

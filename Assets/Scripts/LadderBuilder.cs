@@ -12,7 +12,7 @@ public class LadderBuilder : MonoBehaviour
 
     [HideInInspector]public Transform bottomLadder;
     [HideInInspector]public Transform topLadder;
-    [HideInInspector]public bool hasPlatformBehind;
+    /*[HideInInspector]*/public bool hasPlatformBehind;
     
     private GameObject newLadder;
 
@@ -22,7 +22,10 @@ public class LadderBuilder : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = ladderBottomSprite;
         BuildLadder();
 
+        int oldLayer = gameObject.layer;
+        topLadder.gameObject.layer = 2;
         hasPlatformBehind = Physics2D.OverlapBox(topLadder.position, topLadder.GetComponent<SpriteRenderer>().bounds.size * 0.5f, 0, blockableLayer);
+        topLadder.gameObject.layer = oldLayer;
 	}
 
     void BuildLadder()

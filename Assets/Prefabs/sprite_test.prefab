@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4193907132306398}
+  - component: {fileID: 114994033544878884}
   - component: {fileID: 212082342265056826}
   - component: {fileID: 70489536338543862}
   - component: {fileID: 50047347635933524}
-  - component: {fileID: 114994033544878884}
   - component: {fileID: 114195153534707582}
   - component: {fileID: 95186470628085012}
   - component: {fileID: 82388747519707106}
@@ -409,6 +409,7 @@ MonoBehaviour:
   col: {fileID: 0}
   ladderBottom: {fileID: 0}
   ladderTop: {fileID: 0}
+  spawnLocation: {x: 0, y: 0}
   jumping: 0
   falling: 0
   climbing: 0

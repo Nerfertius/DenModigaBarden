@@ -44,6 +44,7 @@ public class PlayerData : Data
     [HideInInspector] public bool falling;
     [HideInInspector] public bool climbing;
     [HideInInspector] public bool grounded;
+    [HideInInspector] public bool climbPause;
 
     // Note particle system
     public ParticleSystem noteFX;
@@ -164,14 +165,27 @@ public class PlayerData : Data
 
     public void Pause()
     {
-        StartCoroutine(TimePause());
+        StartCoroutine(JumpPause());
     }
 
-    IEnumerator TimePause()
+    IEnumerator JumpPause()
     {
         float time = 1f;
         jumping = true;
         yield return new WaitForSeconds(time);
         jumping = false;
+    }
+
+    public void ClimbFixPause()
+    {
+        StartCoroutine(ClimbPause());
+    }
+
+    IEnumerator ClimbPause()
+    {
+        float time = 1f;
+        climbPause = true;
+        yield return new WaitForSeconds(time);
+        climbPause = false;
     }
 }

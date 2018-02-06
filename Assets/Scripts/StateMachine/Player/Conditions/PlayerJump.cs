@@ -11,6 +11,10 @@ public class PlayerJump : Condition
         data.grounded = Physics2D.OverlapCircle(data.groundCheck.position, 0.15f, data.groundLayer);
         if (Input.GetButtonDown("Jump"))                                                                     //Are you jumping?
         {
+            if (data.climbing)
+            {
+                data.ClimbFixPause();
+            }
             data.falling = false;
             return true;
         }
