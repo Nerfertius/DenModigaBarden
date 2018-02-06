@@ -31,8 +31,9 @@ public class PatrolAction : StateAction {
 
     private bool NextToWall(StateController controller)
     {
-        float offset = controller.coll.bounds.size.x * 0.6f;
-        RaycastHit2D hit = Physics2D.Raycast(controller.transform.position, controller.data.currentDirection, offset, mask);
+        float xOffset = controller.coll.bounds.size.x * 0.6f;
+        float yOffset = controller.coll.bounds.size.y * 0.5f;
+        RaycastHit2D hit = Physics2D.Raycast(controller.transform.position - new Vector3(0, yOffset, 0), controller.data.currentDirection, xOffset, mask);
         
         if(hit.collider != null && hit.collider.tag != "Ground")
         {
@@ -52,9 +53,9 @@ public class PatrolAction : StateAction {
             offset = new Vector2(-controller.coll.bounds.size.x * 0.5f, 0);
         }
 
-        RaycastHit2D hit = Physics2D.Raycast((Vector2)controller.transform.position + offset, Vector2.down, 1f, mask);
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)controller.transform.position + offset, Vector2.down, controller.coll.bounds.size.y, mask);
         Debug.DrawRay(controller.transform.position + (Vector3)offset, Vector3.down, Color.red, 0.1f);
-        
+
         return (hit.collider == null);
     }
 

@@ -8,6 +8,7 @@ public class EnemyData : MelodyInteractableData
 
     public float speed;
     public float chaseSpeed;
+    public float attackRange;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public StateController controller;
