@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43512e3051758e46be5b56bc0bd6971, type: 3}
   m_Name: SpawnAttackHitbox
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 0}
+  gameObject: {fileID: 1427978115459944, guid: 372b042a51c2199438e09f72c6921ef3, type: 2}
   positionOffset: {x: 0, y: 0}
-  isChild: 0
+  isChild: 1
   hasTarget: 0

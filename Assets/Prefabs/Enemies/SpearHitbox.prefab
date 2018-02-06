@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4178582233273558}
   - component: {fileID: 61861983866796046}
   - component: {fileID: 114512867988970986}
+  - component: {fileID: 114686888131770174}
   m_Layer: 2
   m_Name: SpearHitbox
   m_TagString: Untagged
@@ -79,4 +80,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayTime: 0.2
   expansionTime: 0.3
-  collNewSize: {x: 3, y: 0.5}
+  collNewSize: {x: 4, y: 0.5}
+--- !u!114 &114686888131770174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427978115459944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af0ea2922f8aa646a3591fbc03fd932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lifetime: 0.5
