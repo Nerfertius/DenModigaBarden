@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class CameraFollow2D : MonoBehaviour {
 
 	public Transform target;
+    public Transform[] backgrounds;
     public bool hideCursor;
     [Range(1, 10)] public float followSpeed;
     [Range(1, 10)] public float transitionSpeed;
@@ -25,6 +26,8 @@ public class CameraFollow2D : MonoBehaviour {
 
 		if (!transitioning) {
 			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (posX, posY, transform.position.z), 0.64f * followSpeed);
+
+            UpdateBackgroundPosition();
 		} else {
 			RoomTransition ();
 		}
@@ -38,7 +41,8 @@ public class CameraFollow2D : MonoBehaviour {
 	{
 		if (transform.position.x < topLeft.x || transform.position.x > bottomRight.x || transform.position.y > topLeft.y || transform.position.y < bottomRight.y) {
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3 (posX, posY, transform.position.z), 15 * transitionSpeed * Time.deltaTime);
-		} else {
+            UpdateBackgroundPosition();
+        } else {
 			transitioning = false;
 		}
 	}
@@ -56,5 +60,14 @@ public class CameraFollow2D : MonoBehaviour {
         posY = Mathf.Clamp(target.transform.position.y, bottomRight.y, topLeft.y);
 
         transform.position = new Vector3(posX, posY, transform.position.z);
+        UpdateBackgroundPosition();
+    }
+
+    private void UpdateBackgroundPosition()
+    {
+        foreach (Transform bg in backgrounds)
+        {
+            bg.transform.position = new Vector3(transform.position.x, bg.transform.position.y, bg.transform.position.z);
+        }
     }
 }

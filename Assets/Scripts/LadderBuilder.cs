@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class LadderBuilder : MonoBehaviour
 {
     [Range(1,20)] public int height;
