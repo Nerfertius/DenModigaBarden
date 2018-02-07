@@ -9,6 +9,7 @@ public class EnemyData : MelodyInteractableData
     public float speed;
     public float chaseSpeed;
     public float attackRange;
+    public bool behaveAsHitbox;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public StateController controller;
@@ -22,9 +23,21 @@ public class EnemyData : MelodyInteractableData
     private ContactFilter2D playerCollisionFilter;
 
     [HideInInspector] public bool harmful = true;
+    
+    private bool isTouchingPlayer = false;
+
+    private void Awake()
+    {
+        startPos = transform.position;
+    }
 
     protected virtual void Start()
     {
+        controller = GetComponent<StateController>();
+        playerCollisionFilter.useLayerMask = true;
+        playerCollisionFilter.layerMask = 1 << 13; // player layer = 13
+
+        if (behaveAsHitbox) return;
 
         sight = transform.GetComponentInChildren<SightColliderAV>();
 
@@ -32,7 +45,6 @@ public class EnemyData : MelodyInteractableData
 
         if (transform.childCount != 0)
         {
-
             sightColl = transform.GetChild(0).GetComponent<Collider2D>();
         }
 
@@ -48,20 +60,19 @@ public class EnemyData : MelodyInteractableData
         }
 
         colliders = GetComponents<Collider2D>();
-        controller = GetComponent<StateController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        playerCollisionFilter.useLayerMask = true;
-        playerCollisionFilter.layerMask = 1 << 13; // player layer = 13
         harmful = true;
+    }
+
+    public void OnEnable()
+    {
+        transform.position = startPos;
     }
 
     public void FixedUpdate() {
         checkPlayerCollision();
     }
-
-
-    private bool isTouchingPlayer = false;
 
     private void checkPlayerCollision() {
         

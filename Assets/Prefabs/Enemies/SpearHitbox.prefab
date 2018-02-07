@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 61861983866796046}
   - component: {fileID: 114512867988970986}
   - component: {fileID: 114686888131770174}
+  - component: {fileID: 114890847053693520}
   m_Layer: 2
   m_Name: SpearHitbox
-  m_TagString: Untagged
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,3 +94,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lifetime: 0.5
+--- !u!114 &114890847053693520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427978115459944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1dfbc8ca9f293545bb2a3c5c7152ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0}
+  currentDirection: {x: 0, y: 0}
+  facingRight: 0
+  player: {fileID: 0}
+  speed: 0
+  chaseSpeed: 0
+  attackRange: 0
+  behaveAsHitbox: 1
+  rb: {fileID: 0}
+  controller: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  sight: {fileID: 0}
+  colliders: []
+  harmful: 1

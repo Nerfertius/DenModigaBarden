@@ -10,7 +10,7 @@ public class PlayerHitByEnemy : Condition {
         EnemyData dataE = coll.GetComponent<EnemyData>();
 
         if(dataE != null) {
-            if (coll.tag == "Enemy" && data.hitInvincibilityTimer.TimeUp() && dataE.harmful) {
+            if ((coll.tag == "Enemy" || coll.tag == "Hitbox") && data.hitInvincibilityTimer.TimeUp() && dataE.harmful) {
                 data.hitAngle = (data.transform.position - coll.transform.position).normalized;
                 if(data.hitAngle.magnitude == 0) {
                     data.hitAngle = new Vector2(1, 1).normalized;

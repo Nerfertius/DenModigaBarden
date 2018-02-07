@@ -13,7 +13,7 @@ public class MapBoundary : MonoBehaviour {
         boundary = GetComponent<BoxCollider2D>();	
 	}
 
-    void OnTriggerEnter2D (Collider2D collision)
+    void OnTriggerStay2D (Collider2D collision)
 	{
 		if (collision.tag == "Player") {
             UpdateMapBounds();

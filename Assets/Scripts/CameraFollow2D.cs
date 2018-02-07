@@ -7,8 +7,8 @@ public class CameraFollow2D : MonoBehaviour {
 
 	public Transform target;
     public bool hideCursor;
-    [Range(1, 10)] public int followSpeed;
-    [Range(1, 10)] public int transitionSpeed;
+    [Range(1, 10)] public float followSpeed;
+    [Range(1, 10)] public float transitionSpeed;
 
     Vector2 topLeft, bottomRight;
     bool transitioning = false;
@@ -25,7 +25,6 @@ public class CameraFollow2D : MonoBehaviour {
 
 		if (!transitioning) {
 			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (posX, posY, transform.position.z), 0.64f * followSpeed);
-			//transform.position = new Vector3 (posX, posY, transform.position.z);
 		} else {
 			RoomTransition ();
 		}

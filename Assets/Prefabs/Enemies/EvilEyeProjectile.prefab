@@ -40,9 +40,10 @@ GameObject:
   - component: {fileID: 50387406307665668}
   - component: {fileID: 96946857121291774}
   - component: {fileID: 58770965902607826}
+  - component: {fileID: 114107814725364162}
   m_Layer: 0
   m_Name: EvilEyeProjectile
-  m_TagString: Untagged
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +109,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.01
+  m_Radius: 0.1
 --- !u!96 &96946857121291774
 TrailRenderer:
   serializedVersion: 2
@@ -202,6 +203,31 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114107814725364162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534620546373458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1dfbc8ca9f293545bb2a3c5c7152ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0}
+  currentDirection: {x: 0, y: 0}
+  facingRight: 0
+  player: {fileID: 0}
+  speed: 0
+  chaseSpeed: 0
+  attackRange: 0
+  behaveAsHitbox: 1
+  rb: {fileID: 0}
+  controller: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  sight: {fileID: 0}
+  colliders: []
+  harmful: 1
 --- !u!114 &114859012884117108
 MonoBehaviour:
   m_ObjectHideFlags: 1
