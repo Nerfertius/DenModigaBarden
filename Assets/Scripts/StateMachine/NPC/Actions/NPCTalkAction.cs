@@ -25,7 +25,8 @@ public class NPCTalkAction : StateAction
             {
                 data.text = Instantiate(textPrefab, GameObject.Find("WorldSpaceCanvas").transform).GetComponentInChildren<Text>();
             }
-            pos.y += (controller.GetComponent<CapsuleCollider2D>().size.y + controller.GetComponent<CapsuleCollider2D>().offset.y) + 0.6f;
+            pos.x += data.offset.x;
+            pos.y += (controller.GetComponent<CapsuleCollider2D>().size.y + controller.GetComponent<CapsuleCollider2D>().offset.y) + data.offset.y;
             pos.z = -4;
             data.text.transform.parent.position = pos;
             data.text.enabled = true;
