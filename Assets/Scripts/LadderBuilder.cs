@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class LadderBuilder : MonoBehaviour
 {
     [Range(1,20)] public int height;
@@ -23,7 +22,7 @@ public class LadderBuilder : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = ladderBottomSprite;
         BuildLadder();
 
-        int oldLayer = gameObject.layer;
+        int oldLayer = topLadder.gameObject.layer;
         topLadder.gameObject.layer = 1;
         hasPlatformBehind = Physics2D.OverlapBox(topLadder.position, topLadder.GetComponent<SpriteRenderer>().bounds.size * 0.5f, 0, blockableLayer);
         topLadder.gameObject.layer = oldLayer;
@@ -43,6 +42,12 @@ public class LadderBuilder : MonoBehaviour
             }
             topLadder = newLadder.transform;
             newLadder.GetComponent<SpriteRenderer>().sprite = ladderTopSprite;
+            topLadder.gameObject.AddComponent<PlatformEffector2D>().useColliderMask = false;
+            topLadder.GetComponent<PlatformEffector2D>().surfaceArc = 90f;
+            topLadder.gameObject.layer = 8;
+            topLadder.GetComponent<BoxCollider2D>().isTrigger = false;
+            topLadder.GetComponent<BoxCollider2D>().size = Vector2.one;
+            topLadder.GetComponent<BoxCollider2D>().usedByEffector = true;
         }
     }
 }

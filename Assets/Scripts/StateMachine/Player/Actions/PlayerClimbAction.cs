@@ -24,7 +24,7 @@ public class PlayerClimbAction : StateAction
         //Top
         if (data.transform.position.y > data.ladderTop.position.y)
         {
-            data.transform.position = new Vector2(data.ladderBottom.position.x, data.transform.position.y);
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.ladderTop.position.y);
         }
         
         //Between
@@ -34,10 +34,16 @@ public class PlayerClimbAction : StateAction
         }
     }
 
+    public override void Act(StateController controller)
+    {
+        PlayerData data = (PlayerData)controller.data;
+        data.moveVertical = Input.GetAxisRaw("Vertical");
+    }
+
     public override void FixedAct(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        data.moveVertical = Input.GetAxis("Vertical");
         data.transform.Translate(new Vector2(0, data.moveVertical) * data.climbSpeed * Time.deltaTime);
+        data.anim.SetFloat("ClimbSpeed", Input.GetAxisRaw("Vertical"));
     }
 }

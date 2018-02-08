@@ -54,7 +54,7 @@ public class PlayerClimbOn : Condition
                     }
 
                     //Top
-                    else if (Input.GetAxisRaw("Vertical") == -1 && feet < topCol.bounds.max.y && feet > botCol.bounds.max.y)
+                    else if (Input.GetAxisRaw("Vertical") == -1 && feet < topCol.bounds.max.y + 0.2f && feet > botCol.bounds.max.y)
                     {
                         return true;
                     }
