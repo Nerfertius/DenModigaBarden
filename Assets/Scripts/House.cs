@@ -33,7 +33,6 @@ public class House : MonoBehaviour
     {
         CameraFX.FadeIn();
         yield return new WaitForSeconds(1f);
-        print("player: " + player.transform.position + "..." + "Location: " + houseLocation.position);
         player.transform.position = houseLocation.position;
         mb.UpdateMapBounds();
         Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
