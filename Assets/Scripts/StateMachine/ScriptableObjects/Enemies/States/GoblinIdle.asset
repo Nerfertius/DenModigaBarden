@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: GoblinIdle
   m_EditorClassIdentifier: 
-  entryActions: []
+  entryActions:
+  - {fileID: 11400000, guid: b01d02e3aeb8af64d84b2179c5820a0b, type: 2}
   exitActions: []
   actions: []
   transitions:
@@ -27,6 +28,11 @@ MonoBehaviour:
     falseStateTransitionActions: []
   - condition: {fileID: 11400000, guid: 3cef5b6a5fdd841438af533478b6ad8d, type: 2}
     trueState: {fileID: 11400000, guid: 518459fe2e5e624429982d4ab27e8905, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 2e30469464af474439b04e616c4e7241, type: 2}
+    trueState: {fileID: 11400000, guid: 9747885ebfa01454bb2c49908b52270f, type: 2}
     falseState: {fileID: 0}
     trueStateTransitionActions: []
     falseStateTransitionActions: []

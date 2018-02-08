@@ -7,7 +7,12 @@ public class CameraFX : MonoBehaviour {
     private static CameraFX instance;
     private static SpriteRenderer screenFade;
 
+    private CameraFollow2D camScript;
+    private float timer = 0;
+
     public float fadeSpeed;
+
+    
 
     private void Awake()
     {
@@ -16,6 +21,7 @@ public class CameraFX : MonoBehaviour {
 
 	private void Start ()
     {
+        camScript = GetComponent<CameraFollow2D>();
         screenFade = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
@@ -27,6 +33,9 @@ public class CameraFX : MonoBehaviour {
             FadeIn();
         } else if (Input.GetKeyDown(KeyCode.R)){
             FadeOut();
+        } else if (Input.GetKeyDown(KeyCode.N))
+        {
+            Screenshake(2, 3);
         }
     }
     
@@ -41,6 +50,32 @@ public class CameraFX : MonoBehaviour {
     {
         instance.StopAllCoroutines();
         instance.StartCoroutine("FadeOutFX");
+    }
+
+    public static void Screenshake(float duration, float intensity)
+    {
+        instance.StopAllCoroutines();
+        instance.StartCoroutine(instance.ScreenshakeFX(duration, intensity));
+    }
+
+    IEnumerator ScreenshakeFX(float duration, float intensity)
+    {
+        camScript.enabled = false;
+
+        float posX = transform.position.x;
+        float posY = transform.position.y;
+        
+        while(timer > duration)
+        { 
+            timer += Time.deltaTime;
+
+            transform.position = new Vector2(Random.Range(posX - intensity, posX + intensity), Random.Range(posY - intensity, posY + intensity));
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        timer = 0;
+        camScript.enabled = true;
     }
 
     IEnumerator FadeInFX()

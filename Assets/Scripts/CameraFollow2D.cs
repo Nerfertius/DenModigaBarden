@@ -25,7 +25,7 @@ public class CameraFollow2D : MonoBehaviour {
 		posY = Mathf.Clamp (target.transform.position.y, bottomRight.y, topLeft.y);
 
 		if (!transitioning) {
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (posX, posY, transform.position.z), 0.64f * followSpeed);
+			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (posX, posY, transform.position.z), 0.5f * followSpeed);
 
             UpdateBackgroundPosition();
 		} else {
@@ -51,6 +51,10 @@ public class CameraFollow2D : MonoBehaviour {
     {
         this.topLeft = topLeft;
         this.bottomRight = bottomRight;
+    }
+
+    public void ActivateTransition()
+    {
         transitioning = true;
     }
 

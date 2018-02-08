@@ -6,18 +6,28 @@ public class MapBoundary : MonoBehaviour {
     private Camera mainCam;
     private CameraFollow2D camScript;
     private BoxCollider2D boundary;
-
+    
 	void Start () {
         mainCam = Camera.main;
         camScript = mainCam.GetComponent<CameraFollow2D>();
         boundary = GetComponent<BoxCollider2D>();	
 	}
-
-    void OnTriggerStay2D (Collider2D collision)
-	{
-		if (collision.tag == "Player") {
+    
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
             UpdateMapBounds();
-		}
+            camScript.ActivateTransition();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            camScript.ActivateTransition();
+        }
     }
 
     public void UpdateMapBounds()

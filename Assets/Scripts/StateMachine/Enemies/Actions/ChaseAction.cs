@@ -25,8 +25,12 @@ public class ChaseAction : StateAction
                 controller.sprRend.flipX = false;
             }
 
-            Vector2 velocity = eData.currentDirection * eData.chaseSpeed * Time.fixedDeltaTime;
-            controller.rb.MovePosition((Vector2)controller.transform.position + velocity);
+            float distance = Vector2.Distance(controller.transform.position, eData.player.position);
+            if (distance > eData.attackRange - 0.1f)
+            {
+                Vector2 velocity = eData.currentDirection * eData.chaseSpeed * Time.fixedDeltaTime;
+                controller.rb.MovePosition((Vector2)controller.transform.position + velocity);
+            }
         }
     }
 }

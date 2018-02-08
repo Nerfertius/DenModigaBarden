@@ -12,10 +12,15 @@ public class PlayerWalkAction : StateAction
         data.body.gravityScale = 1;
     }
 
+    public override void Act(StateController controller)
+    {
+        PlayerData data = (PlayerData)controller.data;
+        data.moveHorizontal = Input.GetAxis("Horizontal");
+    }
+
     public override void FixedAct(StateController controller)
     {
 		PlayerData data = (PlayerData)controller.data;
-		data.moveHorizontal = Input.GetAxis("Horizontal");
 		data.movement = new Vector2(data.moveHorizontal, 0);
 		data.body.AddForce(data.movement * data.speedMod);
 

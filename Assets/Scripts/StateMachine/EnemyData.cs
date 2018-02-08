@@ -29,6 +29,7 @@ public class EnemyData : MelodyInteractableData
     private void Awake()
     {
         startPos = transform.position;
+        startScale = transform.localScale;
     }
 
     protected virtual void Start()
@@ -59,6 +60,8 @@ public class EnemyData : MelodyInteractableData
             currentDirection.x = -1 * transform.localScale.x;
         }
 
+        startDirection = currentDirection;
+
         colliders = GetComponents<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -68,6 +71,8 @@ public class EnemyData : MelodyInteractableData
     public void OnEnable()
     {
         transform.position = startPos;
+        transform.localScale = startScale;
+        currentDirection = startDirection;
     }
 
     public void FixedUpdate() {

@@ -18,6 +18,11 @@ public class FlyingEnemyData : EnemyData
         RandomizeOffset();
     }
 
+    private void OnDisable()
+    {
+        currentFlightDistance = 0;
+    }
+
     private void RandomizeOffset()
     {
         randomSineOffset = Random.Range(0, 5);

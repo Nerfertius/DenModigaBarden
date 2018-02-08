@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
+  m_Name: GoblinAttack
+  m_EditorClassIdentifier: 
+  entryActions:
+  - {fileID: 11400000, guid: bdd6b8e21679ec34c9079be6c45f64f0, type: 2}
+  exitActions: []
+  actions:
+  - {fileID: 11400000, guid: cde1a16c63344e4429e49ac1efd3dc76, type: 2}
+  transitions: []
+  conditionedActions: []
+  hasExitTime: 1
+  exitTimer: 0.5
+  useRandomTimer: 0
+  minTime: 0
+  maxTime: 0
+  nextState: {fileID: 11400000, guid: 1d3c57d757d88194aa144b1e467ac090, type: 2}
+  timeOutActions: []
