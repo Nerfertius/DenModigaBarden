@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 
     public GameState current = null;
 
+    public Sprite fullHeart, halfHeart, emptyHeart;
+
     void Start() {
         if (current == null)
         {
