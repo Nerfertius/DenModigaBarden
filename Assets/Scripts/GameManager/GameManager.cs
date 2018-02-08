@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 
     public GameState current = null;
 
+    public Sprite fullHeart, halfHeart, emptyHeart;
+
     void Start() {
         if (current == null)
         {
@@ -33,5 +35,15 @@ public class GameManager : MonoBehaviour {
         current.enter();
         if(ChangeState != null)
             ChangeState(current);
+    }
+
+    public void hideCanvas(string canvas) {
+        GameObject go = GameObject.Find("/" + canvas);
+        go.GetComponent<CanvasGroup>().alpha = 0;
+    }
+
+    public void showCanvas(string canvas) {
+        GameObject go = GameObject.Find("/" + canvas);
+        go.GetComponent<CanvasGroup>().alpha = 1;
     }
 }

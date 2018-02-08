@@ -14,6 +14,7 @@ public class NPCData : Data {
     public Conversation[] conversation;
     public float textSpeed = 20;
     public int fontSize = 0;
+    public Vector2 offset;
     public float pitchDeviation = 0.3f;
     [HideInInspector] public int currentConvIndex = 0;
     [HideInInspector] public TextPopup[] currentConv;
