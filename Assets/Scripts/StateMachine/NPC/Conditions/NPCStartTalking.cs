@@ -17,14 +17,20 @@ public class NPCStartTalking : Condition
 
     public override bool? CheckTriggerEnter(StateController controller, Collider2D other)
     {
-        if (other.tag == "Player")
-            ((NPCData)controller.data).playerInRange = true;
+        if (other.tag == "Player") {
+            NPCData data = (NPCData)controller.data;
+            data.playerInRange = true;
+            data.player = other.GetComponent<PlayerData>();
+        }
         return null;
     }
     public override bool? CheckTriggerExit(StateController controller, Collider2D other)
     {
-        if (other.tag == "Player")
-            ((NPCData)controller.data).playerInRange = false;
+        if (other.tag == "Player") {
+            NPCData data = (NPCData)controller.data;
+            data.playerInRange = false;
+            data.player = null;
+        }
         return null;
     }
 }

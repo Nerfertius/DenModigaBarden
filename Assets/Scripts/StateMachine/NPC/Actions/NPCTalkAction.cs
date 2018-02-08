@@ -25,7 +25,7 @@ public class NPCTalkAction : StateAction
             {
                 data.text = Instantiate(textPrefab, GameObject.Find("WorldSpaceCanvas").transform).GetComponentInChildren<Text>();
             }
-            pos.y += controller.GetComponent<SpriteRenderer>().size.y + 0.6f;
+            pos.y += (controller.GetComponent<CapsuleCollider2D>().size.y + controller.GetComponent<CapsuleCollider2D>().offset.y) + 0.6f;
             pos.z = -4;
             data.text.transform.parent.position = pos;
             data.text.enabled = true;
@@ -36,6 +36,9 @@ public class NPCTalkAction : StateAction
                 data.talkSound = talk;
                 data.basePitch = talk.pitch;
             }
+
+            data.getConversation();
+
             resetVar(data);
         }
         else
@@ -54,10 +57,10 @@ public class NPCTalkAction : StateAction
             textSize(data);
             resetVar(data);
         }
-        if (Input.GetButtonDown("Interact") && data.finished && data.currentText < data.texts.Length)
+        if (Input.GetButtonDown("Interact") && data.finished && data.currentText < data.currentConv.Length)
         {
             data.currentText++;
-            if (data.currentText >= data.texts.Length)
+            if (data.currentText >= data.currentConv.Length)
             {
                 resetConv(data);
                 return;
@@ -70,18 +73,18 @@ public class NPCTalkAction : StateAction
         {
             resetConv(data);
         }
-        if (data.start && !data.finished && data.currentChar < data.texts[data.currentText].Length)
+        if (data.start && !data.finished && data.currentChar < data.currentConv[data.currentText].text.Length)
         {
             if (!data.text.transform.parent.gameObject.activeSelf)
                 data.text.transform.parent.gameObject.SetActive(true);
             if (Input.GetButtonDown("Interact") && data.curTime > 0)
             {
-                data.text.text = data.texts[data.currentText];
+                data.text.text = data.currentConv[data.currentText].text;
                 data.finished = true;
             }
             else
             {
-                bool next = getNext(data, data.texts[data.currentText], data.textSpeed);
+                bool next = getNext(data, data.currentConv[data.currentText].text, data.textSpeed);
                 if (next)
                 {
                     data.text.text = data.currentString;
@@ -96,7 +99,7 @@ public class NPCTalkAction : StateAction
                         data.playSound = false;
                     }
                 }
-                if (data.currentChar >= data.texts[data.currentText].Length)
+                if (data.currentChar >= data.currentConv[data.currentText].text.Length)
                     data.finished = true;
             }
         }
@@ -172,8 +175,17 @@ public class NPCTalkAction : StateAction
 
     private void textSize(NPCData data)
     {
+        Vector2 boxSize = textPrefab.transform.GetChild(0).GetComponent<RectTransform>().sizeDelta;
+        float width = data.currentConv[data.currentText].size.x;
+        if (width != 0)
+            boxSize.x = width;
+        if (data.currentConv[data.currentText].size.y != 0)
+            boxSize.y = data.currentConv[data.currentText].size.y;
+        data.text.rectTransform.sizeDelta = boxSize;
+        data.text.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(boxSize.x / 125, boxSize.y / 100);
+
         int fontSize = data.fontSize > 0 ? data.fontSize : 64;
-        data.text.text = data.texts[data.currentText];
+        data.text.text = data.currentConv[data.currentText].text;
         data.text.fontSize = fontSize;
         float height = data.text.rectTransform.rect.height;
         float prefHeight = data.text.preferredHeight;
@@ -184,15 +196,22 @@ public class NPCTalkAction : StateAction
             prefHeight = data.text.preferredHeight;
 
             times++;
-            if (times > 10)
+            if (times > 10) {
+                data.text.fontSize = 8;
                 break;
+            }
         }
         data.text.text = "";
+
+        data.setMoodAnimation(data.currentConv[data.currentText].mood);
     }
 
     private void resetConv(NPCData data)
     {
         resetVar(data);
+        if (data.finished) {
+            data.spoken();
+        }
         data.currentText = 0;
         data.start = false;
         data.finished = false;
@@ -208,7 +227,7 @@ public class NPCTalkAction : StateAction
         data.currentChar = 0;
         data.currentString = "";
         data.currentTags.Clear();
-        if (!data.endOfConv && data.currentText < data.texts.Length)
+        if (!data.endOfConv && data.currentText < data.currentConv.Length)
             textSize(data);
     }
 }
