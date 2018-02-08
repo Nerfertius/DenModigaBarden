@@ -72,8 +72,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461975651749938}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.46, y: 2.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4371184860106240}
@@ -414,6 +414,7 @@ MonoBehaviour:
   falling: 0
   climbing: 0
   grounded: 0
+  climbPause: 0
   noteFX: {fileID: 198554481063968690, guid: 09a1b161aed695041b6f4023ff941a28, type: 2}
   inTransit: 0
   targetPos: {x: 0, y: 0}
@@ -437,6 +438,9 @@ MonoBehaviour:
     lastShotProjectileTime: 0
     projectileCooldown: 0.5
     MelodyRange: {fileID: 0}
+    highPitchValue: 2
+    lowPitchValue: 0.5
+    standardPitchValue: 0
 --- !u!212 &212082342265056826
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -471,7 +475,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: ce925d51e138d924bb85cdb90a8280ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ecbb245cba56ffa408582375eb61709a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
