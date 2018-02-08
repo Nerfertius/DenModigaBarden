@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entryActions:
   - {fileID: 11400000, guid: bdd6b8e21679ec34c9079be6c45f64f0, type: 2}
-  exitActions: []
-  actions:
+  exitActions:
   - {fileID: 11400000, guid: cde1a16c63344e4429e49ac1efd3dc76, type: 2}
+  actions: []
   transitions: []
   conditionedActions: []
   hasExitTime: 1

@@ -11,9 +11,7 @@ public class CameraFX : MonoBehaviour {
     private float timer = 0;
 
     public float fadeSpeed;
-
     
-
     private void Awake()
     {
         instance = this;
@@ -35,7 +33,7 @@ public class CameraFX : MonoBehaviour {
             FadeOut();
         } else if (Input.GetKeyDown(KeyCode.N))
         {
-            Screenshake(2, 3);
+            Screenshake(0.10f, 0.025f);
         }
     }
     
@@ -61,19 +59,21 @@ public class CameraFX : MonoBehaviour {
     IEnumerator ScreenshakeFX(float duration, float intensity)
     {
         camScript.enabled = false;
-
+        
+        Vector3 camPosition = transform.position;
         float posX = transform.position.x;
         float posY = transform.position.y;
         
-        while(timer > duration)
+        while(timer < duration)
         { 
-            timer += Time.deltaTime;
+            timer += 0.05f;
 
-            transform.position = new Vector2(Random.Range(posX - intensity, posX + intensity), Random.Range(posY - intensity, posY + intensity));
+            transform.position = new Vector3(Random.Range(posX - intensity, posX + intensity), Random.Range(posY - intensity, posY + intensity), camPosition.z);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
 
+        transform.position = camPosition;
         timer = 0;
         camScript.enabled = true;
     }
