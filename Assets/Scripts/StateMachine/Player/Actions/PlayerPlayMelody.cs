@@ -14,6 +14,19 @@ public class PlayerPlayMelody : StateAction {
             if (Input.GetButtonDown(note.Button)) {
                 mData.PlayedNotes.AddLast(note);
 
+                if (Input.GetButton("HighPitch"))
+                {
+                    data.audioSource.pitch = mData.highPitchValue;
+                }
+                else if (Input.GetButton("LowPitch"))
+                {
+                    data.audioSource.pitch = mData.lowPitchValue;
+                }
+                else
+                {
+                    data.audioSource.pitch = mData.standardPitchValue;
+                }
+                Debug.Log(mData.standardPitchValue);
                 data.audioSource.clip = note.audio;
                 data.audioSource.Play();
 

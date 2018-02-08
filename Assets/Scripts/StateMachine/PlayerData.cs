@@ -72,6 +72,8 @@ public class PlayerData : Data
 
     // Melody
     public MelodyData melodyData = new MelodyData();
+
+
     [System.Serializable]
     public class MelodyData {
 
@@ -96,6 +98,10 @@ public class PlayerData : Data
         public float projectileCooldown = 0.5f;
 
         public CircleCollider2D MelodyRange;
+        
+        [Range(-3, 3)] public float highPitchValue;
+        [Range(-3, 3)] public float lowPitchValue;
+        [HideInInspector] public float standardPitchValue;
 
         public Melody getMelody(Melody.MelodyID? id) {
             for (int i = 0; i < melodies.Length; i++) {
@@ -129,6 +135,8 @@ public class PlayerData : Data
             SleepMelodyProjectile = Resources.Load("MelodyProjectiles/SleepMelodyProjectile") as GameObject;
 
             doubleJumpTimer = new Timer(0.3f);
+
+            standardPitchValue = 1;
         }
     }
 
