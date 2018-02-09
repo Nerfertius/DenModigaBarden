@@ -74,6 +74,14 @@ public class PlayerData : Data
     public MelodyData melodyData = new MelodyData();
 
 
+    // Respawn
+    [HideInInspector] public int currentRespawnOrder;
+    [HideInInspector] public Transform respawnLocation;
+
+    // Materials
+    [HideInInspector] public PhysicsMaterial2D defaultMat;
+    [HideInInspector] public PhysicsMaterial2D fullFriction;
+
     [System.Serializable]
     public class MelodyData {
 
@@ -153,6 +161,12 @@ public class PlayerData : Data
         
         items = new int[System.Enum.GetNames(typeof(ItemType)).Length];
         jumpPower = defaultjumpPower;
+
+        currentRespawnOrder = -1;
+        respawnLocation = transform;
+
+        defaultMat = Resources.Load("Materials/Default") as PhysicsMaterial2D;
+        fullFriction = Resources.Load("Materials/FullFriction") as PhysicsMaterial2D;
 
         melodyData.Start();
 

@@ -42,6 +42,11 @@ MonoBehaviour:
     falseState: {fileID: 0}
     trueStateTransitionActions: []
     falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 0a9a7638b70ead946bcfb9deba58b779, type: 2}
+    trueState: {fileID: 11400000, guid: 521f9933148c23d4db21130c61301f32, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
   conditionedActions: []
   hasExitTime: 0
   exitTimer: 0

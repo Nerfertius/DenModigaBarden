@@ -26,7 +26,6 @@ public class PlayerPlayMelody : StateAction {
                 {
                     data.audioSource.pitch = mData.standardPitchValue;
                 }
-                Debug.Log(mData.standardPitchValue);
                 data.audioSource.clip = note.audio;
                 data.audioSource.Play();
 
