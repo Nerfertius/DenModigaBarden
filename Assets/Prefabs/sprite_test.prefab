@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461975651749938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.46, y: 2.13, z: 0}
+  m_LocalPosition: {x: -12.81, y: 1.051, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4371184860106240}
@@ -174,8 +174,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: -0.05}
-  m_Size: {x: 0.6, y: 1.9}
+  m_Offset: {x: -0.099999994, y: -0.04206556}
+  m_Size: {x: 0.6, y: 1.8841311}
   m_Direction: 0
 --- !u!82 &82388747519707106
 AudioSource:
@@ -384,6 +384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
+  startScale: {x: 0, y: 0}
+  startDirection: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   health: 3
@@ -441,6 +443,11 @@ MonoBehaviour:
     highPitchValue: 2
     lowPitchValue: 0.5
     standardPitchValue: 0
+  currentRespawnOrder: 0
+  respawnLocation: {fileID: 0}
+  defaultMat: {fileID: 0}
+  fullFriction: {fileID: 0}
+  volumeScaler: 0
 --- !u!212 &212082342265056826
 SpriteRenderer:
   m_ObjectHideFlags: 1
