@@ -26,9 +26,7 @@ public class PlayerPlayMelody : StateAction {
                 {
                     data.audioSource.pitch = mData.standardPitchValue;
                 }
-                Debug.Log(mData.standardPitchValue);
-                data.audioSource.clip = note.audio;
-                data.audioSource.Play();
+                data.PlaySound(note.audio);
 
                 ParticleSystem m_fx = data.noteFX;
                 ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
@@ -37,9 +35,7 @@ public class PlayerPlayMelody : StateAction {
                 m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
             }
         }
-
-
-
+        
         while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
             mData.PlayedNotes.RemoveFirst();
         }

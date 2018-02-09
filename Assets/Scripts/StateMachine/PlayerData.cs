@@ -196,4 +196,27 @@ public class PlayerData : Data
         yield return new WaitForSeconds(time);
         climbPause = false;
     }
+
+    public void PlaySound(AudioClip audio)
+    {
+        StartCoroutine(FadeVolume(audio));
+    }
+    
+    [Range(0.1f,1)] public float volumeScaler;
+
+    IEnumerator FadeVolume(AudioClip audio)
+    {
+        float startTime = Time.time;
+
+        while(audioSource.volume > 0)
+        {
+            audioSource.volume = Mathf.Clamp(audioSource.volume - (Time.time - startTime) * volumeScaler, 0, 1);
+            yield return null;
+        }
+        audioSource.Stop();
+        audioSource.volume = 1;
+        
+        audioSource.clip = audio;
+        audioSource.Play();
+    }
 }
