@@ -5,6 +5,7 @@ using UnityEngine;
 public class StateController : MonoBehaviour
 {
     public State currentState;
+    public State previousState;
     private State originalState;
 
     [HideInInspector] public Data data;
@@ -80,13 +81,13 @@ public class StateController : MonoBehaviour
         if (nextState == null || sender != currentState)
             return;
         
-        Debug.Log("Current state: " + currentState + "..." + "Next state: " + nextState);
+        //Debug.Log("Current state: " + currentState + "..." + "Next state: " + nextState);
         currentState.DoExitActions(this);
 
         foreach(StateAction action in transitionActions) {
             action.ActOnce(this);
         }
-        
+        previousState = currentState;
         currentState = nextState;
         if (currentState.hasExitTime)
         {

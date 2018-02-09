@@ -40,10 +40,11 @@ public class CameraFollow2D : MonoBehaviour {
 	void RoomTransition ()
 	{
 		if (transform.position.x < topLeft.x || transform.position.x > bottomRight.x || transform.position.y > topLeft.y || transform.position.y < bottomRight.y) {
-			transform.position = Vector3.MoveTowards(transform.position, new Vector3 (posX, posY, transform.position.z), 15 * transitionSpeed * Time.deltaTime);
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3 (posX, posY, transform.position.z), 15 * transitionSpeed * Time.unscaledDeltaTime);
             UpdateBackgroundPosition();
         } else {
-			transitioning = false;
+            GameManager.instance.switchState(new PlayState(GameManager.instance));
+            transitioning = false;
 		}
 	}
 

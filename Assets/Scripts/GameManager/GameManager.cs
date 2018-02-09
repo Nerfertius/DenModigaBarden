@@ -7,11 +7,14 @@ public class GameManager : MonoBehaviour {
     public delegate void StateChange(GameState newState);
     public static event StateChange ChangeState;
 
+    public static GameManager instance;
+
     public GameState current = null;
 
     public Sprite fullHeart, halfHeart, emptyHeart;
 
     void Start() {
+        instance = this;
         if (current == null)
         {
             switchState(new PlayState(this));
