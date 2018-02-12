@@ -23,10 +23,6 @@ public class House : MonoBehaviour
         {
             StartCoroutine(EnterHouse());
         }
-        else if (playerNear && automatic)
-        {
-            
-        }
 	}
 
     IEnumerator EnterHouse()
