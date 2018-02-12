@@ -1167,7 +1167,11 @@ ParticleSystem:
     tilesY: 5
     animationType: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
     rowIndex: 2
+=======
+    rowIndex: 0
+>>>>>>> parent of b6c199d... Merged channel states int normal states
 =======
     rowIndex: 0
 >>>>>>> parent of b6c199d... Merged channel states int normal states

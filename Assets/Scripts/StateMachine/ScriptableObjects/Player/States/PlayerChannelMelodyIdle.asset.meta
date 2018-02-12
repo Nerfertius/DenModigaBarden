@@ -1,17 +1,23 @@
 fileFormatVersion: 2
 guid: 4e641ecf183adea4d8f8d53824e45e04
 <<<<<<< HEAD
+<<<<<<< HEAD
 timeCreated: 1518441356
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
 =======
+=======
+>>>>>>> parent of b6c199d... Merged channel states int normal states
 timeCreated: 1516873505
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
+<<<<<<< HEAD
+>>>>>>> parent of b6c199d... Merged channel states int normal states
+=======
 >>>>>>> parent of b6c199d... Merged channel states int normal states
   userData: 
   assetBundleName: 
