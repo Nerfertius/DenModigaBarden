@@ -10,8 +10,8 @@ public class PlayerTakeDamage : StateAction {
     public override void ActOnce(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
 
-        if (data.hitInvincibilityTimer.TimeUp()) {
-            data.hitInvincibilityTimer.StartTimer();
+        if (data.hitInvincibilityTimer.IsDone()) {
+            data.hitInvincibilityTimer.Start();
 
             data.rb.velocity = new Vector2(0, 0);
 

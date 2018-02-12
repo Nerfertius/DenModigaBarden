@@ -12,7 +12,7 @@ public class Timer {
         SetDuration(duration);
     }
 
-    public void StartTimer() {
+    public void Start() {
         startTime = Time.time;
     }
 
@@ -20,7 +20,7 @@ public class Timer {
         this.duration = duration;
     }
 
-    public bool TimeUp() {
+    public bool IsDone() {
         return (Time.time >= startTime + duration) ;
     }
 

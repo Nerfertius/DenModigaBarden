@@ -182,7 +182,7 @@ public class PlayerData : Data
         PlayerData.player = this;
 
         hitInvincibilityTimer = new Timer(hitInvincibilityDuration);
-        hitInvincibilityTimer.StartTimer();
+        hitInvincibilityTimer.Start();
     }
 
     public void Pause()
