@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: 2b2d5c656d7925241929d07db8f889b4, type: 2}
+  previousState: {fileID: 0}
   data: {fileID: 114367693822698130}
   anim: {fileID: 95462437470285310}
   sprRend: {fileID: 212347468482563898}
@@ -247,13 +248,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
+  startScale: {x: 0, y: 0}
+  startDirection: {x: 0, y: 0}
   currentDirection: {x: 1, y: 0}
   facingRight: 1
   player: {fileID: 0}
   speed: 5
   chaseSpeed: 0
+  attackRange: 0
+  behaveAsHitbox: 0
   rb: {fileID: 50525118852681516}
   controller: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   sight: {fileID: 0}
   colliders: []
   harmful: 1

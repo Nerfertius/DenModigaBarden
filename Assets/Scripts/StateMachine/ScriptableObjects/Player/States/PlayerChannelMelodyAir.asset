@@ -13,10 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entryActions:
   - {fileID: 11400000, guid: a6d2aaba24732bb43b2616b3b58496d7, type: 2}
-  - {fileID: 11400000, guid: e97e073416cc6e54cbda7810f873bac8, type: 2}
   - {fileID: 11400000, guid: ad1d1bb3fff7cbf429f3a4dea9287773, type: 2}
-  exitActions:
-  - {fileID: 11400000, guid: d25ca5dd60c69fb4995b1d4666340278, type: 2}
+  exitActions: []
   actions:
   - {fileID: 11400000, guid: 6efa3df043cbd604e93ccd7e33fa0013, type: 2}
   - {fileID: 11400000, guid: d687222b3a9f9f64fa2b9e1884805159, type: 2}
@@ -42,7 +40,8 @@ MonoBehaviour:
   - condition: {fileID: 11400000, guid: 001ef07dfb2e7e54ea77312b657a721e, type: 2}
     trueState: {fileID: 11400000, guid: 126f1b19627984f4da1ecd7754accff3, type: 2}
     falseState: {fileID: 0}
-    trueStateTransitionActions: []
+    trueStateTransitionActions:
+    - {fileID: 11400000, guid: d25ca5dd60c69fb4995b1d4666340278, type: 2}
     falseStateTransitionActions: []
   conditionedActions: []
   hasExitTime: 0

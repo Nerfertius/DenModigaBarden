@@ -20,8 +20,10 @@ MonoBehaviour:
   - condition: {fileID: 11400000, guid: 2a344c36b54b5b04e8f4ce0b0a706788, type: 2}
     trueState: {fileID: 11400000, guid: 4e641ecf183adea4d8f8d53824e45e04, type: 2}
     falseState: {fileID: 11400000, guid: 0e52b623b548f4041b2f93fe07d23983, type: 2}
-    trueStateTransitionActions: []
-    falseStateTransitionActions: []
+    trueStateTransitionActions:
+    - {fileID: 11400000, guid: e97e073416cc6e54cbda7810f873bac8, type: 2}
+    falseStateTransitionActions:
+    - {fileID: 11400000, guid: d25ca5dd60c69fb4995b1d4666340278, type: 2}
   - condition: {fileID: 11400000, guid: 001ef07dfb2e7e54ea77312b657a721e, type: 2}
     trueState: {fileID: 11400000, guid: 126f1b19627984f4da1ecd7754accff3, type: 2}
     falseState: {fileID: 0}
