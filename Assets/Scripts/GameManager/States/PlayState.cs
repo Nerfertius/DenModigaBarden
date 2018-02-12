@@ -131,22 +131,34 @@ public class PlayState : GameState
                         {
                             Color c = notes[i].color;
                             //TODO: Change image sprite
+                            Sprite toSprite = notes[i].sprite;
                             switch (n.noteID)
                             {
                                 case Note.NoteID.Note1:
+                                    if (gm.notes[0] != null)
+                                        toSprite = gm.notes[0];
                                     break;
                                 case Note.NoteID.Note2:
+                                    if (gm.notes[1] != null)
+                                        toSprite = gm.notes[1];
                                     break;
                                 case Note.NoteID.Note3:
+                                    if (gm.notes[2] != null)
+                                        toSprite = gm.notes[2];
                                     break;
                                 case Note.NoteID.Note4:
+                                    if (gm.notes[3] != null)
+                                        toSprite = gm.notes[3];
                                     break;
                                 case Note.NoteID.Note5:
+                                    if (gm.notes[4] != null)
+                                        toSprite = gm.notes[4];
                                     break;
                                 default:
                                     break;
 
                             }
+                            notes[i].sprite = toSprite;
                             c.a = 1;
                             notes[i].color = c;
                             i++;

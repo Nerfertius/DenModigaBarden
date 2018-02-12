@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public GameState current = null;
 
     public Sprite fullHeart, halfHeart, emptyHeart;
+    public Sprite[] notes = new Sprite[5];
 
     void Start() {
         instance = this;
