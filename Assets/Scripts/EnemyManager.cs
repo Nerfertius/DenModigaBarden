@@ -36,7 +36,6 @@ public class EnemyManager : MonoBehaviour {
 			for (int i = 0; i < enemies.Count; i++) {
 				enemies[i].gameObject.SetActive (true);
                 controllers[i].enabled = true;
-                Debug.Log(controllers[i].gameObject);
 				controllers[i].ResetStateController();
 			}
 		}
