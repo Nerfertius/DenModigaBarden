@@ -237,4 +237,12 @@ public class PlayerData : Data
         audioSource.clip = audio;
         audioSource.Play();
     }
+
+    public void Respawn()
+    {
+        CameraFX.FadeIn();
+        transform.position = new Vector2(respawnLocation.position.x, respawnLocation.GetComponent<SpriteRenderer>().bounds.max.y);
+        body.velocity = Vector2.zero;
+        CameraFX.FadeOut();
+    }
 }
