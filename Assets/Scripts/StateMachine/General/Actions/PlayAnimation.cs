@@ -7,8 +7,8 @@ using UnityEngine;
 public class PlayAnimation : StateAction {
     public string animationName;
 
-    public override void ActOnce(StateController controller) {
+    public override void ActOnce(StateController controller)
+    {
         controller.anim.Play(animationName);
     }
-
 }

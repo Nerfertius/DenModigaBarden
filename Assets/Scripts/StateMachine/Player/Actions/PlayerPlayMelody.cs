@@ -9,7 +9,7 @@ public class PlayerPlayMelody : StateAction {
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
-
+        
         foreach (Note note in mData.Notes) {
             if (Input.GetButtonDown(note.Button)) {
                 mData.PlayedNotes.AddLast(note);
@@ -35,7 +35,26 @@ public class PlayerPlayMelody : StateAction {
                 m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
             }
         }
-        
+
+        if (Input.GetButtonUp("PlayMelody"))
+        {
+            foreach (Melody melody in mData.melodies)
+            {
+                if (melody.CheckMelody(mData.PlayedNotes))
+                {
+                    mData.currentMelody = melody.melodyID;
+                    mData.PlayedNotes.Clear();
+                    mData.MelodyRange.enabled = true;
+                    controller.anim.SetBool("Channeling", true);
+                    break;
+                } else
+                {
+                    mData.currentMelody = null;
+                }
+            }
+            mData.PlayedNotes.Clear();
+        }
+
         while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
             mData.PlayedNotes.RemoveFirst();
         }

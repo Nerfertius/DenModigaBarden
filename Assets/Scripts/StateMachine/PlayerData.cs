@@ -68,6 +68,7 @@ public class PlayerData : Data
     [HideInInspector] public Timer hitInvincibilityTimer;
 
     [HideInInspector] public Vector2 hitAngle;
+    [HideInInspector] public bool goIdle, goWalk, goAir, goCrouch;
 
 
     // Melody
