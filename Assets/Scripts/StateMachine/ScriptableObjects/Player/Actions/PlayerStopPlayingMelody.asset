@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906b8a97bc1903243b6d0c20ff79be68, type: 3}
-  m_Name: PlayerChannelEnter
+  m_Script: {fileID: 11500000, guid: d55210a1b2b326b41825b56caf68b610, type: 3}
+  m_Name: PlayerStopPlayingMelody
   m_EditorClassIdentifier: 

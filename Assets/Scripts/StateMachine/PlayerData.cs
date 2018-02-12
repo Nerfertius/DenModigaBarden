@@ -12,10 +12,9 @@ public class PlayerData : Data
 	[Header("Movement Settings")]
 	[Range(0, 10)] public float maxSpeed;
 	[Range(0, 100)] public float speedMod;
-    [Range(100, 500)] public float defaultjumpPower;
+    [Range(100, 500)] public float jumpPower;
     [Range(100, 500)] public float boostedjumpPower;
     [Range(100, 500)] public float doubleJumpPower;
-    [HideInInspector] public float jumpPower;
 	[Range(0, 10)] public float climbSpeed;
 
     [Space(10)]
@@ -99,10 +98,9 @@ public class PlayerData : Data
         [HideInInspector] public GameObject SleepMelodyProjectile;
 
         [HideInInspector] public Melody.MelodyID? currentMelody = null;
-        [HideInInspector] public Melody.MelodyID? previousMelody = null;
-        [HideInInspector] public bool justStartedPlaying  = false;
+        [HideInInspector] public bool playingFlute = false;
 
-        [HideInInspector] public float lastShotProjectileTime = 0;
+        [HideInInspector] public Timer projectileCooldownTimer;
         public float projectileCooldown = 0.5f;
 
         public CircleCollider2D MelodyRange;
@@ -143,7 +141,8 @@ public class PlayerData : Data
             SleepMelodyProjectile = Resources.Load("MelodyProjectiles/SleepMelodyProjectile") as GameObject;
 
             doubleJumpTimer = new Timer(0.3f);
-
+            projectileCooldownTimer = new Timer(projectileCooldown);
+            projectileCooldownTimer.Start();
             standardPitchValue = 1;
         }
     }
@@ -164,7 +163,7 @@ public class PlayerData : Data
         playerLayer = LayerMask.NameToLayer("Player");
         
         items = new int[System.Enum.GetNames(typeof(ItemType)).Length];
-        jumpPower = defaultjumpPower;
+        jumpPower = jumpPower;
 
         currentRespawnOrder = -1;
         respawnLocation = transform;
