@@ -37,7 +37,7 @@ public class PressurePlate : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && anim.GetBool("PressedDown") == false && collision.gameObject.GetComponent<SpriteRenderer>().bounds.min.y > rend.bounds.max.y)
+        if (collision.gameObject.CompareTag("Player") && anim.GetBool("PressedDown") == false && collision.gameObject.GetComponent<Collider2D>().bounds.min.y > rend.bounds.max.y)
         {
             if (pairedObjects.Count > 0 && pairedReady)
             {
@@ -91,12 +91,18 @@ public class PressurePlate : MonoBehaviour
         {
             yield return new WaitForSeconds(component.delay);
             component.obj.SendMessage("Activate");
-            print(component.message);
+            if (component.message != "")
+            {
+                print(component.message);
+            }
         }
         else
         {
             component.obj.SendMessage("Activate");
-            print(component.message);
+            if (component.message != "")
+            {
+                print(component.message);
+            }
         }
     }
 

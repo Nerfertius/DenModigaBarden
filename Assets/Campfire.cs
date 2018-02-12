@@ -5,10 +5,11 @@ using UnityEngine;
 public class Campfire : MonoBehaviour
 {
     public int order;
+    public MapBoundary mb;
 
     private Animator anim;
 
-	void Start ()
+    void Start ()
     {
         anim = GetComponent<Animator>();
 	}

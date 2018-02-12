@@ -28,7 +28,6 @@ public class PlayerData : Data
 	[HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;
     [HideInInspector] public Vector2 movement;
-    [HideInInspector] public Vector2 startScale;
     [HideInInspector] public Rigidbody2D body;
     [HideInInspector] public Transform groundCheck;
     [HideInInspector] public Collider2D col;
@@ -100,10 +99,12 @@ public class PlayerData : Data
         [HideInInspector] public GameObject SleepMelodyProjectile;
 
         [HideInInspector] public Melody.MelodyID? currentMelody = null;
-        [HideInInspector] public Melody.MelodyID? previousMelody = null;
-        [HideInInspector] public bool justStartedPlaying  = false;
+        [HideInInspector] public bool playingFlute = false;
 
-        [HideInInspector] public float lastShotProjectileTime = 0;
+        //[HideInInspector] public Melody.MelodyID? previousMelody = null;
+        //[HideInInspector] public bool justStartedPlaying  = false;
+
+        [HideInInspector] public Timer lastShotProjectileTimer;
         public float projectileCooldown = 0.5f;
 
         public CircleCollider2D MelodyRange;
@@ -144,9 +145,16 @@ public class PlayerData : Data
             SleepMelodyProjectile = Resources.Load("MelodyProjectiles/SleepMelodyProjectile") as GameObject;
 
             doubleJumpTimer = new Timer(0.3f);
+            lastShotProjectileTimer = new Timer(projectileCooldown);
+            lastShotProjectileTimer.Start();
 
             standardPitchValue = 1;
         }
+    }
+
+    void Awake()
+    {
+        startScale = transform.localScale;
     }
 
     void Start ()
@@ -154,7 +162,6 @@ public class PlayerData : Data
 		groundCheck = transform.GetChild(0);
 		body = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
-        startScale = transform.localScale;
         noteAnim = noteFX.textureSheetAnimation;
 
         climbFixLayer = LayerMask.NameToLayer("Blockable");
@@ -233,5 +240,18 @@ public class PlayerData : Data
         
         audioSource.clip = audio;
         audioSource.Play();
+    }
+
+    public IEnumerator Respawn()
+    {
+        CameraFX.FadeIn();
+        yield return new WaitForSeconds(1);
+        transform.position = new Vector2(respawnLocation.position.x, respawnLocation.GetComponent<SpriteRenderer>().bounds.max.y);
+        body.velocity = Vector2.zero;
+        jumping = false;
+        melodyData.currentMelody = null;
+        respawnLocation.GetComponent<Campfire>().mb.UpdateMapBounds();
+        Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
+        CameraFX.FadeOut();
     }
 }

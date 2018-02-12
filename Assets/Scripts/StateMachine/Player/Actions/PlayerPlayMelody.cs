@@ -9,54 +9,68 @@ public class PlayerPlayMelody : StateAction {
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
-        
-        foreach (Note note in mData.Notes) {
-            if (Input.GetButtonDown(note.Button)) {
-                mData.PlayedNotes.AddLast(note);
 
-                if (Input.GetButton("HighPitch"))
-                {
-                    data.audioSource.pitch = mData.highPitchValue;
-                }
-                else if (Input.GetButton("LowPitch"))
-                {
-                    data.audioSource.pitch = mData.lowPitchValue;
-                }
-                else
-                {
-                    data.audioSource.pitch = mData.standardPitchValue;
-                }
-                data.PlaySound(note.audio);
+        if (Input.GetButton("PlayMelody")) {
+            mData.playingFlute = true;
+            controller.anim.SetBool("Channeling", true);
 
+            foreach (Note note in mData.Notes) {
+                if (Input.GetButtonDown(note.Button)) {
+                    mData.PlayedNotes.AddLast(note);
+
+                    if (Input.GetButton("HighPitch")) {
+                        data.audioSource.pitch = mData.highPitchValue;
+                    }
+                    else if (Input.GetButton("LowPitch")) {
+                        data.audioSource.pitch = mData.lowPitchValue;
+                    }
+                    else {
+                        data.audioSource.pitch = mData.standardPitchValue;
+                    }
+                    data.PlaySound(note.audio);
+
+<<<<<<< HEAD
+                    ParticleSystem m_fx = data.noteFX;
+                    ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
+                    m_anim.rowIndex = note.FXRowNumber;
+                    Instantiate(m_fx, new Vector2(data.transform.position.x, data.spriteRenderer.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
+                    m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
+                }
+            }
+            while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
+                mData.PlayedNotes.RemoveFirst();
+=======
                 ParticleSystem m_fx = data.noteFX;
                 ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
                 m_anim.rowIndex = note.FXRowNumber;
-                Instantiate(m_fx, new Vector2(data.transform.position.x, data.spriteRenderer.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
+                Instantiate(m_fx, new Vector2(data.collider.bounds.center.x, data.collider.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
                 m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
+>>>>>>> 329e8739bd2ba5dda5b84f14baf9b0b96bdbe012
             }
         }
-
+        
+        
         if (Input.GetButtonUp("PlayMelody"))
         {
+            bool melodyPlayed = false;
             foreach (Melody melody in mData.melodies)
             {
                 if (melody.CheckMelody(mData.PlayedNotes))
                 {
                     mData.currentMelody = melody.melodyID;
-                    mData.PlayedNotes.Clear();
                     mData.MelodyRange.enabled = true;
-                    controller.anim.SetBool("Channeling", true);
+                    melodyPlayed = true;
                     break;
-                } else
-                {
-                    mData.currentMelody = null;
                 }
+            }
+            if (!melodyPlayed) {
+                mData.currentMelody = null;
+                mData.MelodyRange.enabled = false;
+                controller.anim.SetBool("Channeling", false);
             }
             mData.PlayedNotes.Clear();
         }
 
-        while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
-            mData.PlayedNotes.RemoveFirst();
-        }
+        
     }
 }
