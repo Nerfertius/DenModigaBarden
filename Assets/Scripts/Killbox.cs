@@ -8,7 +8,7 @@ public class Killbox : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerData>().Respawn();
+            StartCoroutine(collision.GetComponent<PlayerData>().Respawn());
         }
         else
             Destroy(collision.gameObject);

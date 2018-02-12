@@ -238,11 +238,16 @@ public class PlayerData : Data
         audioSource.Play();
     }
 
-    public void Respawn()
+    public IEnumerator Respawn()
     {
         CameraFX.FadeIn();
+        yield return new WaitForSeconds(1);
         transform.position = new Vector2(respawnLocation.position.x, respawnLocation.GetComponent<SpriteRenderer>().bounds.max.y);
         body.velocity = Vector2.zero;
+        jumping = false;
+        melodyData.currentMelody = null;
+        respawnLocation.GetComponent<Campfire>().mb.UpdateMapBounds();
+        Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
         CameraFX.FadeOut();
     }
 }

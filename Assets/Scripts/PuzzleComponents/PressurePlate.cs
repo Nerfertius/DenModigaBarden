@@ -91,12 +91,18 @@ public class PressurePlate : MonoBehaviour
         {
             yield return new WaitForSeconds(component.delay);
             component.obj.SendMessage("Activate");
-            print(component.message);
+            if (component.message != "")
+            {
+                print(component.message);
+            }
         }
         else
         {
             component.obj.SendMessage("Activate");
-            print(component.message);
+            if (component.message != "")
+            {
+                print(component.message);
+            }
         }
     }
 
