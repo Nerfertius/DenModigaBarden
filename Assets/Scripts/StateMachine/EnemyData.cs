@@ -25,6 +25,7 @@ public class EnemyData : MelodyInteractableData
     [HideInInspector] public bool harmful = true;
     
     private bool isTouchingPlayer = false;
+    public bool switchingCollider = false;
 
     private void Awake()
     {
@@ -114,5 +115,16 @@ public class EnemyData : MelodyInteractableData
                 }
             }
         }
+    }
+
+    public void ToggleColliderSwitchCoroutine()
+    {
+        StartCoroutine(ToggleColliderSwitch());
+    }
+
+    IEnumerator ToggleColliderSwitch()
+    {
+        switchingCollider = !switchingCollider;
+        yield return new WaitForSeconds(0.25f);
     }
 }

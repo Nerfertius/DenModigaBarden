@@ -56,7 +56,7 @@ public class EnemyManager : MonoBehaviour {
             DeactivateAllControllers();
             StartCoroutine(DelayDeactivation());
             isActive = false;
-		} else if (collision.tag == "Enemy")
+		} else if (collision.tag == "Enemy" && !collision.GetComponent<EnemyData>().switchingCollider)
         {
             collision.gameObject.SetActive(false);
         }
