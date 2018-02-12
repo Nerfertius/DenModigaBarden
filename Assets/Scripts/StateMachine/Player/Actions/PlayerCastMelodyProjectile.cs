@@ -13,7 +13,7 @@ public class PlayerCastMelodyProjectile : StateAction {
 
         bool facingRight = true;
 
-        if (mData.currentMelody != null && Input.GetButtonDown("MelodyProjectileCast") && mData.lastShotProjectileTimer.IsDone()) {
+        if (Input.GetButtonDown("MelodyProjectileCast") && Time.realtimeSinceStartup > mData.lastShotProjectileTime + mData.projectileCooldown) {
             Vector3 offset = SpawnOffset;
 
             facingRight = data.transform.localScale.x > 0;
@@ -37,7 +37,7 @@ public class PlayerCastMelodyProjectile : StateAction {
             
             MelodyProjectile melodyProjectile = newProjectile.GetComponent<MelodyProjectile>();
             melodyProjectile.Init(controller.transform.position + offset, facingRight);
-            mData.lastShotProjectileTimer.Start();
+            mData.lastShotProjectileTime = Time.realtimeSinceStartup;
         }
     }
 }

@@ -14,8 +14,10 @@ MonoBehaviour:
   entryActions:
   - {fileID: 11400000, guid: a6d2aaba24732bb43b2616b3b58496d7, type: 2}
   - {fileID: 11400000, guid: e97e073416cc6e54cbda7810f873bac8, type: 2}
+  - {fileID: 11400000, guid: 393f6d6a34b45894c90115837dc94b8f, type: 2}
   exitActions:
   - {fileID: 11400000, guid: d25ca5dd60c69fb4995b1d4666340278, type: 2}
+  - {fileID: 11400000, guid: 78e9ca4fb3ff2a64bbb14a0f6486b707, type: 2}
   actions:
   - {fileID: 11400000, guid: 6efa3df043cbd604e93ccd7e33fa0013, type: 2}
   - {fileID: 11400000, guid: d687222b3a9f9f64fa2b9e1884805159, type: 2}

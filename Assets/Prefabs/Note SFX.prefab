@@ -1166,7 +1166,11 @@ ParticleSystem:
     tilesX: 1
     tilesY: 5
     animationType: 1
-    rowIndex: 1
+<<<<<<< HEAD
+    rowIndex: 2
+=======
+    rowIndex: 0
+>>>>>>> parent of b6c199d... Merged channel states int normal states
     cycles: 1
     uvChannelMask: -1
     flipU: 0

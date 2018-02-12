@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum NPCMood { Normal, Happy, Sad, Angry, Inherit };
-public enum TalkCondition { None, Item, SpokenWith, convNotSpoken, convSpoken };
+public enum TalkCondition { None, Item, SpokenWith, convNotSpoken };
 
 public class NPCData : Data {
     public bool canWalk = false;
@@ -105,11 +105,6 @@ public class NPCData : Data {
                         return false;
                     }
                     break;
-                case TalkCondition.convSpoken:
-                    if (!data.conversation[condition.convSpokIndex].spoken) {
-                        return false;
-                    }
-                    break;
                 case TalkCondition.SpokenWith:
                     NPCData npcData = condition.goComp.GetComponent<NPCData>();
                     if (npcData.conversation.Length > 0 && !npcData.conversation[0].spoken) {
@@ -126,10 +121,8 @@ public class NPCData : Data {
         public TalkCondition condition;
         [Header("Spoken with")]
         public GameObject goComp;
-        [Header("Conversation Not spoken")]
-        public int convIndex;
         [Header("Conversation spoken")]
-        public int convSpokIndex;
+        public int convIndex;
         [Header("Item Compare")]
         public ItemType itemComp;
         public bool consumeItem;

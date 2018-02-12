@@ -7,7 +7,6 @@ public class PlayerChannelExit : StateAction
 {
     public override void ActOnce(StateController controller)
     {
-        /*
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
@@ -20,6 +19,6 @@ public class PlayerChannelExit : StateAction
             if (mData.previousMelody == Melody.MelodyID.JumpMelody) {
                 data.jumpPower = data.defaultjumpPower;
             }
-        }*/
+        }
     }
 }

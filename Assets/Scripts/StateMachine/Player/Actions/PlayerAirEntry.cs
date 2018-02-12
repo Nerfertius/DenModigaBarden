@@ -15,14 +15,7 @@ public class PlayerAirEntry : StateAction
             if (!data.climbing && !data.falling)
             {
                 data.body.velocity = new Vector2(data.body.velocity.x, 0);
-
-                if(data.melodyData.currentMelody == Melody.MelodyID.JumpMelody) {
-                    data.body.AddForce(new Vector2(0, data.boostedjumpPower));
-                }
-                else {
-                    data.body.AddForce(new Vector2(0, data.defaultjumpPower));
-                }
-               
+                data.body.AddForce(new Vector2(0, data.jumpPower));
                 
             }
             else if (data.climbing)
