@@ -28,7 +28,6 @@ public class PlayerData : Data
 	[HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;
     [HideInInspector] public Vector2 movement;
-    [HideInInspector] public Vector2 startScale;
     [HideInInspector] public Rigidbody2D body;
     [HideInInspector] public Transform groundCheck;
     [HideInInspector] public Collider2D col;
@@ -149,12 +148,16 @@ public class PlayerData : Data
         }
     }
 
+    void Awake()
+    {
+        startScale = transform.localScale;
+    }
+
     void Start ()
 	{
 		groundCheck = transform.GetChild(0);
 		body = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
-        startScale = transform.localScale;
         noteAnim = noteFX.textureSheetAnimation;
 
         climbFixLayer = LayerMask.NameToLayer("Blockable");
