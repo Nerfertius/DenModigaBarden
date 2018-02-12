@@ -1,0 +1,49 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "StateMachine/Action/Player/PlayerClimbAction")]
+public class PlayerClimbAction : StateAction
+{
+    public override void ActOnce(StateController controller)
+    {
+        PlayerData data = (PlayerData)controller.data;
+        data.climbing = true;
+        data.body.gravityScale = 0;
+        data.body.velocity = Vector2.zero;
+        Collider2D topCol = data.ladderTop.GetComponent<Collider2D>();
+
+        Physics2D.IgnoreLayerCollision(data.playerLayer, data.climbFixLayer, true);
+
+        //Bottom
+        if (data.transform.position.y < data.ladderBottom.position.y)
+        {
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.transform.position.y);
+        }
+
+        //Top
+        if (data.transform.position.y > data.ladderTop.position.y)
+        {
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.ladderTop.position.y);
+        }
+        
+        //Between
+        else 
+        {
+            data.transform.position = new Vector2(data.ladderBottom.position.x, data.transform.position.y);
+        }
+    }
+
+    public override void Act(StateController controller)
+    {
+        PlayerData data = (PlayerData)controller.data;
+        data.moveVertical = Input.GetAxisRaw("Vertical");
+    }
+
+    public override void FixedAct(StateController controller)
+    {
+        PlayerData data = (PlayerData)controller.data;
+        data.transform.Translate(new Vector2(0, data.moveVertical) * data.climbSpeed * Time.deltaTime);
+        data.anim.SetFloat("ClimbSpeed", Input.GetAxisRaw("Vertical"));
+    }
+}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
+  m_Name: KoboldSpearmanAttack
+  m_EditorClassIdentifier: 
+  entryActions:
+  - {fileID: 11400000, guid: 4605f83edf9dfa1489ca8cad9b72d1a0, type: 2}
+  - {fileID: 11400000, guid: 1d6f95ae1d96df648829882bde75e78a, type: 2}
+  exitActions: []
+  actions: []
+  transitions: []
+  conditionedActions: []
+  hasExitTime: 1
+  exitTimer: 0.8
+  useRandomTimer: 0
+  minTime: 0
+  maxTime: 0
+  nextState: {fileID: 11400000, guid: af422d6ec5e4c094a8807c3d9a60432a, type: 2}
+  timeOutActions: []

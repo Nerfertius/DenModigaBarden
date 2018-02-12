@@ -11,14 +11,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: PlayerWalk
   m_EditorClassIdentifier: 
-  entryAction: {fileID: 0}
-  exitAction: {fileID: 0}
+  entryActions:
+  - {fileID: 11400000, guid: fb90aa44e8f8b7e408453a87e5c2f5d6, type: 2}
+  - {fileID: 11400000, guid: 3473a7b9af2769148997cab8ed111179, type: 2}
+  exitActions: []
   actions:
   - {fileID: 11400000, guid: fb90aa44e8f8b7e408453a87e5c2f5d6, type: 2}
-  transitions: []
+  - {fileID: 11400000, guid: 6c8c0c1ec0f4ad54a9ad27c1ba5f1349, type: 2}
+  - {fileID: 11400000, guid: efe78247c3edfe647aa41e42708e4dfa, type: 2}
+  transitions:
+  - condition: {fileID: 11400000, guid: d54251042a3d9cc4a861629c2e0a2938, type: 2}
+    trueState: {fileID: 11400000, guid: 1c825357ed673284999eb68e7409a3d1, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: a3c4e70cf615df741901a9453f2f141c, type: 2}
+    trueState: {fileID: 11400000, guid: 5d1f0db53815e9641916cb81db8c5aeb, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: fd318d5aa3efbc54ca1db01179e99147, type: 2}
+    trueState: {fileID: 0}
+    falseState: {fileID: 11400000, guid: 0e52b623b548f4041b2f93fe07d23983, type: 2}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 03de5e76c65597641a11f727d823b264, type: 2}
+    trueState: {fileID: 11400000, guid: bcd05e6cc4fd5094ea63322f98417617, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 001ef07dfb2e7e54ea77312b657a721e, type: 2}
+    trueState: {fileID: 11400000, guid: 126f1b19627984f4da1ecd7754accff3, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 0a9a7638b70ead946bcfb9deba58b779, type: 2}
+    trueState: {fileID: 11400000, guid: 521f9933148c23d4db21130c61301f32, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  conditionedActions: []
   hasExitTime: 0
   exitTimer: 0
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
   nextState: {fileID: 0}
+  timeOutActions: []

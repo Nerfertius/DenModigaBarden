@@ -7,10 +7,24 @@ public class GameManager : MonoBehaviour {
     public delegate void StateChange(GameState newState);
     public static event StateChange ChangeState;
 
-    private GameState current = null;
+    public static GameManager instance;
+
+    public GameState current = null;
+
+    public Sprite fullHeart, halfHeart, emptyHeart;
+    public Sprite[] notes = new Sprite[5];
 
     void Start() {
-        switchState(new PlayState(this));
+        instance = this;
+        if (current == null)
+        {
+            switchState(new PlayState(this));
+        }
+        else {
+            current.enter();
+            if (ChangeState != null)
+                ChangeState(current);
+        }
     }
 
     void Update() {
@@ -23,6 +37,17 @@ public class GameManager : MonoBehaviour {
             current.exit();
         current = next;
         current.enter();
-        ChangeState(current);
+        if(ChangeState != null)
+            ChangeState(current);
+    }
+
+    public void hideCanvas(string canvas) {
+        GameObject go = GameObject.Find("/" + canvas);
+        go.GetComponent<CanvasGroup>().alpha = 0;
+    }
+
+    public void showCanvas(string canvas) {
+        GameObject go = GameObject.Find("/" + canvas);
+        go.GetComponent<CanvasGroup>().alpha = 1;
     }
 }

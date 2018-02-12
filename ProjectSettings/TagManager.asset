@@ -7,6 +7,11 @@ TagManager:
   - Ground
   - Ladder
   - Wall
+  - PlayerProjectile
+  - Enemy
+  - Spawn
+  - MelodyRange
+  - Hitbox
   layers:
   - Default
   - TransparentFX
@@ -17,13 +22,13 @@ TagManager:
   - 
   - 
   - Blockable
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - VirtualScreen
+  - Enemy
+  - PlayerProjectile
+  - Player
+  - NPC
+  - MelodyRange
   - 
   - 
   - 

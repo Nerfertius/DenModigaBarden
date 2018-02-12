@@ -5,6 +5,7 @@ using UnityEngine;
 public class StateController : MonoBehaviour
 {
     public State currentState;
+    public State previousState;
     private State originalState;
 
     [HideInInspector] public Data data;
@@ -27,7 +28,7 @@ public class StateController : MonoBehaviour
         sprRend = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
-        currentState.DoEntryAction(this);
+        currentState.DoEntryActions(this);
     }
 
     public void ResetStateController()
@@ -45,48 +46,54 @@ public class StateController : MonoBehaviour
         currentState.FixedUpdateState(this);
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    public void OnCollisionEnter2D(Collision2D coll)
     {
         currentState.CheckCollisionEnter(this, coll);
     }
 
-    void OnCollisionExit2D(Collision2D coll)
+    public void OnCollisionExit2D(Collision2D coll)
     {
         currentState.CheckCollisionExit(this, coll);
     }
 
-    void OnCollisionStay2D(Collision2D coll)
+    public void OnCollisionStay2D(Collision2D coll)
     {
         currentState.CheckCollisionStay(this, coll);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         currentState.CheckTriggerEnter(this, other);
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    public void OnTriggerExit2D(Collider2D other)
     {
         currentState.CheckTriggerExit(this, other);
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    public void OnTriggerStay2D(Collider2D other)
     {
         currentState.CheckTriggerStay(this, other);
     }
 
-    public void TransitionToState(State nextState)
+    public void TransitionToState(State nextState, State sender, StateAction[] transitionActions)
     {
-        if (nextState == null)
+        if (nextState == null || sender != currentState)
             return;
+        
+        //Debug.Log("Current state: " + currentState + "..." + "Next state: " + nextState);
+        currentState.DoExitActions(this);
 
-        currentState.DoExitAction(this);
+        foreach(StateAction action in transitionActions) {
+            action.ActOnce(this);
+        }
+        previousState = currentState;
         currentState = nextState;
         if (currentState.hasExitTime)
         {
             SetStateTimer();
         }
-        currentState.DoEntryAction(this);
+        currentState.DoEntryActions(this);
     }
 
     private void SetStateTimer()

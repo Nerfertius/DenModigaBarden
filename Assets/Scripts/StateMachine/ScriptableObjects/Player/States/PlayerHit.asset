@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
+  m_Name: PlayerHit
+  m_EditorClassIdentifier: 
+  entryActions:
+  - {fileID: 11400000, guid: 624edc638475c5b47a8350bc1693a308, type: 2}
+  - {fileID: 11400000, guid: 978fb731f1d437e4ca0f3d1a6f5189b5, type: 2}
+  - {fileID: 11400000, guid: e92de55f249464d47b9bbc57470ed27e, type: 2}
+  exitActions: []
+  actions: []
+  transitions: []
+  conditionedActions: []
+  hasExitTime: 1
+  exitTimer: 0.2
+  useRandomTimer: 0
+  minTime: 0
+  maxTime: 0
+  nextState: {fileID: 11400000, guid: 0e52b623b548f4041b2f93fe07d23983, type: 2}
+  timeOutActions: []

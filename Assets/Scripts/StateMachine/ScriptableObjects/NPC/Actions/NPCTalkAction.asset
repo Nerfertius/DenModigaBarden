@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ae51b502b689c418b4c237d250e013, type: 3}
   m_Name: NPCTalkAction
   m_EditorClassIdentifier: 
+  textPrefab: {fileID: 1212360288051374, guid: e55d04d0be2805948a004d476d131fa0, type: 2}

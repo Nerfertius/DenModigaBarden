@@ -8,8 +8,10 @@ public class player_movement : MonoBehaviour
 	[Range(0,100)] public float speedMod;
 	[Range(100, 500)] public float jumpPower;
 	[Range(0, 10)] public float climbSpeed;
+	public Transform groundCheck;
+	public LayerMask groundLayer;
 
-	public bool climbing;
+	private bool climbing;
 	private bool grounded;
 	private float moveHorizontal;
 	private float moveVertical;
@@ -28,6 +30,7 @@ public class player_movement : MonoBehaviour
 	{
 		if (climbing == false)
 		{
+			//Walk state
 			moveHorizontal = Input.GetAxis("Horizontal");
 			movement = new Vector2(moveHorizontal, 0);
 			body.AddForce(movement * speedMod);
@@ -46,8 +49,10 @@ public class player_movement : MonoBehaviour
 		}
 		else if (climbing == true)
 		{
+			//Climb state
 			moveVertical = Input.GetAxis("Vertical");
 			transform.Translate(new Vector2(0, moveVertical) * climbSpeed * Time.deltaTime);
+
 			if (transform.position.y < ladderBottom.transform.position.y - 0.1f)
 			{
 				transform.position = new Vector2(transform.position.x, ladderBottom.transform.position.y);
@@ -65,23 +70,21 @@ public class player_movement : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space) && grounded == true && climbing == false)
+		//AirState
+		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+
+		//WalkState
+		if (Input.GetButtonDown("Jump") && grounded == true && climbing == false)
 		{
 			body.AddForce(new Vector2(0, jumpPower));
 			grounded = false;
 		}
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.gameObject.CompareTag("Ground") && grounded == false)
-		{
-			grounded = true;
-		}
-	}
-
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		//WalkState
+		//AirState
 		if (collision.CompareTag("Ladder") && climbing == false)
 		{
 			ladderBottom = collision.transform.parent.GetChild(0).gameObject;
@@ -91,21 +94,31 @@ public class player_movement : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
+		//WalkState
+		//AirState
 		if (collision.CompareTag("Ladder") && climbing == false)
 		{
-			if (Input.GetKey(KeyCode.W) && transform.position.y < ladderBottom.transform.position.y)
+			if (Input.GetAxisRaw("Vertical") == 1 && transform.position.y < ladderBottom.transform.position.y)	//Bottom
 			{
-				transform.position = collision.transform.position;
 				body.isKinematic = true;
 				body.velocity = Vector2.zero;
 				climbing = true;
+				transform.position = new Vector2(collision.transform.position.x, transform.position.y);
 			}
-			else if (Input.GetKey(KeyCode.S) && transform.position.y > ladderTop.transform.position.y)
+			else if (Input.GetAxisRaw("Vertical") == -1 && transform.position.y > ladderTop.transform.position.y)	//Top
 			{
-				transform.position = new Vector2(collision.transform.position.x, collision.transform.position.y + 0.5f);
 				body.isKinematic = true;
 				body.velocity = Vector2.zero;
 				climbing = true;
+				transform.position = new Vector2(collision.transform.position.x, collision.transform.position.y + 0.5f);
+			}
+																										//Between
+			else if ((Input.GetAxisRaw("Vertical") == -1 || Input.GetAxisRaw("Vertical") == 1) && transform.position.y < ladderTop.transform.position.y && transform.position.y > ladderBottom.transform.position.y)
+			{
+				body.isKinematic = true;
+				body.velocity = Vector2.zero;
+				climbing = true;
+				transform.position = new Vector2(collision.transform.position.x, transform.position.y);
 			}
 		}
 	}

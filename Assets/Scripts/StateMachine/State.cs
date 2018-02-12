@@ -5,10 +5,11 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "StateMachine/State")]
 public class State : ScriptableObject {
 
-	public StateAction entryAction;
-	public StateAction exitAction;
+	public StateAction[] entryActions;
+	public StateAction[] exitActions;
 	public StateAction[] actions;
 	public Transition[] transitions;
+    public ConditionedAction[] conditionedActions;
 
 	public bool hasExitTime;
 	public float exitTimer;
@@ -16,10 +17,12 @@ public class State : ScriptableObject {
 	public float minTime;
 	public float maxTime;
 	public State nextState;
+    public StateAction[] timeOutActions;
 
 	public void UpdateState (StateController controller)
 	{
 		DoActions (controller);
+        CheckConditionedActions(controller);
 		CheckTransitions (controller);
 
 		if (hasExitTime) {
@@ -31,7 +34,7 @@ public class State : ScriptableObject {
 	{
 		controller.stateTimer -= Time.deltaTime;
 		if (controller.stateTimer <= 0) {
-			controller.TransitionToState(nextState);
+			controller.TransitionToState(nextState, this, timeOutActions);
 		}
 	}
 
@@ -43,6 +46,11 @@ public class State : ScriptableObject {
 	private void DoActions (StateController controller)
 	{
 		for (int i = 0; i < actions.Length; i++) {
+            if(actions[i] == null)
+            {
+                Debug.LogError(this + " is missing an action. Make sure no actions are null!");
+                return;
+            }
 			actions[i].Act(controller);
 		}
 	}
@@ -50,23 +58,40 @@ public class State : ScriptableObject {
 	private void DoFixedActions (StateController controller)
 	{
 		for (int i = 0; i < actions.Length; i++) {
-			actions[i].FixedAct(controller);
+            if (actions[i] == null)
+            {
+                Debug.LogError(this + " is missing an action. Make sure no actions are null!");
+                return;
+            }
+            actions[i].FixedAct(controller);
 		}
 	}
 
-	public void DoEntryAction (StateController controller)
-	{
-		if (entryAction != null) {
-			entryAction.ActOnce (controller);
-		}
+	public void DoEntryActions (StateController controller)
+    {
+        for (int i = 0; i < entryActions.Length; i++)
+        {
+            if (entryActions[i] == null)
+            {
+                Debug.LogError(this + " is missing an entry action. Make sure no actions are null!");
+                return;
+            }
+            entryActions[i].ActOnce(controller);
+        }
 	}
 
-	public void DoExitAction (StateController controller)
+	public void DoExitActions (StateController controller)
 	{
-		if (exitAction != null) {
-			exitAction.ActOnce(controller);
-		}
-	}
+        for (int i = 0; i < exitActions.Length; i++)
+        {
+            if (exitActions[i] == null)
+            {
+                Debug.LogError(this + " is missing an exit action. Make sure no actions are null!");
+                return;
+            }
+            exitActions[i].ActOnce(controller);
+        }
+    }
 
 	public void CheckCollisionEnter (StateController controller, Collision2D coll)
 	{
@@ -74,7 +99,10 @@ public class State : ScriptableObject {
 			bool? condition = transitions[i].condition.CheckCollisionEnter(controller, coll);
 			SendTransitionMessage(controller, i, condition);
 		}
-	}
+        foreach (ConditionedAction conditionedAction in conditionedActions) {
+            conditionedAction.CheckCollisionEnter(controller, coll);
+        }
+    }
 
     public void CheckCollisionExit(StateController controller, Collision2D coll)
     {
@@ -82,6 +110,9 @@ public class State : ScriptableObject {
         {
             bool? condition = transitions[i].condition.CheckCollisionExit(controller, coll);
             SendTransitionMessage(controller, i, condition);
+        }
+        foreach (ConditionedAction conditionedAction in conditionedActions) {
+            conditionedAction.CheckCollisionExit(controller, coll);
         }
     }
 
@@ -91,7 +122,10 @@ public class State : ScriptableObject {
 			bool? condition = transitions[i].condition.CheckCollisionStay(controller, coll);
 			SendTransitionMessage(controller, i, condition);
 		}
-	}
+        foreach (ConditionedAction conditionedAction in conditionedActions) {
+            conditionedAction.CheckCollisionStay(controller, coll);
+        }
+    }
 
     public void CheckTriggerEnter(StateController controller, Collider2D other)
     {
@@ -99,6 +133,9 @@ public class State : ScriptableObject {
         {
             bool? condition = transitions[i].condition.CheckTriggerEnter(controller, other);
             SendTransitionMessage(controller, i, condition);
+        }
+        foreach (ConditionedAction conditionedAction in conditionedActions) {
+            conditionedAction.CheckTriggerEnter(controller, other);
         }
     }
 
@@ -109,6 +146,9 @@ public class State : ScriptableObject {
             bool? condition = transitions[i].condition.CheckTriggerExit(controller, other);
             SendTransitionMessage(controller, i, condition);
         }
+        foreach (ConditionedAction conditionedAction in conditionedActions) {
+            conditionedAction.CheckTriggerExit(controller, other);
+        }
     }
 
     public void CheckTriggerStay(StateController controller, Collider2D other)
@@ -117,6 +157,9 @@ public class State : ScriptableObject {
         {
             bool? condition = transitions[i].condition.CheckTriggerStay(controller, other);
             SendTransitionMessage(controller, i, condition);
+        }
+        foreach (ConditionedAction conditionedAction in conditionedActions) {
+            conditionedAction.CheckTriggerStay(controller, other);
         }
     }
 
@@ -128,15 +171,20 @@ public class State : ScriptableObject {
 		}
 	}
 
-	private void SendTransitionMessage (StateController controller, int arrayNumber, bool? condition)
+    private void CheckConditionedActions(StateController controller) {
+        foreach (ConditionedAction conditionedAction in conditionedActions) {
+            conditionedAction.CheckCondition(controller);
+        }
+    }
+
+    private void SendTransitionMessage (StateController controller, int arrayNumber, bool? condition)
 	{
 		if (condition.HasValue) {
 			if ((bool)condition) {
-				controller.TransitionToState (transitions [arrayNumber].trueState);
+				controller.TransitionToState (transitions [arrayNumber].trueState, this, transitions[arrayNumber].trueStateTransitionActions);
 			} else {
-				controller.TransitionToState (transitions [arrayNumber].falseState);
+				controller.TransitionToState (transitions [arrayNumber].falseState, this, transitions[arrayNumber].falseStateTransitionActions);
 			}
 		}
 	}
-
 }

@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SightCollider : MonoBehaviour {
-    private Collider2D coll;
     private EnemyData eData;
 
     private void Start()
     {
-        coll = GetComponent<Collider2D>();
         eData = GetComponentInParent<EnemyData>();
     }
 

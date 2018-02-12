@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
+  m_Name: GoblinIdle
+  m_EditorClassIdentifier: 
+  entryActions:
+  - {fileID: 11400000, guid: b01d02e3aeb8af64d84b2179c5820a0b, type: 2}
+  exitActions: []
+  actions: []
+  transitions:
+  - condition: {fileID: 11400000, guid: 08c71f1d52e75094490352d44cfb9209, type: 2}
+    trueState: {fileID: 0}
+    falseState: {fileID: 11400000, guid: 4bc892c377027d749a5a4412dac8235a, type: 2}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 4095e9bcbb6788f468d96cda42becf64, type: 2}
+    trueState: {fileID: 11400000, guid: d7d5b9158d3e28d41a2802130dbeef2c, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 3cef5b6a5fdd841438af533478b6ad8d, type: 2}
+    trueState: {fileID: 11400000, guid: 518459fe2e5e624429982d4ab27e8905, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 2bb4821e1ec33874c8a81367cebd8826, type: 2}
+    trueState: {fileID: 11400000, guid: 9747885ebfa01454bb2c49908b52270f, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  conditionedActions: []
+  hasExitTime: 0
+  exitTimer: 0
+  useRandomTimer: 0
+  minTime: 0
+  maxTime: 0
+  nextState: {fileID: 0}
+  timeOutActions: []

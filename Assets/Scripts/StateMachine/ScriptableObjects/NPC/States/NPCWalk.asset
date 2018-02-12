@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
+  m_Name: NPCWalk
+  m_EditorClassIdentifier: 
+  entryActions:
+  - {fileID: 11400000, guid: dc76a975ab0e951478fc2eb2c932c178, type: 2}
+  exitActions: []
+  actions:
+  - {fileID: 11400000, guid: dc76a975ab0e951478fc2eb2c932c178, type: 2}
+  transitions:
+  - condition: {fileID: 11400000, guid: c2e0b5a761e174f4191ab8f714398585, type: 2}
+    trueState: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
+    falseState: {fileID: 0}
+  hasExitTime: 1
+  exitTimer: 0
+  useRandomTimer: 1
+  minTime: 2
+  maxTime: 14
+  nextState: {fileID: 11400000, guid: b1d762ce8571ec147aac67aa5986228c, type: 2}

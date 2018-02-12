@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f43512e3051758e46be5b56bc0bd6971, type: 3}
+  m_Name: SpawnAttackHitbox
+  m_EditorClassIdentifier: 
+  gameObject: {fileID: 1427978115459944, guid: 372b042a51c2199438e09f72c6921ef3, type: 2}
+  positionOffset: {x: 0, y: 0}
+  isChild: 1
+  hasTarget: 0
