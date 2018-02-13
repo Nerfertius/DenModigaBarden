@@ -192,7 +192,57 @@ MonoBehaviour:
   canWalk: 0
   waitTime: 0
   mood: 0
-  conversation: []
+  conversation:
+  - texts:
+    - text: That big old loaf!
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "He\u2019s been crying in the corner all day. He is scaring all the customers
+        away."
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: Help me will you?
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 3
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
+  - texts:
+    - text: "You can\u2019t leave him like this, maybe there\u2019s a way to calm
+        him down\u2026"
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "You\u2019re a bard right? Play him a song."
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 3
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
+  - texts:
+    - text: Thank you kindly
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 4
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}

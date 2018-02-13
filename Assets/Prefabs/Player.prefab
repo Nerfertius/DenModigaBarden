@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 82388747519707106}
   - component: {fileID: 82866784124388466}
   m_Layer: 13
-  m_Name: sprite_test
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: 0e52b623b548f4041b2f93fe07d23983, type: 2}
+  previousState: {fileID: 0}
   data: {fileID: 0}
   anim: {fileID: 0}
   sprRend: {fileID: 0}
@@ -391,10 +392,9 @@ MonoBehaviour:
   health: 3
   maxSpeed: 2.36
   speedMod: 40
-  defaultjumpPower: 300
+  jumpPower: 280
   boostedjumpPower: 400
   doubleJumpPower: 300
-  jumpPower: 280
   climbSpeed: 2.1
   groundLayer:
     serializedVersion: 2
@@ -405,7 +405,6 @@ MonoBehaviour:
   moveHorizontal: 0
   moveVertical: 0
   movement: {x: 0, y: 0}
-  startScale: {x: 0, y: 0}
   body: {fileID: 0}
   groundCheck: {fileID: 0}
   col: {fileID: 0}
@@ -428,6 +427,10 @@ MonoBehaviour:
   controller: {fileID: 0}
   hitInvincibilityDuration: 1
   hitAngle: {x: 0, y: 0}
+  goIdle: 0
+  goWalk: 0
+  goAir: 0
+  goCrouch: 0
   melodyData:
     hasDoubleJump: 0
     melodies: []
@@ -436,8 +439,7 @@ MonoBehaviour:
     JumpMelodyProjectile: {fileID: 0}
     MagicResistMelodyProjectile: {fileID: 0}
     SleepMelodyProjectile: {fileID: 0}
-    justStartedPlaying: 0
-    lastShotProjectileTime: 0
+    playingFlute: 0
     projectileCooldown: 0.5
     MelodyRange: {fileID: 0}
     highPitchValue: 2

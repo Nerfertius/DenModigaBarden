@@ -164,7 +164,66 @@ MonoBehaviour:
   mood: 0
   conversation:
   - texts:
-    - text: "Hall\xE5"
+    - text: See anything you like?
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: I have everything you need for a good vampire hunt.
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "Of course, there aren\u2019t any vampires left"
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 0
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
+  - texts:
+    - text: "You\u2019re welcome."
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 0
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
+  - texts:
+    - text: I remember when this valley was nothing but a thick, dark forest, vampires
+        lurking in every tree.
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "Those were the days\u2026"
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 0
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
+  - texts:
+    - text: Why do I need a pie for vampire hunting? Huhuh. Since the vampires disappeared
+        business has been rather slow, so I had to pick up a new hobby.
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: I make garlic pies!
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: Fancy a slice?
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "No? That\u2019s more pie for me then huhuh."
       mood: 0
       size: {x: 0, y: 0}
     condition:

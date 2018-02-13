@@ -123,7 +123,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.59}
+  m_Offset: {x: 0, y: -0.5}
   m_Size: {x: 2, y: 3}
   m_Direction: 0
 --- !u!95 &95877135413254524
@@ -162,7 +162,103 @@ MonoBehaviour:
   canWalk: 0
   waitTime: 0
   mood: 0
-  conversation: []
+  conversation:
+  - texts:
+    - text: Bwaaaaaaaaaaaaaaaaaa!
+      mood: 2
+      size: {x: 0, y: 0}
+    - text: Buuuuuhuhhuhhuu!
+      mood: 2
+      size: {x: 0, y: 0}
+    - text: Huuguhuguhugugh!
+      mood: 2
+      size: {x: 0, y: 0}
+    condition:
+      condition: 0
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
+  - texts:
+    - text: '*sniff sniff*'
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "Oh, hello. I didn\u2019t see you."
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: Someone stole all the furniture from my house.
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: I worked so hard to be able to afford it all. Now I have to save money
+        for at least two weeks before I can buy more.
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 2
+      goComp: {fileID: 1009171659886704, guid: ecd2daa58a3e6e6478b78712b5aa8612, type: 2}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
+  - texts:
+    - text: Would you do me a favor?
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: Investigate the scene of the crime, maybe the culprit left a trace.
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: Just be aware of my magical security system, it will obliterate you on
+        contact.
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "It didn\u2019t stop the thief though\u2026"
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "Worthless piece of\u2026"
+      mood: 3
+      size: {x: 0, y: 0}
+    - text: Please look in my house for clues.
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 2
+      goComp: {fileID: 1009171659886704, guid: ecd2daa58a3e6e6478b78712b5aa8612, type: 2}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
+  - texts:
+    - text: Did you find anything?
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "\u2026"
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: Bwaaaaaaaaaaaaaaa!
+      mood: 2
+      size: {x: 0, y: 0}
+    - text: Huuuuuhhuuhuuuuu!
+      mood: 2
+      size: {x: 0, y: 0}
+    - text: AAAAAAAAARRGH!
+      mood: 2
+      size: {x: 0, y: 0}
+    condition:
+      condition: 1
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 1
+      consumeItem: 1
+    speakOnce: 0
+    spoken: 0
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}

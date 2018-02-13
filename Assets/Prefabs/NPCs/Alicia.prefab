@@ -192,7 +192,61 @@ MonoBehaviour:
   canWalk: 0
   waitTime: 0
   mood: 0
-  conversation: []
+  conversation:
+  - texts:
+    - text: Hey, look what I found! It was just lying around in that big house, so
+        I took it.
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "Doesn\u2019t it look great in here? It really ties the room together!"
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "Come over here, I wanna tell you something\u2026"
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 0
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 1
+    spoken: 0
+  - texts:
+    - text: "Hey listen, you\u2019re not mad are you? About what happened before I
+        mean."
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "You know it\u2019s not personal. We all have different roles, but we\u2019re
+        all important, like a puzzle or something."
+      mood: 0
+      size: {x: 0, y: 0}
+    - text: "Maybe that sounds cheesy, but it\u2019s true!"
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 0
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 1
+    spoken: 0
+  - texts:
+    - text: See you around!
+      mood: 0
+      size: {x: 0, y: 0}
+    condition:
+      condition: 0
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+    speakOnce: 0
+    spoken: 0
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
