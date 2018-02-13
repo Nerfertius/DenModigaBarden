@@ -105,7 +105,7 @@ public class PlayState : GameState
                 //****************NOTES****************
                 if (notesBg == null)
                     notesBg = playCanvas.transform.Find("UINotes").GetComponent<Image>();
-                if (player.currentState.name == "PlayerPlayMelody")
+                if (Input.GetButton("PlayMelody"))
                 {
                     CanvasGroup cg = notesBg.GetComponent<CanvasGroup>();
                     cg.alpha = 1;
