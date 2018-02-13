@@ -27,6 +27,9 @@ public class EnemyData : MelodyInteractableData
     private bool isTouchingPlayer = false;
     public bool switchingCollider = false;
 
+    [HideInInspector] public ParticleSystem sleepSFXPrefab;
+    [HideInInspector] public ParticleSystem sleepSFXObject;
+
     private void Awake()
     {
         startPos = transform.position;
@@ -67,6 +70,7 @@ public class EnemyData : MelodyInteractableData
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         harmful = true;
+        sleepSFXPrefab = Resources.Load<ParticleSystem>("SFX/Sleep SFX");
     }
 
     public void OnEnable()
