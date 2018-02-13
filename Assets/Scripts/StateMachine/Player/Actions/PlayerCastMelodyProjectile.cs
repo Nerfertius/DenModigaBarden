@@ -37,6 +37,8 @@ public class PlayerCastMelodyProjectile : StateAction {
             
             MelodyProjectile melodyProjectile = newProjectile.GetComponent<MelodyProjectile>();
             melodyProjectile.Init(controller.transform.position + offset, facingRight);
+
+            mData.projectileCooldownTimer.Start();
         }
     }
 }
