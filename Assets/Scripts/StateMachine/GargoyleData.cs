@@ -9,7 +9,7 @@ public class GargoyleData : EnemyData {
 
     [HideInInspector] public Vector2 velocityBeforeFrozen;
 
-
+    public ColorBlinkData frozenColorBlinkData;
 
     protected override void Start() {
         base.Start();

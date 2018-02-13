@@ -13,9 +13,6 @@ public class GargoyleIdleEnter : StateAction {
         data.dashCollider.enabled = false;
         data.idleCollider.enabled = true;
 
-        data.rb.velocity = new Vector2(0, data.rb.velocity.y);
-        data.transform.Translate(new Vector3(-0.8f * data.transform.localScale.x, 0.5f, 0));
-
         data.ToggleColliderSwitchCoroutine();
     }
 

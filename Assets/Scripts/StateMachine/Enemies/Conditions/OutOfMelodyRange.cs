@@ -6,6 +6,9 @@ using UnityEngine;
 public class OutOfMelodyRange : Condition {
 
     public override bool? CheckTriggerExit(StateController controller, Collider2D other) {
-        return other.tag == "MelodyRange";
+        if(other != null) {
+            return other.tag == "MelodyRange";
+        }
+        return false;
     }
 }

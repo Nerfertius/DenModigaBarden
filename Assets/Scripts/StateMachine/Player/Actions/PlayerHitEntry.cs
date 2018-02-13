@@ -9,11 +9,5 @@ public class PlayerHitEntry : StateAction
     {
         PlayerData data = (PlayerData)controller.data;
         controller.GetComponent<OnHitEffect>().enabled = true;
-
-        data.melodyData.currentMelody = null;
-        data.melodyData.playingFlute = false;
-        data.melodyData.MelodyRange.enabled = false;
-        data.melodyData.PlayedNotes.Clear();
-        controller.anim.SetBool("Channeling", false);
     }
 }

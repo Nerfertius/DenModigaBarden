@@ -6,14 +6,8 @@ public class MelodyInteractableData : Data {
 
     [HideInInspector] public MelodyDebuffData melodyDebuffData = new MelodyDebuffData();
 
-    // Sleep particle system
-    public ParticleSystem noteFX;
-    [HideInInspector] public ParticleSystem.TextureSheetAnimationModule noteAnim;
-
     private void Start() {
         melodyDebuffData.Init(this.gameObject);
-
-        noteAnim = noteFX.textureSheetAnimation;
     }
 
     [System.Serializable]

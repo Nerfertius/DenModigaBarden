@@ -9,18 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
-  m_Name: GoblinSleepState
+  m_Name: EvilEyeSleepState
   m_EditorClassIdentifier: 
   entryActions:
   - {fileID: 11400000, guid: 96e7434e5c1ebe04e953c12c9b802c37, type: 2}
-  - {fileID: 11400000, guid: 1f13e97941819644db876bf142eec1c2, type: 2}
-  - {fileID: 11400000, guid: bdd6b8e21679ec34c9079be6c45f64f0, type: 2}
   exitActions:
   - {fileID: 11400000, guid: c55257aabaf148d43b50b3a96c7c5c60, type: 2}
   actions: []
   transitions:
   - condition: {fileID: 11400000, guid: 9009e5388d814064fb15c7c705e1f9af, type: 2}
-    trueState: {fileID: 11400000, guid: 1d3c57d757d88194aa144b1e467ac090, type: 2}
+    trueState: {fileID: 11400000, guid: 323ddac749dda1944b582fd0d668b412, type: 2}
     falseState: {fileID: 0}
     trueStateTransitionActions: []
     falseStateTransitionActions: []
