@@ -163,7 +163,6 @@ public class PlayerData : Data
         playerLayer = LayerMask.NameToLayer("Player");
         
         items = new int[System.Enum.GetNames(typeof(ItemType)).Length];
-        jumpPower = jumpPower;
 
         currentRespawnOrder = -1;
         respawnLocation = transform;

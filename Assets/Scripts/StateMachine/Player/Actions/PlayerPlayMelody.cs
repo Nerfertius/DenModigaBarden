@@ -55,6 +55,7 @@ public class PlayerPlayMelody : StateAction {
             }
             if (!melodyPlayed) {
                 mData.currentMelody = null;
+                mData.playingFlute = false;
                 mData.MelodyRange.enabled = false;
                 controller.anim.SetBool("Channeling", false);
             }
