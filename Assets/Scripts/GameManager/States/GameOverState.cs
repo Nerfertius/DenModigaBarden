@@ -8,4 +8,10 @@ public class GameOverState : GameState {
     {
         this.gm = gm;
     }
+    
+    public override void enter()
+    {
+        gm.player.CallRespawn();
+        gm.switchState(new PlayState(gm));
+    }
 }

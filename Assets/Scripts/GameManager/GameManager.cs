@@ -11,11 +11,14 @@ public class GameManager : MonoBehaviour {
 
     public GameState current = null;
 
+    public PlayerData player;
+
     public Sprite fullHeart, halfHeart, emptyHeart;
     public Sprite[] notes = new Sprite[5];
 
     void Start() {
         instance = this;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
         if (current == null)
         {
             switchState(new PlayState(this));
@@ -28,7 +31,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        if(current != null)
+        if (current != null)
             current.update();
     }
 
