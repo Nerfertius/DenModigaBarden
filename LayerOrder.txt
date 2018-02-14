@@ -1,11 +1,3 @@
-Sky
-Mountains
-Landscape1
-Landscape2
-Landscape3
-Cloud1
-Cloud2
-Cloud3
 Background1
 Background2
 Ground (Grid)
@@ -19,3 +11,14 @@ Foreground1
 Foreground2
 UI
 FadeIn/Out
+
+
+------Z-VALUE BASED-------
+Sky
+Mountains
+Landscape1
+Landscape2
+Landscape3
+Cloud1
+Cloud2
+Cloud3
