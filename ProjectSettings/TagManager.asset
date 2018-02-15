@@ -49,3 +49,30 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2564884289
+    locked: 0
+  - name: Ground
+    uniqueID: 1672650429
+    locked: 0
+  - name: Midground
+    uniqueID: 2122280999
+    locked: 0
+  - name: Entities
+    uniqueID: 2004588891
+    locked: 0
+  - name: Player
+    uniqueID: 1549707187
+    locked: 0
+  - name: Textboxes
+    uniqueID: 1360546205
+    locked: 0
+  - name: Foreground
+    uniqueID: 1446626565
+    locked: 0
+  - name: UI
+    uniqueID: 2264422871
+    locked: 0
+  - name: FadeIn/Out
+    uniqueID: 207866609
+    locked: 0
