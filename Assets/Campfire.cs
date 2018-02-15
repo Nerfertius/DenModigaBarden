@@ -18,16 +18,29 @@ public class Campfire : MonoBehaviour
     {
         if (collision.CompareTag("Player") && anim.GetBool("Active") == false)
         {
-            if (collision.GetComponent<PlayerData>().currentRespawnOrder < order)
+            PlayerData.player.campfire = this;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            PlayerData.player.campfire = null;
+        }
+    }
+
+    public void SetSpawn(PlayerData data)
+    {
+        if (data.currentRespawnOrder < order)
+        {
+            anim.SetBool("Active", true);
+            if (data.respawnLocation.GetComponent<Campfire>())
             {
-                anim.SetBool("Active", true);
-                if (collision.GetComponent<PlayerData>().respawnLocation.GetComponent<Campfire>())
-                {
-                    collision.GetComponent<PlayerData>().respawnLocation.GetComponent<Animator>().SetBool("Active", false);
-                }
-                collision.GetComponent<PlayerData>().respawnLocation = transform;
-                collision.GetComponent<PlayerData>().currentRespawnOrder = order;
+                data.respawnLocation.GetComponent<Animator>().SetBool("Active", false);
             }
+            data.respawnLocation = transform;
+            data.currentRespawnOrder = order;
         }
     }
 }
