@@ -266,7 +266,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -772,14 +772,8 @@ ParticleSystem:
           outSlope: 0
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.8981707
-          value: 0.739891
-          inSlope: -0.9297156
-          outSlope: -0.9297156
-          tangentMode: 0
-        - serializedVersion: 2
           time: 1
-          value: 0.15028381
+          value: 0
           inSlope: -2
           outSlope: -2
           tangentMode: 0
@@ -1166,7 +1160,7 @@ ParticleSystem:
     tilesX: 1
     tilesY: 5
     animationType: 1
-    rowIndex: 1
+    rowIndex: 0
     cycles: 1
     uvChannelMask: -1
     flipU: 0

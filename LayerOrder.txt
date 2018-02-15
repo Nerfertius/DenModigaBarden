@@ -1,14 +1,13 @@
-Background1
-Background2
+---------SORTING LAYERS------------
+
+Default (not used)
+Background
 Ground (Grid)
-Objects (Levers, campfires, houses, etc.)
-Background effects (Flames, smoke, etc.)
+Midground (Levers, campfires, houses, etc.)
 Entities (Enemies, NPCs, animals)
 Player
-Foreground effects (Notes, projectiles, etc.)
 Textboxes
-Foreground1
-Foreground2
+Foreground
 UI
 FadeIn/Out
 

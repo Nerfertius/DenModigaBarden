@@ -10,7 +10,7 @@ public class PlayerPlayMelody : StateAction {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
-        if (Input.GetButton("PlayMelody")) {
+        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody") > 0.75f) {
             mData.playingFlute = true;
             data.MelodyStopedPlaying(mData.currentMelody);
             mData.currentMelody = null;
@@ -44,7 +44,7 @@ public class PlayerPlayMelody : StateAction {
         }
 
 
-        if (Input.GetButtonUp("PlayMelody")) {
+        if (Input.GetButtonUp("PlayMelody") || (Input.GetAxisRaw("PlayMelody") < 0.75f && Input.GetAxisRaw("PlayMelody") > 0)) {
             bool melodyPlayed = false;
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {
