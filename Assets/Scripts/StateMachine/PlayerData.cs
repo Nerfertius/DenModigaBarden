@@ -9,7 +9,9 @@ public class PlayerData : Data
 
     //Instance
     public float health = 3;
-	[Header("Movement Settings")]
+    public float startMagicShieldHealth;
+     public float magicShieldHealth = 0;
+    [Header("Movement Settings")]
 	[Range(0, 10)] public float maxSpeed;
 	[Range(0, 100)] public float speedMod;
     [Range(100, 500)] public float jumpPower;
@@ -59,6 +61,7 @@ public class PlayerData : Data
     [HideInInspector] public CapsuleCollider2D collider;
     [HideInInspector] public AudioSource audioSource;
     [HideInInspector] public StateController controller;
+    public ObjectPool audioSourcePool; // set in inspector
 
 
     // Hit by enemies
@@ -144,6 +147,30 @@ public class PlayerData : Data
             projectileCooldownTimer = new Timer(projectileCooldown);
             projectileCooldownTimer.Start();
             standardPitchValue = 1;
+        }
+    }
+
+    public void MelodyPlayed(Melody.MelodyID ?id) {
+        switch (id) {
+            case Melody.MelodyID.JumpMelody:
+                break;
+            case Melody.MelodyID.MagicResistMelody:
+                magicShieldHealth = startMagicShieldHealth;
+                break;
+            case Melody.MelodyID.SleepMelody:
+                break;
+        }
+    }
+
+    public void MelodyStopedPlaying(Melody.MelodyID ?id) {
+        switch (id) {
+            case Melody.MelodyID.JumpMelody:
+                break;
+            case Melody.MelodyID.MagicResistMelody:
+                magicShieldHealth = 0;
+                break;
+            case Melody.MelodyID.SleepMelody:
+                break;
         }
     }
 

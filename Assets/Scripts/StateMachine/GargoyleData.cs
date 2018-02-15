@@ -10,8 +10,9 @@ public class GargoyleData : EnemyData {
     [HideInInspector] public Vector2 velocityBeforeFrozen;
 
     public ColorBlinkData frozenColorBlinkData;
-
+    [HideInInspector] public PlatformEffector2D platformEffector;
     protected override void Start() {
         base.Start();
+        platformEffector = GetComponent<PlatformEffector2D>();
     }
 }

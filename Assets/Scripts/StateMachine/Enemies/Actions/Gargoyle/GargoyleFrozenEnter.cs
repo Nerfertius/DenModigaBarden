@@ -13,6 +13,7 @@ public class GargoyleFrozenEnter : StateAction {
         data.rb.constraints = RigidbodyConstraints2D.FreezeAll;
         data.gameObject.layer = 8; // Blockable
         data.harmful = false;
+        data.platformEffector.enabled = true;
     }
 
 }

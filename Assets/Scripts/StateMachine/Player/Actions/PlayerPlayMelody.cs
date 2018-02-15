@@ -12,6 +12,7 @@ public class PlayerPlayMelody : StateAction {
 
         if (Input.GetButton("PlayMelody")) {
             mData.playingFlute = true;
+            data.MelodyStopedPlaying(mData.currentMelody);
             mData.currentMelody = null;
             controller.anim.SetBool("Channeling", true);
 
@@ -50,10 +51,14 @@ public class PlayerPlayMelody : StateAction {
                     mData.currentMelody = melody.melodyID;
                     mData.MelodyRange.enabled = true;
                     melodyPlayed = true;
+
+                    data.MelodyPlayed(melody.melodyID);
+
                     break;
                 }
             }
             if (!melodyPlayed) {
+                data.MelodyStopedPlaying(mData.currentMelody);
                 mData.currentMelody = null;
                 mData.playingFlute = false;
                 mData.MelodyRange.enabled = false;
