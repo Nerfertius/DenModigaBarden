@@ -64,7 +64,6 @@ public class PlayerData : Data
     [HideInInspector] public CapsuleCollider2D collider;
     [HideInInspector] public AudioSource audioSource;
     [HideInInspector] public StateController controller;
-    public ObjectPool audioSourcePool; // set in inspector
 
 
     // Hit by enemies
