@@ -263,6 +263,11 @@ public class PlayerData : Data
         audioSource.Play();
     }
 
+    public void CallRespawn()
+    {
+        StartCoroutine(Respawn());
+    }
+
     public IEnumerator Respawn()
     {
         CameraFX.FadeIn();
@@ -271,6 +276,7 @@ public class PlayerData : Data
         body.velocity = Vector2.zero;
         jumping = false;
         melodyData.currentMelody = null;
+        health = 3;
         respawnLocation.GetComponent<Campfire>().mb.UpdateMapBounds();
         Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
         CameraFX.FadeOut();

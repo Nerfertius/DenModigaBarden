@@ -148,15 +148,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
+  startScale: {x: 0, y: 0}
+  startDirection: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   canWalk: 0
   waitTime: 0
-  texts:
-  - Byt denna text
+  mood: 0
+  conversation: []
   textSpeed: 20
   fontSize: 0
+  offset: {x: 0, y: 0}
   pitchDeviation: 0.3
+  currentConvIndex: 0
+  currentConv: []
   currentText: 0
   currentChar: 0
   curTime: 0
@@ -169,7 +174,9 @@ MonoBehaviour:
   basePitch: 1
   currentString: 
   playSound: 0
+  animator: {fileID: 0}
   playerInRange: 0
+  player: {fileID: 0}
 --- !u!114 &114815195913277542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: b1d762ce8571ec147aac67aa5986228c, type: 2}
+  previousState: {fileID: 0}
   data: {fileID: 0}
   anim: {fileID: 0}
   sprRend: {fileID: 0}
@@ -221,7 +229,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: e0420393131af844d9066595bcefbbef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

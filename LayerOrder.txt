@@ -1,0 +1,24 @@
+Background1
+Background2
+Ground (Grid)
+Objects (Levers, campfires, houses, etc.)
+Background effects (Flames, smoke, etc.)
+Entities (Enemies, NPCs, animals)
+Player
+Foreground effects (Notes, projectiles, etc.)
+Textboxes
+Foreground1
+Foreground2
+UI
+FadeIn/Out
+
+
+------Z-VALUE BASED-------
+Sky
+Mountains
+Landscape1
+Landscape2
+Landscape3
+Cloud1
+Cloud2
+Cloud3
