@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MainMenuState : GameState {
 
     private Button playBtn, optionsBtn, quitBtn;
-    private Canvas pauseCanvas;
     private string canvas = "MainMenuCanvas", play = "PlayBtn", options = "OptionsBtn", quit = "QuitBtn";
 
     public MainMenuState(GameManager gm)
@@ -16,12 +15,11 @@ public class MainMenuState : GameState {
 
     public override void enter()
     {
-        pauseCanvas = GameObject.Find("/" + canvas).GetComponent<Canvas>();
-        playBtn = GameObject.Find("/" + canvas + "/" + play).GetComponent<Button>();
-        optionsBtn = GameObject.Find("/" + canvas + "/" + options).GetComponent<Button>();
-        quitBtn = GameObject.Find("/" + canvas + "/" + quit).GetComponent<Button>();
+        playBtn = gm.MainMenuCanvas.transform.Find(play).GetComponent<Button>();
+        optionsBtn = gm.MainMenuCanvas.transform.Find(options).GetComponent<Button>();
+        quitBtn = gm.MainMenuCanvas.transform.Find(quit).GetComponent<Button>();
 
-        pauseCanvas.enabled = true;
+        gm.MainMenuCanvas.enabled = true;
         if (playBtn)
             playBtn.onClick.AddListener(swPlayState);
         if (optionsBtn)
@@ -32,16 +30,24 @@ public class MainMenuState : GameState {
 
     public override void update()
     {
-        
+
+    }
+
+    public override void exit()
+    {
+        gm.MainMenuCanvas.enabled = false;
+        playBtn.onClick.RemoveAllListeners();
+        optionsBtn.onClick.RemoveAllListeners();
+        quitBtn.onClick.RemoveAllListeners();
     }
 
     void swPlayState()
     {
-        gm.switchState(new PlayState(gm));
+        gm.switchState(new CinematicState(gm));
     }
 
     void OptionsState() {
-
+        Debug.Log("Options");
     }
 
     void QuitGame()

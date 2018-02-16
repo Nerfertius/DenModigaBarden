@@ -16,12 +16,21 @@ public class GameManager : MonoBehaviour {
     public Sprite fullHeart, halfHeart, emptyHeart;
     public Sprite[] notes = new Sprite[5];
 
-    void Start() {
+    [HideInInspector]
+    public Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas;
+
+    private AsyncOperation async;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
         instance = this;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
+    }
+
+    void Start() {
         if (current == null)
         {
-            switchState(new PlayState(this));
+            switchState(new MainMenuState(this));
         }
         else {
             current.enter();
@@ -52,5 +61,21 @@ public class GameManager : MonoBehaviour {
     public void showCanvas(string canvas) {
         GameObject go = GameObject.Find("/" + canvas);
         go.GetComponent<CanvasGroup>().alpha = 1;
+    }
+
+    public AsyncOperation loadScene(int buildIndex) {
+        StartCoroutine(loadRoutine(buildIndex));
+        return async;
+    }
+
+    private IEnumerator loadRoutine(int buildindex) {
+        async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildindex);
+        async.allowSceneActivation = false;
+
+        Debug.Log("loading");
+
+        yield return async;
+
+        Debug.Log("Loaded");
     }
 }

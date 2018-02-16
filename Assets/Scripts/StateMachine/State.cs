@@ -9,7 +9,7 @@ public class State : ScriptableObject {
 	public StateAction[] exitActions;
 	public StateAction[] actions;
 	public Transition[] transitions;
-    public ConditionedAction[] conditionedActions;
+    public ConditionedAction[] conditionedActions = new ConditionedAction[0];
 
 	public bool hasExitTime;
 	public float exitTimer;

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 223913188315594302}
   - component: {fileID: 114920463093205562}
   - component: {fileID: 114127045534064500}
+  - component: {fileID: 114628982960929156}
   m_Layer: 5
   m_Name: WorldSpaceCanvas
   m_TagString: Untagged
@@ -45,6 +46,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114628982960929156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722224716441010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644eb782b31fcce45be73f0bf7341115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: 3
 --- !u!114 &114920463093205562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,8 +96,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -2030544425
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!224 &224852968021021820
 RectTransform:
