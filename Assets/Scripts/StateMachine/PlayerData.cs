@@ -9,7 +9,9 @@ public class PlayerData : Data
 
     //Instance
     public float health = 3;
-	[Header("Movement Settings")]
+    public float startMagicShieldHealth;
+     public float magicShieldHealth = 0;
+    [Header("Movement Settings")]
 	[Range(0, 10)] public float maxSpeed;
 	[Range(0, 100)] public float speedMod;
     [Range(100, 500)] public float jumpPower;
@@ -36,6 +38,7 @@ public class PlayerData : Data
 	[HideInInspector] public Transform ladderTop;
 
     [HideInInspector] public Vector2 spawnLocation;
+    [HideInInspector] public Campfire campfire;
 
     // Movement
     [HideInInspector] public bool jumping;
@@ -47,6 +50,8 @@ public class PlayerData : Data
     // Note particle system
     public ParticleSystem noteFX;
     [HideInInspector] public ParticleSystem.TextureSheetAnimationModule noteAnim;
+    public ParticleSystem melodyFXPrefab;
+    private ParticleSystem mfx;
 
     // Variables used by Camera
     [HideInInspector] public bool inTransit;
@@ -97,6 +102,10 @@ public class PlayerData : Data
         [HideInInspector] public GameObject MagicResistMelodyProjectile;
         [HideInInspector] public GameObject SleepMelodyProjectile;
 
+        [HideInInspector] public AudioClip jumpMelodySong;
+        [HideInInspector] public AudioClip magicMelodySong;
+        [HideInInspector] public AudioClip sleepMelodySong;
+
         [HideInInspector] public Melody.MelodyID? currentMelody = null;
         [HideInInspector] public bool playingFlute = false;
 
@@ -140,10 +149,58 @@ public class PlayerData : Data
             MagicResistMelodyProjectile = Resources.Load("MelodyProjectiles/MagicResistMelodyProjectile") as GameObject;
             SleepMelodyProjectile = Resources.Load("MelodyProjectiles/SleepMelodyProjectile") as GameObject;
 
+            jumpMelodySong = Resources.Load("MelodySongs/song of great heights final") as AudioClip;
+            magicMelodySong = Resources.Load("MelodySongs/song of the great mana final") as AudioClip;
+            sleepMelodySong = Resources.Load("MelodySongs/song of the sleeping beauty final") as AudioClip;
+
             doubleJumpTimer = new Timer(0.3f);
             projectileCooldownTimer = new Timer(projectileCooldown);
             projectileCooldownTimer.Start();
             standardPitchValue = 1;
+        }
+    }
+
+    public void MelodyPlayed(Melody.MelodyID ?id) {
+        switch (id) {
+            case Melody.MelodyID.JumpMelody:
+                audioSource.clip = melodyData.jumpMelodySong;
+                break;
+            case Melody.MelodyID.MagicResistMelody:
+                audioSource.clip = melodyData.magicMelodySong;
+                magicShieldHealth = startMagicShieldHealth;
+                break;
+            case Melody.MelodyID.SleepMelody:
+                audioSource.clip = melodyData.sleepMelodySong;
+                if (campfire != null)
+                {
+                    campfire.SetSpawn(this);
+                }
+                break;
+        }
+        audioSource.volume = 0;
+        StartCoroutine(AudioFadeIn());
+        audioSource.Play();
+        audioSource.loop = true;
+        SpawnSFX();
+    }
+
+    public void MelodyStopedPlaying(Melody.MelodyID ?id) {
+        audioSource.clip = null;
+        audioSource.loop = false;
+        if (mfx != null)
+        {
+            Destroy(mfx.gameObject);
+            mfx = null;
+        }
+        switch (id) {
+            case Melody.MelodyID.JumpMelody:
+                
+                break;
+            case Melody.MelodyID.MagicResistMelody:
+                magicShieldHealth = 0;
+                break;
+            case Melody.MelodyID.SleepMelody:
+                break;
         }
     }
 
@@ -236,6 +293,20 @@ public class PlayerData : Data
         audioSource.Play();
     }
 
+    public IEnumerator AudioFadeIn()
+    {
+        while (audioSource.volume != 1)
+        {
+            audioSource.volume += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    public void CallRespawn()
+    {
+        StartCoroutine(Respawn());
+    }
+
     public IEnumerator Respawn()
     {
         CameraFX.FadeIn();
@@ -244,8 +315,16 @@ public class PlayerData : Data
         body.velocity = Vector2.zero;
         jumping = false;
         melodyData.currentMelody = null;
+        health = 3;
         respawnLocation.GetComponent<Campfire>().mb.UpdateMapBounds();
         Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
         CameraFX.FadeOut();
+    }
+
+    void SpawnSFX()
+    {
+        mfx = Instantiate(melodyFXPrefab, new Vector2(transform.position.x - 0.75f, collider.bounds.max.y), Quaternion.Euler(melodyFXPrefab.transform.rotation.eulerAngles));
+        mfx.GetComponent<FXdestroyer>().hasPlayed = true;
+        mfx.transform.SetParent(transform);
     }
 }

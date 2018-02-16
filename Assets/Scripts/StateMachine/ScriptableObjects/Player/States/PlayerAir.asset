@@ -14,7 +14,8 @@ MonoBehaviour:
   entryActions:
   - {fileID: 11400000, guid: a6d2aaba24732bb43b2616b3b58496d7, type: 2}
   - {fileID: 11400000, guid: 23282b81ffab6c84ea57816b87e8fedf, type: 2}
-  exitActions: []
+  exitActions:
+  - {fileID: 11400000, guid: 2ebdba8ca1732de4d8f4b6cf52f8c801, type: 2}
   actions:
   - {fileID: 11400000, guid: d687222b3a9f9f64fa2b9e1884805159, type: 2}
   - {fileID: 11400000, guid: 6c8c0c1ec0f4ad54a9ad27c1ba5f1349, type: 2}

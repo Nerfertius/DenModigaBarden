@@ -10,8 +10,9 @@ public class PlayerPlayMelody : StateAction {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
-        if (Input.GetButton("PlayMelody")) {
+        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody") > 0.75f) {
             mData.playingFlute = true;
+            data.MelodyStopedPlaying(mData.currentMelody);
             mData.currentMelody = null;
             controller.anim.SetBool("Channeling", true);
 
@@ -33,7 +34,7 @@ public class PlayerPlayMelody : StateAction {
                     ParticleSystem m_fx = data.noteFX;
                     ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
                     m_anim.rowIndex = note.FXRowNumber;
-                    Instantiate(m_fx, new Vector2(data.transform.position.x, data.spriteRenderer.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
+                    Instantiate(m_fx, new Vector2(data.transform.position.x, data.collider.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
                     m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
                 }
             }
@@ -43,17 +44,21 @@ public class PlayerPlayMelody : StateAction {
         }
 
 
-        if (Input.GetButtonUp("PlayMelody")) {
+        if (Input.GetButtonUp("PlayMelody") || (Input.GetAxisRaw("PlayMelody") < 0.75f && Input.GetAxisRaw("PlayMelody") > 0)) {
             bool melodyPlayed = false;
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {
                     mData.currentMelody = melody.melodyID;
                     mData.MelodyRange.enabled = true;
                     melodyPlayed = true;
+
+                    data.MelodyPlayed(melody.melodyID);
+
                     break;
                 }
             }
             if (!melodyPlayed) {
+                data.MelodyStopedPlaying(mData.currentMelody);
                 mData.currentMelody = null;
                 mData.playingFlute = false;
                 mData.MelodyRange.enabled = false;

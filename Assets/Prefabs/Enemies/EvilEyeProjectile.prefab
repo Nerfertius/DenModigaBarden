@@ -142,9 +142,9 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 200
+  m_SortingLayerID: 2004588891
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Time: 0.3
   m_Parameters:
     serializedVersion: 2
@@ -215,8 +215,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
+  startScale: {x: 0, y: 0}
+  startDirection: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
+  melodyDebuffData:
+    debuffStartPos: {x: 0, y: 0}
+    defaultGravityScale: 1
   player: {fileID: 0}
   speed: 0
   chaseSpeed: 0
@@ -228,6 +233,9 @@ MonoBehaviour:
   sight: {fileID: 0}
   colliders: []
   harmful: 1
+  switchingCollider: 0
+  sleepSFXPrefab: {fileID: 0}
+  sleepSFXObject: {fileID: 0}
 --- !u!114 &114859012884117108
 MonoBehaviour:
   m_ObjectHideFlags: 1

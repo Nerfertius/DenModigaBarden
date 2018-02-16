@@ -1,0 +1,23 @@
+---------SORTING LAYERS------------
+
+Default (not used)
+Background
+Ground (Grid)
+Midground (Levers, campfires, houses, etc.)
+Entities (Enemies, NPCs, animals)
+Player
+Textboxes
+Foreground
+UI
+FadeIn/Out
+
+
+------Z-VALUE BASED-------
+Sky
+Mountains
+Landscape1
+Landscape2
+Landscape3
+Cloud1
+Cloud2
+Cloud3

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
 
     public GameState current = null;
 
+    public PlayerData player;
+
     public Sprite fullHeart, halfHeart, emptyHeart;
     public Sprite[] notes = new Sprite[5];
 
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        if(current != null)
+        if (current != null)
             current.update();
     }
 
