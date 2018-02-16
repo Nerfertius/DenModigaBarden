@@ -27,8 +27,14 @@ public class PlayState : GameState
 
     public override void enter()
     {
-        findPlayer();
-        playCanvas = GameObject.Find("/PlayCanvas");
+        playerData = PlayerData.player;
+        if (playerData) {
+            lastValues = new int[playerData.items.Length];
+            itemIcons = new Image[lastValues.Length];
+        }
+
+        gm.PlayCanvas.enabled = true;
+        playCanvas = gm.PlayCanvas.gameObject;
         hp = playCanvas.transform.Find("HP").GetComponentsInChildren<Image>();
         notesBg = playCanvas.transform.Find("UINotes").GetComponent<Image>();
     }
@@ -184,21 +190,19 @@ public class PlayState : GameState
         }
         else
         {
-            findPlayer();
+            playerData = PlayerData.player;
+            if(lastValues == null)
+                lastValues = new int[playerData.items.Length];
+            if(itemIcons == null)
+                itemIcons = new Image[lastValues.Length];
         }
 
         if (Input.GetButtonDown("Cancel"))
             gm.switchState(new PauseState(gm));
     }
 
-    public void findPlayer()
+    public override void exit()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<StateController>();
-        if (player != null && player.data != null && player.data.GetType() == typeof(PlayerData))
-        {
-            playerData = (PlayerData)player.data;
-            lastValues = new int[playerData.items.Length];
-            itemIcons = new Image[lastValues.Length];
-        }
+        gm.PlayCanvas.enabled = false;
     }
 }

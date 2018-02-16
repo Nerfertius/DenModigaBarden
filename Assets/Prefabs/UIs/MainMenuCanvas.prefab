@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 223198352068512440}
   - component: {fileID: 114622979066877392}
   - component: {fileID: 114755048532984276}
+  - component: {fileID: 114406450006077938}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -243,6 +244,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114406450006077938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067899046227292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644eb782b31fcce45be73f0bf7341115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: 0
 --- !u!114 &114424699196037100
 MonoBehaviour:
   m_ObjectHideFlags: 1

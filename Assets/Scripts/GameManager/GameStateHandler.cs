@@ -8,15 +8,21 @@ public class GameStateHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameManager.ChangeState += ChangeGameState;
-
-        GameManager gm = (GameManager) Object.FindObjectOfType(typeof(GameManager));
-        if (!gm)
-            Debug.LogWarning("Could not find GameManager");
+        
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnEnable()
+    {
+        GameManager.ChangeState += ChangeGameState;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.ChangeState -= ChangeGameState;
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
