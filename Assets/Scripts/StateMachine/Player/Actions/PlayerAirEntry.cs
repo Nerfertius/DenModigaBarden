@@ -10,21 +10,22 @@ public class PlayerAirEntry : StateAction
         PlayerData data = (PlayerData)controller.data;
         data.body.gravityScale = 1;
 
-        if (Mathf.Abs(data.body.velocity.y) == 0 && data.jumping == false)
+        if (data.body.velocity.y == 0 && data.jumping == false)
         {
             if (!data.climbing && !data.falling)
             {
                 data.body.velocity = new Vector2(data.body.velocity.x, 0);
 
-                if(data.melodyData.currentMelody == Melody.MelodyID.JumpMelody) {
+                if(data.melodyData.currentMelody == Melody.MelodyID.JumpMelody)
+                {
                     data.body.AddForce(new Vector2(0, data.boostedjumpPower));
                 }
-                else {
+                else
+                {
                     data.body.AddForce(new Vector2(0, data.jumpPower));
                 }
-                
-                
             }
+
             else if (data.climbing)
             {
                 data.moveHorizontal = Input.GetAxis("Horizontal");
@@ -35,7 +36,7 @@ public class PlayerAirEntry : StateAction
 
             data.melodyData.hasDoubleJump = true;
             data.melodyData.doubleJumpTimer.Start();
-            data.Pause();
+            data.Pause();   // jumping == true
         }
     }
 }
