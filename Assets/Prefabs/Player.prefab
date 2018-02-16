@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114195153534707582}
   - component: {fileID: 95186470628085012}
   - component: {fileID: 82388747519707106}
-  - component: {fileID: 82866784124388466}
+  - component: {fileID: 114540737977927992}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4371184860106240}
+  - component: {fileID: 58036808034956848}
   m_Layer: 13
   m_Name: ground check
   m_TagString: Untagged
@@ -72,8 +73,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461975651749938}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.81, y: 1.051, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.212, y: -0.975, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4371184860106240}
@@ -147,6 +148,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58036808034956848
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646152180992308}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
 --- !u!58 &58493443711893006
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -244,87 +260,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82866784124388466
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461975651749938}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -373,6 +309,19 @@ MonoBehaviour:
   rb: {fileID: 0}
   coll: {fileID: 0}
   stateTimer: 0
+--- !u!114 &114540737977927992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461975651749938}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59f614225fef514786c0b3f4b153995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeTime: 1
+  layerName: 
 --- !u!114 &114994033544878884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,11 +339,11 @@ MonoBehaviour:
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   health: 3
-  startMagicShieldHealth: 0
+  startMagicShieldHealth: 3
   magicShieldHealth: 0
   maxSpeed: 2.36
   speedMod: 40
-  jumpPower: 280
+  jumpPower: 340
   boostedjumpPower: 400
   doubleJumpPower: 300
   climbSpeed: 2.1
@@ -413,12 +362,15 @@ MonoBehaviour:
   ladderBottom: {fileID: 0}
   ladderTop: {fileID: 0}
   spawnLocation: {x: 0, y: 0}
+  campfire: {fileID: 0}
   jumping: 0
   falling: 0
   climbing: 0
   grounded: 0
   climbPause: 0
   noteFX: {fileID: 198554481063968690, guid: 09a1b161aed695041b6f4023ff941a28, type: 2}
+  melodyFXPrefab: {fileID: 198554481063968690, guid: 5d87951dedca2064083a3b05d36123c3,
+    type: 2}
   inTransit: 0
   targetPos: {x: 0, y: 0}
   spriteRenderer: {fileID: 0}
@@ -427,7 +379,6 @@ MonoBehaviour:
   collider: {fileID: 0}
   audioSource: {fileID: 0}
   controller: {fileID: 0}
-  audioSourcePool: {fileID: 0}
   hitInvincibilityDuration: 1
   hitAngle: {x: 0, y: 0}
   goIdle: 0
@@ -442,6 +393,9 @@ MonoBehaviour:
     JumpMelodyProjectile: {fileID: 0}
     MagicResistMelodyProjectile: {fileID: 0}
     SleepMelodyProjectile: {fileID: 0}
+    jumpMelodySong: {fileID: 0}
+    magicMelodySong: {fileID: 0}
+    sleepMelodySong: {fileID: 0}
     playingFlute: 0
     projectileCooldown: 0.5
     MelodyRange: {fileID: 0}
@@ -452,7 +406,7 @@ MonoBehaviour:
   respawnLocation: {fileID: 0}
   defaultMat: {fileID: 0}
   fullFriction: {fileID: 0}
-  volumeScaler: 0
+  volumeScaler: 0.75
 --- !u!212 &212082342265056826
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -467,7 +421,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9497b547ff5ff7d4499a1ffae504a5a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

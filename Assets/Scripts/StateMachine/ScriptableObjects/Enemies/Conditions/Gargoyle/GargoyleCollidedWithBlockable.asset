@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e35fd9b25e4fd54e9b23dcab3bbfe4b, type: 3}
-  m_Name: GargoyleDashCollidedWith
+  m_Script: {fileID: 11500000, guid: 20c15f0aaca80464394b293c35d6fccd, type: 3}
+  m_Name: GargoyleCollidedWithBlockable
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2

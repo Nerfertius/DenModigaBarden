@@ -269,9 +269,12 @@ MonoBehaviour:
   switchingCollider: 0
   sleepSFXPrefab: {fileID: 0}
   sleepSFXObject: {fileID: 0}
+  isHeavy: 1
+  isMagical: 1
   idleCollider: {fileID: 60890881138470964}
   dashCollider: {fileID: 60771466991440520}
   velocityBeforeFrozen: {x: 0, y: 0}
+  previousVelocity: {x: 0, y: 0}
   frozenColorBlinkData:
     minBlinkInterval: 1
     maxBlinkInterval: 0.02

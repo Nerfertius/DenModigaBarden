@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199874282259941278}
   - component: {fileID: 114092683190766910}
   m_Layer: 0
-  m_Name: 'Melody SFX '
+  m_Name: Melody SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

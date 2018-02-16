@@ -30,6 +30,9 @@ public class EnemyData : MelodyInteractableData
     [HideInInspector] public ParticleSystem sleepSFXPrefab;
     [HideInInspector] public ParticleSystem sleepSFXObject;
 
+    public bool isHeavy;
+    public bool isMagical;
+
     private void Awake()
     {
         startPos = transform.position;

@@ -16,7 +16,7 @@ MonoBehaviour:
   exitActions: []
   actions: []
   transitions:
-  - condition: {fileID: 11400000, guid: 71bbfe8e214056f40b56e9ac5622ed53, type: 2}
+  - condition: {fileID: 11400000, guid: 84a77a2947ab8cd4d900664ce97eb6ec, type: 2}
     trueState: {fileID: 11400000, guid: 2b2d5c656d7925241929d07db8f889b4, type: 2}
     falseState: {fileID: 0}
     trueStateTransitionActions:

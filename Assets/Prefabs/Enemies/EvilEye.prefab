@@ -168,6 +168,8 @@ MonoBehaviour:
   switchingCollider: 0
   sleepSFXPrefab: {fileID: 0}
   sleepSFXObject: {fileID: 0}
+  isHeavy: 0
+  isMagical: 1
   frequency: 5
   magnitude: 0.05
   maxFlightDistance: 10

@@ -12,6 +12,7 @@ TagManager:
   - Spawn
   - MelodyRange
   - Hitbox
+  - Breakable
   layers:
   - Default
   - TransparentFX
