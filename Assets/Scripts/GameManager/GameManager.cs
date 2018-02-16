@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour {
     public Sprite fullHeart, halfHeart, emptyHeart;
     public Sprite[] notes = new Sprite[5];
 
-    public PlayerData player;
-
     [HideInInspector]
     public Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas;
 

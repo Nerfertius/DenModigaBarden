@@ -23,7 +23,7 @@ public class NPCTalkAction : StateAction
             Vector3 pos = controller.transform.position;
             if (data.text == null)
             {
-                data.text = Instantiate(textPrefab, GameObject.Find("WorldSpaceCanvas").transform).GetComponentInChildren<Text>();
+                data.text = Instantiate(textPrefab, GameManager.instance.WorldSpaceCanvas.transform).GetComponentInChildren<Text>();
             }
             pos.x += data.offset.x;
             pos.y += (controller.GetComponent<CapsuleCollider2D>().size.y + controller.GetComponent<CapsuleCollider2D>().offset.y) + data.offset.y;
