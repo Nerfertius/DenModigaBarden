@@ -77,7 +77,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4305118505446070}
   m_Layer: 0
-  m_Name: CaveBG
+  m_Name: CaveBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
