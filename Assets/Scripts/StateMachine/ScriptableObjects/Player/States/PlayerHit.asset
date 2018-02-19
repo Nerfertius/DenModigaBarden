@@ -21,7 +21,7 @@ MonoBehaviour:
   transitions: []
   conditionedActions: []
   hasExitTime: 1
-  exitTimer: 1
+  exitTimer: 0.5
   useRandomTimer: 0
   minTime: 0
   maxTime: 0

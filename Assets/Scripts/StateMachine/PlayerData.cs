@@ -67,7 +67,7 @@ public class PlayerData : Data
 
 
     // Hit by enemies
-    public float hitInvincibilityDuration = 1f;
+    public float hitInvincibilityDuration = 1.5f;
     [HideInInspector] public Timer hitInvincibilityTimer;
 
     [HideInInspector] public Vector2 hitAngle;
