@@ -20,7 +20,6 @@ public class PlayerPlayMelody : StateAction {
             controller.anim.SetBool("Channeling", true);
 
             Note notePlayed = null;
-
             if (Input.GetButton("PlayMelodyNoteShift"))
             {
                 foreach (Note note in mData.Notes2) {

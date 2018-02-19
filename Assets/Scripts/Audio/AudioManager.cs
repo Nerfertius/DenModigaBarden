@@ -16,7 +16,8 @@ public class AudioManager : MonoBehaviour
 
     private AudioSourceBuffer note;
 
-    private AudioClip defaultBGM;
+    //public for testing purpose
+    public AudioClip defaultBGM;
     
     private void Start()
     {
@@ -41,15 +42,20 @@ public class AudioManager : MonoBehaviour
     }
 
     private void Update() {
-        foreach(AudioSource s in activeAudioSources) {
-            if(s.time >= s.clip.length) {
-                audioSourcePool.Free(s);
-                activeAudioSources.Remove(s);
+        LinkedListNode<AudioSource> node = activeAudioSources.First;
+
+        while(node != null){
+            if(node.Value.time >= node.Value.clip.length) {
+                audioSourcePool.Free(node.Value);
+                activeAudioSources.Remove(node.Value);
+                
             }
+            node = node.Next;
         }
     }
 
     public void PlayOneShot(AudioClip ac) {
+        Debug.Log(ac);
         AudioSource source = audioSourcePool.Get();
         ResetAudioSource(source);
         source.clip = ac;
