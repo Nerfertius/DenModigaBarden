@@ -34,6 +34,7 @@ public class StateController : MonoBehaviour
     public void ResetStateController()
     {
         currentState = originalState;
+        currentState.DoEntryActions(this);
     }
 
     void Update()

@@ -79,7 +79,8 @@ public class NPCWalkAction : StateAction
 
     private void Patrol(StateController controller)
     {
-        Vector2 velocity = controller.data.currentDirection * 2 * Time.fixedDeltaTime;
+        NPCData nData = (NPCData)controller.data;
+        Vector2 velocity = controller.data.currentDirection * nData.speed * Time.fixedDeltaTime;
         controller.rb.MovePosition((Vector2)controller.transform.position + velocity);
     }
 }

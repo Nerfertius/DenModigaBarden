@@ -6,6 +6,7 @@ public enum NPCMood { Normal, Happy, Sad, Angry, Inherit };
 public enum TalkCondition { None, Item, SpokenWith, convNotSpoken, convSpoken };
 
 public class NPCData : Data {
+    public float speed;
     public bool canWalk = false;
     [HideInInspector] public float waitTime = 0;
 
