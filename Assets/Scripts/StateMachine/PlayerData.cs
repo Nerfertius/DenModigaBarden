@@ -62,7 +62,6 @@ public class PlayerData : Data
     [HideInInspector] public Animator anim;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public CapsuleCollider2D collider;
-    [HideInInspector] public AudioSource audioSource;
     [HideInInspector] public StateController controller;
 
 
@@ -165,30 +164,25 @@ public class PlayerData : Data
     public void MelodyPlayed(Melody.MelodyID ?id) {
         switch (id) {
             case Melody.MelodyID.JumpMelody:
-                audioSource.clip = melodyData.jumpMelodySong;
+                AudioManager.instance.PlayBGM(melodyData.jumpMelodySong);
                 break;
             case Melody.MelodyID.MagicResistMelody:
-                audioSource.clip = melodyData.magicMelodySong;
+                AudioManager.instance.PlayBGM(melodyData.magicMelodySong);
                 magicShieldHealth = startMagicShieldHealth;
                 break;
             case Melody.MelodyID.SleepMelody:
-                audioSource.clip = melodyData.sleepMelodySong;
+                AudioManager.instance.PlayBGM(melodyData.sleepMelodySong);
                 if (campfire != null)
                 {
                     campfire.SetSpawn(this);
                 }
                 break;
         }
-        audioSource.volume = 0;
-        StartCoroutine(AudioFadeIn());
-        audioSource.Play();
-        audioSource.loop = true;
         SpawnSFX();
     }
 
-    public void MelodyStopedPlaying(Melody.MelodyID ?id) {
-        audioSource.clip = null;
-        audioSource.loop = false;
+    public void MelodyStoppedPlaying(Melody.MelodyID ?id) {
+        AudioManager.instance.PlayBGM(null);
         if (mfx != null)
         {
             Destroy(mfx.gameObject);
@@ -235,7 +229,6 @@ public class PlayerData : Data
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
         collider = GetComponent<CapsuleCollider2D>();
         controller = GetComponent<StateController>();
         melodyData.MelodyRange = transform.Find("MelodyRange").GetComponent<CircleCollider2D>();
@@ -271,38 +264,6 @@ public class PlayerData : Data
         climbPause = true;
         yield return new WaitForSeconds(time);
         climbPause = false;
-    }
-
-    public void PlaySound(AudioClip audio)
-    {
-        StartCoroutine(FadeVolume(audio));
-    }
-    
-    [Range(0.1f,1)] public float volumeScaler;
-
-    IEnumerator FadeVolume(AudioClip audio)
-    {
-        float startTime = Time.time;
-
-        while(audioSource.volume > 0)
-        {
-            audioSource.volume = Mathf.Clamp(audioSource.volume - (Time.time - startTime) * volumeScaler, 0, 1);
-            yield return null;
-        }
-        audioSource.Stop();
-        audioSource.volume = 1;
-        
-        audioSource.clip = audio;
-        audioSource.Play();
-    }
-
-    public IEnumerator AudioFadeIn()
-    {
-        while (audioSource.volume != 1)
-        {
-            audioSource.volume += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
     }
 
     public void CallRespawn()
