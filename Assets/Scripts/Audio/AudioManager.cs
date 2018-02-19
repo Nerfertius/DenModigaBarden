@@ -31,10 +31,12 @@ public class AudioManager : MonoBehaviour
         activeAudioSources = new LinkedList<AudioSource>();
 
         bgm = new AudioSourceBuffer(2);
+        bgm.Loop = true;
         bgm.SetFadeIn(0, 1, 1);
         bgm.SetFadeOut(1, 0, 0.4f);
 
         note = new AudioSourceBuffer(10);
+        note.Loop = false;
         note.SetFadeOut(1, 0, 0.3f);
     }
 
@@ -122,11 +124,14 @@ public class AudioManager : MonoBehaviour
         private float fadeOutEndVolume = 1;
         private float fadeOutDuration = 0;
 
+        public bool Loop = false;
+
         public AudioSourceBuffer(int size) {
             sources = new List<AudioSource>(size);
             current = 0;
             for (int i = 0; i < size; i++) {
                 sources.Add(AudioManager.instance.audioSourcePool.Get());
+                AudioManager.ResetAudioSource(sources[i]);
             }
         }
 
@@ -152,8 +157,8 @@ public class AudioManager : MonoBehaviour
                 }
 
                 AudioManager.ResetAudioSource(sources[current]);
+                sources[current].loop = Loop;
                 sources[current].clip = clip;
-                sources[current].loop = true;
                 sources[current].Play();
                 AudioManager.instance.StartCoroutine(AudioManager.AudioFade(sources[current], fadeInStartVolume, fadeInEndVolume, fadeInDuration));
             }
