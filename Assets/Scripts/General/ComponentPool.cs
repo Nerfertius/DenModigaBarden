@@ -19,6 +19,7 @@ public class ComponentPool<T> where T : Behaviour {
         /*else if (pooledObject.GetComponent<T>() != null)
             Debug.LogError(this + " pooledObject must have a component of the generic type " + typeof(T).FullName);
 */
+        this.pooledObject = pooledObject;
 
         this.parent = parent;
         available = new LinkedList<int>();

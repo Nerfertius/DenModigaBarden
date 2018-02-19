@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
         bgm.SetFadeIn(0, 1, 1);
         bgm.SetFadeOut(1, 0, 0.4f);
 
-        note = new AudioSourceBuffer(4);
+        note = new AudioSourceBuffer(10);
         note.SetFadeOut(1, 0, 0.3f);
     }
 

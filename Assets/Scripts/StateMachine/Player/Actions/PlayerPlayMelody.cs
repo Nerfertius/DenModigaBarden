@@ -19,30 +19,35 @@ public class PlayerPlayMelody : StateAction {
             mData.currentMelody = null;
             controller.anim.SetBool("Channeling", true);
 
-            foreach (Note note in mData.Notes) {
-                if (Input.GetButtonDown(note.Button)) {
-                    mData.PlayedNotes.AddLast(note);
+            Note notePlayed = null;
 
-                    /* if (Input.GetButton("HighPitch")) {
-                         data.audioSource.pitch = mData.highPitchValue;
-                     }
-                     else if (Input.GetButton("LowPitch")) {
-                         data.audioSource.pitch = mData.lowPitchValue;
-                     }
-                     else {
-                         data.audioSource.pitch = mData.standardPitchValue;
-                     }
-                     */
-                    AudioManager.instance.PlayNote(note.audio);
-                    //data.PlaySound(note.audio);
-
-                    ParticleSystem m_fx = data.noteFX;
-                    ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
-                    m_anim.rowIndex = note.FXRowNumber;
-                    Instantiate(m_fx, new Vector2(data.transform.position.x, data.collider.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
-                    m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
+            if (Input.GetButton("PlayMelodyNoteShift")){
+                foreach (Note note in mData.Notes2) {
+                    if (Input.GetButtonDown(note.Button)) {
+                        mData.PlayedNotes.AddLast(note);
+                        notePlayed = note;
+                    }
                 }
             }
+            else {
+                foreach (Note note in mData.Notes1) {
+                    if (Input.GetButtonDown(note.Button)) {
+                        mData.PlayedNotes.AddLast(note);
+                        notePlayed = note;
+                    }
+                }
+            }
+            if(notePlayed != null) {
+                AudioManager.instance.PlayNote(notePlayed.audio);
+                //data.PlaySound(note.audio);
+
+                ParticleSystem m_fx = data.noteFX;
+                ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
+                m_anim.rowIndex = notePlayed.FXRowNumber;
+                Instantiate(m_fx, new Vector2(data.transform.position.x, data.collider.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
+                m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
+            }
+            
             while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
                 mData.PlayedNotes.RemoveFirst();
             }

@@ -96,7 +96,8 @@ public class PlayerData : Data
 
         public int MaxSavedNotes = 5;
         [HideInInspector] public LinkedList<Note> PlayedNotes;
-        [HideInInspector] public Note[] Notes;
+        [HideInInspector] public Note[] Notes1;
+        [HideInInspector] public Note[] Notes2;
 
         //add prefabs in inspector
         [HideInInspector] public GameObject JumpMelodyProjectile;
@@ -130,19 +131,23 @@ public class PlayerData : Data
 
         public void Start() {
             PlayedNotes = new LinkedList<Note>();
-            Notes = new Note[5];
-            Notes[0] = new Note(Note.NoteID.Note1, Resources.Load("Melody Audio/A.Final") as AudioClip, 0);
-            Notes[1] = new Note(Note.NoteID.Note2, Resources.Load("Melody Audio/B.Final") as AudioClip, 1);
-            Notes[2] = new Note(Note.NoteID.Note3, Resources.Load("Melody Audio/D.Final") as AudioClip, 2);
-            Notes[3] = new Note(Note.NoteID.Note4, Resources.Load("Melody Audio/E.Final") as AudioClip, 3);
-            Notes[4] = new Note(Note.NoteID.Note5, Resources.Load("Melody Audio/G.Final") as AudioClip, 4);
+            Notes1 = new Note[4];
+            Notes1[0] = new Note(Note.NoteID.G, Resources.Load("Melody Audio/G.Final") as AudioClip, 0);
+            Notes1[1] = new Note(Note.NoteID.A, Resources.Load("Melody Audio/A.Final") as AudioClip, 1);
+            Notes1[2] = new Note(Note.NoteID.B, Resources.Load("Melody Audio/B.Final") as AudioClip, 2);
+            Notes1[3] = new Note(Note.NoteID.C, Resources.Load("Melody Audio/C.Final") as AudioClip, 3);
+            Notes2 = new Note[4];
+            Notes2[0] = new Note(Note.NoteID.D, Resources.Load("Melody Audio/D.Final") as AudioClip, 4);
+            Notes2[1] = new Note(Note.NoteID.E, Resources.Load("Melody Audio/E.Final") as AudioClip, 5);
+            Notes2[2]= new Note(Note.NoteID.Fplus, Resources.Load("Melody Audio/F+.Final") as AudioClip, 6);
+            Notes2[3] = new Note(Note.NoteID.g8va, Resources.Load("Melody Audio/G8va.Final") as AudioClip, 7);
 
             melodies = new Melody[3];
-            Note[] jump = { Notes[0], Notes[1] };
+            Note[] jump = { Notes1[0], Notes1[1] };
             melodies[0] = new Melody(Melody.MelodyID.JumpMelody, jump);
-            Note[] sleep = { Notes[2], Notes[2], Notes[2]};
+            Note[] sleep = { Notes1[2], Notes1[2], Notes1[2]};
             melodies[1] = new Melody(Melody.MelodyID.SleepMelody, sleep);
-            Note[] magicResist = { Notes[1], Notes[1], Notes[1] };
+            Note[] magicResist = { Notes1[1], Notes1[1], Notes1[1] };
             melodies[2] = new Melody(Melody.MelodyID.MagicResistMelody, magicResist);
 
             //melodies.AddLast()
