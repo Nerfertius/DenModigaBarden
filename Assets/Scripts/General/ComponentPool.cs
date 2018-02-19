@@ -6,21 +6,29 @@ public class ComponentPool<T> where T : Behaviour {
     private GameObject pooledObject;
     private int numberOfObjects;
 
+    private Transform parent;
+
     private List<T> objects;
     private LinkedList<int> available;
 
-    public ComponentPool(GameObject pooledObject, int numberOfObjects)  {
+    public ComponentPool(GameObject pooledObject, int numberOfObjects, Transform parent)  {
         if (numberOfObjects < 0)
             Debug.LogError(this + " pool cant have negative size");
         if(pooledObject == null)
             Debug.LogError(this + " pooledObject cant be null");
-        else if (pooledObject.GetComponent<T>() != null)
-            Debug.LogError(this + " pooledObject must ");
+        /*else if (pooledObject.GetComponent<T>() != null)
+            Debug.LogError(this + " pooledObject must have a component of the generic type " + typeof(T).FullName);
+*/
 
+        this.parent = parent;
         available = new LinkedList<int>();
         objects = new List<T>(numberOfObjects);
         for(int i = 0; i < numberOfObjects; i++) {
             objects.Add(GameObject.Instantiate(pooledObject).GetComponent<T>());
+            if(parent != null) {
+                objects[i].transform.parent = parent;
+            }
+
             objects[i].enabled = false;
             available.AddLast(i);
         }
@@ -35,6 +43,9 @@ public class ComponentPool<T> where T : Behaviour {
         }
         else {
             T ret = GameObject.Instantiate(pooledObject.GetComponent<T>());
+            if (parent != null) {
+                ret.transform.parent = parent;
+            }
             objects.Add(ret);
             return ret;
         }

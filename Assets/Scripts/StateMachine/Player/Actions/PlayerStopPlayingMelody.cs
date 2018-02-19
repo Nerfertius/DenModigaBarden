@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerStopPlayingMelody : StateAction {
    public override void ActOnce(StateController controller) {
        PlayerData data = (PlayerData)controller.data;
-       data.MelodyStopedPlaying(data.melodyData.currentMelody);
+       data.MelodyStoppedPlaying(data.melodyData.currentMelody);
        data.melodyData.currentMelody = null;
        data.melodyData.playingFlute = false;
        data.melodyData.MelodyRange.enabled = false;
