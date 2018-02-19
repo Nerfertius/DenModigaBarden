@@ -19,15 +19,16 @@ public class StateController : MonoBehaviour
     {
         originalState = currentState;
         SetStateTimer();
-    }
 
-    void Start()
-    {
         data = GetComponent<Data>();
         anim = GetComponent<Animator>();
         sprRend = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+    }
+
+    void Start()
+    {
         currentState.DoEntryActions(this);
     }
 

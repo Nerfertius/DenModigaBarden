@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraFX : MonoBehaviour {
 
     private static CameraFX instance;
-    private static SpriteRenderer screenFade;
+    public Image screenFade;
 
     private CameraFollow2D camScript;
     private float timer = 0;
@@ -20,7 +21,6 @@ public class CameraFX : MonoBehaviour {
 	private void Start ()
     {
         camScript = GetComponent<CameraFollow2D>();
-        screenFade = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     // For Debug
