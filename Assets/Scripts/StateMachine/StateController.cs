@@ -81,7 +81,6 @@ public class StateController : MonoBehaviour
         if (nextState == null || sender != currentState)
             return;
         
-        Debug.Log("Current state: " + currentState + "..." + "Next state: " + nextState);
         currentState.DoExitActions(this);
 
         foreach(StateAction action in transitionActions) {

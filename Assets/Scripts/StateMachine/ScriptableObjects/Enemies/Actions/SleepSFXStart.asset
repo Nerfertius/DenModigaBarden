@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff69b8a1997ae3f4f9f5b5575fe4a7e1, type: 3}
   m_Name: SleepSFXStart
   m_EditorClassIdentifier: 
-  angle: 30
+  offset: {x: 0, y: 0.5, z: 0}
