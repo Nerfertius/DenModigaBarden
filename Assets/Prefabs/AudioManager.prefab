@@ -54,3 +54,4 @@ MonoBehaviour:
   audioSourceObject: {fileID: 1224975597666724, guid: 1984e1bae557331419739881ecb9fd71,
     type: 2}
   numberOfpooledObjects: 10
+  defaultBGM: {fileID: 8300000, guid: f95c3a13cd1e9724b8bd0a2c58fde3b6, type: 3}

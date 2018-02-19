@@ -169,14 +169,14 @@ public class PlayerData : Data
     public void MelodyPlayed(Melody.MelodyID ?id) {
         switch (id) {
             case Melody.MelodyID.JumpMelody:
-                AudioManager.instance.PlayBGM(melodyData.jumpMelodySong);
+                AudioManager.Instance.PlayBGM(melodyData.jumpMelodySong);
                 break;
             case Melody.MelodyID.MagicResistMelody:
-                AudioManager.instance.PlayBGM(melodyData.magicMelodySong);
+                AudioManager.Instance.PlayBGM(melodyData.magicMelodySong);
                 magicShieldHealth = startMagicShieldHealth;
                 break;
             case Melody.MelodyID.SleepMelody:
-                AudioManager.instance.PlayBGM(melodyData.sleepMelodySong);
+                AudioManager.Instance.PlayBGM(melodyData.sleepMelodySong);
                 if (campfire != null)
                 {
                     campfire.SetSpawn(this);
@@ -187,7 +187,7 @@ public class PlayerData : Data
     }
 
     public void MelodyStoppedPlaying(Melody.MelodyID ?id) {
-        AudioManager.instance.PlayBGM(null);
+        AudioManager.Instance.PlayDefaultBGM();
         if (mfx != null)
         {
             Destroy(mfx.gameObject);

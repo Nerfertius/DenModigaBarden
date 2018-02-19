@@ -39,7 +39,7 @@ public class PlayerPlayMelody : StateAction {
                 }
             }
             if(notePlayed != null) {
-                AudioManager.instance.PlayNote(notePlayed.audio);
+                AudioManager.Instance.PlayNote(notePlayed.audio);
 
                 ParticleSystem m_fx = data.noteFX;
                 ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;

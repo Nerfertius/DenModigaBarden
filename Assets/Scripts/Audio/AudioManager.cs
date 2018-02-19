@@ -7,16 +7,19 @@ public class AudioManager : MonoBehaviour
     public GameObject audioSourceObject;
     public int numberOfpooledObjects;
 
-    public static AudioManager instance;
+    private static AudioManager instance;
+    public static AudioManager Instance {
+        get { return instance; }
+    }
 
     private ComponentPool<AudioSource> audioSourcePool;
+    private AudioSource oneShotSource;
     private LinkedList<AudioSource> activeAudioSources;
 
     private AudioSourceBuffer bgm;
-
     private AudioSourceBuffer note;
 
-    //public for testing purpose
+    //public mainly for testing purpose but could be nice anyway
     public AudioClip defaultBGM;
     
     private void Start()
@@ -31,16 +34,20 @@ public class AudioManager : MonoBehaviour
         audioSourcePool = new ComponentPool<AudioSource>(audioSourceObject, numberOfpooledObjects, this.transform);
         activeAudioSources = new LinkedList<AudioSource>();
 
-        bgm = new AudioSourceBuffer(2);
+        bgm = new AudioSourceBuffer();
         bgm.Loop = true;
+        bgm.AllowSameClip = false;
         bgm.SetFadeIn(0, 1, 1);
         bgm.SetFadeOut(1, 0, 0.4f);
 
-        note = new AudioSourceBuffer(10);
+        note = new AudioSourceBuffer();
         note.Loop = false;
         note.SetFadeOut(1, 0, 0.3f);
-    }
 
+        oneShotSource = audioSourcePool.Get();
+        ResetAudioSource(oneShotSource);
+    }
+    /*
     private void Update() {
         LinkedListNode<AudioSource> node = activeAudioSources.First;
 
@@ -48,19 +55,21 @@ public class AudioManager : MonoBehaviour
             if(node.Value.time >= node.Value.clip.length) {
                 audioSourcePool.Free(node.Value);
                 activeAudioSources.Remove(node.Value);
-                
             }
             node = node.Next;
         }
     }
 
     public void PlayOneShot(AudioClip ac) {
-        Debug.Log(ac);
         AudioSource source = audioSourcePool.Get();
         ResetAudioSource(source);
         source.clip = ac;
         source.Play();
         activeAudioSources.AddLast(source);
+    }
+    */
+    public void PlayOneShot(AudioClip ac) {
+        oneShotSource.PlayOneShot(ac);
     }
 
     public AudioSource GetAudioSource() {
@@ -74,18 +83,28 @@ public class AudioManager : MonoBehaviour
     }
 
     public static void ResetAudioSource(AudioSource source) {
-        source.volume = 1;
+        source.mute = false;
+        source.bypassEffects = false;
+        source.bypassListenerEffects = false;
+        source.bypassReverbZones = false;
+        source.playOnAwake = true;
         source.loop = false;
+        source.priority = 128;
+        source.volume = 1;
+        source.pitch = 1;
+        source.panStereo = 0;
+        source.spatialBlend = 0;
+        source.reverbZoneMix = 1;   
     }
 
 
     public void PlayBGM(AudioClip music)
     {
-        if(music == null) {
-            bgm.Play(defaultBGM);
-        }
-
         bgm.Play(music); 
+    }
+
+    public void PlayDefaultBGM() {
+        PlayBGM(defaultBGM);
     }
 
     public void SetDefaultBGM(AudioClip clip) {
@@ -95,7 +114,6 @@ public class AudioManager : MonoBehaviour
     public void PlayNote(AudioClip music) {
         note.Play(music);
     }
-
 
     public static IEnumerator AudioFade(AudioSource audioSource, float startVolume, float endVolume, float duration) {
         audioSource.volume = startVolume;
@@ -113,15 +131,14 @@ public class AudioManager : MonoBehaviour
         yield return AudioFade(audioSource, startVolume, endVolume, duration);
 
         audioSource.Stop();
+        instance.FreeAudioSource(audioSource);
     }
-
 
     private class AudioSourceBuffer {
 
-        private List<AudioSource> sources;
-        private int current;
-
+        private AudioSource current;
         
+        //Settings
         private float fadeInStartVolume = 1;
         private float fadeInEndVolume = 1;
         private float fadeInDuration = 0;
@@ -131,6 +148,59 @@ public class AudioManager : MonoBehaviour
         private float fadeOutDuration = 0;
 
         public bool Loop = false;
+        public bool AllowSameClip = true;
+
+        public AudioSourceBuffer() {
+            current = AudioManager.instance.GetAudioSource();
+        }
+
+        public void SetFadeOut(float fadeOutStartVolume, float fadeOutEndVolume, float fadeOutDuration) {
+            this.fadeOutStartVolume = fadeOutStartVolume;
+            this.fadeOutEndVolume = fadeOutEndVolume;
+            this.fadeOutDuration = fadeOutDuration;
+        }
+
+        public void SetFadeIn(float fadeInStartVolume, float fadeInEndVolume, float fadeInDuration) {
+            this.fadeInStartVolume = fadeInStartVolume;
+            this.fadeInEndVolume = fadeInEndVolume;
+            this.fadeInDuration = fadeInDuration;
+        }
+
+        public void Play(AudioClip clip) {
+            if(!AllowSameClip && current.clip == clip) {
+                return;
+            }
+
+            //fade out
+            AudioManager.instance.StartCoroutine(AudioManager.AudioFadeAndStop(current, fadeOutStartVolume, fadeOutEndVolume, fadeOutDuration));
+            if(clip != null) {
+                current = AudioManager.instance.GetAudioSource();
+
+                current.loop = Loop;
+                current.clip = clip;
+                current.Play();
+                AudioManager.instance.StartCoroutine(AudioManager.AudioFade(current, fadeInStartVolume, fadeInEndVolume, fadeInDuration));
+            }
+        }
+    }
+
+    /*
+    private class AudioSourceBuffer {
+
+        private List<AudioSource> sources;
+        private int current;
+        
+        //Settings
+        private float fadeInStartVolume = 1;
+        private float fadeInEndVolume = 1;
+        private float fadeInDuration = 0;
+
+        private float fadeOutStartVolume = 1;
+        private float fadeOutEndVolume = 1;
+        private float fadeOutDuration = 0;
+
+        public bool Loop = false;
+        public bool AllowSameClip = true;
 
         public AudioSourceBuffer(int size) {
             sources = new List<AudioSource>(size);
@@ -154,6 +224,10 @@ public class AudioManager : MonoBehaviour
         }
 
         public void Play(AudioClip clip) {
+            if(!AllowSameClip && sources[current].clip == clip) {
+                return;
+            }
+
             //fade out
             AudioManager.instance.StartCoroutine(AudioManager.AudioFadeAndStop(sources[current], fadeOutStartVolume, fadeOutEndVolume, fadeOutDuration));
             if(clip != null) {
@@ -170,4 +244,5 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+    */
 }

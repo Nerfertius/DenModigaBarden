@@ -28,7 +28,7 @@ public class MapSettings : MonoBehaviour {
             StartCoroutine(DelayedFadeOut());
 
             if(backgroundMusic != null) {
-                AudioManager.instance.SetDefaultBGM(backgroundMusic);
+                AudioManager.Instance.SetDefaultBGM(backgroundMusic);
             }
         }
     }

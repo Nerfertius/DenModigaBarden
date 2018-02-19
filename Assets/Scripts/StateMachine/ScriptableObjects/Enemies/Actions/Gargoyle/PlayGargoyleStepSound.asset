@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159113b621ec9b74da30a8cafd03293b, type: 3}
   m_Name: PlayGargoyleStepSound
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: a9f67c504e7b0354e8f325f6aa5be122, type: 3}
