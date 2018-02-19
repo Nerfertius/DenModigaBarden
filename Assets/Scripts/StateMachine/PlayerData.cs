@@ -139,7 +139,7 @@ public class PlayerData : Data
             Notes2 = new Note[4];
             Notes2[0] = new Note(Note.NoteID.D, Resources.Load("Melody Audio/D.Final") as AudioClip, 4);
             Notes2[1] = new Note(Note.NoteID.E, Resources.Load("Melody Audio/E.Final") as AudioClip, 5);
-            Notes2[2]= new Note(Note.NoteID.Fplus, Resources.Load("Melody Audio/F+.Final") as AudioClip, 6);
+            Notes2[2] = new Note(Note.NoteID.Fplus, Resources.Load("Melody Audio/F+.Final") as AudioClip, 6);
             Notes2[3] = new Note(Note.NoteID.g8va, Resources.Load("Melody Audio/G8va.Final") as AudioClip, 7);
 
             melodies = new Melody[3];

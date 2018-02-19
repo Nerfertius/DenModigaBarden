@@ -21,7 +21,8 @@ public class PlayerPlayMelody : StateAction {
 
             Note notePlayed = null;
 
-            if (Input.GetButton("PlayMelodyNoteShift")){
+            if (Input.GetButton("PlayMelodyNoteShift"))
+            {
                 foreach (Note note in mData.Notes2) {
                     if (Input.GetButtonDown(note.Button)) {
                         mData.PlayedNotes.AddLast(note);
@@ -29,7 +30,8 @@ public class PlayerPlayMelody : StateAction {
                     }
                 }
             }
-            else {
+            else
+            {
                 foreach (Note note in mData.Notes1) {
                     if (Input.GetButtonDown(note.Button)) {
                         mData.PlayedNotes.AddLast(note);
@@ -39,7 +41,6 @@ public class PlayerPlayMelody : StateAction {
             }
             if(notePlayed != null) {
                 AudioManager.instance.PlayNote(notePlayed.audio);
-                //data.PlaySound(note.audio);
 
                 ParticleSystem m_fx = data.noteFX;
                 ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
@@ -51,6 +52,11 @@ public class PlayerPlayMelody : StateAction {
             while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
                 mData.PlayedNotes.RemoveFirst();
             }
+        }
+
+        if (mData.playingFlute == true)
+        {
+
         }
 
 

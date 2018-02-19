@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a13283fcd50ec1f4e933983bfd741c5d
-timeCreated: 1518818967
+timeCreated: 1519053503
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -98,10 +98,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
+        y: 0
         width: 9
-        height: 12
-      alignment: 9
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -112,10 +112,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9
-        y: 2
+        y: 0
         width: 9
-        height: 12
-      alignment: 9
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -126,10 +126,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 18
-        y: 2
+        y: 0
         width: 9
-        height: 12
-      alignment: 9
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -140,10 +140,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 27
-        y: 2
+        y: 0
         width: 9
-        height: 12
-      alignment: 9
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -154,10 +154,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 2
+        y: 0
         width: 9
-        height: 12
-      alignment: 9
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -168,10 +168,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 45
-        y: 2
+        y: 0
         width: 9
-        height: 12
-      alignment: 9
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -182,10 +182,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 54
-        y: 2
+        y: 0
         width: 9
-        height: 12
-      alignment: 9
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -196,10 +196,10 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 63
-        y: 2
+        y: 0
         width: 9
-        height: 12
-      alignment: 9
+        height: 16
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []

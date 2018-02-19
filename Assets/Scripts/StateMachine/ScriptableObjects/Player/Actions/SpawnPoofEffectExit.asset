@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: SpawnPoofEffectExit
   m_EditorClassIdentifier: 
   obj: {fileID: 1481084295273472, guid: 4bd6f52162a27664fbe53542521df874, type: 2}
-  offset: {x: 0, y: -0.75, z: 0}
+  offset: {x: 0, y: -0.55, z: 0}
