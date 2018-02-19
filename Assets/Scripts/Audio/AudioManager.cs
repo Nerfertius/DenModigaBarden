@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayOneShot(AudioClip ac, float volume) {
+    public void PlayOneShot(AudioClip ac) {
         AudioSource source = audioSourcePool.Get();
         ResetAudioSource(source);
         source.clip = ac;
@@ -55,8 +55,14 @@ public class AudioManager : MonoBehaviour
         activeAudioSources.AddLast(source);
     }
 
-    public void PlayOneShot(AudioClip ac) {
-        PlayOneShot(ac, 1);
+    public AudioSource GetAudioSource() {
+        AudioSource source = audioSourcePool.Get();
+        ResetAudioSource(source);
+        return source;
+    }
+
+    public void FreeAudioSource(AudioSource source) {
+        audioSourcePool.Free(source);
     }
 
     public static void ResetAudioSource(AudioSource source) {
@@ -78,8 +84,6 @@ public class AudioManager : MonoBehaviour
         defaultBGM = clip;
     }
 
-
-
     public void PlayNote(AudioClip music) {
         note.Play(music);
     }
@@ -98,15 +102,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public static IEnumerator AudioFadeAndStop(AudioSource audioSource, float startVolume, float endVolume, float duration) {
-        audioSource.volume = startVolume;
-        Timer timer = new Timer(duration);
-        float volumeDiff = endVolume - startVolume;
-        timer.Start();
-        while (!timer.IsDone()) {
-            audioSource.volume = startVolume + volumeDiff * timer.TimePercentagePassed();
-            yield return new WaitForEndOfFrame();
-        }
-        audioSource.volume = endVolume;
+        yield return AudioFade(audioSource, startVolume, endVolume, duration);
 
         audioSource.Stop();
     }
@@ -157,6 +153,7 @@ public class AudioManager : MonoBehaviour
 
                 AudioManager.ResetAudioSource(sources[current]);
                 sources[current].clip = clip;
+                sources[current].loop = true;
                 sources[current].Play();
                 AudioManager.instance.StartCoroutine(AudioManager.AudioFade(sources[current], fadeInStartVolume, fadeInEndVolume, fadeInDuration));
             }
