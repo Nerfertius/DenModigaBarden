@@ -10,5 +10,6 @@ public class PlayerAirExit : StateAction
         PlayerData data = (PlayerData)controller.data;
         data.falling = false;
         data.jumping = false;
+        data.body.velocity = new Vector2(data.body.velocity.x, 0);
     }
 }

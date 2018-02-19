@@ -9,8 +9,8 @@ public class PlayerAirEntry : StateAction
     {
         PlayerData data = (PlayerData)controller.data;
         data.body.gravityScale = 1;
-
-        if (data.body.velocity.y == 0 && data.jumping == false)
+       
+        if (data.jumping == false)
         {
             if (!data.climbing && !data.falling)
             {

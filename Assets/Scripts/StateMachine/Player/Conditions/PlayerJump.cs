@@ -8,8 +8,8 @@ public class PlayerJump : Condition
     public override bool? CheckCondition(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        data.grounded = Physics2D.OverlapCircle(data.groundCheck.position, 0.25f, data.groundLayer);
-        if (Input.GetButtonDown("Jump") && Input.GetAxisRaw("PlayMelody") == 0)                             //Are you jumping?
+        data.grounded = Physics2D.OverlapCircle(data.groundCheck.position, data.groundCheckRadius, data.groundLayer);
+        if (Input.GetButtonDown("Jump") && Input.GetAxisRaw("PlayMelody") == 0 && data.grounded == true)    //Are you jumping?
         {
             if (data.climbing)
             {

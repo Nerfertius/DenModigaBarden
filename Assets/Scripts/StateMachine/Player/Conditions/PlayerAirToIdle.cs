@@ -9,9 +9,9 @@ public class PlayerAirToIdle : Condition
     {
         PlayerData data = (PlayerData)controller.data;
 
-        if (!data.jumping && Mathf.Abs(data.body.velocity.x) == 0 && data.body.velocity.y <= 0)
+        if (!data.jumping && Mathf.Abs(data.body.velocity.x) == 0 && data.body.velocity.y <= 0 && Physics2D.IsTouchingLayers(controller.coll, data.groundLayer))
         {
-            data.grounded = Physics2D.OverlapCircle(data.groundCheck.position, 0.25f, data.groundLayer);
+            data.grounded = Physics2D.OverlapCircle(data.groundCheck.position, data.groundCheckRadius, data.groundLayer);
             return data.grounded;
         }
         return null;
