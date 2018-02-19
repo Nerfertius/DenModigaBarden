@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MapTitle : MonoBehaviour {
+public class MapSettings : MonoBehaviour {
     private Color startColor;
 
     public Sprite titleSprite;
     public Image titleObject;
     public float fadeSpeed;
     public float displayLength;
+
+    public AudioClip backgroundMusic;
     
     void Start () {
         titleObject.sprite = titleSprite;
@@ -24,6 +26,10 @@ public class MapTitle : MonoBehaviour {
             StopAllCoroutines();
             StartCoroutine(FadeIn());
             StartCoroutine(DelayedFadeOut());
+
+            if(backgroundMusic != null) {
+                AudioManager.instance.SetDefaultBGM(backgroundMusic);
+            }
         }
     }
 
