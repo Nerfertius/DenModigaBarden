@@ -1002,7 +1002,7 @@ Prefab:
         type: 2}
       propertyPath: melodyFXPrefab
       value: 
-      objectReference: {fileID: 198554481063968690, guid: 5d87951dedca2064083a3b05d36123c3,
+      objectReference: {fileID: 198554481063968690, guid: 46f17ff6a75d4564597ecd0499e5e4b0,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2d2f8f2ef4817e4c97da62b656cbabb, type: 2}
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9c5eb78232a4b40b3b4f62170ce027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleSprite: {fileID: 21300000, guid: e0adf453472ae7744a2838cb0ddc0560, type: 3}
+  titleSprite: {fileID: 21300006, guid: de20e391dd6384743bd3cb7353f9be0c, type: 3}
   titleObject: {fileID: 703598766}
   fadeSpeed: 1
   displayLength: 3

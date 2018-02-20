@@ -14,18 +14,24 @@ public class MapSettings : MonoBehaviour {
     public AudioClip backgroundMusic;
     
     void Start () {
-        titleObject.sprite = titleSprite;
-        titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, 0);
-        startColor = titleObject.color;
+        if(titleObject != null)
+        {
+            titleObject.sprite = titleSprite;
+            titleObject.SetNativeSize();
+            titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, 0);
+            startColor = titleObject.color;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            StopAllCoroutines();
-            StartCoroutine(FadeIn());
-            StartCoroutine(DelayedFadeOut());
+            if(titleObject != null){
+                StopAllCoroutines();
+                StartCoroutine(FadeIn());
+                StartCoroutine(DelayedFadeOut());
+            }
 
             if(backgroundMusic != null) {
                 AudioManager.Instance.SetDefaultBGM(backgroundMusic);
@@ -37,7 +43,9 @@ public class MapSettings : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            titleObject.color = startColor;
+            if(titleObject != null) { 
+                titleObject.color = startColor;
+            }
         }
     }
 
