@@ -22,11 +22,16 @@ MonoBehaviour:
     falseState: {fileID: 0}
     trueStateTransitionActions: []
     falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: c935f20e8f40ea7439d0ac3e9bc02d70, type: 2}
+    trueState: {fileID: 11400000, guid: e25d32636ae583349b18829395484779, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
   conditionedActions: []
-  hasExitTime: 1
+  hasExitTime: 0
   exitTimer: 0
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
-  nextState: {fileID: 11400000, guid: e25d32636ae583349b18829395484779, type: 2}
+  nextState: {fileID: 0}
   timeOutActions: []

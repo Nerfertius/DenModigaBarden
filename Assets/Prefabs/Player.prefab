@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114195153534707582}
   - component: {fileID: 95186470628085012}
   - component: {fileID: 82388747519707106}
-  - component: {fileID: 114540737977927992}
+  - component: {fileID: 114308013929347790}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -75,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 1461975651749938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.252, y: -2.003, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4371184860106240}
   - {fileID: 4444355401631654}
@@ -162,7 +162,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.1
 --- !u!58 &58493443711893006
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -301,15 +301,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171b6f4c276ada4b9e1c8b666ba4edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: 0e52b623b548f4041b2f93fe07d23983, type: 2}
-  previousState: {fileID: 0}
-  data: {fileID: 0}
-  anim: {fileID: 0}
-  sprRend: {fileID: 0}
-  rb: {fileID: 0}
-  coll: {fileID: 0}
-  stateTimer: 0
---- !u!114 &114540737977927992
+  currentState: {fileID: 11400000, guid: 0de8ac7cdcc24244dae5e5279a680342, type: 2}
+  previousState: {fileID: 11400000, guid: 5d1f0db53815e9641916cb81db8c5aeb, type: 2}
+  data: {fileID: 114994033544878884}
+  anim: {fileID: 95186470628085012}
+  sprRend: {fileID: 212082342265056826}
+  rb: {fileID: 50047347635933524}
+  coll: {fileID: 70489536338543862}
+  stateTimer: -0.0016275123
+--- !u!114 &114308013929347790
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -334,11 +334,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
-  startScale: {x: 0, y: 0}
+  startScale: {x: 1, y: 1}
   startDirection: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
-  health: 3
+  health: 2
   startMagicShieldHealth: 3
   magicShieldHealth: 0
   maxSpeed: 2.36
@@ -350,15 +350,15 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 768
-  climbFixLayer: 0
-  playerLayer: 0
-  items: 
+  climbFixLayer: 8
+  playerLayer: 13
+  items: 00000000000000000000000000000000
   moveHorizontal: 0
   moveVertical: 0
   movement: {x: 0, y: 0}
-  body: {fileID: 0}
-  groundCheck: {fileID: 0}
-  col: {fileID: 0}
+  body: {fileID: 50047347635933524}
+  groundCheck: {fileID: 4371184860106240}
+  col: {fileID: 70489536338543862}
   ladderBottom: {fileID: 0}
   ladderTop: {fileID: 0}
   spawnLocation: {x: 0, y: 0}
@@ -366,18 +366,17 @@ MonoBehaviour:
   jumping: 0
   falling: 0
   climbing: 0
-  grounded: 0
+  grounded: 1
   climbPause: 0
-  noteFX: {fileID: 198554481063968690, guid: 09a1b161aed695041b6f4023ff941a28, type: 2}
+  noteFX: {fileID: 198554481063968690, guid: 9ef5be328e3d179408169efc67f77894, type: 2}
   melodyFXPrefab: {fileID: 0}
   inTransit: 0
   targetPos: {x: 0, y: 0}
-  spriteRenderer: {fileID: 0}
-  anim: {fileID: 0}
-  rb: {fileID: 0}
-  collider: {fileID: 0}
-  audioSource: {fileID: 0}
-  controller: {fileID: 0}
+  spriteRenderer: {fileID: 212082342265056826}
+  anim: {fileID: 95186470628085012}
+  rb: {fileID: 50047347635933524}
+  collider: {fileID: 70489536338543862}
+  controller: {fileID: 114195153534707582}
   hitInvincibilityDuration: 1.5
   hitAngle: {x: 0, y: 0}
   goIdle: 0
@@ -385,27 +384,101 @@ MonoBehaviour:
   goAir: 0
   goCrouch: 0
   melodyData:
-    hasDoubleJump: 0
-    melodies: []
+    hasDoubleJump: 1
+    melodies:
+    - melodyID: 0
+      Notes:
+      - Button: Note G
+        noteID: 0
+        audio: {fileID: 8300000, guid: ee4a359835ae88447af513dfe96c33c5, type: 3}
+        FXRowNumber: 0
+      - Button: Note A
+        noteID: 1
+        audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
+        FXRowNumber: 1
+    - melodyID: 1
+      Notes:
+      - Button: Note B
+        noteID: 2
+        audio: {fileID: 8300000, guid: fa5661a6b40a9ea479c95582179e6e76, type: 3}
+        FXRowNumber: 2
+      - Button: Note B
+        noteID: 2
+        audio: {fileID: 8300000, guid: fa5661a6b40a9ea479c95582179e6e76, type: 3}
+        FXRowNumber: 2
+      - Button: Note B
+        noteID: 2
+        audio: {fileID: 8300000, guid: fa5661a6b40a9ea479c95582179e6e76, type: 3}
+        FXRowNumber: 2
+    - melodyID: 2
+      Notes:
+      - Button: Note A
+        noteID: 1
+        audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
+        FXRowNumber: 1
+      - Button: Note A
+        noteID: 1
+        audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
+        FXRowNumber: 1
+      - Button: Note A
+        noteID: 1
+        audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
+        FXRowNumber: 1
     MaxSavedNotes: 5
-    Notes: []
-    JumpMelodyProjectile: {fileID: 0}
-    MagicResistMelodyProjectile: {fileID: 0}
-    SleepMelodyProjectile: {fileID: 0}
-    jumpMelodySong: {fileID: 0}
-    magicMelodySong: {fileID: 0}
-    sleepMelodySong: {fileID: 0}
+    Notes1:
+    - Button: Note G
+      noteID: 0
+      audio: {fileID: 8300000, guid: ee4a359835ae88447af513dfe96c33c5, type: 3}
+      FXRowNumber: 0
+    - Button: Note A
+      noteID: 1
+      audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
+      FXRowNumber: 1
+    - Button: Note B
+      noteID: 2
+      audio: {fileID: 8300000, guid: fa5661a6b40a9ea479c95582179e6e76, type: 3}
+      FXRowNumber: 2
+    - Button: Note C
+      noteID: 3
+      audio: {fileID: 8300000, guid: 387438303b80e7b4a8a6277ed2093e0e, type: 3}
+      FXRowNumber: 3
+    Notes2:
+    - Button: Note D
+      noteID: 4
+      audio: {fileID: 8300000, guid: 398e74b4f981b88498d99bd0d85df44a, type: 3}
+      FXRowNumber: 4
+    - Button: Note E
+      noteID: 5
+      audio: {fileID: 8300000, guid: 7a64da91dd1a0c74baea58b3f8d16fef, type: 3}
+      FXRowNumber: 5
+    - Button: Note F+
+      noteID: 6
+      audio: {fileID: 8300000, guid: 37d1729e03642fd42add32fc7db54496, type: 3}
+      FXRowNumber: 6
+    - Button: Note G8va
+      noteID: 7
+      audio: {fileID: 8300000, guid: 4e92880c49a85d843bde1e642db50d30, type: 3}
+      FXRowNumber: 7
+    JumpMelodyProjectile: {fileID: 1133737618949496, guid: bfc3f9a4942e64e4b8a156d5cfd5fca0,
+      type: 2}
+    MagicResistMelodyProjectile: {fileID: 1133737618949496, guid: 987c8daab161bc94b83f7d506c88bdc1,
+      type: 2}
+    SleepMelodyProjectile: {fileID: 1133737618949496, guid: 4d158ba1adf642c4fb9b2bb17a69eca1,
+      type: 2}
+    jumpMelodySong: {fileID: 8300000, guid: c99e3ba5e42130f4fa795d526853a77c, type: 3}
+    magicMelodySong: {fileID: 8300000, guid: 16c25171404ee0a41ba729fcffc60e63, type: 3}
+    sleepMelodySong: {fileID: 8300000, guid: 70b5e7bae6b314a42bdd8a699c87c289, type: 3}
     playingFlute: 0
     projectileCooldown: 0.5
-    MelodyRange: {fileID: 0}
+    MelodyRange: {fileID: 58493443711893006}
     highPitchValue: 2
     lowPitchValue: 0.5
-    standardPitchValue: 0
-  currentRespawnOrder: 0
-  respawnLocation: {fileID: 0}
-  defaultMat: {fileID: 0}
-  fullFriction: {fileID: 0}
-  volumeScaler: 0.75
+    standardPitchValue: 1
+  currentRespawnOrder: -1
+  respawnLocation: {fileID: 4193907132306398}
+  defaultMat: {fileID: 6200000, guid: 30448d457d113824081d7661fd6d17bb, type: 2}
+  fullFriction: {fileID: 6200000, guid: b643fc26879b24c428d855b39bc65237, type: 2}
+  groundCheckRadius: 0.1
 --- !u!212 &212082342265056826
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -440,7 +513,7 @@ SpriteRenderer:
   m_SortingLayerID: 1549707187
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ecbb245cba56ffa408582375eb61709a, type: 3}
+  m_Sprite: {fileID: 21300004, guid: eaa4fa97aabb7b848ba2f99aebe34c3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
