@@ -33,3 +33,4 @@ MonoBehaviour:
   nextState: {fileID: 11400000, guid: 6e34034fc73c0184fbc8a18e98244c9d, type: 2}
   timeOutActions:
   - {fileID: 11400000, guid: ba7346d130a1ac54cbab68b561cd3bfe, type: 2}
+  - {fileID: 11400000, guid: ad5d30ec92cb20d4c8636dcb6cfe1517, type: 2}

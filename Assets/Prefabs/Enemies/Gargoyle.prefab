@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114367693822698130}
   - component: {fileID: 60890881138470964}
   - component: {fileID: 60771466991440520}
+  - component: {fileID: 251232329264797324}
   m_Layer: 11
   m_Name: Gargoyle
   m_TagString: Enemy
@@ -326,3 +327,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!251 &251232329264797324
+PlatformEffector2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636036458769274}
+  m_Enabled: 1
+  m_UseColliderMask: 0
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

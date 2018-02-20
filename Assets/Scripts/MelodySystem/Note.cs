@@ -6,11 +6,14 @@ using UnityEngine;
 public class Note {
 
     public enum NoteID {
-        Note1,
-        Note2,
-        Note3,
-        Note4,
-        Note5
+        G,
+        A,
+        B,
+        C,
+        D,
+        E,
+        Fplus,
+        g8va
     }
 
     [HideInInspector] public string Button;
@@ -25,22 +28,30 @@ public class Note {
         this.FXRowNumber = FXRowNumber;
 
         switch (noteID) {
-            case Note.NoteID.Note1:
-                Button = "Note1";
+            case Note.NoteID.G:
+                Button = "Note G";
                 break;
-            case Note.NoteID.Note2:
-                Button = "Note2";
+            case Note.NoteID.A:
+                Button = "Note A";
                 break;
-            case Note.NoteID.Note3:
-                Button = "Note3";
+            case Note.NoteID.B:
+                Button = "Note B";
                 break;
-            case Note.NoteID.Note4:
-                Button = "Note4";
+            case Note.NoteID.C:
+                Button = "Note C";
                 break;
-            case Note.NoteID.Note5:
-                Button = "Note5";
+            case Note.NoteID.D:
+                Button = "Note D";
+                break;
+            case Note.NoteID.E:
+                Button = "Note E";
+                break;
+            case Note.NoteID.Fplus:
+                Button = "Note F+";
+                break;
+            case Note.NoteID.g8va:
+                Button = "Note G8va";
                 break;
         }
-
     }
 }

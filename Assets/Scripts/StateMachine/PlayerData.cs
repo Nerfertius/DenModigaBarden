@@ -62,7 +62,6 @@ public class PlayerData : Data
     [HideInInspector] public Animator anim;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public CapsuleCollider2D collider;
-    [HideInInspector] public AudioSource audioSource;
     [HideInInspector] public StateController controller;
 
 
@@ -97,7 +96,8 @@ public class PlayerData : Data
 
         public int MaxSavedNotes = 5;
         [HideInInspector] public LinkedList<Note> PlayedNotes;
-        [HideInInspector] public Note[] Notes;
+        [HideInInspector] public Note[] Notes1;
+        [HideInInspector] public Note[] Notes2;
 
         //add prefabs in inspector
         [HideInInspector] public GameObject JumpMelodyProjectile;
@@ -131,19 +131,23 @@ public class PlayerData : Data
 
         public void Start() {
             PlayedNotes = new LinkedList<Note>();
-            Notes = new Note[5];
-            Notes[0] = new Note(Note.NoteID.Note1, Resources.Load("Melody Audio/A.Final") as AudioClip, 0);
-            Notes[1] = new Note(Note.NoteID.Note2, Resources.Load("Melody Audio/B.Final") as AudioClip, 1);
-            Notes[2] = new Note(Note.NoteID.Note3, Resources.Load("Melody Audio/D.Final") as AudioClip, 2);
-            Notes[3] = new Note(Note.NoteID.Note4, Resources.Load("Melody Audio/E.Final") as AudioClip, 3);
-            Notes[4] = new Note(Note.NoteID.Note5, Resources.Load("Melody Audio/G.Final") as AudioClip, 4);
+            Notes1 = new Note[4];
+            Notes1[0] = new Note(Note.NoteID.G, Resources.Load("Melody Audio/G.Final") as AudioClip, 0);
+            Notes1[1] = new Note(Note.NoteID.A, Resources.Load("Melody Audio/A.Final") as AudioClip, 1);
+            Notes1[2] = new Note(Note.NoteID.B, Resources.Load("Melody Audio/B.Final") as AudioClip, 2);
+            Notes1[3] = new Note(Note.NoteID.C, Resources.Load("Melody Audio/C.Final") as AudioClip, 3);
+            Notes2 = new Note[4];
+            Notes2[0] = new Note(Note.NoteID.D, Resources.Load("Melody Audio/D.Final") as AudioClip, 4);
+            Notes2[1] = new Note(Note.NoteID.E, Resources.Load("Melody Audio/E.Final") as AudioClip, 5);
+            Notes2[2] = new Note(Note.NoteID.Fplus, Resources.Load("Melody Audio/F+.Final") as AudioClip, 6);
+            Notes2[3] = new Note(Note.NoteID.g8va, Resources.Load("Melody Audio/G8va.Final") as AudioClip, 7);
 
             melodies = new Melody[3];
-            Note[] jump = { Notes[0], Notes[1] };
+            Note[] jump = { Notes1[0], Notes1[1] };
             melodies[0] = new Melody(Melody.MelodyID.JumpMelody, jump);
-            Note[] sleep = { Notes[2], Notes[2], Notes[2]};
+            Note[] sleep = { Notes1[2], Notes1[2], Notes1[2]};
             melodies[1] = new Melody(Melody.MelodyID.SleepMelody, sleep);
-            Note[] magicResist = { Notes[1], Notes[1], Notes[1] };
+            Note[] magicResist = { Notes1[1], Notes1[1], Notes1[1] };
             melodies[2] = new Melody(Melody.MelodyID.MagicResistMelody, magicResist);
 
             //melodies.AddLast()
@@ -165,30 +169,25 @@ public class PlayerData : Data
     public void MelodyPlayed(Melody.MelodyID ?id) {
         switch (id) {
             case Melody.MelodyID.JumpMelody:
-                audioSource.clip = melodyData.jumpMelodySong;
+                AudioManager.Instance.PlayBGM(melodyData.jumpMelodySong);
                 break;
             case Melody.MelodyID.MagicResistMelody:
-                audioSource.clip = melodyData.magicMelodySong;
+                AudioManager.Instance.PlayBGM(melodyData.magicMelodySong);
                 magicShieldHealth = startMagicShieldHealth;
                 break;
             case Melody.MelodyID.SleepMelody:
-                audioSource.clip = melodyData.sleepMelodySong;
+                AudioManager.Instance.PlayBGM(melodyData.sleepMelodySong);
                 if (campfire != null)
                 {
                     campfire.SetSpawn(this);
                 }
                 break;
         }
-        audioSource.volume = 0;
-        StartCoroutine(AudioFadeIn());
-        audioSource.Play();
-        audioSource.loop = true;
         SpawnSFX();
     }
 
-    public void MelodyStopedPlaying(Melody.MelodyID ?id) {
-        audioSource.clip = null;
-        audioSource.loop = false;
+    public void MelodyStoppedPlaying(Melody.MelodyID ?id) {
+        AudioManager.Instance.PlayDefaultBGM();
         if (mfx != null)
         {
             Destroy(mfx.gameObject);
@@ -217,7 +216,7 @@ public class PlayerData : Data
 		body = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         noteAnim = noteFX.textureSheetAnimation;
-        groundCheckRadius = 0.1f;
+        groundCheckRadius = 0.3f;
 
         climbFixLayer = LayerMask.NameToLayer("Blockable");
         playerLayer = LayerMask.NameToLayer("Player");
@@ -235,7 +234,6 @@ public class PlayerData : Data
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>();
         collider = GetComponent<CapsuleCollider2D>();
         controller = GetComponent<StateController>();
         melodyData.MelodyRange = transform.Find("MelodyRange").GetComponent<CircleCollider2D>();
@@ -271,38 +269,6 @@ public class PlayerData : Data
         climbPause = true;
         yield return new WaitForSeconds(time);
         climbPause = false;
-    }
-
-    public void PlaySound(AudioClip audio)
-    {
-        StartCoroutine(FadeVolume(audio));
-    }
-    
-    [Range(0.1f,1)] public float volumeScaler;
-
-    IEnumerator FadeVolume(AudioClip audio)
-    {
-        float startTime = Time.time;
-
-        while(audioSource.volume > 0)
-        {
-            audioSource.volume = Mathf.Clamp(audioSource.volume - (Time.time - startTime) * volumeScaler, 0, 1);
-            yield return null;
-        }
-        audioSource.Stop();
-        audioSource.volume = 1;
-        
-        audioSource.clip = audio;
-        audioSource.Play();
-    }
-
-    public IEnumerator AudioFadeIn()
-    {
-        while (audioSource.volume != 1)
-        {
-            audioSource.volume += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
     }
 
     public void CallRespawn()

@@ -12,35 +12,50 @@ public class PlayerPlayMelody : StateAction {
 
         if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody") > 0.75f) {
             mData.playingFlute = true;
-            data.MelodyStopedPlaying(mData.currentMelody);
+
+            if(mData.currentMelody != null) {
+                data.MelodyStoppedPlaying(mData.currentMelody);
+            }
             mData.currentMelody = null;
             controller.anim.SetBool("Channeling", true);
 
-            foreach (Note note in mData.Notes) {
-                if (Input.GetButtonDown(note.Button)) {
-                    mData.PlayedNotes.AddLast(note);
-
-                    if (Input.GetButton("HighPitch")) {
-                        data.audioSource.pitch = mData.highPitchValue;
+            Note notePlayed = null;
+            if (Input.GetButton("PlayMelodyNoteShift"))
+            {
+                foreach (Note note in mData.Notes2) {
+                    if (Input.GetButtonDown(note.Button)) {
+                        mData.PlayedNotes.AddLast(note);
+                        notePlayed = note;
                     }
-                    else if (Input.GetButton("LowPitch")) {
-                        data.audioSource.pitch = mData.lowPitchValue;
-                    }
-                    else {
-                        data.audioSource.pitch = mData.standardPitchValue;
-                    }
-                    data.PlaySound(note.audio);
-
-                    ParticleSystem m_fx = data.noteFX;
-                    ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
-                    m_anim.rowIndex = note.FXRowNumber;
-                    Instantiate(m_fx, new Vector2(data.transform.position.x, data.collider.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
-                    m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
                 }
             }
+            else
+            {
+                foreach (Note note in mData.Notes1) {
+                    if (Input.GetButtonDown(note.Button)) {
+                        mData.PlayedNotes.AddLast(note);
+                        notePlayed = note;
+                    }
+                }
+            }
+            if(notePlayed != null) {
+                AudioManager.Instance.PlayNote(notePlayed.audio);
+
+                ParticleSystem m_fx = data.noteFX;
+                ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
+                m_anim.rowIndex = notePlayed.FXRowNumber;
+                Instantiate(m_fx, new Vector2(data.transform.position.x, data.collider.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
+                m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
+            }
+            
             while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
                 mData.PlayedNotes.RemoveFirst();
             }
+        }
+
+        if (mData.playingFlute == true)
+        {
+
         }
 
 
@@ -58,7 +73,7 @@ public class PlayerPlayMelody : StateAction {
                 }
             }
             if (!melodyPlayed) {
-                data.MelodyStopedPlaying(mData.currentMelody);
+                data.MelodyStoppedPlaying(mData.currentMelody);
                 mData.currentMelody = null;
                 mData.playingFlute = false;
                 mData.MelodyRange.enabled = false;

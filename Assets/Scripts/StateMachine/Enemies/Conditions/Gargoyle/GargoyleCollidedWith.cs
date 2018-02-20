@@ -13,7 +13,6 @@ public class GargoyleCollidedWith : Condition {
             if(other.transform.tag == "Breakable") {
                 GargoyleData data = (GargoyleData)controller.data;
                 data.rb.velocity = data.previousVelocity;
-                Debug.Log(data.previousVelocity);
                 return false;
             }
             return true;
