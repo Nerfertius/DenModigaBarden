@@ -69,7 +69,11 @@ public class AudioManager : MonoBehaviour
     }
     */
     public void PlayOneShot(AudioClip ac) {
-        oneShotSource.PlayOneShot(ac);
+        PlayOneShot(ac, 1);
+    }
+
+    public void PlayOneShot(AudioClip ac, float volume) {
+        oneShotSource.PlayOneShot(ac, volume);
     }
 
     public AudioSource GetAudioSource() {
@@ -107,8 +111,11 @@ public class AudioManager : MonoBehaviour
         PlayBGM(defaultBGM);
     }
 
-    public void SetDefaultBGM(AudioClip clip) {
+    public void SetDefaultBGM(AudioClip clip) {        
         defaultBGM = clip;
+        if (bgm.getCurrentClip() == clip) {
+            PlayDefaultBGM();
+        }
     }
 
     public void PlayNote(AudioClip music) {
@@ -164,6 +171,10 @@ public class AudioManager : MonoBehaviour
             this.fadeInStartVolume = fadeInStartVolume;
             this.fadeInEndVolume = fadeInEndVolume;
             this.fadeInDuration = fadeInDuration;
+        }
+
+        public AudioClip getCurrentClip() {
+            return current.clip;
         }
 
         public void Play(AudioClip clip) {
