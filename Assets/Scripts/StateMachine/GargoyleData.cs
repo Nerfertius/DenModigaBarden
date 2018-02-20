@@ -15,9 +15,21 @@ public class GargoyleData : EnemyData {
     protected override void Start() {
         base.Start();
         platformEffector = GetComponent<PlatformEffector2D>();
+        frozenColorBlinkData.defaultColor = spriteRenderer.color;
     }
 
     public void Update() {
         previousVelocity = rb.velocity;
+    }
+
+
+    public override void OnEnable() {
+        base.OnEnable();
+
+        frozenColorBlinkData.End(spriteRenderer);
+        platformEffector.enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        gameObject.layer = 11; // Enemy
+        harmful = true;
     }
 }
