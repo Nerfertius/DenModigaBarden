@@ -56,6 +56,9 @@ TagManager:
   - name: Ground
     uniqueID: 1672650429
     locked: 0
+  - name: Tree
+    uniqueID: 3506061867
+    locked: 0
   - name: Midground
     uniqueID: 2122280999
     locked: 0

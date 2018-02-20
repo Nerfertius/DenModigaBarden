@@ -10,7 +10,5 @@ public class Killbox : MonoBehaviour
         {
             StartCoroutine(collision.GetComponent<PlayerData>().Respawn());
         }
-        else
-            Destroy(collision.gameObject);
     }
 }
