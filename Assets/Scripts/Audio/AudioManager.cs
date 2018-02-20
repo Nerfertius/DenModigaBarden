@@ -111,9 +111,10 @@ public class AudioManager : MonoBehaviour
         PlayBGM(defaultBGM);
     }
 
-    public void SetDefaultBGM(AudioClip clip) {        
+    public void SetDefaultBGM(AudioClip clip) {
+        AudioClip previous = defaultBGM;
         defaultBGM = clip;
-        if (bgm.getCurrentClip() == null || bgm.getCurrentClip() == clip) {
+        if (bgm.getCurrentClip() == null || bgm.getCurrentClip() == previous) {
             PlayDefaultBGM();
         }
     }
