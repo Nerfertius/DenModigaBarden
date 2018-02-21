@@ -18,7 +18,7 @@ public class ColorBlinkData {
     public Color color1;
     public Color color2;
 
-    private Color defaultColor;
+    [HideInInspector] public Color defaultColor;
     private bool currentlyOnColor1;
     public float duration;
     [HideInInspector] public Timer blinkTimer;
@@ -47,10 +47,14 @@ public class ColorBlinkData {
                 intervalTimer.Start();
 
                 if (intervalTimer.GetDuration() + 0.02 > blinkTimer.TimeLeft()) {
-                    renderer.color = defaultColor;
-                    blinkTimer = null;
+                    End(renderer);
                 }
             }
         }
+    }
+
+    public void End(SpriteRenderer renderer) {
+        renderer.color = defaultColor;
+        blinkTimer = null;
     }
 }
