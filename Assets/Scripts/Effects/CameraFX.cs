@@ -33,7 +33,7 @@ public class CameraFX : MonoBehaviour {
             FadeOut();
         } else if (Input.GetKeyDown(KeyCode.N))
         {
-            Screenshake(0.10f, 0.025f);
+            Screenshake(0.10f, 0.025f, 0.025f);
         }
     }
     
@@ -50,13 +50,13 @@ public class CameraFX : MonoBehaviour {
         instance.StartCoroutine("FadeOutFX");
     }
 
-    public static void Screenshake(float duration, float intensity)
+    public static void Screenshake(float duration, float xIntensity, float yIntensity)
     {
         instance.StopAllCoroutines();
-        instance.StartCoroutine(instance.ScreenshakeFX(duration, intensity));
+        instance.StartCoroutine(instance.ScreenshakeFX(duration, xIntensity, yIntensity));
     }
 
-    IEnumerator ScreenshakeFX(float duration, float intensity)
+    IEnumerator ScreenshakeFX(float duration, float xIntensity, float yIntensity)
     {
         camScript.enabled = false;
         
@@ -68,7 +68,7 @@ public class CameraFX : MonoBehaviour {
         { 
             timer += 0.05f;
 
-            transform.position = new Vector3(Random.Range(posX - intensity, posX + intensity), Random.Range(posY - intensity, posY + intensity), camPosition.z);
+            transform.position = new Vector3(Random.Range(posX - xIntensity, posX + xIntensity), Random.Range(posY - yIntensity, posY + yIntensity), camPosition.z);
 
             yield return new WaitForSeconds(0.05f);
         }
