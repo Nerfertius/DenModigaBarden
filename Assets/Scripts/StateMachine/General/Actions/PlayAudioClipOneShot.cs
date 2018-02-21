@@ -8,6 +8,6 @@ public class PlayAudioClipOneShot : StateAction {
     public AudioClip clip;
 
     public override void ActOnce(StateController controller) {
-        AudioManager.Instance.PlayOneShot(clip);
+        AudioManager.PlayOneShot(clip);
     }
 }

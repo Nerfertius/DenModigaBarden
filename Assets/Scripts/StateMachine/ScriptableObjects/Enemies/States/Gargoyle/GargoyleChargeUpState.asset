@@ -26,7 +26,7 @@ MonoBehaviour:
     actions:
     - {fileID: 11400000, guid: 1354daf53599806419940ea2f3ae2865, type: 2}
   hasExitTime: 1
-  exitTimer: 4
+  exitTimer: 3
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
