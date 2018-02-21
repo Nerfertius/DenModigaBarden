@@ -292,7 +292,7 @@ public class PlayerData : Data
 
     void SpawnSFX()
     {
-        mfx = Instantiate(melodyFXPrefab, new Vector2(transform.position.x - 0.75f, collider.bounds.max.y), Quaternion.Euler(melodyFXPrefab.transform.rotation.eulerAngles));
+        mfx = Instantiate(melodyFXPrefab, new Vector2(transform.position.x - (0.75f * transform.localScale.x), collider.bounds.max.y), Quaternion.Euler(melodyFXPrefab.transform.rotation.eulerAngles));
         mfx.GetComponent<FXdestroyer>().hasPlayed = true;
         mfx.transform.SetParent(transform);
     }

@@ -6,12 +6,16 @@ public class BreakableBlock : MonoBehaviour {
 
 
     public float velocityNeededToBreak;
+    public UnexploredArea revealOnDestroy;
 
     private bool alive = true;
 
 
     public void Update() {
         if (!alive) {
+            if(revealOnDestroy != null) {
+                revealOnDestroy.Reveal();
+            }
             Destroy(this.gameObject);
         }
     }

@@ -76,11 +76,15 @@ public class EnemyData : MelodyInteractableData
         sleepSFXPrefab = Resources.Load<ParticleSystem>("SFX/Sleep SFX");
     }
 
-    public void OnEnable()
+    public virtual void OnEnable()
     {
         transform.position = startPos;
         transform.localScale = startScale;
         currentDirection = startDirection;
+        harmful = true;
+        if(sleepSFXObject != null) {
+            Destroy(sleepSFXObject.gameObject);
+        }
     }
 
     public void FixedUpdate() {
