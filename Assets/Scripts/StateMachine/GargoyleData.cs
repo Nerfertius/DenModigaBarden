@@ -12,7 +12,8 @@ public class GargoyleData : EnemyData {
 
     public ColorBlinkData frozenColorBlinkData;
     [HideInInspector] public PlatformEffector2D platformEffector;
-    protected override void Start() {
+
+    void Awake() {
         base.Start();
         platformEffector = GetComponent<PlatformEffector2D>();
         frozenColorBlinkData.defaultColor = spriteRenderer.color;

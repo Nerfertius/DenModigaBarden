@@ -34,7 +34,7 @@ public class MapSettings : MonoBehaviour {
             }
 
             if(backgroundMusic != null) {
-                AudioManager.Instance.SetDefaultBGM(backgroundMusic);
+                AudioManager.SetDefaultBGM(backgroundMusic);
             }
         }
     }
