@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MapSettings : MonoBehaviour {
+public class MapSettings : MonoBehaviour
+{
     private Color startColor;
 
     public Sprite titleSprite;
@@ -12,9 +13,10 @@ public class MapSettings : MonoBehaviour {
     public float displayLength;
 
     public AudioClip backgroundMusic;
-    
-    void Start () {
-        if(titleObject != null)
+
+    void Start()
+    {
+        if (titleObject != null)
         {
             titleObject.sprite = titleSprite;
             titleObject.SetNativeSize();
@@ -27,13 +29,15 @@ public class MapSettings : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            if(titleObject != null){
+            if (titleObject != null)
+            {
                 StopAllCoroutines();
                 StartCoroutine(FadeIn());
                 StartCoroutine(DelayedFadeOut());
             }
 
-            if(backgroundMusic != null) {
+            if (backgroundMusic != null)
+            {
                 AudioManager.SetDefaultBGM(backgroundMusic);
             }
         }
@@ -43,7 +47,9 @@ public class MapSettings : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            if(titleObject != null) { 
+            if (titleObject != null)
+            {
+                StopAllCoroutines();
                 titleObject.color = startColor;
             }
         }

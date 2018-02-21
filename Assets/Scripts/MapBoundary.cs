@@ -44,8 +44,8 @@ public class MapBoundary : MonoBehaviour {
         if (collision.tag == "Player")
         {
             UpdateMapBounds();
-            GameManager.instance.switchState(new TransitionState(GameManager.instance));
             camScript.ActivateTransition();
+            GameManager.instance.switchState(new TransitionState(GameManager.instance));
         }
     }
 

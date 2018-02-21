@@ -23,6 +23,5 @@ public class TransitionState : GameState {
 
     public override void update()
     {
-
     }
 }

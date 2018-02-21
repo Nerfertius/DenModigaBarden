@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour {
 
     private bool isActive;
     public bool IsActive { get { return isActive; } }
+    public bool beginningArea = false;
 
     void Start ()
 	{
@@ -20,25 +21,34 @@ public class EnemyManager : MonoBehaviour {
         }
 	}
 
-	// FOR DEBUG
 	void Update ()
-	{
-		if (isActive && Input.GetKeyDown (KeyCode.M)) {
+    {
+        // FOR DEBUG
+        if (isActive && Input.GetKeyDown (KeyCode.M)) {
 			Debug.Log("Deactivating " + enemies.Count + " enemies in " + transform.name);
 			DeactivateAllEnemies();
 		}
+
+        if(isActive && GameManager.instance.current.ToString() == "TransitionState" || beginningArea)
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].gameObject.SetActive(true);
+                controllers[i].enabled = true;
+                controllers[i].ResetStateController();
+            }
+
+            beginningArea = false;
+        }
+
+        Debug.Log(GameManager.instance.current.ToString());
 	}
 
     void OnTriggerEnter2D (Collider2D collision)
 	{
 		if (collision.tag == "Player") {
-			isActive = true;
-			for (int i = 0; i < enemies.Count; i++) {
-				enemies[i].gameObject.SetActive (true);
-                controllers[i].enabled = true;
-				controllers[i].ResetStateController();
-			}
-		}
+            isActive = true;
+        }
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -89,7 +99,7 @@ public class EnemyManager : MonoBehaviour {
 
     IEnumerator DelayDeactivation()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         DeactivateAllEnemies();
     }
 }

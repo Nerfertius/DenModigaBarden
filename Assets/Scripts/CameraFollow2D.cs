@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class CameraFollow2D : MonoBehaviour {
+public class CameraFollow2D : MonoBehaviour
+{
 
-	public Transform target;
+    public Transform target;
     public Transform[] backgrounds;
     public bool hideCursor;
     [Range(1, 10)] public float followSpeed;
@@ -15,38 +16,46 @@ public class CameraFollow2D : MonoBehaviour {
     bool transitioning = false;
     float posX, posY;
 
-    void Start(){
-    	Cursor.visible = !hideCursor;
+    void Start()
+    {
+        Cursor.visible = !hideCursor;
     }
 
-	void LateUpdate ()
-	{
-		posX = Mathf.Clamp (target.transform.position.x, topLeft.x, bottomRight.x);
-		posY = Mathf.Clamp (target.transform.position.y, bottomRight.y, topLeft.y);
+    void LateUpdate()
+    {
+        posX = Mathf.Clamp(target.transform.position.x, topLeft.x, bottomRight.x);
+        posY = Mathf.Clamp(target.transform.position.y, bottomRight.y, topLeft.y);
 
-		if (!transitioning) {
-			transform.position = Vector3.MoveTowards (transform.position, new Vector3 (posX, posY, transform.position.z), 0.5f * followSpeed);
+        if (!transitioning)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(posX, posY, transform.position.z), followSpeed * Time.unscaledDeltaTime);
 
             UpdateBackgroundPosition();
-		} else {
-			RoomTransition ();
-		}
+        }
+        else
+        {
+            RoomTransition();
+        }
 
-		if (Input.GetKeyDown (KeyCode.LeftAlt)) {
-			Cursor.visible = !Cursor.visible;
-		}
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            Cursor.visible = !Cursor.visible;
+        }
     }
 
-	void RoomTransition ()
-	{
-		if (transform.position.x < topLeft.x || transform.position.x > bottomRight.x || transform.position.y > topLeft.y || transform.position.y < bottomRight.y) {
-			transform.position = Vector3.MoveTowards(transform.position, new Vector3 (posX, posY, transform.position.z), 15 * transitionSpeed * Time.unscaledDeltaTime);
+    void RoomTransition()
+    {
+        if (transform.position.x < topLeft.x || transform.position.x > bottomRight.x || transform.position.y > topLeft.y || transform.position.y < bottomRight.y)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(posX, posY, transform.position.z), 15 * transitionSpeed * Time.unscaledDeltaTime);
             UpdateBackgroundPosition();
-        } else {
+        }
+        else
+        {
             GameManager.instance.switchState(new PlayState(GameManager.instance));
             transitioning = false;
-		}
-	}
+        }
+    }
 
     public void SetMapBoundary(Vector2 topLeft, Vector2 bottomRight)
     {
