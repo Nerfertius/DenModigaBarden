@@ -32,11 +32,7 @@ public class PlayState : GameState
             lastValues = new int[playerData.items.Length];
             itemIcons = new Image[lastValues.Length];
         }
-
-        gm.PlayCanvas.enabled = true;
-        playCanvas = gm.PlayCanvas.gameObject;
-        hp = playCanvas.transform.Find("HP").GetComponentsInChildren<Image>();
-        notesBg = playCanvas.transform.Find("UINotes").GetComponent<Image>();
+        getPlayCanvas();
     }
 
     public override void update()
@@ -49,14 +45,12 @@ public class PlayState : GameState
             }
             if (playCanvas == null)
             {
-                playCanvas = GameObject.Find("/PlayCanvas");
-                if (playCanvas == null)
-                    Debug.LogWarning("Can't find /PlayCanvas");
+                getPlayCanvas();
             }
             else
             {
                 //****************HEALTH****************
-                if (hp.Length == 0)
+                if (hp == null)
                 {
                     hp = playCanvas.transform.Find("HP").GetComponentsInChildren<Image>();
                 }
@@ -199,6 +193,26 @@ public class PlayState : GameState
 
         if (Input.GetButtonDown("Cancel"))
             gm.switchState(new PauseState(gm));
+    }
+
+    private void getPlayCanvas() {
+        if (gm.PlayCanvas)
+        {
+            playCanvas = gm.PlayCanvas.gameObject;
+            gm.PlayCanvas.enabled = true;
+        }
+        else
+        {
+            playCanvas = GameObject.Find("PlayCanvas");
+            if (playCanvas == null)
+                Debug.LogWarning("Can't find PlayCanvas");
+        }
+
+        if (playCanvas) {
+            hp = playCanvas.transform.Find("HP").GetComponentsInChildren<Image>();
+            notesBg = playCanvas.transform.Find("UINotes").GetComponent<Image>();
+        }
+
     }
 
     public override void exit()

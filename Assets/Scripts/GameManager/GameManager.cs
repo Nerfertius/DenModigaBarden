@@ -30,7 +30,13 @@ public class GameManager : MonoBehaviour {
     void Start() {
         if (current == null)
         {
-            switchState(new MainMenuState(this));
+            if (player)
+            {
+                switchState(new PlayState(this));
+            }
+            else {
+                switchState(new MainMenuState(this));
+            }
         }
         else {
             current.enter();
@@ -72,10 +78,6 @@ public class GameManager : MonoBehaviour {
         async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildindex);
         async.allowSceneActivation = false;
 
-        Debug.Log("loading");
-
         yield return async;
-
-        Debug.Log("Loaded");
     }
 }
