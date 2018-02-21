@@ -18,14 +18,12 @@ public class CinematicState : GameState {
 
     public override void update()
     {
-        Debug.Log(levelLoad.progress);
         if (levelLoad != null && levelLoad.progress >= 0.9f) {
             if (Input.GetKey(KeyCode.Space)) {
                 levelLoad.allowSceneActivation = true;
             }
             if(levelLoad.isDone)
                 gm.switchState(new PlayState(gm));
-            Debug.Log("Loaded");
         }
 
     }

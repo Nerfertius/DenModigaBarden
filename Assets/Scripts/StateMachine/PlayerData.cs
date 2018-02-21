@@ -241,6 +241,8 @@ public class PlayerData : Data
         // Statics
         PlayerData.player = this;
 
+        GameManager.instance.player = this;
+
         hitInvincibilityTimer = new Timer(hitInvincibilityDuration);
         hitInvincibilityTimer.Start();
     }
