@@ -11,12 +11,14 @@ public class PlayerPlayMelody : StateAction {
         PlayerData.MelodyData mData = data.melodyData;
 
         if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody") > 0.75f) {
+            AudioManager.FadeBGM();
             mData.playingFlute = true;
 
             if(mData.currentMelody != null) {
                 data.MelodyStoppedPlaying(mData.currentMelody);
             }
             mData.currentMelody = null;
+            data.melodyData.MelodyRange.enabled = false;
             controller.anim.SetBool("Channeling", true);
 
             Note notePlayed = null;
@@ -39,7 +41,7 @@ public class PlayerPlayMelody : StateAction {
                 }
             }
             if(notePlayed != null) {
-                AudioManager.Instance.PlayNote(notePlayed.audio);
+                AudioManager.PlayNote(notePlayed.audio);
 
                 ParticleSystem m_fx = data.noteFX;
                 ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
@@ -52,12 +54,6 @@ public class PlayerPlayMelody : StateAction {
                 mData.PlayedNotes.RemoveFirst();
             }
         }
-
-        if (mData.playingFlute == true)
-        {
-
-        }
-
 
         if (Input.GetButtonUp("PlayMelody") || (Input.GetAxisRaw("PlayMelody") < 0.75f && Input.GetAxisRaw("PlayMelody") > 0)) {
             bool melodyPlayed = false;
@@ -79,9 +75,8 @@ public class PlayerPlayMelody : StateAction {
                 mData.MelodyRange.enabled = false;
                 controller.anim.SetBool("Channeling", false);
             }
+            AudioManager.FadeBGMBackToNormal();
             mData.PlayedNotes.Clear();
         }
-
-
     }
 }

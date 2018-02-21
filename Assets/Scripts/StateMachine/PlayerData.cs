@@ -169,14 +169,14 @@ public class PlayerData : Data
     public void MelodyPlayed(Melody.MelodyID ?id) {
         switch (id) {
             case Melody.MelodyID.JumpMelody:
-                AudioManager.Instance.PlayBGM(melodyData.jumpMelodySong);
+                AudioManager.PlayBGM(melodyData.jumpMelodySong);
                 break;
             case Melody.MelodyID.MagicResistMelody:
-                AudioManager.Instance.PlayBGM(melodyData.magicMelodySong);
+                AudioManager.PlayBGM(melodyData.magicMelodySong);
                 magicShieldHealth = startMagicShieldHealth;
                 break;
             case Melody.MelodyID.SleepMelody:
-                AudioManager.Instance.PlayBGM(melodyData.sleepMelodySong);
+                AudioManager.PlayBGM(melodyData.sleepMelodySong);
                 if (campfire != null)
                 {
                     campfire.SetSpawn(this);
@@ -187,7 +187,7 @@ public class PlayerData : Data
     }
 
     public void MelodyStoppedPlaying(Melody.MelodyID ?id) {
-        AudioManager.Instance.PlayDefaultBGM();
+        AudioManager.PlayDefaultBGM();
         if (mfx != null)
         {
             Destroy(mfx.gameObject);
@@ -240,6 +240,8 @@ public class PlayerData : Data
 
         // Statics
         PlayerData.player = this;
+
+        GameManager.instance.player = this;
 
         hitInvincibilityTimer = new Timer(hitInvincibilityDuration);
         hitInvincibilityTimer.Start();

@@ -54,4 +54,20 @@ MonoBehaviour:
   audioSourceObject: {fileID: 1224975597666724, guid: 1984e1bae557331419739881ecb9fd71,
     type: 2}
   numberOfpooledObjects: 10
-  defaultBGM: {fileID: 8300000, guid: f95c3a13cd1e9724b8bd0a2c58fde3b6, type: 3}
+  bgm:
+    volume: 1
+    fadedVolume: 0.3
+    volumeFadeSpeed: 1
+    fullFadeOutDuration: 0.5
+    FadeInOnPlay: 1
+    Loop: 1
+    AllowSameClip: 0
+  notes:
+    volume: 1
+    fadedVolume: 1
+    volumeFadeSpeed: 1
+    fullFadeOutDuration: 0.3
+    FadeInOnPlay: 0
+    Loop: 0
+    AllowSameClip: 1
+  defaultBGM: {fileID: 8300000, guid: 87f3f966f51658d43a7d0d5601b152b0, type: 3}
