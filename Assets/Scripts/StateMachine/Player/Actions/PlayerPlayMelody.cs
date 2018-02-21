@@ -18,6 +18,7 @@ public class PlayerPlayMelody : StateAction {
                 data.MelodyStoppedPlaying(mData.currentMelody);
             }
             mData.currentMelody = null;
+            data.melodyData.MelodyRange.enabled = false;
             controller.anim.SetBool("Channeling", true);
 
             Note notePlayed = null;
