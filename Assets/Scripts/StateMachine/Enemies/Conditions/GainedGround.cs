@@ -13,15 +13,13 @@ public class GainedGround : Condition {
 
     public override bool? CheckCollisionEnter(StateController controller, Collision2D coll) {
         Bounds bounds = coll.collider.bounds;
-
         if (controller.rb.velocity.y <= 0) {
             
             return Physics2D.OverlapBox(controller.transform.position + positionOffset,
+        return Physics2D.OverlapBox(controller.transform.position + positionOffset,
                             Vector3.Scale(bounds.size, sizeMult),
                             0,
                             layerMask);
-        }
-        return false;
     }
 
 }

@@ -72,8 +72,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461975651749938}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.252, y: -2.003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4371184860106240}
@@ -288,8 +288,7 @@ MonoBehaviour:
   grounded: 1
   climbPause: 0
   noteFX: {fileID: 198554481063968690, guid: 9ef5be328e3d179408169efc67f77894, type: 2}
-  melodyFXPrefab: {fileID: 198554481063968690, guid: 46f17ff6a75d4564597ecd0499e5e4b0,
-    type: 2}
+  melodyFXPrefab: {fileID: 198554481063968690, guid: 46f17ff6a75d4564597ecd0499e5e4b0, type: 2}
   inTransit: 0
   targetPos: {x: 0, y: 0}
   spriteRenderer: {fileID: 212082342265056826}
@@ -345,8 +344,40 @@ MonoBehaviour:
         audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
         FXRowNumber: 1
     MaxSavedNotes: 5
-    Notes1: []
-    Notes2: []
+    Notes1:
+    - Button: Note G
+      noteID: 0
+      audio: {fileID: 8300000, guid: ee4a359835ae88447af513dfe96c33c5, type: 3}
+      FXRowNumber: 0
+    - Button: Note A
+      noteID: 1
+      audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
+      FXRowNumber: 1
+    - Button: Note B
+      noteID: 2
+      audio: {fileID: 8300000, guid: fa5661a6b40a9ea479c95582179e6e76, type: 3}
+      FXRowNumber: 2
+    - Button: Note C
+      noteID: 3
+      audio: {fileID: 8300000, guid: 387438303b80e7b4a8a6277ed2093e0e, type: 3}
+      FXRowNumber: 3
+    Notes2:
+    - Button: Note D
+      noteID: 4
+      audio: {fileID: 8300000, guid: 398e74b4f981b88498d99bd0d85df44a, type: 3}
+      FXRowNumber: 4
+    - Button: Note E
+      noteID: 5
+      audio: {fileID: 8300000, guid: 7a64da91dd1a0c74baea58b3f8d16fef, type: 3}
+      FXRowNumber: 5
+    - Button: Note F+
+      noteID: 6
+      audio: {fileID: 8300000, guid: 37d1729e03642fd42add32fc7db54496, type: 3}
+      FXRowNumber: 6
+    - Button: Note G8va
+      noteID: 7
+      audio: {fileID: 8300000, guid: 4e92880c49a85d843bde1e642db50d30, type: 3}
+      FXRowNumber: 7
     JumpMelodyProjectile: {fileID: 1133737618949496, guid: bfc3f9a4942e64e4b8a156d5cfd5fca0,
       type: 2}
     MagicResistMelodyProjectile: {fileID: 1133737618949496, guid: 987c8daab161bc94b83f7d506c88bdc1,

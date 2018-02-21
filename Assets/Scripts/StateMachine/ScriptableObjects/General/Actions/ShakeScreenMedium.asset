@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a16d17b85d21f5489803b3d8fc3f06d, type: 3}
-  m_Name: PlayerSighted
+  m_Script: {fileID: 11500000, guid: 102cef34c6f4925469f8fa6e17ab19f5, type: 3}
+  m_Name: ShakeScreenMedium
   m_EditorClassIdentifier: 
-  mask:
-    serializedVersion: 2
-    m_Bits: 4294927305
+  duration: 0.75
+  xIntensity: 0.35
+  yIntensity: 0.35
