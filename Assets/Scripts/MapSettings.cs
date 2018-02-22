@@ -12,6 +12,7 @@ public class MapSettings : MonoBehaviour
     public Image titleObject;
     public float fadeSpeed;
     public float displayLength;
+    public bool beginningArea;
 
     public AudioClip backgroundMusic;
 
@@ -25,17 +26,20 @@ public class MapSettings : MonoBehaviour
             startColor = titleObject.color;
         }
 
-        TransitionState.TransitionExited += ShowMapTitle;
+        StartMapFeatures();
+        beginningArea = false;
+
+        TransitionState.TransitionExited += StartMapFeatures;
     }
 
     private void OnDestroy()
     {
-        TransitionState.TransitionExited -= ShowMapTitle;
+        TransitionState.TransitionExited -= StartMapFeatures;
     }
 
-    private void ShowMapTitle()
+    private void StartMapFeatures()
     {
-        if(MapBoundary.currentMapBoundary == mb)
+        if(MapBoundary.currentMapBoundary == mb || beginningArea)
         {
             if (titleObject != null)
             {
@@ -77,7 +81,11 @@ public class MapSettings : MonoBehaviour
 
             yield return new WaitForSeconds(0.01f);
         }
+
+        c.a = 1;
+        titleObject.color = c;
     }
+
     IEnumerator DelayedFadeOut()
     {
         yield return new WaitForSeconds(displayLength);
@@ -91,5 +99,8 @@ public class MapSettings : MonoBehaviour
 
             yield return new WaitForSeconds(0.01f);
         }
+
+        c.a = 0;
+        titleObject.color = c;
     }
 }
