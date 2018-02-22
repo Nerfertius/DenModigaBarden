@@ -9,8 +9,9 @@ public class PlayerData : Data
 
     //Instance
     public float health = 3;
-    public float startMagicShieldHealth;
-     public float magicShieldHealth = 0;
+    public float startMagicShieldHealth = 3;
+    [HideInInspector] public float magicShieldHealth = 0;
+    [HideInInspector] public PlayerDamageData lastDamageData;
     [Header("Movement Settings")]
 	[Range(0, 10)] public float maxSpeed;
 	[Range(0, 100)] public float speedMod;

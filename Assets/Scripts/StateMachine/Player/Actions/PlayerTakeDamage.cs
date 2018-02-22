@@ -12,26 +12,29 @@ public class PlayerTakeDamage : StateAction {
 
         if (data.hitInvincibilityTimer.IsDone()) {
             data.hitInvincibilityTimer.Start();
+            Debug.Log(data.lastDamageData);
+            if (data.lastDamageData != null) {
+                // take damage
+                if (data.lastDamageData.isMagical && data.magicShieldHealth > 0) {
+                    data.magicShieldHealth -= data.lastDamageData.damage;
+                    //Debug.Log("ShieldHealth: " + data.magicShieldHealth);
+                }
+                else {
+                    data.health -= data.lastDamageData.damage;
+                    //Debug.Log("Health: " + data.health);
+                }
 
-            data.rb.velocity = new Vector2(0, 0);
+                data.rb.velocity = new Vector2(0, 0);
+                Vector2 knockbackDirection = new Vector2(1, 1).normalized;
+                
+                if (data.hitAngle.x < 0) {
+                    
+                    knockbackDirection = new Vector2(knockbackDirection.x * -1, knockbackDirection.y);
+                }
 
-            data.health -= 0.5f;
-            Debug.Log(data.health);
-
-            // take damage
-
-            Vector2 knockbackDirection = new Vector2(1, 1).normalized;
-            if(data.hitAngle.x < 0) {
-                knockbackDirection = new Vector2(knockbackDirection.x * -1, knockbackDirection.y);
+                data.rb.AddForce(knockbackDirection * data.lastDamageData.knockbackPower * data.rb.mass);
+                data.lastDamageData = null;
             }
-
-            // only horizontal knockback
-            /*Vector2 knockbackDirection = new Vector2(data.hitAngle.x, 0).normalized;
-            data.rb.AddForce(knockbackDirection * knockbackForce * data.rb.mass);
-            */
-            //allow vertical knockback
-            data.rb.AddForce(knockbackDirection * knockbackForce * data.rb.mass);
-
         }
     }
 }

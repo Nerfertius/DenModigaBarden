@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 60890881138470964}
   - component: {fileID: 60771466991440520}
   - component: {fileID: 251232329264797324}
+  - component: {fileID: 114311803795807766}
   m_Layer: 11
   m_Name: Gargoyle
   m_TagString: Enemy
@@ -206,6 +207,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114311803795807766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636036458769274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9e9574802f54d4c8ce9ec0b8db8cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMagical: 0
+  knockbackPower: 400
+  damage: 0.5
 --- !u!114 &114353636810500938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -271,7 +286,6 @@ MonoBehaviour:
   sleepSFXPrefab: {fileID: 0}
   sleepSFXObject: {fileID: 0}
   isHeavy: 1
-  isMagical: 1
   idleCollider: {fileID: 60890881138470964}
   dashCollider: {fileID: 60771466991440520}
   velocityBeforeFrozen: {x: 0, y: 0}

@@ -31,7 +31,6 @@ public class EnemyData : MelodyInteractableData
     [HideInInspector] public ParticleSystem sleepSFXObject;
 
     public bool isHeavy;
-    public bool isMagical;
 
     protected virtual void Awake()
     {

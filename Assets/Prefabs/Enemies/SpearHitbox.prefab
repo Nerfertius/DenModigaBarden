@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114512867988970986}
   - component: {fileID: 114686888131770174}
   - component: {fileID: 114890847053693520}
+  - component: {fileID: 114422840977751044}
   m_Layer: 2
   m_Name: SpearHitbox
   m_TagString: Hitbox
@@ -68,6 +69,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &114422840977751044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427978115459944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9e9574802f54d4c8ce9ec0b8db8cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMagical: 0
+  knockbackPower: 300
+  damage: 0.5
 --- !u!114 &114512867988970986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,8 +121,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
+  startScale: {x: 0, y: 0}
+  startDirection: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
+  melodyDebuffData:
+    debuffStartPos: {x: 0, y: 0}
+    defaultGravityScale: 1
   player: {fileID: 0}
   speed: 0
   chaseSpeed: 0
@@ -119,3 +139,7 @@ MonoBehaviour:
   sight: {fileID: 0}
   colliders: []
   harmful: 1
+  switchingCollider: 0
+  sleepSFXPrefab: {fileID: 0}
+  sleepSFXObject: {fileID: 0}
+  isHeavy: 0
