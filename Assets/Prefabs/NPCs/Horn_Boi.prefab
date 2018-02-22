@@ -190,26 +190,124 @@ MonoBehaviour:
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   canWalk: 0
+  speed: 0
   waitTime: 0
   mood: 0
   conversation:
   - texts:
-    - text: "Hall\xE5"
+    - text: "Wow, that was really impressive. You\u2019re almost as skillful as a
+        trained field mouse."
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 0
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions:
+    - condition: 2
       goComp: {fileID: 0}
       convIndex: 0
       convSpokIndex: 0
       itemComp: 0
       consumeItem: 0
+      state: {fileID: 0}
+      character: {fileID: 0}
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+  - texts:
+    - text: "So, you\u2019re leaving on your own, are you?"
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+  - texts:
+    - text: "Aren\u2019t you a mighty adventurer."
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+  - texts:
+    - text: "You know you won\u2019t last a day out there."
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+  - texts:
+    - text: "Do you think you\u2019re better than us? Is that it?"
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+  - texts:
+    - text: "Well mighty adventurer, if you\u2019re such a hero then why don\u2019t
+        you go slay a dragon?"
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+  - texts:
+    - text: Go on, your big adventure is waiting.
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
     speakOnce: 0
+    notEnd: 0
     spoken: 0
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
   pitchDeviation: 0.3
+  autoSpeak: 0
+  autoSpeakRange: 0
   currentConvIndex: 0
   currentConv: []
   currentText: 0
@@ -226,6 +324,7 @@ MonoBehaviour:
   playSound: 0
   animator: {fileID: 0}
   playerInRange: 0
+  inAutoRange: 0
   player: {fileID: 0}
 --- !u!212 &212752486582230552
 SpriteRenderer:
@@ -259,7 +358,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2004588891
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c09916beffb8358468663482bd0afffd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

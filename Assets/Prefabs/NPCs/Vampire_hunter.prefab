@@ -192,12 +192,16 @@ MonoBehaviour:
       stay: 0
       stayTime: 0
       originalStayTime: 0
-    conditions: []
-    speakOnce: 0
-    notEnd: 0
-    spoken: 0
-  - texts:
-    - text: "You\u2019re welcome."
+    - text: '...'
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: You're welcome.
       mood: 0
       size: {x: 0, y: 0}
       visable: 1
@@ -207,7 +211,7 @@ MonoBehaviour:
       stayTime: 0
       originalStayTime: 0
     conditions: []
-    speakOnce: 0
+    speakOnce: 1
     notEnd: 0
     spoken: 0
   - texts:
@@ -231,12 +235,21 @@ MonoBehaviour:
       stayTime: 0
       originalStayTime: 0
     conditions: []
-    speakOnce: 0
+    speakOnce: 1
     notEnd: 0
     spoken: 0
   - texts:
-    - text: Why do I need a pie for vampire hunting? Huhuh. Since the vampires disappeared
-        business has been rather slow, so I had to pick up a new hobby.
+    - text: Why do I need a pie for vampire hunting? Huhuhu.
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: Since the vampires disappeared business has been rather slow, so I had
+        to pick up a new hobby.
       mood: 0
       size: {x: 0, y: 0}
       visable: 1
@@ -263,7 +276,120 @@ MonoBehaviour:
       stay: 0
       stayTime: 0
       originalStayTime: 0
-    - text: "No? That\u2019s more pie for me then huhuh."
+    - text: "No? That\u2019s more pie for me then huhuhu."
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+  - texts:
+    - text: 1/2 cup of sugar
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: 1/2 cup of brown packed sugar
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: 3 tablespoons of flour
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: 1 teaspoon of ground cinnamon
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: 1/4 teaspoon of ground ginger
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: 1/4 teaspoon of ground nutmeg
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: 6-7 thinly sliced delicious garlics
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: 1 tablespoon of lemon juice
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: Pastry for double-crust pie (9 inches)
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: 1 tablespoon of butter
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: And 1 large egg white
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    - text: Huhuhu...
       mood: 0
       size: {x: 0, y: 0}
       visable: 1
