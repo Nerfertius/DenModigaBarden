@@ -34,9 +34,16 @@ public class GargoyleData : EnemyData {
         base.OnEnable();
 
         frozenColorBlinkData.End(spriteRenderer);
-        platformEffector.useOneWay = false;
+        SetPlatformEffector(false);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         gameObject.layer = 11; // Enemy
         harmful = true;
+    }
+
+    public void SetPlatformEffector(bool enabled)
+    {
+        idleCollider.usedByEffector = enabled;
+        dashCollider.usedByEffector = enabled;
+        platformEffector.enabled = enabled;
     }
 }
