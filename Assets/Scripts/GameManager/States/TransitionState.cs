@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class TransitionState : GameState {
 
+    public delegate void TransitionEnterEventHandler();
+    public static event TransitionEnterEventHandler TransitionEntered;
+
+    public delegate void TransitionExitEventHandler();
+    public static event TransitionExitEventHandler TransitionExited;
+
     public TransitionState(GameManager gm)
     {
         this.gm = gm;
@@ -11,6 +17,11 @@ public class TransitionState : GameState {
 
     public override void enter()
     {
+        if (TransitionEntered != null)
+        {
+            TransitionEntered();
+        }
+
         Time.timeScale = 0;
         //gm.hideCanvas("PlayCanvas");
     }
@@ -18,11 +29,15 @@ public class TransitionState : GameState {
     public override void exit()
     {
         Time.timeScale = 1;
+        
+        if (TransitionExited != null)
+        {
+            TransitionExited();
+        }
         //gm.showCanvas("PlayCanvas");
     }
 
     public override void update()
     {
-
     }
 }

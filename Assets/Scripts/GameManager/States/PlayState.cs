@@ -41,7 +41,7 @@ public class PlayState : GameState
         {
             if (playerData.health <= 0)
             {
-                gm.switchState(new GameOverState(gm));
+                //gm.switchState(new GameOverState(gm));
             }
             if (playCanvas == null)
             {

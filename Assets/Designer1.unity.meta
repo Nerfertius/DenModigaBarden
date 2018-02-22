@@ -1,6 +1,8 @@
 fileFormatVersion: 2
+:Assets/Designer1.unity.meta
 guid: c01f8696238e9334c9a97910a05ef14c
 timeCreated: 1518789368
+:Assets/Scripts/StateMachine/Objects/Conditions.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

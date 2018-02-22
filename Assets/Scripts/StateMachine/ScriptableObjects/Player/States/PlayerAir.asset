@@ -28,6 +28,7 @@ MonoBehaviour:
     falseState: {fileID: 0}
     trueStateTransitionActions:
     - {fileID: 11400000, guid: 2ebdba8ca1732de4d8f4b6cf52f8c801, type: 2}
+    - {fileID: 11400000, guid: 6ab8b8df3b18a3e4d99c224282d14f24, type: 2}
     falseStateTransitionActions: []
   - condition: {fileID: 11400000, guid: d54251042a3d9cc4a861629c2e0a2938, type: 2}
     trueState: {fileID: 11400000, guid: 1c825357ed673284999eb68e7409a3d1, type: 2}
@@ -39,6 +40,7 @@ MonoBehaviour:
     falseState: {fileID: 0}
     trueStateTransitionActions:
     - {fileID: 11400000, guid: 2ebdba8ca1732de4d8f4b6cf52f8c801, type: 2}
+    - {fileID: 11400000, guid: 6ab8b8df3b18a3e4d99c224282d14f24, type: 2}
     falseStateTransitionActions: []
   - condition: {fileID: 11400000, guid: 001ef07dfb2e7e54ea77312b657a721e, type: 2}
     trueState: {fileID: 11400000, guid: 126f1b19627984f4da1ecd7754accff3, type: 2}

@@ -165,7 +165,14 @@ public class PlayerData : Data
             standardPitchValue = 1;
         }
     }
-
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            health = 3;
+            CallRespawn();
+        }
+    }
     public void MelodyPlayed(Melody.MelodyID ?id) {
         switch (id) {
             case Melody.MelodyID.JumpMelody:
@@ -287,6 +294,7 @@ public class PlayerData : Data
         jumping = false;
         melodyData.currentMelody = null;
         health = 3;
+        respawnLocation.GetComponent<Campfire>().mb.CalculateMapBounds();
         respawnLocation.GetComponent<Campfire>().mb.UpdateMapBounds();
         Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
         CameraFX.FadeOut();

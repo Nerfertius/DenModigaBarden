@@ -41,12 +41,14 @@ public class CameraFX : MonoBehaviour {
     public static void FadeIn()
     {
         instance.StopAllCoroutines();
+        instance.camScript.enabled = true;
         instance.StartCoroutine("FadeInFX");
     }
 
     public static void FadeOut()
     {
         instance.StopAllCoroutines();
+        instance.camScript.enabled = true;
         instance.StartCoroutine("FadeOutFX");
     }
 
@@ -89,6 +91,9 @@ public class CameraFX : MonoBehaviour {
 
             yield return new WaitForSeconds(0.01f);
         }
+
+        c.a = 1;
+        screenFade.color = c;
     }
     IEnumerator FadeOutFX()
     {
@@ -101,5 +106,8 @@ public class CameraFX : MonoBehaviour {
 
             yield return new WaitForSeconds(0.01f);
         }
+
+        c.a = 0;
+        screenFade.color = c;
     }
 }

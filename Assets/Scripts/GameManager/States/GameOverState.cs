@@ -12,6 +12,5 @@ public class GameOverState : GameState {
     public override void enter()
     {
         gm.player.CallRespawn();
-        gm.switchState(new PlayState(gm));
     }
 }
