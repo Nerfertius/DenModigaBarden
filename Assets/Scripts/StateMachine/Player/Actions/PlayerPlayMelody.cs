@@ -57,6 +57,8 @@ public class PlayerPlayMelody : StateAction {
 
         if (Input.GetButtonUp("PlayMelody") || (Input.GetAxisRaw("PlayMelody") < 0.75f && Input.GetAxisRaw("PlayMelody") > 0)) {
             bool melodyPlayed = false;
+
+            
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {
                     mData.currentMelody = melody.melodyID;

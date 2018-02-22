@@ -83,7 +83,7 @@ public class StateController : MonoBehaviour
         if (nextState == null || sender != currentState)
             return;
 
-        Debug.Log(sender + " " + nextState);
+        //Debug.Log(sender + " -> " + nextState);
 
         currentState.DoExitActions(this);
 

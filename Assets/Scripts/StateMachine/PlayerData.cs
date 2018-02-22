@@ -142,15 +142,24 @@ public class PlayerData : Data
             Notes2[2] = new Note(Note.NoteID.Fplus, Resources.Load("Melody Audio/F+.Final") as AudioClip, 6);
             Notes2[3] = new Note(Note.NoteID.g8va, Resources.Load("Melody Audio/G8va.Final") as AudioClip, 7);
 
-            melodies = new Melody[3];
-            Note[] jump = { Notes1[0], Notes1[1] };
+            melodies = new Melody[6];
+
+            // actual versions
+            Note[] jump = { Notes2[1], Notes1[2], Notes2[0], Notes2[1], Notes2[0] };
             melodies[0] = new Melody(Melody.MelodyID.JumpMelody, jump);
-            Note[] sleep = { Notes1[2], Notes1[2], Notes1[2]};
+            Note[] sleep = { Notes1[0], Notes2[0], Notes2[1], Notes2[0], Notes1[0] };
             melodies[1] = new Melody(Melody.MelodyID.SleepMelody, sleep);
-            Note[] magicResist = { Notes1[1], Notes1[1], Notes1[1] };
+            Note[] magicResist = { Notes1[0], Notes1[1], Notes1[2], Notes2[0], Notes1[2] };
             melodies[2] = new Melody(Melody.MelodyID.MagicResistMelody, magicResist);
 
-            //melodies.AddLast()
+            // simple versions
+            Note[] jump2 = { Notes1[0], Notes1[1] };
+            melodies[3] = new Melody(Melody.MelodyID.JumpMelody, jump2);
+            Note[] sleep2 = { Notes1[2], Notes1[2], Notes1[2]};
+            melodies[4] = new Melody(Melody.MelodyID.SleepMelody, sleep2);
+            Note[] magicResist2 = { Notes1[1], Notes1[1], Notes1[1] };
+            melodies[5] = new Melody(Melody.MelodyID.MagicResistMelody, magicResist2);
+
             JumpMelodyProjectile = Resources.Load("MelodyProjectiles/JumpMelodyProjectile") as GameObject;
             MagicResistMelodyProjectile = Resources.Load("MelodyProjectiles/MagicResistMelodyProjectile") as GameObject;
             SleepMelodyProjectile = Resources.Load("MelodyProjectiles/SleepMelodyProjectile") as GameObject;
