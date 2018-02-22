@@ -7,6 +7,7 @@ public class BreakableBlock : MonoBehaviour {
 
     public float velocityNeededToBreak;
     public UnexploredArea revealOnDestroy;
+    public ParticleSystem onBreakEffect;
 
     private bool alive = true;
 
@@ -25,6 +26,7 @@ public class BreakableBlock : MonoBehaviour {
 
         if (data != null && data.isHeavy && coll.relativeVelocity.sqrMagnitude >= Mathf.Pow(velocityNeededToBreak, 2)) {
             alive = false;
+            Instantiate(onBreakEffect, transform.position, Quaternion.identity);
         }
     }
 }

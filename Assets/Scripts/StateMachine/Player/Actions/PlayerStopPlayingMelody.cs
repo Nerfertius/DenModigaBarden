@@ -12,5 +12,6 @@ public class PlayerStopPlayingMelody : StateAction {
        data.melodyData.MelodyRange.enabled = false;
        data.melodyData.PlayedNotes.Clear();
        controller.anim.SetBool("Channeling", false);
+        AudioManager.FadeBGMBackToNormal();
    }
 }
