@@ -9,6 +9,9 @@ public class MapBoundary : MonoBehaviour {
     private static Vector2 newTopLeft;
     private static Vector2 newBottomRight;
     private static bool firstTime;
+
+    public static MapBoundary nextMapBoundary;
+    public static MapBoundary currentMapBoundary;
     
 	void Start () {
         mainCam = Camera.main;
@@ -57,10 +60,13 @@ public class MapBoundary : MonoBehaviour {
 
         newTopLeft = new Vector2(boundary.bounds.min.x + camHalfWidth, boundary.bounds.max.y - camHalfHeight);
         newBottomRight = new Vector2(boundary.bounds.max.x - camHalfWidth, boundary.bounds.min.y + camHalfHeight);
+
+        nextMapBoundary = this;
     }
 
     public void UpdateMapBounds()
     {
         camScript.SetMapBoundary(newTopLeft, newBottomRight);
+        currentMapBoundary = nextMapBoundary;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MapSettings : MonoBehaviour
 {
     private Color startColor;
+    private MapBoundary mb;
 
     public Sprite titleSprite;
     public Image titleObject;
@@ -16,22 +17,32 @@ public class MapSettings : MonoBehaviour
 
     void Start()
     {
+        mb = GetComponent<MapBoundary>();
+
         if (titleObject != null)
         {
-            titleObject.sprite = titleSprite;
-            titleObject.SetNativeSize();
             titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, 0);
             startColor = titleObject.color;
         }
+
+        TransitionState.TransitionExited += ShowMapTitle;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnDestroy()
     {
-        if (other.tag == "Player")
+        TransitionState.TransitionExited -= ShowMapTitle;
+    }
+
+    private void ShowMapTitle()
+    {
+        if(MapBoundary.currentMapBoundary == mb)
         {
             if (titleObject != null)
             {
                 StopAllCoroutines();
+                titleObject.color = startColor;
+                titleObject.sprite = titleSprite;
+                titleObject.SetNativeSize();
                 StartCoroutine(FadeIn());
                 StartCoroutine(DelayedFadeOut());
             }
@@ -57,8 +68,6 @@ public class MapSettings : MonoBehaviour
 
     IEnumerator FadeIn()
     {
-        yield return new WaitForSeconds(0.25f);
-
         Color c = titleObject.color;
 
         for (float value = titleObject.color.a; value <= 1; value += 0.01f * fadeSpeed)

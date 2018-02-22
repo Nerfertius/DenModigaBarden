@@ -19,9 +19,16 @@ public class EnemyManager : MonoBehaviour {
 				controllers.Add(enemies[enemies.Count - 1].gameObject.GetComponent<StateController>());
 			}
         }
+
+        TransitionState.TransitionEntered += ActivateEnemies;
 	}
 
-	void Update ()
+    private void OnDestroy()
+    {
+        TransitionState.TransitionEntered -= ActivateEnemies;
+    }
+
+    void Update ()
     {
         // FOR DEBUG
         if (isActive && Input.GetKeyDown (KeyCode.M)) {
@@ -29,20 +36,25 @@ public class EnemyManager : MonoBehaviour {
 			DeactivateAllEnemies();
 		}
 
-        if(isActive && GameManager.instance.current.ToString() == "TransitionState" || beginningArea)
+        if(beginningArea)
         {
+            isActive = true;
+            ActivateEnemies();
+            beginningArea = false;
+        }
+	}
+
+    void ActivateEnemies()
+    {
+        if (isActive) { 
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].gameObject.SetActive(true);
                 controllers[i].enabled = true;
                 controllers[i].ResetStateController();
             }
-
-            beginningArea = false;
         }
-
-        Debug.Log(GameManager.instance.current.ToString());
-	}
+    }
 
     void OnTriggerEnter2D (Collider2D collision)
 	{
