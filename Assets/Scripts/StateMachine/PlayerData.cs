@@ -172,6 +172,7 @@ public class PlayerData : Data
             doubleJumpTimer = new Timer(0.3f);
             projectileCooldownTimer = new Timer(projectileCooldown);
             projectileCooldownTimer.Start();
+            projectileCooldownTimer.InstantFinish();
             standardPitchValue = 1;
         }
     }
@@ -262,6 +263,18 @@ public class PlayerData : Data
 
         hitInvincibilityTimer = new Timer(hitInvincibilityDuration);
         hitInvincibilityTimer.Start();
+        hitInvincibilityTimer.InstantFinish();
+    }
+
+
+    public void CancelPlayingMelody() {
+        MelodyStoppedPlaying(melodyData.currentMelody);
+        melodyData.currentMelody = null;
+        melodyData.playingFlute = false;
+        melodyData.MelodyRange.enabled = false;
+        melodyData.PlayedNotes.Clear();
+        controller.anim.SetBool("Channeling", false);
+        AudioManager.FadeBGMBackToNormal();
     }
 
     public void Pause()

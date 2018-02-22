@@ -22,6 +22,10 @@ public class Timer {
         active = true;
     }
 
+    public void InstantFinish() {
+        startTime = -duration;
+    }
+
     public void Pause() {
         pauseStartTime = Time.time;
         active = false;
