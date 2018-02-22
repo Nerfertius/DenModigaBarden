@@ -91,6 +91,9 @@ public class CameraFX : MonoBehaviour {
 
             yield return new WaitForSeconds(0.01f);
         }
+
+        c.a = 1;
+        screenFade.color = c;
     }
     IEnumerator FadeOutFX()
     {
@@ -103,5 +106,8 @@ public class CameraFX : MonoBehaviour {
 
             yield return new WaitForSeconds(0.01f);
         }
+
+        c.a = 0;
+        screenFade.color = c;
     }
 }

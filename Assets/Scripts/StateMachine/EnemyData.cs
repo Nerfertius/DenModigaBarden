@@ -33,10 +33,15 @@ public class EnemyData : MelodyInteractableData
     public bool isHeavy;
     public bool isMagical;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         startPos = transform.position;
         startScale = transform.localScale;
+
+        sight = transform.GetComponentInChildren<SightColliderAV>();
+        colliders = GetComponents<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Start()
@@ -46,10 +51,6 @@ public class EnemyData : MelodyInteractableData
         playerCollisionFilter.layerMask = 1 << 13; // player layer = 13
 
         if (behaveAsHitbox) return;
-
-        sight = transform.GetComponentInChildren<SightColliderAV>();
-
-        rb = GetComponent<Rigidbody2D>();
 
         if (transform.childCount != 0)
         {
@@ -68,9 +69,6 @@ public class EnemyData : MelodyInteractableData
         }
 
         startDirection = currentDirection;
-
-        colliders = GetComponents<Collider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         harmful = true;
         sleepSFXPrefab = Resources.Load<ParticleSystem>("SFX/Sleep SFX");
