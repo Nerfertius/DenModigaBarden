@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611728875210514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.6952705, y: -37.52294, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4343838358775902}
@@ -160,6 +160,7 @@ MonoBehaviour:
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   canWalk: 0
+  speed: 0
   waitTime: 0
   mood: 0
   conversation:
@@ -167,78 +168,120 @@ MonoBehaviour:
     - text: See anything you like?
       mood: 0
       size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: I have everything you need for a good vampire hunt.
       mood: 0
       size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: "Of course, there aren\u2019t any vampires left"
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 0
-      goComp: {fileID: 0}
-      convIndex: 0
-      convSpokIndex: 0
-      itemComp: 0
-      consumeItem: 0
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
     speakOnce: 0
+    notEnd: 0
     spoken: 0
   - texts:
     - text: "You\u2019re welcome."
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 0
-      goComp: {fileID: 0}
-      convIndex: 0
-      convSpokIndex: 0
-      itemComp: 0
-      consumeItem: 0
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
     speakOnce: 0
+    notEnd: 0
     spoken: 0
   - texts:
     - text: I remember when this valley was nothing but a thick, dark forest, vampires
         lurking in every tree.
       mood: 0
       size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: "Those were the days\u2026"
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 0
-      goComp: {fileID: 0}
-      convIndex: 0
-      convSpokIndex: 0
-      itemComp: 0
-      consumeItem: 0
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
     speakOnce: 0
+    notEnd: 0
     spoken: 0
   - texts:
     - text: Why do I need a pie for vampire hunting? Huhuh. Since the vampires disappeared
         business has been rather slow, so I had to pick up a new hobby.
       mood: 0
       size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: I make garlic pies!
       mood: 0
       size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: Fancy a slice?
       mood: 0
       size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: "No? That\u2019s more pie for me then huhuh."
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 0
-      goComp: {fileID: 0}
-      convIndex: 0
-      convSpokIndex: 0
-      itemComp: 0
-      consumeItem: 0
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
     speakOnce: 0
+    notEnd: 0
     spoken: 0
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
   pitchDeviation: 0.3
+  autoSpeak: 0
+  autoSpeakRange: 0
   currentConvIndex: 0
   currentConv: []
   currentText: 0
@@ -255,6 +298,7 @@ MonoBehaviour:
   playSound: 0
   animator: {fileID: 0}
   playerInRange: 0
+  inAutoRange: 0
   player: {fileID: 0}
 --- !u!114 &114530841475956608
 MonoBehaviour:
@@ -300,7 +344,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6cc1f0e1239044945ad31f139d7f1302, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -318,7 +362,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2004588891
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fd5103abb6ed9f34baa66971e4697078, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -10,7 +10,7 @@ public class PlayerData : Data
     //Instance
     public float health = 3;
     public float startMagicShieldHealth;
-     public float magicShieldHealth = 0;
+    public float magicShieldHealth = 0;
     [Header("Movement Settings")]
 	[Range(0, 10)] public float maxSpeed;
 	[Range(0, 100)] public float speedMod;
@@ -36,9 +36,6 @@ public class PlayerData : Data
     // Ladder
     [HideInInspector] public Transform ladderBottom;
 	[HideInInspector] public Transform ladderTop;
-
-    [HideInInspector] public Vector2 spawnLocation;
-    [HideInInspector] public Campfire campfire;
 
     // Movement
     [HideInInspector] public bool jumping;
@@ -80,6 +77,8 @@ public class PlayerData : Data
     // Respawn
     [HideInInspector] public int currentRespawnOrder;
     [HideInInspector] public Transform respawnLocation;
+    [HideInInspector] public Campfire campfire;
+    public Campfire startSpawn;
 
     // Materials
     [HideInInspector] public PhysicsMaterial2D defaultMat;
@@ -231,7 +230,8 @@ public class PlayerData : Data
         items = new int[System.Enum.GetNames(typeof(ItemType)).Length];
 
         currentRespawnOrder = -1;
-        respawnLocation = transform;
+        respawnLocation = startSpawn.transform;
+
 
         defaultMat = Resources.Load("Materials/Default") as PhysicsMaterial2D;
         fullFriction = Resources.Load("Materials/FullFriction") as PhysicsMaterial2D;

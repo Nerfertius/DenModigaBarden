@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1009171659886704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 14.506999, y: -38.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4448691321716684}
@@ -190,6 +190,7 @@ MonoBehaviour:
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   canWalk: 0
+  speed: 0
   waitTime: 0
   mood: 0
   conversation:
@@ -197,56 +198,125 @@ MonoBehaviour:
     - text: That big old loaf!
       mood: 0
       size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: "He\u2019s been crying in the corner all day. He is scaring all the customers
         away."
       mood: 0
       size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: Help me will you?
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 3
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+  - texts:
+    - text: Thank you kindly
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions:
+    - condition: 4
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 2
+      itemComp: 0
+      consumeItem: 0
+      state: {fileID: 0}
+      character: {fileID: 0}
+    - condition: 5
       goComp: {fileID: 0}
       convIndex: 0
       convSpokIndex: 0
       itemComp: 0
       consumeItem: 0
+      state: {fileID: 0}
+      character: {fileID: 0}
     speakOnce: 0
+    notEnd: 0
     spoken: 0
   - texts:
     - text: "You can\u2019t leave him like this, maybe there\u2019s a way to calm
         him down\u2026"
       mood: 0
       size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: "You\u2019re a bard right? Play him a song."
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 3
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions:
+    - condition: 2
       goComp: {fileID: 0}
       convIndex: 0
       convSpokIndex: 0
       itemComp: 0
       consumeItem: 0
+      state: {fileID: 0}
+      character: {fileID: 0}
+    - condition: 2
+      goComp: {fileID: 0}
+      convIndex: 0
+      convSpokIndex: 0
+      itemComp: 0
+      consumeItem: 0
+      state: {fileID: 0}
+      character: {fileID: 0}
     speakOnce: 0
+    notEnd: 0
     spoken: 0
   - texts:
-    - text: Thank you kindly
+    - text: Help me will you?
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 4
-      goComp: {fileID: 0}
-      convIndex: 0
-      convSpokIndex: 0
-      itemComp: 0
-      consumeItem: 0
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
     speakOnce: 0
+    notEnd: 0
     spoken: 0
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
   pitchDeviation: 0.3
+  autoSpeak: 0
+  autoSpeakRange: 0
   currentConvIndex: 0
   currentConv: []
   currentText: 0
@@ -263,6 +333,7 @@ MonoBehaviour:
   playSound: 0
   animator: {fileID: 0}
   playerInRange: 0
+  inAutoRange: 0
   player: {fileID: 0}
 --- !u!212 &212121768600657420
 SpriteRenderer:
@@ -278,7 +349,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6cc1f0e1239044945ad31f139d7f1302, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,7 +367,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2004588891
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 35884ff0c9fae2d479b0a27d6e47a9ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

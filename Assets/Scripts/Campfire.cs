@@ -12,6 +12,10 @@ public class Campfire : MonoBehaviour
     void Start ()
     {
         anim = GetComponent<Animator>();
+        if (order == 0)
+        {
+            anim.SetBool("Active", true);
+        }
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)

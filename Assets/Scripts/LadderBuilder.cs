@@ -39,6 +39,7 @@ public class LadderBuilder : MonoBehaviour
             for (int i = 0; i < height - 1; i++)
             {
                 newLadder = Instantiate(ladder, new Vector2(transform.position.x, transform.position.y + i + 1), Quaternion.identity, transform);
+                newLadder.GetComponent<SpriteRenderer>().material = GetComponent<SpriteRenderer>().material;
             }
             topLadder = newLadder.transform;
             newLadder.GetComponent<SpriteRenderer>().sprite = ladderTopSprite;

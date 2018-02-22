@@ -16,7 +16,6 @@ public class PlayerTakeDamage : StateAction {
             data.rb.velocity = new Vector2(0, 0);
 
             data.health -= 0.5f;
-            Debug.Log(data.health);
 
             // take damage
 
