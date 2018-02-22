@@ -179,13 +179,15 @@ public class AudioManager : MonoBehaviour
         }
 
         public void Play(AudioClip clip) {
-            if (!AllowSameClip && current.clip == clip) {
+            if (current != null && !AllowSameClip && current.clip == clip) {
                 return;
             }
             AudioSource previous = current;
-
-            //fade out
-            AudioManager.instance.StartCoroutine(AudioManager.AudioFadeAndStop(current, current.volume, 0, fullFadeOutDuration));
+            if(current != null) {
+                //fade out
+                AudioManager.instance.StartCoroutine(AudioManager.AudioFadeAndStop(current, current.volume, 0, fullFadeOutDuration));
+            }
+            
             if (clip != null) {
                 current = AudioManager.GetAudioSource();
 
@@ -204,22 +206,28 @@ public class AudioManager : MonoBehaviour
                     }
                 }
             }
+            else {
+                current = null;
+            }
         }
 
         public void Update() {
-            float targetVolume = useFadedVolume ? fadedVolumeBasedOnDefault : volume;
-            if (current.volume != targetVolume) {
-                float volumeDifference = current.volume - targetVolume;
-                float deltaVolumeFadeSpeed = volumeFadeSpeed * Time.deltaTime;
+            if(current != null) {
+                float targetVolume = useFadedVolume ? fadedVolumeBasedOnDefault : volume;
+                if (current.volume != targetVolume) {
+                    float volumeDifference = current.volume - targetVolume;
+                    float deltaVolumeFadeSpeed = volumeFadeSpeed * Time.deltaTime;
 
-                if(Mathf.Abs(volumeDifference) <= deltaVolumeFadeSpeed) {
-                    current.volume = targetVolume;
-                }
-                else if(volumeDifference > 0){//fade down
-                    current.volume -= deltaVolumeFadeSpeed;
-                }
-                else {//fade up
-                    current.volume += deltaVolumeFadeSpeed;
+                    if (Mathf.Abs(volumeDifference) <= deltaVolumeFadeSpeed) {
+                        current.volume = targetVolume;
+                    }
+                    else if (volumeDifference > 0) {//fade down
+                        current.volume -= deltaVolumeFadeSpeed;
+                    }
+                    else {//fade up
+                        current.volume += deltaVolumeFadeSpeed;
+                    }
+
                 }
             }
         }
