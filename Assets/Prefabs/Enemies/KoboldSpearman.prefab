@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114255889625887908}
   - component: {fileID: 50093347405618770}
   - component: {fileID: 70900607023372596}
+  - component: {fileID: 114222731538858054}
   m_Layer: 11
   m_Name: KoboldSpearman
   m_TagString: Enemy
@@ -143,6 +144,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114222731538858054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722560607664240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9e9574802f54d4c8ce9ec0b8db8cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMagical: 0
+  knockbackPower: 300
+  damage: 0.5
 --- !u!114 &114255889625887908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +210,7 @@ MonoBehaviour:
   switchingCollider: 0
   sleepSFXPrefab: {fileID: 0}
   sleepSFXObject: {fileID: 0}
+  isHeavy: 0
 --- !u!114 &114713553793561548
 MonoBehaviour:
   m_ObjectHideFlags: 1

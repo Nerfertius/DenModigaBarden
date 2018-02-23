@@ -31,7 +31,6 @@ public class EnemyData : MelodyInteractableData
     [HideInInspector] public ParticleSystem sleepSFXObject;
 
     public bool isHeavy;
-    public bool isMagical;
 
     protected virtual void Awake()
     {
@@ -105,12 +104,12 @@ public class EnemyData : MelodyInteractableData
                         if (collRes.tag == "Player") {
                             if (isTouchingPlayer) {
                                 PlayerData.player.controller.OnTriggerStay2D(coll);
-                                controller.OnTriggerStay2D(collRes);
+                                if (!behaveAsHitbox) controller.OnTriggerStay2D(collRes);
                                 return;
                            }
                             else {
                                 PlayerData.player.controller.OnTriggerEnter2D(coll);
-                                controller.OnTriggerEnter2D(collRes);
+                                if (!behaveAsHitbox) controller.OnTriggerEnter2D(collRes);
                                 isTouchingPlayer = true;
                                 return;
                             }
@@ -118,7 +117,7 @@ public class EnemyData : MelodyInteractableData
                     }
                     if (isTouchingPlayer) {
                         PlayerData.player.controller.OnTriggerExit2D(coll);
-                        controller.OnTriggerExit2D(collRes);
+                        if (!behaveAsHitbox) controller.OnTriggerExit2D(collRes);
                         isTouchingPlayer = false;
                     }
                 }

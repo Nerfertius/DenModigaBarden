@@ -72,7 +72,7 @@ public class CameraFX : MonoBehaviour {
 
             transform.position = new Vector3(Random.Range(posX - xIntensity, posX + xIntensity), Random.Range(posY - yIntensity, posY + yIntensity), camPosition.z);
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSecondsRealtime(0.05f);
         }
 
         transform.position = camPosition;
@@ -89,7 +89,7 @@ public class CameraFX : MonoBehaviour {
             c.a = Mathf.Clamp01(value);
             screenFade.color = c;
 
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
         }
 
         c.a = 1;
@@ -104,7 +104,7 @@ public class CameraFX : MonoBehaviour {
             c.a = Mathf.Clamp01(value);
             screenFade.color = c;
 
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
         }
 
         c.a = 0;

@@ -55,7 +55,7 @@ MonoBehaviour:
     type: 2}
   numberOfpooledObjects: 10
   bgm:
-    volume: 1
+    volume: 0.7
     fadedVolume: 0.3
     volumeFadeSpeed: 1
     fullFadeOutDuration: 0.5

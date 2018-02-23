@@ -9,10 +9,10 @@ public class MapBoundary : MonoBehaviour {
     private static Vector2 newTopLeft;
     private static Vector2 newBottomRight;
     private static bool firstTime;
-
+    
     public static MapBoundary nextMapBoundary;
     public static MapBoundary currentMapBoundary;
-    
+
 	void Start () {
         mainCam = Camera.main;
         camScript = mainCam.GetComponent<CameraFollow2D>();
@@ -48,6 +48,11 @@ public class MapBoundary : MonoBehaviour {
         {
             UpdateMapBounds();
             camScript.ActivateTransition();
+
+            if (currentMapBoundary == this)
+            {
+                currentMapBoundary = null;
+            }
             GameManager.instance.switchState(new TransitionState(GameManager.instance));
         }
     }

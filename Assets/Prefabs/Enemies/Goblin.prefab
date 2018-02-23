@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114252480835615534}
   - component: {fileID: 70932057371119722}
   - component: {fileID: 95437501612855878}
+  - component: {fileID: 114654844682115422}
   m_Layer: 11
   m_Name: Goblin
   m_TagString: Enemy
@@ -195,6 +196,21 @@ MonoBehaviour:
   switchingCollider: 0
   sleepSFXPrefab: {fileID: 0}
   sleepSFXObject: {fileID: 0}
+  isHeavy: 0
+--- !u!114 &114654844682115422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735243106557284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9e9574802f54d4c8ce9ec0b8db8cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMagical: 0
+  knockbackPower: 300
+  damage: 0.5
 --- !u!114 &114912403510576844
 MonoBehaviour:
   m_ObjectHideFlags: 1

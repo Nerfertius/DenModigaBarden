@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 96946857121291774}
   - component: {fileID: 58770965902607826}
   - component: {fileID: 114107814725364162}
+  - component: {fileID: 114957205154184770}
   m_Layer: 0
   m_Name: EvilEyeProjectile
   m_TagString: Hitbox
@@ -236,6 +237,7 @@ MonoBehaviour:
   switchingCollider: 0
   sleepSFXPrefab: {fileID: 0}
   sleepSFXObject: {fileID: 0}
+  isHeavy: 0
 --- !u!114 &114859012884117108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,6 +252,20 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 7.5
   followDuration: 1
+--- !u!114 &114957205154184770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534620546373458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9e9574802f54d4c8ce9ec0b8db8cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMagical: 1
+  knockbackPower: 300
+  damage: 0.5
 --- !u!198 &198222758855392436
 ParticleSystem:
   m_ObjectHideFlags: 1

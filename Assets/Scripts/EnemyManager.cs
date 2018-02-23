@@ -6,12 +6,15 @@ public class EnemyManager : MonoBehaviour {
     List<Transform> enemies = new List<Transform>();
     List<StateController> controllers = new List<StateController>();
 
-    private bool isActive;
-    public bool IsActive { get { return isActive; } }
+    private bool toBeDeactivated;
+    private MapBoundary mb;
+
     public bool beginningArea = false;
 
     void Start ()
 	{
+        mb = GetComponent<MapBoundary>();
+
 		for (int i = 0; i < transform.childCount; i++) {
 			if (transform.GetChild(i).tag == "Enemy") {
 				enemies.Add (transform.GetChild(i));
@@ -21,24 +24,25 @@ public class EnemyManager : MonoBehaviour {
         }
 
         TransitionState.TransitionEntered += ActivateEnemies;
+        TransitionState.TransitionExited += StartDeactivation;
 	}
 
     private void OnDestroy()
     {
         TransitionState.TransitionEntered -= ActivateEnemies;
+        TransitionState.TransitionExited -= StartDeactivation;
     }
 
     void Update ()
     {
         // FOR DEBUG
-        if (isActive && Input.GetKeyDown (KeyCode.M)) {
+        if (mb == MapBoundary.currentMapBoundary && Input.GetKeyDown (KeyCode.M)) {
 			Debug.Log("Deactivating " + enemies.Count + " enemies in " + transform.name);
 			DeactivateAllEnemies();
 		}
 
-        if(beginningArea)
+        if(mb == MapBoundary.currentMapBoundary && beginningArea)
         {
-            isActive = true;
             ActivateEnemies();
             beginningArea = false;
         }
@@ -46,20 +50,13 @@ public class EnemyManager : MonoBehaviour {
 
     void ActivateEnemies()
     {
-        if (isActive) { 
+        if (mb == MapBoundary.currentMapBoundary) { 
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].gameObject.SetActive(true);
                 controllers[i].enabled = true;
                 controllers[i].ResetStateController();
             }
-        }
-    }
-
-    void OnTriggerEnter2D (Collider2D collision)
-	{
-		if (collision.tag == "Player") {
-            isActive = true;
         }
     }
 
@@ -76,9 +73,8 @@ public class EnemyManager : MonoBehaviour {
 		if (collision.tag == "Player")
         {
             DeactivateAllControllers();
-            StartCoroutine(DelayDeactivation());
-            isActive = false;
-		} else if (collision.tag == "Enemy" && !collision.GetComponent<EnemyData>().switchingCollider)
+            toBeDeactivated = true;
+        } else if (collision.tag == "Enemy" && !collision.GetComponent<EnemyData>().switchingCollider)
         {
             collision.gameObject.SetActive(false);
         }
@@ -109,9 +105,12 @@ public class EnemyManager : MonoBehaviour {
 		return true;
     }
 
-    IEnumerator DelayDeactivation()
+    private void StartDeactivation()
     {
-        yield return new WaitForSeconds(0.5f);
-        DeactivateAllEnemies();
+        if (toBeDeactivated)
+        {
+            DeactivateAllEnemies();
+            toBeDeactivated = false;
+        }
     }
 }
