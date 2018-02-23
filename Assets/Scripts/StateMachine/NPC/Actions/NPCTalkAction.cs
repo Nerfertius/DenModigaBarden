@@ -216,7 +216,7 @@ public class NPCTalkAction : StateAction
         if (data.currentConv[data.currentText].size.y != 0)
             boxSize.y = data.currentConv[data.currentText].size.y;
         data.text.rectTransform.sizeDelta = boxSize;
-        data.text.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(boxSize.x / 125, boxSize.y / 100);
+        //data.text.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(boxSize.x / 125, boxSize.y / 100);               //Temp removed to fix speechBubble size
 
         int fontSize = data.fontSize > 0 ? data.fontSize : 64;
         data.text.text = data.currentConv[data.currentText].text;
