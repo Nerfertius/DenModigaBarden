@@ -1073,7 +1073,7 @@ Prefab:
     - target: {fileID: 114994033544878884, guid: a2d2f8f2ef4817e4c97da62b656cbabb,
         type: 2}
       propertyPath: health
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2d2f8f2ef4817e4c97da62b656cbabb, type: 2}
@@ -1178,6 +1178,7 @@ MonoBehaviour:
   titleObject: {fileID: 703598766}
   fadeSpeed: 2
   displayLength: 3
+  beginningArea: 0
   backgroundMusic: {fileID: 8300000, guid: 87f3f966f51658d43a7d0d5601b152b0, type: 3}
 --- !u!1001 &912556080
 Prefab:
@@ -1358,6 +1359,7 @@ MonoBehaviour:
   titleObject: {fileID: 703598766}
   fadeSpeed: 2
   displayLength: 3
+  beginningArea: 0
   backgroundMusic: {fileID: 0}
 --- !u!1 &1076127647
 GameObject:
@@ -1606,7 +1608,6 @@ MonoBehaviour:
   sleepSFXPrefab: {fileID: 0}
   sleepSFXObject: {fileID: 0}
   isHeavy: 0
-  isMagical: 0
 --- !u!50 &1146576792
 Rigidbody2D:
   serializedVersion: 4

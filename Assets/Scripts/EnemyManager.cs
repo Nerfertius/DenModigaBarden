@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour {
     List<Transform> enemies = new List<Transform>();
     List<StateController> controllers = new List<StateController>();
 
+    private bool toBeDeactivated;
     private MapBoundary mb;
 
     public bool beginningArea = false;
@@ -23,11 +24,13 @@ public class EnemyManager : MonoBehaviour {
         }
 
         TransitionState.TransitionEntered += ActivateEnemies;
+        TransitionState.TransitionExited += StartDeactivation;
 	}
 
     private void OnDestroy()
     {
         TransitionState.TransitionEntered -= ActivateEnemies;
+        TransitionState.TransitionExited -= StartDeactivation;
     }
 
     void Update ()
@@ -70,8 +73,8 @@ public class EnemyManager : MonoBehaviour {
 		if (collision.tag == "Player")
         {
             DeactivateAllControllers();
-            StartCoroutine(DelayDeactivation());
-		} else if (collision.tag == "Enemy" && !collision.GetComponent<EnemyData>().switchingCollider)
+            toBeDeactivated = true;
+        } else if (collision.tag == "Enemy" && !collision.GetComponent<EnemyData>().switchingCollider)
         {
             collision.gameObject.SetActive(false);
         }
@@ -102,9 +105,12 @@ public class EnemyManager : MonoBehaviour {
 		return true;
     }
 
-    IEnumerator DelayDeactivation()
+    private void StartDeactivation()
     {
-        yield return new WaitForSeconds(0.5f);
-        DeactivateAllEnemies();
+        if (toBeDeactivated)
+        {
+            DeactivateAllEnemies();
+            toBeDeactivated = false;
+        }
     }
 }
