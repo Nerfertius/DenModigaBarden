@@ -87,6 +87,9 @@ public class PlayerData : Data
 
     [HideInInspector] public float groundCheckRadius;
 
+    // Gamepad
+    [HideInInspector] public bool gamepadConnected;
+
     [System.Serializable]
     public class MelodyData {
 
@@ -264,6 +267,11 @@ public class PlayerData : Data
         hitInvincibilityTimer = new Timer(hitInvincibilityDuration);
         hitInvincibilityTimer.Start();
         hitInvincibilityTimer.InstantFinish();
+
+        if (Input.GetJoystickNames() != null)
+        {
+            gamepadConnected = true;
+        }
     }
 
 

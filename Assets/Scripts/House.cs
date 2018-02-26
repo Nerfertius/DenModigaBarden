@@ -19,7 +19,7 @@ public class House : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetButtonDown("EnterHouse") && playerNear && !automatic)
+        if ((Input.GetButtonDown("EnterHouse") || Input.GetAxisRaw("EnterHouse") > 0.75f) && playerNear && !automatic)
         {
             StartCoroutine(EnterHouse());
         }
