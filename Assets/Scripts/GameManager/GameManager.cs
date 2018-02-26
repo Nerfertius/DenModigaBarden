@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
     public Sprite[] notes = new Sprite[5];
 
     [HideInInspector]
-    public Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas;
+    public Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas, GameOverCanvas;
 
     private AsyncOperation async;
 
