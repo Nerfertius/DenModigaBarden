@@ -154,6 +154,18 @@ public class PlayState : GameState
                                     if (gm.notes[4] != null)
                                         toSprite = gm.notes[4];
                                     break;
+                                case Note.NoteID.E:
+                                    if (gm.notes[5] != null)
+                                        toSprite = gm.notes[5];
+                                    break;
+                                case Note.NoteID.Fplus:
+                                    if (gm.notes[6] != null)
+                                        toSprite = gm.notes[6];
+                                    break;
+                                    case Note.NoteID.g8va:
+                                    if (gm.notes[7] != null)
+                                        toSprite = gm.notes[7];
+                                    break;
                                 default:
                                     break;
 

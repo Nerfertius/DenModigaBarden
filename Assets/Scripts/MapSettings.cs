@@ -7,9 +7,12 @@ public class MapSettings : MonoBehaviour
 {
     private Color startColor;
     private MapBoundary mb;
+    private Vector2 startPos;
+    public bool beginningPlayed;
 
     public Sprite titleSprite;
     public Image titleObject;
+    public Vector2 offset;
     public float fadeSpeed;
     public float displayLength;
     public bool beginningArea;
@@ -19,6 +22,7 @@ public class MapSettings : MonoBehaviour
     void Start()
     {
         mb = GetComponent<MapBoundary>();
+        startPos = titleObject.rectTransform.position;
 
         if (titleObject != null)
         {
@@ -27,7 +31,6 @@ public class MapSettings : MonoBehaviour
         }
 
         StartMapFeatures();
-        beginningArea = false;
 
         TransitionState.TransitionExited += StartMapFeatures;
     }
@@ -39,21 +42,31 @@ public class MapSettings : MonoBehaviour
 
     private void StartMapFeatures()
     {
-        if(MapBoundary.currentMapBoundary == mb || beginningArea)
+        if(MapBoundary.currentMapBoundary == mb || (beginningArea && !beginningPlayed))
         {
-            if (titleObject != null)
+            if (!beginningArea || (beginningArea && !beginningPlayed))
             {
-                StopAllCoroutines();
-                titleObject.color = startColor;
-                titleObject.sprite = titleSprite;
-                titleObject.SetNativeSize();
-                StartCoroutine(FadeIn());
-                StartCoroutine(DelayedFadeOut());
-            }
+                Debug.Log(beginningPlayed && beginningArea);
+                if (titleObject != null)
+                {
+                    StopAllCoroutines();
+                    titleObject.rectTransform.position = startPos + offset;
+                    titleObject.color = startColor;
+                    titleObject.sprite = titleSprite;
+                    titleObject.SetNativeSize();
+                    StartCoroutine(FadeIn());
+                    StartCoroutine(DelayedFadeOut());
+                }
 
-            if (backgroundMusic != null)
-            {
-                AudioManager.SetDefaultBGM(backgroundMusic);
+                if (backgroundMusic != null)
+                {
+                    AudioManager.SetDefaultBGM(backgroundMusic);
+                }
+
+                if (!beginningPlayed)
+                {
+                    beginningPlayed = true;
+                }
             }
         }
     }

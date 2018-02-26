@@ -15,6 +15,7 @@ public class NPCTalkAction : StateAction
     public override void ActOnce(StateController controller)
     {
         NPCData data = (NPCData)controller.data;
+        data.getConversation();
         if (data.playerInRange || data.inAutoRange)
         {
             if (defaultBackground == null) {
@@ -40,8 +41,6 @@ public class NPCTalkAction : StateAction
                 data.talkSound = talk;
                 data.basePitch = talk.pitch;
             }
-
-            data.getConversation();
 
             if (data.currentConv == null) {
                 data.text.enabled = false;

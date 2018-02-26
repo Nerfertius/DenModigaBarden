@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611728875210514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.6952705, y: -37.52294, z: 0}
+  m_LocalPosition: {x: -6.8047295, y: -3.5229416, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4343838358775902}
@@ -214,6 +214,8 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: I remember when this valley was nothing but a thick, dark forest, vampires
         lurking in every tree.
@@ -238,6 +240,8 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: Why do I need a pie for vampire hunting? Huhuhu.
       mood: 0
@@ -289,6 +293,8 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: 1/2 cup of sugar
       mood: 0
@@ -296,8 +302,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.4
       originalStayTime: 0
     - text: 1/2 cup of brown packed sugar
       mood: 0
@@ -305,8 +311,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.4
       originalStayTime: 0
     - text: 3 tablespoons of flour
       mood: 0
@@ -314,8 +320,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.4
       originalStayTime: 0
     - text: 1 teaspoon of ground cinnamon
       mood: 0
@@ -323,8 +329,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.4
       originalStayTime: 0
     - text: 1/4 teaspoon of ground ginger
       mood: 0
@@ -332,8 +338,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.4
       originalStayTime: 0
     - text: 1/4 teaspoon of ground nutmeg
       mood: 0
@@ -341,8 +347,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.4
       originalStayTime: 0
     - text: 6-7 thinly sliced delicious garlics
       mood: 0
@@ -350,8 +356,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.5
       originalStayTime: 0
     - text: 1 tablespoon of lemon juice
       mood: 0
@@ -359,8 +365,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.4
       originalStayTime: 0
     - text: Pastry for double-crust pie (9 inches)
       mood: 0
@@ -368,8 +374,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.6
       originalStayTime: 0
     - text: 1 tablespoon of butter
       mood: 0
@@ -377,8 +383,8 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.4
       originalStayTime: 0
     - text: And 1 large egg white
       mood: 0
@@ -386,10 +392,26 @@ MonoBehaviour:
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 0.4
       originalStayTime: 0
     - text: Huhuhu...
+      mood: 0
+      size: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 1
+      stayTime: 1
+      originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+    autoSpeak: 1
+    autoSpeakRange: 18
+  - texts:
+    - text: See anything you like?
       mood: 0
       size: {x: 0, y: 0}
       visable: 1
@@ -402,12 +424,12 @@ MonoBehaviour:
     speakOnce: 0
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
   pitchDeviation: 0.3
-  autoSpeak: 0
-  autoSpeakRange: 0
   currentConvIndex: 0
   currentConv: []
   currentText: 0

@@ -18,8 +18,6 @@ public class NPCData : Data
     public int fontSize = 0;
     public Vector2 offset;
     public float pitchDeviation = 0.3f;
-    public bool autoSpeak = false;
-    public float autoSpeakRange = 0;
     [HideInInspector] public int currentConvIndex = 0;
     [HideInInspector] public TextPopup[] currentConv;
     [HideInInspector] public int currentText = 0, currentChar = 0;
@@ -103,6 +101,8 @@ public class NPCData : Data
         public bool notEnd = false;
         [HideInInspector]
         public bool spoken = false;
+        public bool autoSpeak = false;
+        public float autoSpeakRange = 0;
 
         public bool CheckCondition(NPCData data, PlayerData player)
         {
