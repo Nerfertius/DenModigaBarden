@@ -16,9 +16,10 @@ public class PauseState : GameState {
 
     public override void enter() {
         Time.timeScale = 0;
-        pauseCanvas = GameObject.Find("/" + canvas).GetComponent<Canvas>();
-        resumeBtn = GameObject.Find("/" + canvas + "/" + resume).GetComponent<Button>();
-        quitBtn = GameObject.Find("/" + canvas + "/" + quit).GetComponent<Button>();
+        pauseCanvas = gm.PauseCanvas;
+        pauseCanvas.enabled = true;
+        resumeBtn = pauseCanvas.transform.Find(resume).GetComponent<Button>();
+        quitBtn = pauseCanvas.transform.Find(quit).GetComponent<Button>();
 
         pauseCanvas.enabled = true;
         if (resumeBtn)
