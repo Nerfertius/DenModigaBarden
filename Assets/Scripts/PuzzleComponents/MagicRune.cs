@@ -17,7 +17,7 @@ public class MagicRune : MonoBehaviour {
 
 	public void OnTriggerStay2D(Collider2D coll) {
         if(coll.tag == "Player" && cooldownTimer.IsDone()) {
-            coll.GetComponent<StateController>().OnTriggerStay2D(this.collider);
+            //coll.GetComponent<StateController>().OnTriggerStay2D(this.collider);
             cooldownTimer.Start();
         }
     }
