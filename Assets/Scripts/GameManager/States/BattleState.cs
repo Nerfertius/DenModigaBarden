@@ -6,18 +6,13 @@ public class BattleState : GameState
 {
     private CameraFollow2D camScript;
     private Canvas battleCanvas;
-
+    
+    public delegate void BattleEndedEventHandler();
+    public static event BattleEndedEventHandler BattleEnded;
     public BattleState(GameManager gm)
     {
         this.gm = gm;
         camScript = Camera.main.GetComponent<CameraFollow2D>();
-
-        battleCanvas = GameObject.Find("BattleCanvas").GetComponent<Canvas>();
-        gm.BattleCanvas = battleCanvas;
-
-        if (battleCanvas == null) { 
-                Debug.LogWarning("Can't find BattleCanvas");
-        }
     }
 
     public override void enter()
@@ -32,6 +27,11 @@ public class BattleState : GameState
 
     public override void exit()
     {
+        if (BattleEnded != null)
+        {
+            BattleEnded.Invoke();
+        }
+
         CameraFX.FadeOut();
         camScript.enabled = true;
         camScript.UpdateToMapBounds();

@@ -44,15 +44,11 @@ public class MapBoundary : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && currentMapBoundary == this)
         {
             UpdateMapBounds();
             camScript.ActivateTransition();
-
-            if (currentMapBoundary == this)
-            {
-                currentMapBoundary = null;
-            }
+            
             GameManager.instance.switchState(new TransitionState(GameManager.instance));
         }
     }

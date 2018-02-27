@@ -26,12 +26,14 @@ public class EnemyManager : MonoBehaviour {
 
         TransitionState.TransitionEntered += ActivateEnemies;
         TransitionState.TransitionExited += StartDeactivation;
+        BattleState.BattleEnded += ActivateControllers;
 	}
 
     private void OnDestroy()
     {
         TransitionState.TransitionEntered -= ActivateEnemies;
         TransitionState.TransitionExited -= StartDeactivation;
+        BattleState.BattleEnded -= ActivateControllers;
     }
 
     void Update ()
@@ -59,6 +61,17 @@ public class EnemyManager : MonoBehaviour {
                 enemies[i].gameObject.SetActive(true);
                 controllers[i].enabled = true;
                 controllers[i].ResetStateController();
+            }
+        }
+    }
+
+    void ActivateControllers()
+    {
+        if (mb == MapBoundary.currentMapBoundary)
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                controllers[i].enabled = true;
             }
         }
     }

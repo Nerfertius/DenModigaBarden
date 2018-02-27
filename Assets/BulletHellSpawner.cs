@@ -40,12 +40,29 @@ public class BulletHellSpawner : MonoBehaviour {
 
         BattleScene.BattleStarted += StartNextAttack;
         BulletPattern.PatternEnded += StartNextAttack;
-	}
+        BattleState.BattleEnded += DisableAllBullets;
+    }
 
     private void OnDestroy()
     {
         BattleScene.BattleStarted -= StartNextAttack;
         BulletPattern.PatternEnded -= StartNextAttack;
+        BattleState.BattleEnded -= DisableAllBullets;
+    }
+
+    private void DisableAllBullets()
+    {
+        StopAllCoroutines();
+
+        foreach (BulletPattern pattern in patterns)
+        {
+            pattern.ResetCoroutineCount();
+        }
+
+        foreach (GameObject bullet in bullets)
+        {
+            bullet.SetActive(false);
+        }
     }
 
     private void StartNextAttack()

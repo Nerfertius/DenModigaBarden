@@ -10,6 +10,7 @@ public class EnemyData : MelodyInteractableData
     public float chaseSpeed;
     public float attackRange;
     public bool behaveAsHitbox;
+    public bool childCollided;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public StateController controller;
@@ -107,7 +108,8 @@ public class EnemyData : MelodyInteractableData
                                 if (!behaveAsHitbox) controller.OnTriggerStay2D(collRes);
                                 return;
                            }
-                            else {
+                            else
+                            {
                                 PlayerData.player.controller.OnTriggerEnter2D(coll);
                                 if (!behaveAsHitbox) controller.OnTriggerEnter2D(collRes);
                                 isTouchingPlayer = true;

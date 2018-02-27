@@ -306,6 +306,7 @@ public class PlayerData : Data
 
     public void CallRespawn()
     {
+        GameManager.instance.switchState(new PlayState(GameManager.instance));
         StartCoroutine(Respawn());
     }
 

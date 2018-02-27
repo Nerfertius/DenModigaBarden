@@ -39,6 +39,11 @@ public class BulletPattern
         }
     }
 
+    public void ResetCoroutineCount()
+    {
+        activeCoroutines = 0;
+    }
+
     private void PatternEnding()
     {
         activeCoroutines--;

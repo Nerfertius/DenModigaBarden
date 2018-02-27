@@ -21,7 +21,10 @@ public class TopDownController : MonoBehaviour
         if (!controllable) return;
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         direction.Normalize();
+    }
 
+    void FixedUpdate()
+    {
         rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
     }
 }

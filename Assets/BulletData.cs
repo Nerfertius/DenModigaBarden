@@ -86,6 +86,7 @@ public class BulletData : Data {
     {
         if (collision.tag == "Player")
         {
+            PlayerData.player.health -= 0.5f;
             this.gameObject.SetActive(false);
         }
     }
