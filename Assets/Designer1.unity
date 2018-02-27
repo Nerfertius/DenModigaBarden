@@ -58176,7 +58176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9171b6f4c276ada4b9e1c8b666ba4edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: {fileID: 0}
+  currentState: {fileID: 11400000, guid: b1d762ce8571ec147aac67aa5986228c, type: 2}
   previousState: {fileID: 0}
   data: {fileID: 0}
   anim: {fileID: 0}
@@ -67405,7 +67405,12 @@ Prefab:
     - target: {fileID: 114103615126606050, guid: fe4b944974f173848a0bd10ad1ce02ef,
         type: 2}
       propertyPath: conversation.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114103615126606050, guid: fe4b944974f173848a0bd10ad1ce02ef,
+        type: 2}
+      propertyPath: conversation.Array.data[0].texts.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4041642217872914, guid: fe4b944974f173848a0bd10ad1ce02ef, type: 2}
       propertyPath: m_LocalPosition.x
@@ -67444,6 +67449,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9497b547ff5ff7d4499a1ffae504a5a0, type: 2}
+    - target: {fileID: 114103615126606050, guid: fe4b944974f173848a0bd10ad1ce02ef,
+        type: 2}
+      propertyPath: conversation.Array.data[0].texts.Array.data[0].text
+      value: IM'A GURL
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe4b944974f173848a0bd10ad1ce02ef, type: 2}
   m_IsPrefabParent: 0

@@ -46,7 +46,6 @@ public class MapSettings : MonoBehaviour
         {
             if (!beginningArea || (beginningArea && !beginningPlayed))
             {
-                Debug.Log(beginningPlayed && beginningArea);
                 if (titleObject != null)
                 {
                     StopAllCoroutines();
