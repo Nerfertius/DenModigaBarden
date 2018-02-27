@@ -11,7 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
   m_Name: GoblinDeepSleep
   m_EditorClassIdentifier: 
-  entryActions: []
+  entryActions:
+  - {fileID: 11400000, guid: 3bd904a1f77ef3c459806cfa1309a19e, type: 2}
+  - {fileID: 11400000, guid: 70cb5c2ec41ee15449d91679f749b44f, type: 2}
+  - {fileID: 11400000, guid: 96e7434e5c1ebe04e953c12c9b802c37, type: 2}
+  - {fileID: 11400000, guid: 1c2c0b9da562d494aba65698592c05f6, type: 2}
   exitActions: []
   actions: []
   transitions: []
