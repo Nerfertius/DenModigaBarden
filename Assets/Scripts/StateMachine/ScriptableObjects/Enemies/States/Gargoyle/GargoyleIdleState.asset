@@ -31,6 +31,8 @@ MonoBehaviour:
   - condition: {fileID: 11400000, guid: 4095e9bcbb6788f468d96cda42becf64, type: 2}
     actions:
     - {fileID: 11400000, guid: 1354daf53599806419940ea2f3ae2865, type: 2}
+  - condition: {fileID: 11400000, guid: 84a77a2947ab8cd4d900664ce97eb6ec, type: 2}
+    actions: []
   hasExitTime: 0
   exitTimer: 0
   useRandomTimer: 0

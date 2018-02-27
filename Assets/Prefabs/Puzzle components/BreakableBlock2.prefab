@@ -79,8 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444959c355060d54aab7c56c7288fc80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityNeededToBreak: 1
+  velocityNeededToBreak: 3
   revealOnDestroy: {fileID: 0}
+  onBreakEffect: {fileID: 0}
 --- !u!212 &212914218926985462
 SpriteRenderer:
   m_ObjectHideFlags: 1

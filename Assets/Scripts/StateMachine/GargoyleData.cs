@@ -13,6 +13,8 @@ public class GargoyleData : EnemyData {
     public ColorBlinkData frozenColorBlinkData;
     [HideInInspector] public PlatformEffector2D platformEffector;
 
+    public Vector2 DashForce = new Vector2(500, 350);
+
     protected override void Awake() {
         base.Awake();
         platformEffector = GetComponent<PlatformEffector2D>();
