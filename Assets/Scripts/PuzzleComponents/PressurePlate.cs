@@ -35,9 +35,9 @@ public class PressurePlate : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (collision.gameObject.CompareTag("Player") && anim.GetBool("PressedDown") == false && collision.gameObject.GetComponent<Collider2D>().bounds.min.y > rend.bounds.max.y)
+        if ((coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy")) && anim.GetBool("PressedDown") == false)
         {
             if (pairedObjects.Count > 0 && pairedReady)
             {
@@ -57,12 +57,12 @@ public class PressurePlate : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D coll)
     {
-        if (collision.gameObject.CompareTag("Player") && anim.GetBool("PressedDown") == true && collision.gameObject.GetComponent<SpriteRenderer>().bounds.min.y > rend.bounds.max.y)
+        if ((coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy")) == true && anim.GetBool("PressedDown") == true)
         {
             if (pairedObjects.Count > 0 && !pairedReady)
-            {
+            {                
                 for (int i = 0; i < componentList.Count; i++)
                 {
                     if (componentList[i].returnOnLeave)
