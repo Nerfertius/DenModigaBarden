@@ -45,7 +45,7 @@ public class BulletData : Data {
 
         while(travelDistance < maxTravelDistance)
         {
-            speed += (speed + 0.5f) * Time.deltaTime;
+            speed += (speed + 1f) * Time.deltaTime;
             transform.position += new Vector3(0, direction.y * speed * Time.deltaTime, transform.position.z);
             travelDistance += Mathf.Abs(direction.y * speed * Time.deltaTime);
             yield return null;

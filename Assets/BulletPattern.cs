@@ -29,8 +29,8 @@ public class BulletPattern
         switch (pattern)
         {
             case PatternType.GoblinBite:
-                spawner.StartCoroutine(GoblinBitePattern(2, 4, BattleScene.instance.topLeft.position, new Vector2(0, -1)));
-                spawner.StartCoroutine(GoblinBitePattern(2, 3, BattleScene.instance.bottomLeft.position + new Vector3(0.5f, 0, 0), new Vector2(0, 1)));                
+                spawner.StartCoroutine(GoblinBitePattern(2, 4, BattleScene.instance.topLeft.position, new Vector2(0, 3), new Vector2(0, -1)));
+                spawner.StartCoroutine(GoblinBitePattern(2, 3, BattleScene.instance.bottomLeft.position, new Vector2(0.5f, -4), new Vector2(0, 1)));                
                 break;
             case PatternType.EvilEyeHoming:
                 break;
@@ -54,14 +54,16 @@ public class BulletPattern
         }
     }
 
-    IEnumerator GoblinBitePattern(float times, float xAmount, Vector2 startPos, Vector2 direction)
+    IEnumerator GoblinBitePattern(float times, float xAmount, Vector2 startPos, Vector2 offset, Vector2 direction)
     {
         activeCoroutines++;
-        float xPos = TopDownController.Cadenza.position.x - 1.5f;
-        float yPos = startPos.y;
+        float xPos = (TopDownController.Cadenza.position.x - 1.5f) + offset.x;
+        float yPos = TopDownController.Cadenza.position.y + offset.y;
         
         for (int x = 0; x < times; x++)
         {
+            xPos = (TopDownController.Cadenza.position.x - 1.5f) + offset.x;
+
             for (int y = 0; y < xAmount; y++)
             {
                 for (int z = 0; z < bullets.Count; z++)
@@ -77,7 +79,6 @@ public class BulletPattern
                     }
                 }
 
-                xPos = TopDownController.Cadenza.position.x - 1.5f;
                 if (y >= xAmount)
                 {
                     break;

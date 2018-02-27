@@ -25,7 +25,14 @@ public class TopDownController : MonoBehaviour
     void Update()
     {
         if (!controllable) return;
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        if (Mathf.Abs(Input.GetAxisRaw("Horizontal") + Input.GetAxisRaw("Vertical")) > 0)
+        {
+            direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        } else
+        {
+            direction = new Vector2(Input.GetAxisRaw("BattleHorizontal"), Input.GetAxisRaw("BattleVertical"));
+        }
         direction.Normalize();
     }
 

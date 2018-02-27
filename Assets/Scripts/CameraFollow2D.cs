@@ -27,7 +27,7 @@ public class CameraFollow2D : MonoBehaviour
 
         if (!transitioning)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(posX, posY, transform.position.z), followSpeed * Time.unscaledDeltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(posX, posY, transform.position.z), followSpeed * 10 * Time.unscaledDeltaTime);
 
             UpdateBackgroundPosition();
         }
