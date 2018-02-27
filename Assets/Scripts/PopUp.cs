@@ -5,6 +5,7 @@ using UnityEngine;
 public class PopUp : MonoBehaviour
 {
     private bool hasShowed;
+    public bool visible;
     private SpriteRenderer rend;
     private StateController npcState;
     
@@ -12,11 +13,13 @@ public class PopUp : MonoBehaviour
     public bool repeatable;
     public Vector2 offset;
 
-    [Header("Application")]
+    [Header("NPC")]
     public bool npcTalk;
     public State state;
+    [Header("Melody")]
     public bool melodyPlayed;
     public Melody.MelodyID melody;
+    [Header("Action")]
     public bool actionPerformed;
     public string buttonName;
 
@@ -33,24 +36,36 @@ public class PopUp : MonoBehaviour
         {
             npcState = transform.parent.GetComponent<StateController>();
         }
+
         GameObject empty = new GameObject();
         empty.AddComponent<SpriteRenderer>();
         GameObject prompt = Instantiate(empty, (Vector2)transform.position + offset, Quaternion.identity);
         rend = prompt.GetComponent<SpriteRenderer>();
+        rend.sprite = sprite;
+        Color temp = rend.color;
+        temp.a = 0;
+        rend.color = temp;
+
+        if (!npcTalk && !melodyPlayed && !actionPerformed)
+        {
+            Debug.Log("Error, PopUp needs at least 1 condition");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !visible)
         {
             if (repeatable)
             {
-                rend.sprite = sprite;
+                StopAllCoroutines();
+                StartCoroutine("FadeIn");
             }
 
-            else if (!repeatable && !hasShowed)
+            else if (!repeatable && !hasShowed && !visible)
             {
-                rend.sprite = sprite;
+                StopAllCoroutines();
+                StartCoroutine("FadeIn");
                 hasShowed = true;
             }
         }
@@ -65,35 +80,66 @@ public class PopUp : MonoBehaviour
 
             if (npcTalk)
             {
-                //print("START..." + npcState.currentState.ToString() + "... END");
-                //print(npcState.currentState.ToString() == "NPCIdle");
                 if (npcState.currentState == state)
                 {
-                    rend.sprite = null;
+                    StopAllCoroutines();
+                    StartCoroutine("FadeOut");
                 }
                 else if (npcState.currentState.ToString() == "NPCIdle (State)")
                 {
-                    rend.sprite = sprite;
+                    StopAllCoroutines();
+                    StartCoroutine("FadeIn");
                 }
             }
 
             else if (melodyPlayed && mData.currentMelody == melody)
             {
-                rend.sprite = null;
+                StopAllCoroutines();
+                StartCoroutine("FadeOut");
             }
 
             else if (actionPerformed && Input.GetButtonDown(buttonName))
             {
-                rend.sprite = null;
+                StopAllCoroutines();
+                StartCoroutine("FadeOut");
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && visible)
         {
-            rend.sprite = null;
+            StopAllCoroutines();
+            StartCoroutine("FadeOut");
+        }
+    }
+
+    IEnumerator FadeIn()
+    {
+        visible = true;
+        Color newColor = rend.color;
+        while (rend.color.a < 1)
+        {
+            Debug.Log("In running");
+
+            newColor.a += 0.01f;
+            rend.color = newColor;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator FadeOut()
+    {
+        visible = false;
+        Color newColor = rend.color;
+        while (rend.color.a > 0)
+        {
+            Debug.Log("Out running");
+
+            newColor.a -= 0.01f;
+            rend.color = newColor;
+            yield return new WaitForEndOfFrame();
         }
     }
 }
