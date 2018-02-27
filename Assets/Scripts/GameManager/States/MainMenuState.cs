@@ -54,6 +54,6 @@ public class MainMenuState : GameState {
     {
         Debug.Log("Quit game");
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 }
