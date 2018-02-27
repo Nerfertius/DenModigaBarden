@@ -5,11 +5,12 @@ using UnityEngine;
 public class GameStateHandler : MonoBehaviour {
 
     private GameState lastState;
+    private StateController con;
 
-	// Use this for initialization
-	void Start () {
-        
-	}
+    // Use this for initialization
+    void Start () {
+        con = GetComponent<StateController>();
+    }
 
     private void OnEnable()
     {
@@ -27,8 +28,6 @@ public class GameStateHandler : MonoBehaviour {
 	}
 
     private void ChangeGameState(GameState newState) {
-        //TODO: newState.PlayerControl for control of character
-        StateController con = GetComponent<StateController>();
         if (con)
             con.enabled = newState.PlayerControl;
         lastState = newState;
