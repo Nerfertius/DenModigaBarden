@@ -29,10 +29,7 @@ public class NPCTalkAction : StateAction
             {
                 data.text = Instantiate(textPrefab, GameManager.instance.WorldSpaceCanvas.transform).GetComponentInChildren<Text>();
             }
-            pos.x += data.offset.x;
-            pos.y += (controller.GetComponent<CapsuleCollider2D>().size.y + controller.GetComponent<CapsuleCollider2D>().offset.y) + data.offset.y;
-            pos.z = -4;
-            data.text.transform.parent.position = pos;
+            data.originalPos = pos;
             data.text.enabled = true;
 
             AudioSource talk = controller.GetComponent<AudioSource>();
@@ -41,9 +38,12 @@ public class NPCTalkAction : StateAction
                 data.talkSound = talk;
                 data.basePitch = talk.pitch;
             }
+            
+            data.getConversation();
 
-            if (data.currentConv == null) {
+            if (data.currentConvIndex == -1) {
                 data.text.enabled = false;
+                data.endOfConv = true;
             }
 
             ResetVar(data);
@@ -58,6 +58,8 @@ public class NPCTalkAction : StateAction
     public override void Act(StateController controller)
     {
         NPCData data = (NPCData)controller.data;
+        if (data.currentConvIndex == -1)
+            ResetConv(data);
         bool interact = Input.GetButtonDown("Interact");
         bool moreText = data.currentText < data.currentConv.Length;
         NPCData.TextPopup currentTextBubble = data.currentConv[data.currentText];
@@ -216,6 +218,13 @@ public class NPCTalkAction : StateAction
             boxSize.y = data.currentConv[data.currentText].size.y;
         data.text.rectTransform.sizeDelta = boxSize;
         //data.text.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(boxSize.x / 125, boxSize.y / 100);               //Temp removed to fix speechBubble size
+
+        Vector3 pos = data.originalPos;
+        Vector2 textOffset = data.currentConv[data.currentText].offset;
+        pos.x += data.offset.x + textOffset.x;
+        pos.y += (data.GetComponent<CapsuleCollider2D>().size.y + data.GetComponent<CapsuleCollider2D>().offset.y) + data.offset.y + textOffset.y;
+        pos.z = -4;
+        data.text.transform.parent.position = pos;
 
         int fontSize = data.fontSize > 0 ? data.fontSize : 64;
         data.text.text = data.currentConv[data.currentText].text;

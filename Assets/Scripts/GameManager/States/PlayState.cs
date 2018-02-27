@@ -9,7 +9,6 @@ public class PlayState : GameState
     public StateController player;
     public PlayerData playerData;
     public GameObject playCanvas;
-    public Image[] hp;
     public Image[] itemIcons;
     public GameObject iconPrefab;
 
@@ -18,6 +17,8 @@ public class PlayState : GameState
 
     private int[] lastValues;
     private int iconOffset = 0;
+
+    private HP hp;
 
     public PlayState(GameManager gm)
     {
@@ -33,6 +34,7 @@ public class PlayState : GameState
             itemIcons = new Image[lastValues.Length];
         }
         getPlayCanvas();
+        hp = HP.GetInstance;
     }
 
     public override void update()
@@ -50,37 +52,12 @@ public class PlayState : GameState
             else
             {
                 //****************HEALTH****************
-                if (hp == null)
+                if (hp != null)
                 {
-                    hp = playCanvas.transform.Find("HP").GetComponentsInChildren<Image>();
+                    hp.Update(playerData.health);
                 }
-                else
-                {
-                    float health = playerData.health;
-                    if (health > 0)
-                    {
-                        hp[0].sprite = health < 1 ? gm.halfHeart : gm.fullHeart;
-                    }
-                    else
-                    {
-                        hp[0].sprite = gm.emptyHeart;
-                    }
-                    if (health > 1)
-                    {
-                        hp[1].sprite = health < 2 ? gm.halfHeart : gm.fullHeart;
-                    }
-                    else
-                    {
-                        hp[1].sprite = gm.emptyHeart;
-                    }
-                    if (health > 2)
-                    {
-                        hp[2].sprite = health < 3 ? gm.halfHeart : gm.fullHeart;
-                    }
-                    else
-                    {
-                        hp[2].sprite = gm.emptyHeart;
-                    }
+                else {
+                    hp = HP.GetInstance;
                 }
                 //****************ITEMS****************
                 for (int i = 0; i < lastValues.Length; i++)
@@ -221,7 +198,6 @@ public class PlayState : GameState
         }
 
         if (playCanvas) {
-            hp = playCanvas.transform.Find("HP").GetComponentsInChildren<Image>();
             notesBg = playCanvas.transform.Find("UINotes").GetComponent<Image>();
         }
 

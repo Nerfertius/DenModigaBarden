@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 93c025cb89ab69a48b6114a992d54c15
-timeCreated: 1519637056
+guid: 58a978298d1f8564a931117f379a0332
+timeCreated: 1519637022
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: attack_4_0
-    21300002: attack_4_1
-    21300004: attack_4_2
-    21300006: attack_4_3
+    21300000: attack_1_0
+    21300002: attack_1_1
+    21300004: attack_1_2
+    21300006: attack_1_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -82,7 +82,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: attack_4_0
+      name: attack_1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -96,7 +96,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: attack_4_1
+      name: attack_1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -110,7 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: attack_4_2
+      name: attack_1_2
       rect:
         serializedVersion: 2
         x: 64
@@ -124,7 +124,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: attack_4_3
+      name: attack_1_3
       rect:
         serializedVersion: 2
         x: 96

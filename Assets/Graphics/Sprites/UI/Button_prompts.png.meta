@@ -1,15 +1,21 @@
 fileFormatVersion: 2
-guid: cf6568adbde318746a52e2d27720a97b
-timeCreated: 1519637048
+guid: 25e191a0219883c46ad169e3ce2d3155
+timeCreated: 1519725645
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: attack_3_0
-    21300002: attack_3_1
-    21300004: attack_3_2
-    21300006: attack_3_3
-    21300008: attack_3_4
-    21300010: attack_3_5
+    21300000: Button_prompts_0
+    21300002: Button_prompts_1
+    21300004: Button_prompts_2
+    21300006: Button_prompts_3
+    21300008: Button_prompts_4
+    21300010: Button_prompts_5
+    21300012: Button_prompts_6
+    21300014: Button_prompts_7
+    21300016: Button_prompts_8
+    21300018: Button_prompts_9
+    21300020: Button_prompts_10
+    21300022: Button_prompts_11
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -52,7 +58,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 200
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -66,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -75,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -84,13 +90,125 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: attack_3_0
+      name: Button_prompts_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 252
+        width: 141
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_prompts_1
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 252
+        width: 141
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_prompts_2
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 252
+        width: 141
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_prompts_3
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 252
+        width: 141
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_prompts_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 141
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_prompts_5
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 126
+        width: 141
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_prompts_6
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 126
+        width: 141
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_prompts_7
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 126
+        width: 141
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Button_prompts_8
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 141
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -98,13 +216,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: attack_3_1
+      name: Button_prompts_9
       rect:
         serializedVersion: 2
-        x: 32
+        x: 141
         y: 0
-        width: 32
-        height: 32
+        width: 141
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,13 +230,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: attack_3_2
+      name: Button_prompts_10
       rect:
         serializedVersion: 2
-        x: 64
+        x: 282
         y: 0
-        width: 32
-        height: 32
+        width: 141
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,41 +244,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: attack_3_3
+      name: Button_prompts_11
       rect:
         serializedVersion: 2
-        x: 96
+        x: 423
         y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: attack_3_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: attack_3_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
+        width: 141
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

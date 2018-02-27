@@ -17,6 +17,8 @@ public class NPCData : Data
     public float textSpeed = 20;
     public int fontSize = 0;
     public Vector2 offset;
+    [HideInInspector]
+    public Vector3 originalPos;
     public float pitchDeviation = 0.3f;
     [HideInInspector] public int currentConvIndex = 0;
     [HideInInspector] public TextPopup[] currentConv;
@@ -32,20 +34,25 @@ public class NPCData : Data
     [HideInInspector]
     public string currentString;
     [HideInInspector]
-    public System.Collections.ArrayList currentTags = new System.Collections.ArrayList();
+    public ArrayList currentTags = new ArrayList();
     [HideInInspector]
     public bool playSound = false;
 
     [HideInInspector]
     public Animator animator;
 
-    [HideInInspector] public bool playerInRange = false, inAutoRange = false;
+    [HideInInspector] public bool playerInRange = false, inAutoRange = false, startTalking = false;
     [HideInInspector] public PlayerData player = null;
+
+    public delegate void SpokenWith();
+    public event SpokenWith DoneSpeaking;
 
     private void Start()
     {
+        foreach (Conversation conv in conversation) {
+            conv.Setup(this);
+        }
         getConversation();
-        
     }
 
     public void setMoodAnimation(NPCMood mood = NPCMood.Inherit)
@@ -85,11 +92,14 @@ public class NPCData : Data
             }
         }
         currentConv = null;
+        currentConvIndex = -1;
     }
 
     public void spoken()
     {
         conversation[currentConvIndex].spoken = true;
+        if (DoneSpeaking != null)
+            DoneSpeaking();
     }
 
     [System.Serializable]
@@ -103,6 +113,12 @@ public class NPCData : Data
         public bool spoken = false;
         public bool autoSpeak = false;
         public float autoSpeakRange = 0;
+
+        public void Setup(NPCData data) {
+            foreach (Condition condition in conditions) {
+                condition.Setup(data);
+            }
+        }
 
         public bool CheckCondition(NPCData data, PlayerData player)
         {
@@ -162,6 +178,7 @@ public class NPCData : Data
         public TalkCondition condition;
         [Header("Spoken with")]
         public GameObject goComp;
+        public bool autoStart = false;
         [Header("Conversation Not spoken")]
         public int convIndex;
         [Header("Conversation spoken")]
@@ -172,6 +189,23 @@ public class NPCData : Data
         [Header("Character State")]
         public State state;
         public GameObject character;
+
+        private NPCData data;
+
+        public void Setup(NPCData data) {
+            if (goComp != null)
+            {
+                goComp.GetComponent<NPCData>().DoneSpeaking += NPCSpoken;
+            }
+            this.data = data;
+        }
+        
+        public void NPCSpoken() {
+            if (autoStart) {
+                data.getConversation();
+                data.startTalking = true;
+            }
+        }
     }
 
     [System.Serializable]
@@ -184,6 +218,7 @@ public class NPCData : Data
         [TextArea] public string text;
         public NPCMood mood = NPCMood.Inherit;
         public Vector2 size;
+        public Vector2 offset;
         public bool visable = true;
         public Sprite textBackground;
         public bool shake = false;
