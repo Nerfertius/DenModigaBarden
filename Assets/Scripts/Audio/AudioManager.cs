@@ -126,7 +126,8 @@ public class AudioManager : MonoBehaviour
  // =========================== Effects =================================================================================
     public static IEnumerator AudioFade(AudioSource audioSource, float startVolume, float endVolume, float duration) {
         audioSource.volume = startVolume;
-        Timer timer = new Timer(duration);
+        Timer timer = new Timer(duration, false);
+        
         float volumeDiff = endVolume - startVolume;
         timer.Start();
         while (!timer.IsDone()) {
@@ -187,7 +188,7 @@ public class AudioManager : MonoBehaviour
                 //fade out
                 AudioManager.instance.StartCoroutine(AudioManager.AudioFadeAndStop(current, current.volume, 0, fullFadeOutDuration));
             }
-            
+
             if (clip != null) {
                 current = AudioManager.GetAudioSource();
 

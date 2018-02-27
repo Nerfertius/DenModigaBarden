@@ -12,13 +12,20 @@ public class Timer {
     private float pauseStartTime = 0;
     private float pauseEndTime = 0;
 
-    public Timer(float duration) {
+    private bool useTimeScale = true;
+
+    public Timer(float duration, bool useTimeScale) {
         active = false;
         SetDuration(duration);
+        this.useTimeScale = useTimeScale;
+    }
+
+    public Timer(float duration) : this(duration, true) {
+        
     }
 
     public void Start() {
-        startTime = Time.time;
+        startTime = Time();
         active = true;
     }
 
@@ -27,12 +34,12 @@ public class Timer {
     }
 
     public void Pause() {
-        pauseStartTime = Time.time;
+        pauseStartTime = Time();
         active = false;
     }
 
     public void UnPause() {
-        pauseEndTime = Time.time;
+        pauseEndTime = Time();
         active = true;
         pauseEndTime = 0;
         pauseStartTime = 0;
@@ -56,10 +63,10 @@ public class Timer {
 
     public float TimePassed() {
         if (!active) {
-            return Time.time - startTime - (Time.time - pauseStartTime);
+            return Time() - startTime - (Time() - pauseStartTime);
         }
         else {
-            return Time.time - startTime - (pauseEndTime - pauseStartTime);
+            return Time() - startTime - (pauseEndTime - pauseStartTime);
         }
     }
 
@@ -69,5 +76,9 @@ public class Timer {
 
     public float TimePercentagePassed() {
         return TimePassed() / duration;
+    }
+
+    private float Time(){
+        return useTimeScale ? UnityEngine.Time.time : UnityEngine.Time.unscaledTime;
     }
 }
