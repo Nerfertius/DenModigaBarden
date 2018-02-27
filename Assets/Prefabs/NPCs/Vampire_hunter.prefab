@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4343838358775902}
   - component: {fileID: 58442791888714542}
   - component: {fileID: 114530841475956608}
+  - component: {fileID: 114428495941127288}
   m_Layer: 0
   m_Name: TalkZone
   m_TagString: Untagged
@@ -110,7 +111,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 2.7
 --- !u!70 &70488423178313060
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -143,6 +144,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114428495941127288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1916124953644292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed120c241e13544b8e9ce96f119f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155, type: 3}
+  repeatable: 1
+  offset: {x: 2.2, y: 0}
+  npcTalk: 1
+  state: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
+  melodyPlayed: 0
+  melody: 0
+  actionPerformed: 0
+  buttonName: 
 --- !u!114 &114525478328652982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,6 +189,7 @@ MonoBehaviour:
     - text: See anything you like?
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -177,6 +199,7 @@ MonoBehaviour:
     - text: I have everything you need for a good vampire hunt.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -186,6 +209,7 @@ MonoBehaviour:
     - text: "Of course, there aren\u2019t any vampires left"
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -195,6 +219,7 @@ MonoBehaviour:
     - text: '...'
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -204,6 +229,7 @@ MonoBehaviour:
     - text: You're welcome.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -221,6 +247,7 @@ MonoBehaviour:
         lurking in every tree.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -230,6 +257,7 @@ MonoBehaviour:
     - text: "Those were the days\u2026"
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -246,6 +274,7 @@ MonoBehaviour:
     - text: Why do I need a pie for vampire hunting? Huhuhu.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -256,6 +285,7 @@ MonoBehaviour:
         to pick up a new hobby.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -265,6 +295,7 @@ MonoBehaviour:
     - text: I make garlic pies!
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -274,6 +305,7 @@ MonoBehaviour:
     - text: Fancy a slice?
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -283,11 +315,12 @@ MonoBehaviour:
     - text: "No? That\u2019s more pie for me then huhuhu."
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
-      stay: 0
-      stayTime: 0
+      stay: 1
+      stayTime: 1
       originalStayTime: 0
     conditions: []
     speakOnce: 1
@@ -296,9 +329,10 @@ MonoBehaviour:
     autoSpeak: 0
     autoSpeakRange: 0
   - texts:
-    - text: 1/2 cup of sugar
+    - text: <size=12> 1/2 cup of sugar </size>
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -308,6 +342,7 @@ MonoBehaviour:
     - text: 1/2 cup of brown packed sugar
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -317,6 +352,7 @@ MonoBehaviour:
     - text: 3 tablespoons of flour
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -326,6 +362,7 @@ MonoBehaviour:
     - text: 1 teaspoon of ground cinnamon
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -335,6 +372,7 @@ MonoBehaviour:
     - text: 1/4 teaspoon of ground ginger
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -344,6 +382,7 @@ MonoBehaviour:
     - text: 1/4 teaspoon of ground nutmeg
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -353,6 +392,7 @@ MonoBehaviour:
     - text: 6-7 thinly sliced delicious garlics
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -362,6 +402,7 @@ MonoBehaviour:
     - text: 1 tablespoon of lemon juice
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -371,6 +412,7 @@ MonoBehaviour:
     - text: Pastry for double-crust pie (9 inches)
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -380,6 +422,7 @@ MonoBehaviour:
     - text: 1 tablespoon of butter
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -389,6 +432,7 @@ MonoBehaviour:
     - text: And 1 large egg white
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -398,6 +442,7 @@ MonoBehaviour:
     - text: Huhuhu...
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -414,6 +459,7 @@ MonoBehaviour:
     - text: See anything you like?
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -429,6 +475,7 @@ MonoBehaviour:
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
+  originalPos: {x: 0, y: 0, z: 0}
   pitchDeviation: 0.3
   currentConvIndex: 0
   currentConv: []
@@ -447,6 +494,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   playerInRange: 0
   inAutoRange: 0
+  startTalking: 0
   player: {fileID: 0}
 --- !u!114 &114530841475956608
 MonoBehaviour:

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4303033674822930}
   - component: {fileID: 114066269144568152}
   - component: {fileID: 58537072639794608}
+  - component: {fileID: 114073042334836230}
   m_Layer: 0
   m_Name: TalkZone
   m_TagString: Untagged
@@ -42,6 +43,7 @@ GameObject:
   - component: {fileID: 114298331026920208}
   - component: {fileID: 70560111508930988}
   - component: {fileID: 50371027822527370}
+  - component: {fileID: 82738218790942164}
   m_Layer: 14
   m_Name: LeaningWallGuy
   m_TagString: Untagged
@@ -56,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1238561786177686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.25, y: -1.8005805, z: 0}
+  m_LocalPosition: {x: 16.379, y: 0.232, z: -0.047651947}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4303033674822930}
@@ -95,7 +97,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &58537072639794608
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -126,6 +128,86 @@ CapsuleCollider2D:
   m_Offset: {x: -0.66, y: 0}
   m_Size: {x: 0.69, y: 2}
   m_Direction: 0
+--- !u!82 &82738218790942164
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238561786177686}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b784dfc2eeb6bf3448553f51bfd371f8, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95319286265161476
 Animator:
   serializedVersion: 3
@@ -154,6 +236,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49edc6f31a78b4408545036a99d9fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114073042334836230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056418596438944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed120c241e13544b8e9ce96f119f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155, type: 3}
+  repeatable: 1
+  offset: {x: 0.45, y: 1.88}
+  npcTalk: 1
+  state: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
+  melodyPlayed: 0
+  melody: 0
+  actionPerformed: 0
+  buttonName: 
 --- !u!114 &114079130673246554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,6 +281,7 @@ MonoBehaviour:
     - text: "It doesn\u2019t matter what we do in life, we\u2019re all gonna die eventually."
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -188,6 +291,7 @@ MonoBehaviour:
     - text: "I\u2019m just waiting for the sun to set so I can go to bed. "
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -198,12 +302,13 @@ MonoBehaviour:
     speakOnce: 0
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   textSpeed: 20
   fontSize: 0
-  offset: {x: 0, y: 0}
+  offset: {x: 0, y: 0.43}
+  originalPos: {x: 0, y: 0, z: 0}
   pitchDeviation: 0.3
-  autoSpeak: 0
-  autoSpeakRange: 0
   currentConvIndex: 0
   currentConv: []
   currentText: 0
@@ -221,6 +326,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   playerInRange: 0
   inAutoRange: 0
+  startTalking: 0
   player: {fileID: 0}
 --- !u!114 &114298331026920208
 MonoBehaviour:

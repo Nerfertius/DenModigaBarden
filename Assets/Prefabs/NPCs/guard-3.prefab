@@ -247,9 +247,8 @@ MonoBehaviour:
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
+  originalPos: {x: 0, y: 0, z: 0}
   pitchDeviation: 0
-  autoSpeak: 0
-  autoSpeakRange: 0
   currentConvIndex: 0
   currentConv: []
   currentText: 0
@@ -267,6 +266,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   playerInRange: 0
   inAutoRange: 0
+  startTalking: 0
   player: {fileID: 0}
 --- !u!114 &114504777487111642
 MonoBehaviour:
@@ -293,7 +293,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9497b547ff5ff7d4499a1ffae504a5a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

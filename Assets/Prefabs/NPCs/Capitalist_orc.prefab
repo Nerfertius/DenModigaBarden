@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4693992717237796}
   - component: {fileID: 114473923663527152}
   - component: {fileID: 58181522777253558}
+  - component: {fileID: 114478193283277192}
   m_Layer: 0
   m_Name: TalkZone
   m_TagString: Untagged
@@ -168,6 +169,7 @@ MonoBehaviour:
     - text: Did you find anything?
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -177,6 +179,7 @@ MonoBehaviour:
     - text: "\u2026"
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -186,6 +189,7 @@ MonoBehaviour:
     - text: Bwaaaaaaaaaaaaaaa!
       mood: 2
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -195,6 +199,7 @@ MonoBehaviour:
     - text: Huuuuuhhuuhuuuuu!
       mood: 2
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -204,6 +209,7 @@ MonoBehaviour:
     - text: AAAAAAAAARRGH!
       mood: 2
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 1
@@ -213,6 +219,7 @@ MonoBehaviour:
     conditions:
     - condition: 2
       goComp: {fileID: 0}
+      autoStart: 0
       convIndex: 0
       convSpokIndex: 0
       itemComp: 0
@@ -222,10 +229,13 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: AAAAAAAAARRGH!
       mood: 2
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 1
@@ -235,6 +245,7 @@ MonoBehaviour:
     conditions:
     - condition: 4
       goComp: {fileID: 0}
+      autoStart: 0
       convIndex: 0
       convSpokIndex: 0
       itemComp: 0
@@ -244,10 +255,13 @@ MonoBehaviour:
     speakOnce: 0
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: '*sniff sniff*'
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -257,6 +271,7 @@ MonoBehaviour:
     - text: "Oh, hello. I didn\u2019t see you."
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -266,6 +281,7 @@ MonoBehaviour:
     - text: Someone stole all the furniture from my house.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -275,6 +291,7 @@ MonoBehaviour:
     - text: I worked so hard to be able to afford it all.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -284,6 +301,7 @@ MonoBehaviour:
     - text: Now I have to save money for at least two weeks before I can buy more.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 0
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -293,6 +311,7 @@ MonoBehaviour:
     conditions:
     - condition: 2
       goComp: {fileID: 0}
+      autoStart: 0
       convIndex: 0
       convSpokIndex: 0
       itemComp: 0
@@ -302,10 +321,13 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: Would you do me a favor?
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -315,6 +337,7 @@ MonoBehaviour:
     - text: Investigate the scene of the crime, maybe the culprit left a trace.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -325,6 +348,7 @@ MonoBehaviour:
         contact.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -334,6 +358,7 @@ MonoBehaviour:
     - text: "It didn\u2019t stop the thief though\u2026"
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -343,6 +368,7 @@ MonoBehaviour:
     - text: "Worthless piece of\u2026"
       mood: 3
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 1
@@ -352,6 +378,7 @@ MonoBehaviour:
     - text: Please look in my house for clues.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -361,6 +388,7 @@ MonoBehaviour:
     conditions:
     - condition: 4
       goComp: {fileID: 0}
+      autoStart: 0
       convIndex: 0
       convSpokIndex: 2
       itemComp: 0
@@ -370,10 +398,13 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: Please look in my house for clues.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -383,6 +414,7 @@ MonoBehaviour:
     conditions:
     - condition: 4
       goComp: {fileID: 0}
+      autoStart: 0
       convIndex: 0
       convSpokIndex: 3
       itemComp: 0
@@ -392,10 +424,13 @@ MonoBehaviour:
     speakOnce: 0
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: Bwaaaaaaaaaaaaaaaaaa!
       mood: 2
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -405,6 +440,7 @@ MonoBehaviour:
     - text: Buuuuuhuhhuhhuu!
       mood: 2
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -414,6 +450,7 @@ MonoBehaviour:
     - text: Huuguhuguhugugh!
       mood: 2
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -424,12 +461,13 @@ MonoBehaviour:
     speakOnce: 0
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
+  originalPos: {x: 0, y: 0, z: 0}
   pitchDeviation: 0.3
-  autoSpeak: 0
-  autoSpeakRange: 0
   currentConvIndex: 0
   currentConv: []
   currentText: 0
@@ -447,6 +485,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   playerInRange: 0
   inAutoRange: 0
+  startTalking: 0
   player: {fileID: 0}
 --- !u!114 &114473923663527152
 MonoBehaviour:
@@ -459,6 +498,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49edc6f31a78b4408545036a99d9fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114478193283277192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964668244836394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed120c241e13544b8e9ce96f119f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155, type: 3}
+  repeatable: 1
+  offset: {x: 0.1, y: 1.46}
+  npcTalk: 1
+  state: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
+  melodyPlayed: 0
+  melody: 0
+  actionPerformed: 0
+  buttonName: 
 --- !u!114 &114496995654617518
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 50256677831460852}
   - component: {fileID: 70676469549206114}
   - component: {fileID: 114808231373659848}
+  - component: {fileID: 82942658300149228}
   m_Layer: 14
   m_Name: Horn_Boi
   m_TagString: Untagged
@@ -42,6 +43,7 @@ GameObject:
   - component: {fileID: 4185692205560520}
   - component: {fileID: 58599305488526970}
   - component: {fileID: 114108636547808384}
+  - component: {fileID: 114004177145039640}
   m_Layer: 0
   m_Name: TalkZone
   m_TagString: Untagged
@@ -56,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909042587126998}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7570802, y: -1.9323444, z: 0}
+  m_LocalPosition: {x: -13.75, y: 0.23461264, z: -0.047651947}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4185692205560520}
@@ -126,6 +128,86 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.82, y: 2}
   m_Direction: 0
+--- !u!82 &82942658300149228
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909042587126998}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b784dfc2eeb6bf3448553f51bfd371f8, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95145624932861616
 Animator:
   serializedVersion: 3
@@ -143,6 +225,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114004177145039640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921850284000630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed120c241e13544b8e9ce96f119f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155, type: 3}
+  repeatable: 1
+  offset: {x: 0, y: 2}
+  npcTalk: 1
+  state: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
+  melodyPlayed: 0
+  melody: 0
+  actionPerformed: 0
+  buttonName: 
 --- !u!114 &114108636547808384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,6 +301,7 @@ MonoBehaviour:
         trained field mouse."
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -208,6 +311,7 @@ MonoBehaviour:
     conditions:
     - condition: 2
       goComp: {fileID: 0}
+      autoStart: 0
       convIndex: 0
       convSpokIndex: 0
       itemComp: 0
@@ -217,10 +321,13 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: "So, you\u2019re leaving on your own, are you?"
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -231,10 +338,13 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: "Aren\u2019t you a mighty adventurer."
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -245,10 +355,13 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: "You know you won\u2019t last a day out there."
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -259,10 +372,13 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: "Do you think you\u2019re better than us? Is that it?"
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -273,11 +389,14 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: "Well mighty adventurer, if you\u2019re such a hero then why don\u2019t
         you go slay a dragon?"
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -288,10 +407,13 @@ MonoBehaviour:
     speakOnce: 1
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: Go on, your big adventure is waiting.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
       visable: 1
       textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
       shake: 0
@@ -302,12 +424,13 @@ MonoBehaviour:
     speakOnce: 0
     notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   textSpeed: 20
   fontSize: 0
-  offset: {x: 0, y: 0}
-  pitchDeviation: 0.3
-  autoSpeak: 0
-  autoSpeakRange: 0
+  offset: {x: 0, y: 0.5}
+  originalPos: {x: 0, y: 0, z: 0}
+  pitchDeviation: 0.48
   currentConvIndex: 0
   currentConv: []
   currentText: 0
@@ -325,6 +448,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   playerInRange: 0
   inAutoRange: 0
+  startTalking: 0
   player: {fileID: 0}
 --- !u!212 &212752486582230552
 SpriteRenderer:
@@ -340,7 +464,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9497b547ff5ff7d4499a1ffae504a5a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

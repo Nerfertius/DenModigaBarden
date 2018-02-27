@@ -5,7 +5,7 @@ using UnityEngine;
 public class PopUp : MonoBehaviour
 {
     private bool hasShowed;
-    public bool visible;
+    private bool visible;
     private SpriteRenderer rend;
     private StateController npcState;
     
@@ -40,6 +40,8 @@ public class PopUp : MonoBehaviour
         GameObject empty = new GameObject();
         empty.AddComponent<SpriteRenderer>();
         GameObject prompt = Instantiate(empty, (Vector2)transform.position + offset, Quaternion.identity);
+        Destroy(empty);
+        prompt.transform.parent = transform;
         rend = prompt.GetComponent<SpriteRenderer>();
         rend.sprite = sprite;
         Color temp = rend.color;
@@ -121,8 +123,6 @@ public class PopUp : MonoBehaviour
         Color newColor = rend.color;
         while (rend.color.a < 1)
         {
-            Debug.Log("In running");
-
             newColor.a += 0.01f;
             rend.color = newColor;
             yield return new WaitForEndOfFrame();
@@ -135,8 +135,6 @@ public class PopUp : MonoBehaviour
         Color newColor = rend.color;
         while (rend.color.a > 0)
         {
-            Debug.Log("Out running");
-
             newColor.a -= 0.01f;
             rend.color = newColor;
             yield return new WaitForEndOfFrame();
