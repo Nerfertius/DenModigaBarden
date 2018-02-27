@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour {
     List<Transform> enemies = new List<Transform>();
     List<StateController> controllers = new List<StateController>();
 
+    private static EnemyManager activeEM;
     private bool toBeDeactivated;
     private MapBoundary mb;
 
@@ -50,7 +51,9 @@ public class EnemyManager : MonoBehaviour {
 
     void ActivateEnemies()
     {
-        if (mb == MapBoundary.currentMapBoundary) { 
+        if (mb == MapBoundary.currentMapBoundary) {
+            activeEM = this;
+
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].gameObject.SetActive(true);
@@ -86,6 +89,14 @@ public class EnemyManager : MonoBehaviour {
         for (int i = 0; i < controllers.Count; i++)
         {
             controllers[i].enabled = false;
+        }
+    }
+
+    public static void PauseEnemies()
+    {
+        for (int i = 0; i < activeEM.controllers.Count; i++)
+        {
+            activeEM.controllers[i].enabled = false;
         }
     }
 

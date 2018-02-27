@@ -5,7 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class CameraFollow2D : MonoBehaviour
 {
-
     public Transform target;
     public Transform[] backgrounds;
     public bool hideCursor;

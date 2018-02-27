@@ -9,6 +9,14 @@ public class PlayerHitByEnemy : Condition {
         PlayerData data = (PlayerData)controller.data;
         EnemyData dataE = coll.GetComponent<EnemyData>();
 
+        if (dataE != null && data.hitInvincibilityTimer.IsDone())
+        {
+            data.enemyToBattle = dataE;
+            GameManager.instance.switchState(new BattleState(GameManager.instance));
+        }
+
+        //TODO : Separate Trap & Enemy/Hitbox
+
         if (data.hitInvincibilityTimer.IsDone() && (coll.tag == "Hitbox" || coll.tag == "Trap" || (coll.tag == "Enemy" && dataE != null && dataE.harmful))) {
             data.lastDamageData = coll.GetComponent<PlayerDamageData>();
             data.hitAngle = (data.transform.position - coll.transform.position).normalized;
