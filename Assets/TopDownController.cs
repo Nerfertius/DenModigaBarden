@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class TopDownController : MonoBehaviour
 {
+    public static Transform Cadenza;
     public static bool controllable;
     public float speed;
     public Vector2 direction;
 
     private Rigidbody2D rb;
+
+    void Awake()
+    {
+        Cadenza = transform;
+    }
 
     void Start()
     {

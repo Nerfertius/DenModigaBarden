@@ -26,10 +26,12 @@ class HP
         GetHP();
     }
 
-    public void Update(float health)
+    public void Update()
     {
         if (gm.PlayCanvas != null && hp != null)
         {
+            float health = GameManager.instance.player.health;
+
             if (health > 0)
             {
                 hp[0].sprite = health < 1 ? gm.halfHeart : gm.fullHeart;

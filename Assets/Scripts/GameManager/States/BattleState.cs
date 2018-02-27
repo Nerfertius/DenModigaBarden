@@ -44,6 +44,8 @@ public class BattleState : GameState
             Debug.Log("Exiting Battle State");
             GameManager.instance.switchState(new PlayState(GameManager.instance));
         }
+
+        HP.GetInstance.Update();
     }
 
     IEnumerator StartBattle()
