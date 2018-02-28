@@ -7,7 +7,8 @@ public class PlayerCrouch : Condition
 {
     public override bool? CheckCondition(StateController controller)
     {
-        if (Input.GetAxisRaw("Vertical") < -0.75f || Input.GetAxisRaw("Crouch") == 1)
+        PlayerData data = (PlayerData)controller.data;
+        if (Input.GetAxisRaw("Vertical") < -data.axisSensitivity || Input.GetAxisRaw("Crouch") == 1)
         {
             return true;
         }

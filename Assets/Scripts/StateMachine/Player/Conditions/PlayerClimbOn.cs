@@ -48,13 +48,13 @@ public class PlayerClimbOn : Condition
                    && feet < topCol.bounds.max.y + 0.5f)
                 {
                     //Bottom
-                    if (Input.GetAxisRaw("Vertical") > 0.75f && feet > botCol.bounds.min.y && data.collider.bounds.center.y < topCol.bounds.min.y)
+                    if (Input.GetAxisRaw("Vertical") > data.axisSensitivity && feet > botCol.bounds.min.y && data.collider.bounds.center.y < topCol.bounds.min.y)
                     {
                         return true;
                     }
 
                     //Top
-                    else if (Input.GetAxisRaw("Vertical") < -0.75f && feet < topCol.bounds.max.y + 0.2f && feet > botCol.bounds.max.y)
+                    else if (Input.GetAxisRaw("Vertical") < -data.axisSensitivity && feet < topCol.bounds.max.y + 0.2f && feet > botCol.bounds.max.y)
                     {
                         return true;
                     }

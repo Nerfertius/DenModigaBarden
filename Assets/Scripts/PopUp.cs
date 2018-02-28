@@ -47,6 +47,7 @@ public class PopUp : MonoBehaviour
         Color temp = rend.color;
         temp.a = 0;
         rend.color = temp;
+        rend.sortingLayerName = "UI";
 
         if (!npcTalk && !melodyPlayed && !actionPerformed)
         {

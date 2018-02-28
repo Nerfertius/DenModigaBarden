@@ -89,6 +89,7 @@ public class PlayerData : Data
 
     // Gamepad
     [HideInInspector] public bool gamepadConnected;
+    [HideInInspector] public float axisSensitivity;
 
     [System.Serializable]
     public class MelodyData {
@@ -272,6 +273,7 @@ public class PlayerData : Data
         {
             gamepadConnected = true;
         }
+        axisSensitivity = 0.75f;
     }
 
 
