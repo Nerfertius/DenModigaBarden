@@ -2,120 +2,89 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
-{
-    [Header("Components")]
-    public List<Component> componentList;
-    public List<PressurePlate> pairedObjects;
+public class PressurePlate : MonoBehaviour {
 
-    private bool pairedReady;
-    private float OFFSET = 0.2f;
-    private Animator anim;
-    private BoxCollider2D rend;
+    [Header("This pressure plate")]
+    public List<ActivatableReceiver> recievers;
 
-    void Start ()
-    {
+    [Tooltip("If it should go back up when leaving")]
+    public bool returnOnLeave;
+    [Tooltip("How long it takes for it to go back up when leaving")]
+    public float returnDelay;
+
+
+    [Header("Linked pressure plate")]
+    [Tooltip("All linked objects must be Down/On for the recievers to 'open'")]
+    public List<PressurePlate> linkedPlates;
+    public bool returnOnAllDone;
+    public float returnOnAllDoneDelay;
+
+
+    //private bool down; 
+    private Animator anim; // has a bool that checks if down
+    private BoxCollider2D collider;
+
+    private bool allLinkedDown = false;
+
+    void Start() {
         anim = GetComponent<Animator>();
-        rend = GetComponent<BoxCollider2D>();
+        collider = GetComponent<BoxCollider2D>();
     }
 
-    private void Update()
-    {
-        if (pairedObjects.Count > 0 && !pairedReady)
-        {
-            pairedReady = true;
-            for (int i = 0; i < pairedObjects.Count; i++)
-            {
-                if (pairedObjects[i].GetComponent<Animator>().GetBool("PressedDown") == false)
-                {
-                    pairedReady = false;
+    private void Update() {
+
+        //if off check if it should be on
+        if (!allLinkedDown) {
+            allLinkedDown = IsDown();
+            foreach (PressurePlate linked in linkedPlates) {
+                if (!linked.IsDown()) {
+                    allLinkedDown = false;
                     break;
+                }
+            }
+            if (allLinkedDown){
+                foreach (ActivatableReceiver receiver in recievers) {
+                    receiver.Activate();
+                }
+
+                if (!returnOnAllDone) {
+                    returnOnLeave = false;
+                    foreach (PressurePlate linked in linkedPlates) {
+                        linked.returnOnLeave = false;
+                    }
+                }
+            }
+        }//if on check if it should be off
+        else if (returnOnAllDone){
+            allLinkedDown = IsDown();
+            foreach (PressurePlate linked in linkedPlates) {
+                if (!linked.IsDown()) {
+                    allLinkedDown = false;
+                    break;
+                }
+            }
+            if (!allLinkedDown) {
+                foreach (ActivatableReceiver receiver in recievers) {
+                    receiver.Deactivate();
                 }
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if ((coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy")) && anim.GetBool("PressedDown") == false)
-        {
-            if (pairedObjects.Count > 0 && pairedReady)
-            {
-                for (int i = 0; i < componentList.Count; i++)
-                {
-                    StartCoroutine(ActivateComponent(componentList[i]));
-                }
-            }
-            else if (pairedObjects.Count == 0)
-            {
-                for (int i = 0; i < componentList.Count; i++)
-                {
-                    StartCoroutine(ActivateComponent(componentList[i]));
-                }
-            }
+    private void OnTriggerEnter2D(Collider2D coll) {
+        if ((coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy")) && IsDown() == false) {
             anim.SetBool("PressedDown", true);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D coll)
-    {
-        if ((coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy")) == true && anim.GetBool("PressedDown") == true)
-        {
-            if (pairedObjects.Count > 0 && !pairedReady)
-            {                
-                for (int i = 0; i < componentList.Count; i++)
-                {
-                    if (componentList[i].returnOnLeave)
-                    {
-                        StartCoroutine(DeactivateComponent(componentList[i]));
-                    }
-                }
-            }
-            else if (pairedObjects.Count == 0)
-            {
-                for (int i = 0; i < componentList.Count; i++)
-                {
-                    if (componentList[i].returnOnLeave)
-                    {
-                        StartCoroutine(DeactivateComponent(componentList[i]));
-                    }
-                }
-            }
+    private void OnTriggerExit2D(Collider2D coll) {
+        if (returnOnLeave && (coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy")) == true && IsDown() == true) {
+            //add delay
             anim.SetBool("PressedDown", false);
         }
     }
 
-    IEnumerator ActivateComponent(Component component)
-    {
-        if (component.delay > 0)
-        {
-            yield return new WaitForSeconds(component.delay);
-            component.obj.SendMessage("Activate");
-            if (component.message != "")
-            {
-                print(component.message);
-            }
-        }
-        else
-        {
-            component.obj.SendMessage("Activate");
-            if (component.message != "")
-            {
-                print(component.message);
-            }
-        }
-    }
-
-    IEnumerator DeactivateComponent(Component component)
-    {
-        if (component.delay > 0 && component.delayOnReturn)
-        {
-            yield return new WaitForSeconds(component.delay);
-            component.obj.SendMessage("Deactivate");
-        }
-        else
-        {
-            component.obj.SendMessage("Deactivate");
-        }
+    public bool IsDown() {
+        return anim.GetBool("PressedDown");
     }
 }
