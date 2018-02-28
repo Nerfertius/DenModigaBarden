@@ -5,12 +5,14 @@ using UnityEngine;
 public class PopUp : MonoBehaviour
 {
     private bool hasShowed;
+    private bool hasCleared;
     private bool visible;
     private SpriteRenderer rend;
     private StateController npcState;
     
     public Sprite sprite;
     public bool repeatable;
+    public bool showUntilCleared;
     public Vector2 offset;
 
     [Header("NPC")]
@@ -71,6 +73,12 @@ public class PopUp : MonoBehaviour
                 StartCoroutine("FadeIn");
                 hasShowed = true;
             }
+
+            else if (!repeatable && showUntilCleared && !hasCleared && !visible)
+            {
+                StopAllCoroutines();
+                StartCoroutine("FadeIn");
+            }
         }
     }
 
@@ -87,6 +95,10 @@ public class PopUp : MonoBehaviour
                 {
                     StopAllCoroutines();
                     StartCoroutine("FadeOut");
+                    if (showUntilCleared)
+                    {
+                        hasCleared = true;
+                    }
                 }
                 else if (npcState.currentState.ToString() == "NPCIdle (State)")
                 {
@@ -99,12 +111,20 @@ public class PopUp : MonoBehaviour
             {
                 StopAllCoroutines();
                 StartCoroutine("FadeOut");
+                if (showUntilCleared)
+                {
+                    hasCleared = true;
+                }
             }
 
             else if (actionPerformed && Input.GetButtonDown(buttonName))
             {
                 StopAllCoroutines();
                 StartCoroutine("FadeOut");
+                if (showUntilCleared)
+                {
+                    hasCleared = true;
+                }
             }
         }
     }
