@@ -237,7 +237,7 @@ public class PlayerData : Data
 		body = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         noteAnim = noteFX.textureSheetAnimation;
-        groundCheckRadius = 0.3f;
+        groundCheckRadius = 0.2f;
 
         climbFixLayer = LayerMask.NameToLayer("Blockable");
         playerLayer = LayerMask.NameToLayer("Player");
