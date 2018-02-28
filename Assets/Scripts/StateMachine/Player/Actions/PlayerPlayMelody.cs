@@ -4,17 +4,18 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "StateMachine/Action/Player/PlayerPlayMelody")]
 public class PlayerPlayMelody : StateAction {
-
+    bool melodyAxisUp = true;
 
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
-        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody") > 0.75f) {
+        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody") > data.axisSensitivity) {
             AudioManager.FadeBGM();
             mData.playingFlute = true;
+            melodyAxisUp = false;
 
-            if(mData.currentMelody != null) {
+            if (mData.currentMelody != null) {
                 data.MelodyStoppedPlaying(mData.currentMelody);
             }
             mData.currentMelody = null;
@@ -22,7 +23,7 @@ public class PlayerPlayMelody : StateAction {
             controller.anim.SetBool("Channeling", true);
 
             Note notePlayed = null;
-            if (Input.GetButton("PlayMelodyNoteShift") || Input.GetAxisRaw("PlayMelodyNoteShift") > 0.75f)
+            if (Input.GetButton("PlayMelodyNoteShift") || Input.GetAxisRaw("PlayMelodyNoteShift") > data.axisSensitivity)
             {
                 foreach (Note note in mData.Notes2) {
                     if (Input.GetButtonDown(note.Button)) {
@@ -55,8 +56,9 @@ public class PlayerPlayMelody : StateAction {
             }
         }
 
-        if (Input.GetButtonUp("PlayMelody") || (Input.GetAxisRaw("PlayMelody") < 0.75f && Input.GetAxisRaw("PlayMelody") > 0)) {
+        if (Input.GetButtonUp("PlayMelody") || (Input.GetAxisRaw("PlayMelody") < data.axisSensitivity && Input.GetAxisRaw("PlayMelody") > 0 && !melodyAxisUp)) {
             bool melodyPlayed = false;
+            melodyAxisUp = true;
             
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {
