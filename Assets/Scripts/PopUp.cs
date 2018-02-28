@@ -121,8 +121,6 @@ public class PopUp : MonoBehaviour
         Color newColor = rend.color;
         while (rend.color.a < 1)
         {
-            Debug.Log("In running");
-
             newColor.a += 0.01f;
             rend.color = newColor;
             yield return new WaitForEndOfFrame();
@@ -135,8 +133,6 @@ public class PopUp : MonoBehaviour
         Color newColor = rend.color;
         while (rend.color.a > 0)
         {
-            Debug.Log("Out running");
-
             newColor.a -= 0.01f;
             rend.color = newColor;
             yield return new WaitForEndOfFrame();
