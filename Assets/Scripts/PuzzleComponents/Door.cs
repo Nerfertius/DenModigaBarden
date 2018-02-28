@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : ActivatableReceiver
 {
     private Animator anim;
 
@@ -11,12 +11,12 @@ public class Door : MonoBehaviour
         anim = GetComponent<Animator>();
     }
     
-    void Activate()
+    public override void Activate()
     {
         anim.SetBool("Open", true);
     }
 
-    void Deactivate()
+    public override void Deactivate()
     {
         anim.SetBool("Open", false);
     }
