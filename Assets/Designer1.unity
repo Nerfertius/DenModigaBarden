@@ -27801,7 +27801,7 @@ MonoBehaviour:
       stay: 0
       stayTime: 0
       originalStayTime: 0
-    - text: I think they care to much.
+    - text: I think they care too much.
       mood: 0
       size: {x: 0, y: 0}
       offset: {x: 0, y: 0}
@@ -62384,6 +62384,11 @@ Prefab:
     - target: {fileID: 4283928231810050, guid: 80cb09de074b7a045ae42046ca8630f5, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114719841989503236, guid: 80cb09de074b7a045ae42046ca8630f5,
+        type: 2}
+      propertyPath: conversation.Array.data[0].texts.Array.data[2].stayTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80cb09de074b7a045ae42046ca8630f5, type: 2}
