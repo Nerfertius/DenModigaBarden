@@ -11,23 +11,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1773689074725506}
   m_IsPrefabParent: 1
---- !u!1 &1735426077676240
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4579588777665600}
-  - component: {fileID: 114504777487111642}
-  - component: {fileID: 58977587886588432}
-  m_Layer: 0
-  m_Name: TalkZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1773689074725506
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +23,6 @@ GameObject:
   - component: {fileID: 95938624751837870}
   - component: {fileID: 70187059010013426}
   - component: {fileID: 50233296743896300}
-  - component: {fileID: 114153376735310504}
   - component: {fileID: 82473047978744692}
   m_Layer: 14
   m_Name: guard-3
@@ -55,25 +37,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773689074725506}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.25, y: -18.06, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4579588777665600}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4579588777665600
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1735426077676240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 26.61, y: 0.22427541, z: -0.047651947}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4257643678364034}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50233296743896300
@@ -96,21 +64,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58977587886588432
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1735426077676240}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.41
 --- !u!70 &70187059010013426
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -136,7 +89,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b784dfc2eeb6bf3448553f51bfd371f8, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -223,62 +176,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114153376735310504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1773689074725506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27c0d7f1d48bcd541aeb6578a4fcbc2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0}
-  startScale: {x: 0, y: 0}
-  startDirection: {x: 0, y: 0}
-  currentDirection: {x: 0, y: 0}
-  facingRight: 0
-  canWalk: 0
-  speed: 0
-  waitTime: 0
-  mood: 0
-  conversation: []
-  textSpeed: 20
-  fontSize: 0
-  offset: {x: 0, y: 0}
-  originalPos: {x: 0, y: 0, z: 0}
-  pitchDeviation: 0
-  currentConvIndex: 0
-  currentConv: []
-  currentText: 0
-  currentChar: 0
-  curTime: 0
-  nextChar: 0
-  start: 0
-  finished: 0
-  endOfConv: 0
-  text: {fileID: 0}
-  talkSound: {fileID: 0}
-  basePitch: 1
-  currentString: 
-  playSound: 0
-  animator: {fileID: 0}
-  playerInRange: 0
-  inAutoRange: 0
-  startTalking: 0
-  player: {fileID: 0}
---- !u!114 &114504777487111642
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1735426077676240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a49edc6f31a78b4408545036a99d9fbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212789250038738810
 SpriteRenderer:
   m_ObjectHideFlags: 1

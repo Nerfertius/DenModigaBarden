@@ -366,7 +366,7 @@ MonoBehaviour:
       stayTime: 0
       originalStayTime: 0
     - text: "Worthless piece of\u2026"
-      mood: 3
+      mood: 2
       size: {x: 0, y: 0}
       offset: {x: 0, y: 0}
       visable: 1
@@ -511,6 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155, type: 3}
   repeatable: 1
+  showUntilCleared: 0
   offset: {x: 0.1, y: 1.46}
   npcTalk: 1
   state: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
