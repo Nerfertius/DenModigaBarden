@@ -72,6 +72,7 @@ MonoBehaviour:
   isMagical: 1
   knockbackPower: 0
   damage: 1
+  harmful: 1
 --- !u!114 &114979977010944720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,6 +85,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 2
+  inactiveColor: {r: 0, g: 0, b: 0, a: 0}
+  onTriggerEffect: {fileID: 198344968707537840, guid: f5cb941b86fe816488f9fb06635858d3,
+    type: 2}
 --- !u!212 &212298609685036658
 SpriteRenderer:
   m_ObjectHideFlags: 1

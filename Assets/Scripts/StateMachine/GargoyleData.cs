@@ -39,7 +39,6 @@ public class GargoyleData : EnemyData {
         SetPlatformEffector(false);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         gameObject.layer = 11; // Enemy
-        harmful = true;
     }
 
     public void SetPlatformEffector(bool enabled)
