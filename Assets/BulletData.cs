@@ -21,6 +21,12 @@ public class BulletData : Data {
         startColor = sprRend.color;
     }
 
+    private void Update()
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
     private void OnEnable()
     {
         speed = startSpeed;
@@ -43,18 +49,20 @@ public class BulletData : Data {
         float travelDistance = 0;
         float maxTravelDistance = 4f;
 
+        float velocity;
         while(travelDistance < maxTravelDistance)
         {
             speed += (speed + 1f) * Time.deltaTime;
-            transform.position += new Vector3(0, direction.y * speed * Time.deltaTime, transform.position.z);
-            travelDistance += Mathf.Abs(direction.y * speed * Time.deltaTime);
+            velocity = direction.y * speed * Time.deltaTime;
+            transform.position += new Vector3(0, velocity, 0);
+            travelDistance += Mathf.Abs(velocity);
             yield return null;
         }
 
         while (speed > 0)
         {
             speed -= (speed + 10f) * Time.deltaTime;
-            transform.position += new Vector3(0, direction.y * speed * Time.deltaTime, transform.position.z);
+            transform.position += new Vector3(0, direction.y * speed * Time.deltaTime, 0);
             yield return null;
         }
 
@@ -87,6 +95,7 @@ public class BulletData : Data {
         if (collision.tag == "Player")
         {
             PlayerData.player.health -= 0.5f;
+            StopAllCoroutines();
             this.gameObject.SetActive(false);
         }
     }

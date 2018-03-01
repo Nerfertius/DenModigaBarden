@@ -29,8 +29,8 @@ public class BulletPattern
         switch (pattern)
         {
             case PatternType.GoblinBite:
-                spawner.StartCoroutine(GoblinBitePattern(2, 4, BattleScene.instance.topLeft.position, new Vector2(0, 3), new Vector2(0, -1)));
-                spawner.StartCoroutine(GoblinBitePattern(2, 3, BattleScene.instance.bottomLeft.position, new Vector2(0.5f, -4), new Vector2(0, 1)));                
+                spawner.StartCoroutine(GoblinBitePattern(3, 4, BattleScene.instance.topLeft.position, new Vector2(0, 3), new Vector2(0, -1)));
+                spawner.StartCoroutine(GoblinBitePattern(3, 3, BattleScene.instance.bottomLeft.position, new Vector2(0.5f, -3f), new Vector2(0, 1)));                
                 break;
             case PatternType.EvilEyeHoming:
                 break;
@@ -72,6 +72,13 @@ public class BulletPattern
                     {
                         bullets[z].SetActive(true);
                         bullets[z].transform.position = new Vector3(xPos, yPos, 0);
+                        bullets[z].transform.localScale = new Vector3(1, 1, 1);
+
+                        if (y == 0 || y == xAmount - 1)
+                        {
+                            bullets[z].transform.localScale = new Vector3(1, 2, 1);
+                        }
+
                         datas[z].bulletType = pattern;
                         datas[z].direction = direction;
                         xPos += 1;
@@ -88,6 +95,7 @@ public class BulletPattern
             yield return new WaitForSeconds(1.5f);
         }
 
+        yield return new WaitForSeconds(1f);
         PatternEnding();
     }
 }

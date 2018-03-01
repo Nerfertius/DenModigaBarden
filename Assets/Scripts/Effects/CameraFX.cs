@@ -25,17 +25,17 @@ public class CameraFX : MonoBehaviour {
 
     // For Debug
     
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q)){
-            FadeIn();
-        } else if (Input.GetKeyDown(KeyCode.R)){
-            FadeOut();
-        } else if (Input.GetKeyDown(KeyCode.N))
-        {
-            Screenshake(0.10f, 0.025f, 0.025f);
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Q)){
+    //        FadeIn();
+    //    } else if (Input.GetKeyDown(KeyCode.R)){
+    //        FadeOut();
+    //    } else if (Input.GetKeyDown(KeyCode.N))
+    //    {
+    //        Screenshake(0.10f, 0.025f, 0.025f);
+    //    }
+    //}
     
 
     public static void FadeIn()
@@ -95,6 +95,7 @@ public class CameraFX : MonoBehaviour {
         c.a = 1;
         screenFade.color = c;
     }
+
     IEnumerator FadeOutFX()
     {
         Color c = screenFade.color;

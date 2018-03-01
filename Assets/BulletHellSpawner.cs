@@ -12,19 +12,34 @@ public class BulletHellSpawner : MonoBehaviour {
     private List<GameObject> bullets;
     private List<BulletData> datas;
 
-	void Start () {
+    void Awake()
+    {
         bullets = new List<GameObject>();
         datas = new List<BulletData>();
+    }
+
+	void Start () {
+        for (int i = 0; i < patterns.Length; i++)
+        {
+            patterns[i].SetReferences(this, bullets, datas);
+        }
+    }
+
+    private void OnEnable()
+    {
+        BattleScene.EnemysTurn += StartNextAttack;
+        BattleState.BattleEnded += DisableAllBullets;
 
         for (int i = 0; i < poolSize; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab);
             BulletData data = bullet.GetComponent<BulletData>();
-            
-            if(data != null)
-            { 
+
+            if (data != null)
+            {
                 datas.Add(data);
-            }else
+            }
+            else
             {
                 Debug.LogWarning("Missing bullet data");
             }
@@ -32,22 +47,20 @@ public class BulletHellSpawner : MonoBehaviour {
             bullet.SetActive(false);
             bullets.Add(bullet);
         }
-
-        for (int i = 0; i < patterns.Length; i++)
-        {
-            patterns[i].SetReferences(this, bullets, datas);
-        }
-
-        BattleScene.BattleStarted += StartNextAttack;
-        BulletPattern.PatternEnded += StartNextAttack;
-        BattleState.BattleEnded += DisableAllBullets;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        BattleScene.BattleStarted -= StartNextAttack;
-        BulletPattern.PatternEnded -= StartNextAttack;
+        BattleScene.EnemysTurn -= StartNextAttack;
         BattleState.BattleEnded -= DisableAllBullets;
+
+        foreach (GameObject bullet in bullets)
+        {
+            Destroy(bullet);
+        }
+
+        bullets.Clear();
+        datas.Clear();
     }
 
     private void DisableAllBullets()
@@ -67,6 +80,12 @@ public class BulletHellSpawner : MonoBehaviour {
 
     private void StartNextAttack()
     {
+        StartCoroutine(DelayPattern());
+    }
+
+    IEnumerator DelayPattern()
+    {
+        yield return new WaitForSeconds(0.5f);
         patterns[0].PlayPattern();
     }
 

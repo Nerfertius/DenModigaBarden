@@ -1,13 +1,17 @@
 fileFormatVersion: 2
-guid: 58a978298d1f8564a931117f379a0332
-timeCreated: 1519637022
+guid: dd6f4a4a91211ba4c949d3e5dc43028f
+timeCreated: 1519933956
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: attack_1_0
-    21300002: attack_1_1
-    21300004: attack_1_2
-    21300006: attack_1_3
+    21300000: Gargoyle_Battle_Idle_Spritesheet_0
+    21300002: Gargoyle_Battle_Idle_Spritesheet_1
+    21300004: Gargoyle_Battle_Idle_Spritesheet_2
+    21300006: Gargoyle_Battle_Idle_Spritesheet_3
+    21300008: Gargoyle_Battle_Idle_Spritesheet_4
+    21300010: Gargoyle_Battle_Idle_Spritesheet_5
+    21300012: Gargoyle_Battle_Idle_Spritesheet_6
+    21300014: Gargoyle_Battle_Idle_Spritesheet_7
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -82,13 +86,69 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: attack_1_0
+      name: Gargoyle_Battle_Idle_Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 185
+        width: 987
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gargoyle_Battle_Idle_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 185
+        width: 987
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gargoyle_Battle_Idle_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1974
+        y: 185
+        width: 987
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gargoyle_Battle_Idle_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 2961
+        y: 185
+        width: 987
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gargoyle_Battle_Idle_Spritesheet_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 987
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -96,13 +156,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: attack_1_1
+      name: Gargoyle_Battle_Idle_Spritesheet_5
       rect:
         serializedVersion: 2
-        x: 32
+        x: 987
         y: 0
-        width: 32
-        height: 32
+        width: 987
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -110,13 +170,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: attack_1_2
+      name: Gargoyle_Battle_Idle_Spritesheet_6
       rect:
         serializedVersion: 2
-        x: 64
+        x: 1974
         y: 0
-        width: 32
-        height: 32
+        width: 987
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,13 +184,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: attack_1_3
+      name: Gargoyle_Battle_Idle_Spritesheet_7
       rect:
         serializedVersion: 2
-        x: 96
+        x: 2961
         y: 0
-        width: 32
-        height: 32
+        width: 987
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

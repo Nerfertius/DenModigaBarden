@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour {
     List<StateController> controllers = new List<StateController>();
 
     private static EnemyManager activeEM;
+    private static EnemyManager lastActiveEM;
     private bool toBeDeactivated;
     private MapBoundary mb;
 
@@ -54,6 +55,7 @@ public class EnemyManager : MonoBehaviour {
     void ActivateEnemies()
     {
         if (mb == MapBoundary.currentMapBoundary) {
+            lastActiveEM = activeEM;
             activeEM = this;
 
             for (int i = 0; i < enemies.Count; i++)
@@ -131,7 +133,7 @@ public class EnemyManager : MonoBehaviour {
 
     private void StartDeactivation()
     {
-        if (toBeDeactivated)
+        if (toBeDeactivated && lastActiveEM == this)
         {
             DeactivateAllEnemies();
             toBeDeactivated = false;

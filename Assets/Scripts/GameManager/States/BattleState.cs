@@ -9,6 +9,7 @@ public class BattleState : GameState
     
     public delegate void BattleEndedEventHandler();
     public static event BattleEndedEventHandler BattleEnded;
+
     public BattleState(GameManager gm)
     {
         this.gm = gm;
@@ -32,6 +33,7 @@ public class BattleState : GameState
             BattleEnded.Invoke();
         }
 
+        AudioManager.PlayDefaultBGM();
         CameraFX.FadeOut();
         camScript.enabled = true;
         camScript.UpdateToMapBounds();
