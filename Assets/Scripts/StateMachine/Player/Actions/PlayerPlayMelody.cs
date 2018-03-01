@@ -9,8 +9,8 @@ public class PlayerPlayMelody : StateAction {
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
-
-        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody") > data.axisSensitivity) {
+        
+        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody") > InputExtender.TriggerThreshold) {
             AudioManager.FadeBGM();
             mData.playingFlute = true;
             melodyAxisUp = false;
@@ -23,10 +23,10 @@ public class PlayerPlayMelody : StateAction {
             controller.anim.SetBool("Channeling", true);
 
             Note notePlayed = null;
-            if (Input.GetButton("PlayMelodyNoteShift") || Input.GetAxisRaw("PlayMelodyNoteShift") > data.axisSensitivity)
+            if (Input.GetButton("PlayMelodyNoteShift") || Input.GetAxisRaw("PlayMelodyNoteShift") > InputExtender.TriggerThreshold)
             {
                 foreach (Note note in mData.Notes2) {
-                    if (Input.GetButtonDown(note.Button)) {
+                    if (Input.GetButtonDown(note.Button) || InputExtender.GetAxisDown(note.Button)) {
                         mData.PlayedNotes.AddLast(note);
                         notePlayed = note;
                     }
@@ -35,7 +35,7 @@ public class PlayerPlayMelody : StateAction {
             else
             {
                 foreach (Note note in mData.Notes1) {
-                    if (Input.GetButtonDown(note.Button)) {
+                    if (Input.GetButtonDown(note.Button) || InputExtender.GetAxisDown(note.Button)) {
                         mData.PlayedNotes.AddLast(note);
                         notePlayed = note;
                     }
@@ -55,8 +55,8 @@ public class PlayerPlayMelody : StateAction {
                 mData.PlayedNotes.RemoveFirst();
             }
         }
-
-        if (Input.GetButtonUp("PlayMelody") || (Input.GetAxisRaw("PlayMelody") < data.axisSensitivity && Input.GetAxisRaw("PlayMelody") > 0 && !melodyAxisUp)) {
+        
+        if (Input.GetButtonUp("PlayMelody") || InputExtender.GetAxisUp("PlayMelody")) {
             bool melodyPlayed = false;
             melodyAxisUp = true;
             
