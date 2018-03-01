@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b19dc5cbbbfc9649bb52b030086640e, type: 3}
-  m_Name: EnterGoblinBattle
+  m_Name: EnterGargoyleBattle
   m_EditorClassIdentifier: 
-  enemyIndex: 0
+  enemyIndex: 2
   battleBackground: {fileID: 0}
   battleMusic: {fileID: 0}
