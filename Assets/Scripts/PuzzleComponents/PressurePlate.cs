@@ -9,16 +9,14 @@ public class PressurePlate : MonoBehaviour {
 
     [Tooltip("If it should go back up when leaving")]
     public bool returnOnLeave;
-    [Tooltip("How long it takes for it to go back up when leaving")]
-    public float returnDelay;
 
 
     [Header("Linked pressure plate")]
     [Tooltip("All linked objects must be Down/On for the recievers to 'open'")]
     public List<PressurePlate> linkedPlates;
     public bool returnOnAllDone;
-    public float returnOnAllDoneDelay;
 
+    private int numberOfObjectsOnIt = 0;
 
     //private bool down; 
     private Animator anim; // has a bool that checks if down
@@ -32,55 +30,57 @@ public class PressurePlate : MonoBehaviour {
     }
 
     private void Update() {
+        bool lastFrameAllDown = allLinkedDown;
+        allLinkedDown = AllLinkedDown();
 
-        //if off check if it should be on
-        if (!allLinkedDown) {
-            allLinkedDown = IsDown();
-            foreach (PressurePlate linked in linkedPlates) {
-                if (!linked.IsDown()) {
-                    allLinkedDown = false;
-                    break;
-                }
+        // Turn on 
+        if (!lastFrameAllDown && allLinkedDown) {
+            foreach (ActivatableReceiver receiver in recievers) {
+                receiver.Activate();
             }
-            if (allLinkedDown){
-                foreach (ActivatableReceiver receiver in recievers) {
-                    receiver.Activate();
-                }
 
-                if (!returnOnAllDone) {
-                    returnOnLeave = false;
-                    foreach (PressurePlate linked in linkedPlates) {
-                        linked.returnOnLeave = false;
-                    }
+            if (!returnOnAllDone) {
+                returnOnLeave = false;
+                foreach (PressurePlate linked in linkedPlates) {
+                    linked.returnOnLeave = false;
                 }
             }
-        }//if on check if it should be off
-        else if (returnOnAllDone){
-            allLinkedDown = IsDown();
-            foreach (PressurePlate linked in linkedPlates) {
-                if (!linked.IsDown()) {
-                    allLinkedDown = false;
-                    break;
-                }
-            }
-            if (!allLinkedDown) {
-                foreach (ActivatableReceiver receiver in recievers) {
-                    receiver.Deactivate();
-                }
+        }//Turn off
+        else if (lastFrameAllDown && !allLinkedDown) {
+            foreach (ActivatableReceiver receiver in recievers) {
+                receiver.Deactivate();
             }
         }
     }
 
+    private bool AllLinkedDown() {
+        bool allDown = IsDown();
+        foreach (PressurePlate linked in linkedPlates) {
+            if (!linked.IsDown()) {
+                allDown = false;
+                break;
+            }
+        }
+        return allDown;
+    }
+
     private void OnTriggerEnter2D(Collider2D coll) {
-        if ((coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy")) && IsDown() == false) {
-            anim.SetBool("PressedDown", true);
+        if ((coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy"))) {
+            numberOfObjectsOnIt++;
+
+            if(!IsDown()) {
+                anim.SetBool("PressedDown", true);
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D coll) {
-        if (returnOnLeave && (coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy")) == true && IsDown() == true) {
-            //add delay
-            anim.SetBool("PressedDown", false);
+        if (returnOnLeave && (coll.gameObject.CompareTag("Player") || coll.gameObject.CompareTag("Enemy")) == true) {
+            numberOfObjectsOnIt--;
+            if (numberOfObjectsOnIt == 0) {
+                //add delay
+                anim.SetBool("PressedDown", false);
+            }
         }
     }
 

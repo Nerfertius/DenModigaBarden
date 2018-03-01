@@ -15,20 +15,17 @@ public class PlayerTakeDamage : StateAction
         if (data.hitInvincibilityTimer.IsDone())
         {
             data.hitInvincibilityTimer.Start();
+            if (data.lastDamageData != null) {
 
-            if (data.lastDamageData != null) 
-            {
                 // take damage
                 if (data.lastDamageData.isMagical && data.magicShieldHealth > 0)
                 {
                     data.magicShieldHealth -= data.lastDamageData.damage;
-                    //Debug.Log("ShieldHealth: " + data.magicShieldHealth);
                 }
                 else
                 {
                     data.health -= data.lastDamageData.damage;
                     data.CancelPlayingMelody();
-                    //Debug.Log("Health: " + data.health);
                 }
 
                 data.rb.velocity = new Vector2(0, 0);

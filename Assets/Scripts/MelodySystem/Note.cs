@@ -16,7 +16,8 @@ public class Note {
         g8va
     }
 
-    [HideInInspector] public string Button;
+    [HideInInspector] public string keyButton;
+    [HideInInspector] public string DPadButton;
     [HideInInspector] public NoteID noteID;
 
     [HideInInspector] public AudioClip audio;
@@ -29,29 +30,41 @@ public class Note {
 
         switch (noteID) {
             case Note.NoteID.G:
-                Button = "Note G";
+                keyButton = "Note G";
+                DPadButton = "Note G Dpad";
                 break;
             case Note.NoteID.A:
-                Button = "Note A";
+                keyButton = "Note A";
+                DPadButton = "Note A Dpad";
                 break;
             case Note.NoteID.B:
-                Button = "Note B";
+                keyButton = "Note B";
+                DPadButton = "Note B Dpad";
                 break;
             case Note.NoteID.C:
-                Button = "Note C";
+                keyButton = "Note C";
+                DPadButton = "Note C Dpad";
                 break;
             case Note.NoteID.D:
-                Button = "Note D";
+                keyButton = "Note D";
+                DPadButton = "Note D Dpad";
                 break;
             case Note.NoteID.E:
-                Button = "Note E";
+                keyButton = "Note E";
+                DPadButton = "Note E Dpad";
                 break;
             case Note.NoteID.Fplus:
-                Button = "Note F+";
+                keyButton = "Note F+";
+                DPadButton = "Note F+ Dpad";
                 break;
             case Note.NoteID.g8va:
-                Button = "Note G8va";
+                keyButton = "Note G8va";
+                DPadButton = "Note G8va Dpad";
                 break;
         }
+    }
+
+    public bool CheckButton() {
+        return Input.GetButtonDown(keyButton) || InputExtender.GetAxisDown(DPadButton);
     }
 }

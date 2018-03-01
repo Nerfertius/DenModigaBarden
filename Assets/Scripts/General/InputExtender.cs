@@ -10,17 +10,17 @@ public class InputExtender : MonoBehaviour{
 
     public void Start() {
         InputExtender.inputs = new Dictionary<string, InputExtender.InputNode>();
-        InputExtender.inputs.Add("Note G", new InputExtender.InputNode(NoteThreshold));
-        InputExtender.inputs.Add("Note A", new InputExtender.InputNode(NoteThreshold));
-        InputExtender.inputs.Add("Note B", new InputExtender.InputNode(NoteThreshold));
-        InputExtender.inputs.Add("Note C", new InputExtender.InputNode(NoteThreshold));
-        InputExtender.inputs.Add("Note D", new InputExtender.InputNode(NoteThreshold));
-        InputExtender.inputs.Add("Note E", new InputExtender.InputNode(NoteThreshold));
-        InputExtender.inputs.Add("Note F+", new InputExtender.InputNode(NoteThreshold));
-        InputExtender.inputs.Add("Note G8va", new InputExtender.InputNode(NoteThreshold));
+        InputExtender.inputs.Add("Note G Dpad", new InputExtender.InputNode(NoteThreshold));
+        InputExtender.inputs.Add("Note A Dpad", new InputExtender.InputNode(NoteThreshold));
+        InputExtender.inputs.Add("Note B Dpad", new InputExtender.InputNode(NoteThreshold));
+        InputExtender.inputs.Add("Note C Dpad", new InputExtender.InputNode(NoteThreshold));
+        InputExtender.inputs.Add("Note D Dpad", new InputExtender.InputNode(NoteThreshold));
+        InputExtender.inputs.Add("Note E Dpad", new InputExtender.InputNode(NoteThreshold));
+        InputExtender.inputs.Add("Note F+ Dpad", new InputExtender.InputNode(NoteThreshold));
+        InputExtender.inputs.Add("Note G8va Dpad", new InputExtender.InputNode(NoteThreshold));
 
-        InputExtender.inputs.Add("PlayMelody", new InputExtender.InputNode(TriggerThreshold));
-        InputExtender.inputs.Add("PlayMelodyNoteShift", new InputExtender.InputNode(TriggerThreshold));
+        InputExtender.inputs.Add("PlayMelody Dpad", new InputExtender.InputNode(TriggerThreshold));
+        InputExtender.inputs.Add("PlayMelodyNoteShift Dpad", new InputExtender.InputNode(TriggerThreshold));
     }
 
     public void Update() {
