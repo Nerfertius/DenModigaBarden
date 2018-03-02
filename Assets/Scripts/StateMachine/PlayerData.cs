@@ -329,6 +329,7 @@ public class PlayerData : Data
         body.velocity = Vector2.zero;
         jumping = false;
         melodyData.currentMelody = null;
+        CancelPlayingMelody();
         health = 3;
         respawnLocation.GetComponent<Campfire>().mb.CalculateMapBounds();
         respawnLocation.GetComponent<Campfire>().mb.UpdateMapBounds();

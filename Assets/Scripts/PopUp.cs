@@ -53,7 +53,7 @@ public class PopUp : MonoBehaviour
 
         if (!npcTalk && !melodyPlayed && !actionPerformed)
         {
-            Debug.Log("Error, PopUp needs at least 1 condition");
+            Debug.Log(gameObject.ToString() + "Error, PopUp needs at least 1 condition");
         }
     }
 
