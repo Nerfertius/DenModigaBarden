@@ -58,13 +58,20 @@ public class InputExtender : MonoBehaviour{
     }
 
     public static bool GetAxisUp(string button) {
-        InputNode node = null;
-        inputs.TryGetValue(button, out node);
-        if (node == null) {
-            Debug.LogError(button + " not registered in InputExtenderManager");
-        }
-        float axisValue = Input.GetAxis(button);
+        try
+        {
+            InputNode node = null;
+            inputs.TryGetValue(button, out node);
+            if (node == null)
+            {
+                Debug.LogError(button + " not registered in InputExtenderManager");
+            }
+            float axisValue = Input.GetAxis(button);
 
-        return axisValue < node.threshold && node.lastValue >= node.threshold;
+            return axisValue < node.threshold && node.lastValue >= node.threshold;
+        }
+        catch (System.Exception e) {
+            return Input.GetAxis(button) > 0;
+        }
     }
 }

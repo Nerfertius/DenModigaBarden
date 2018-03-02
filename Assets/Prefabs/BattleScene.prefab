@@ -631,7 +631,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleMusic: {fileID: 8300000, guid: 3cba05d537546464c8e9df344e7151c6, type: 3}
+  buttonMoveSound: {fileID: 8300000, guid: b235efa8910fa6b49bf027d7f290f527, type: 3}
+  buttonSelectSound: {fileID: 8300000, guid: 6350067b6d61c3947b4e376eff5bb01b, type: 3}
   escapeChance: 0
+  enemyHP: 0
   battleTextbox: {fileID: 0}
   enemies:
   - {fileID: 1346072310856596}

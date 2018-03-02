@@ -15,3 +15,4 @@ MonoBehaviour:
   battleBackground: {fileID: 0}
   battleMusic: {fileID: 0}
   escapeChance: 20
+  enemyHP: 5

@@ -38,10 +38,31 @@ public class BulletData : Data {
                 StartCoroutine(BiteBehaviour());
                 break;
             case BulletPattern.PatternType.EvilEyeHoming:
+                StartCoroutine(HomingBehaviour());
                 break;
             default:
                 break;
         }
+    }
+
+    IEnumerator HomingBehaviour()
+    {
+        float travelDistance = 0;
+        float maxTravelDistance = 4f;
+
+        for (int i = 0; i < 3; i++)
+        {
+            while (travelDistance < maxTravelDistance)
+            {
+                direction = TopDownController.Cadenza.position - transform.position;
+                travelDistance += speed * Time.deltaTime;
+                transform.position = Vector2.MoveTowards(transform.position, TopDownController.Cadenza.position, speed * Time.deltaTime);
+            }
+            yield return new WaitForSeconds(1);
+            travelDistance = 0;
+        }
+
+        StartCoroutine(FadeOut());
     }
 
     IEnumerator BiteBehaviour()

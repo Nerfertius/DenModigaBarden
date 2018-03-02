@@ -33,6 +33,7 @@ public class BulletPattern
                 spawner.StartCoroutine(GoblinBitePattern(3, 3, new Vector2(0.5f, -3f), new Vector2(0, 1)));                
                 break;
             case PatternType.EvilEyeHoming:
+                spawner.StartCoroutine(HomingPattern(10));
                 break;
             case PatternType.GargoyleStomp:
                 break;
@@ -58,26 +59,34 @@ public class BulletPattern
         }
     }
     
-    IEnumerator HomingPattern()
+    IEnumerator HomingPattern(int amount)
     {
         activeCoroutines++;
+
+        int spawned = 0;
 
         for (int z = 0; z < bullets.Count; z++)
         {
             if (!bullets[z].activeSelf)
             {
+                spawned++;
+
+                datas[z].bulletType = pattern;
                 bullets[z].SetActive(true);
                 bullets[z].transform.position = BattleScene.instance.topLeft.position;
                 bullets[z].transform.localScale = new Vector3(1, 1, 1);
-
-
                 
-                break;
+                if (spawned >= amount)
+                {
+                    break;
+                }
+
+                yield return new WaitForSeconds(0.25f);
             }
         }
 
+        yield return new WaitForSeconds(10f);
         PatternEnding();
-        yield return null;
     }
 
     IEnumerator GargoyleStompPattern()
@@ -116,6 +125,8 @@ public class BulletPattern
                 {
                     if (!bullets[z].activeSelf)
                     {
+                        datas[z].bulletType = pattern;
+                        datas[z].direction = direction;
                         bullets[z].SetActive(true);
                         bullets[z].transform.position = new Vector3(xPos, yPos, 0);
                         bullets[z].transform.localScale = new Vector3(1, 1, 1);
@@ -125,8 +136,6 @@ public class BulletPattern
                             bullets[z].transform.localScale = new Vector3(1, 2, 1);
                         }
 
-                        datas[z].bulletType = pattern;
-                        datas[z].direction = direction;
                         xPos += 1;
                         break;
                     }

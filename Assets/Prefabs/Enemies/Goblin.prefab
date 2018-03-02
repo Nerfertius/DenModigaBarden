@@ -187,16 +187,17 @@ MonoBehaviour:
   chaseSpeed: 4
   attackRange: 0.75
   behaveAsHitbox: 0
+  childCollided: 0
   rb: {fileID: 0}
   controller: {fileID: 0}
   spriteRenderer: {fileID: 0}
   sight: {fileID: 0}
   colliders: []
-  harmful: 0
   switchingCollider: 0
   sleepSFXPrefab: {fileID: 0}
   sleepSFXObject: {fileID: 0}
   isHeavy: 0
+  playerDamageData: {fileID: 0}
 --- !u!114 &114654844682115422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,8 +210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMagical: 0
-  knockbackPower: 300
+  knockbackPower: 0
   damage: 0.5
+  harmful: 1
 --- !u!114 &114912403510576844
 MonoBehaviour:
   m_ObjectHideFlags: 1

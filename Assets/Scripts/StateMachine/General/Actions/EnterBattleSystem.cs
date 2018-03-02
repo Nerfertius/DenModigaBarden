@@ -9,6 +9,7 @@ public class EnterBattleSystem : StateAction
     public Sprite battleBackground;
     public AudioClip battleMusic;
     public int escapeChance;
+    public int enemyHP;
 
     public override void ActOnce(StateController controller)
     {
@@ -16,6 +17,7 @@ public class EnterBattleSystem : StateAction
 
         BattleScene.instance.SetEnemy(enemyIndex);
         BattleScene.instance.escapeChance = escapeChance;
+        BattleScene.instance.enemyHP = enemyHP;
 
         if(battleBackground != null)
         {

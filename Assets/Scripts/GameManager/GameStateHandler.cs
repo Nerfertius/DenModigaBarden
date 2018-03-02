@@ -29,7 +29,16 @@ public class GameStateHandler : MonoBehaviour {
 
     private void ChangeGameState(GameState newState) {
         if (con)
+        {
+            if (newState.PlayerControl)
+            {
+                con.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            } else
+            {
+                con.rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            }
             con.enabled = newState.PlayerControl;
+        }
         lastState = newState;
     }
 }
