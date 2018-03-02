@@ -187,10 +187,10 @@ public class PlayState : GameState
     }
 
     private void getPlayCanvas() {
-        if (gm.PlayCanvas)
+        if (GameManager.PlayCanvas)
         {
-            playCanvas = gm.PlayCanvas.gameObject;
-            gm.PlayCanvas.enabled = true;
+            playCanvas = GameManager.PlayCanvas.gameObject;
+            GameManager.PlayCanvas.enabled = true;
         }
         else
         {
@@ -207,6 +207,6 @@ public class PlayState : GameState
 
     public override void exit()
     {
-        gm.PlayCanvas.enabled = false;
+        GameManager.PlayCanvas.enabled = false;
     }
 }

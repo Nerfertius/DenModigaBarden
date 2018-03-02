@@ -247,10 +247,10 @@ public class PlayerData : Data
 
         currentRespawnOrder = -1;
         respawnLocation = startSpawn.transform;
-
-
+        
         defaultMat = Resources.Load("Materials/Default") as PhysicsMaterial2D;
         fullFriction = Resources.Load("Materials/FullFriction") as PhysicsMaterial2D;
+        body.sharedMaterial = defaultMat;
 
         melodyData.Start();
 
