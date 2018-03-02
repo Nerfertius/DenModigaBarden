@@ -39,7 +39,7 @@ public class PressurePlate : MonoBehaviour {
                 receiver.Activate();
             }
 
-            if (!returnOnAllDone) {
+            if (!returnOnAllDone && linkedPlates.Count > 0) {
                 returnOnLeave = false;
                 foreach (PressurePlate linked in linkedPlates) {
                     linked.returnOnLeave = false;
