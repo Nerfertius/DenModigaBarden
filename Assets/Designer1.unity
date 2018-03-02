@@ -3263,7 +3263,7 @@ MonoBehaviour:
   fadeSpeed: 1
   displayLength: 3
   beginningArea: 0
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 87f3f966f51658d43a7d0d5601b152b0, type: 3}
 --- !u!1 &141264781
 GameObject:
   m_ObjectHideFlags: 0
@@ -20727,7 +20727,7 @@ MonoBehaviour:
   fadeSpeed: 1
   displayLength: 3
   beginningArea: 0
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 87f3f966f51658d43a7d0d5601b152b0, type: 3}
 --- !u!4 &622889930 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4808558978902768, guid: d0815f6731b1cfe4faeea28483ab7240,
