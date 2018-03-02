@@ -6,4 +6,6 @@ public abstract class ActivatableReceiver : MonoBehaviour {
 
     public abstract void Activate();
     public abstract void Deactivate();
+
+    public abstract void Toggle();
 }
