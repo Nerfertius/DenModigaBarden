@@ -28,7 +28,7 @@ class HP
 
     public void Update(float health)
     {
-        if (gm.PlayCanvas != null && hp != null)
+        if (GameManager.PlayCanvas != null && hp != null)
         {
             if (health > 0)
             {
@@ -64,6 +64,7 @@ class HP
 
     public void GetHP()
     {
-        hp = gm.PlayCanvas.transform.Find("HP").GetComponentsInChildren<Image>();
+        if(GameManager.PlayCanvas)
+            hp = GameManager.PlayCanvas.transform.Find("HP").GetComponentsInChildren<Image>();
     }
 }
