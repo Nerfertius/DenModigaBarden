@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4981267438064438}
   - component: {fileID: 212155680248388026}
   m_Layer: 0
-  m_Name: ItemButton
+  m_Name: SongButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 95337557467476490}
   - component: {fileID: 114698530510045922}
   m_Layer: 0
-  m_Name: BattleGargoyle
+  m_Name: Gargoyle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 95113887238060972}
   - component: {fileID: 114512484542610588}
   m_Layer: 0
-  m_Name: BattleKobold
+  m_Name: Kobold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 95345517260379436}
   - component: {fileID: 114179730638555252}
   m_Layer: 0
-  m_Name: BattleGoblin
+  m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 95304125618389284}
   - component: {fileID: 114773795657624414}
   m_Layer: 0
-  m_Name: BattleEvilEye
+  m_Name: Evil Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 4739925323218570}
   - component: {fileID: 212774401019861700}
   m_Layer: 0
-  m_Name: AttackButton
+  m_Name: FightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 224446262462220854}
   - component: {fileID: 212529029252970692}
   m_Layer: 0
-  m_Name: Escape
+  m_Name: RunButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,8 +304,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609408561931948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: -4.75, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalPosition: {x: -4, y: -4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4944824426529478}
   m_RootOrder: 7
@@ -394,8 +394,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1131895556321122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.75, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4944824426529478}
   m_RootOrder: 8
@@ -642,6 +642,10 @@ MonoBehaviour:
   - {fileID: 212774401019861700}
   - {fileID: 212155680248388026}
   - {fileID: 212529029252970692}
+  activatedSprites:
+  - {fileID: 21300000, guid: c9293a8070f8ff148993fdb7b5be9f38, type: 3}
+  - {fileID: 21300000, guid: 0a560251a88bbaa468265e2594765858, type: 3}
+  - {fileID: 21300000, guid: 242214a71129e174eaf215430a39e760, type: 3}
   topLeft: {fileID: 4980793434316760}
   bottomLeft: {fileID: 4197635188230844}
 --- !u!114 &114512484542610588
@@ -783,8 +787,8 @@ SpriteRenderer:
   m_SortingLayerID: -1730083007
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e02ed09b49158114388cdcc967e6dc0b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 68c1046c688672e4592685557cffa894, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1003,8 +1007,8 @@ SpriteRenderer:
   m_SortingLayerID: -1730083007
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e02ed09b49158114388cdcc967e6dc0b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0c205a977d57a8848935ad5b500fbead, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1091,8 +1095,8 @@ SpriteRenderer:
   m_SortingLayerID: -1730083007
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e02ed09b49158114388cdcc967e6dc0b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9393273dccb6e8b4185a3362d1840da0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1152,14 +1156,14 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1995039775070238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: -4.75, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalPosition: {x: 4, y: -4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4944824426529478}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -4.75}
+  m_AnchoredPosition: {x: 4, y: -4.5}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
