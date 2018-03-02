@@ -201,10 +201,6 @@ public class NPCTalkAction : StateAction
             parent.GetComponent<CanvasGroup>().alpha = 1;
             Sprite sprite = data.currentConv[data.currentText].textBackground;
             parent.GetComponent<Image>().sprite = sprite != null ? sprite : defaultBackground;
-            if (data.currentConv[data.currentText].shake)
-            {
-                data.shake();
-            }
         }
         else {
             data.text.transform.parent.GetComponent<CanvasGroup>().alpha = 0;
@@ -244,6 +240,11 @@ public class NPCTalkAction : StateAction
             }
         }
         data.text.text = "";
+
+        if (data.currentConv[data.currentText].shake)
+        {
+            data.shake();
+        }
 
         data.setMoodAnimation(data.currentConv[data.currentText].mood);
     }

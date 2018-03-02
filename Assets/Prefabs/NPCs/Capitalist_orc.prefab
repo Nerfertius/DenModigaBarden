@@ -217,7 +217,7 @@ MonoBehaviour:
       stayTime: 0
       originalStayTime: 0
     conditions:
-    - condition: 2
+    - condition: 3
       goComp: {fileID: 0}
       autoStart: 0
       convIndex: 0
@@ -231,6 +231,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: AAAAAAAAARRGH!
       mood: 2
@@ -243,7 +244,7 @@ MonoBehaviour:
       stayTime: 0
       originalStayTime: 0
     conditions:
-    - condition: 4
+    - condition: 5
       goComp: {fileID: 0}
       autoStart: 0
       convIndex: 0
@@ -257,6 +258,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: '*sniff sniff*'
       mood: 0
@@ -309,7 +311,7 @@ MonoBehaviour:
       stayTime: 0
       originalStayTime: 0
     conditions:
-    - condition: 2
+    - condition: 3
       goComp: {fileID: 0}
       autoStart: 0
       convIndex: 0
@@ -323,6 +325,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: Would you do me a favor?
       mood: 0
@@ -386,7 +389,7 @@ MonoBehaviour:
       stayTime: 0
       originalStayTime: 0
     conditions:
-    - condition: 4
+    - condition: 5
       goComp: {fileID: 0}
       autoStart: 0
       convIndex: 0
@@ -400,6 +403,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: Please look in my house for clues.
       mood: 0
@@ -426,6 +430,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: Bwaaaaaaaaaaaaaaaaaa!
       mood: 2
@@ -463,6 +468,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}

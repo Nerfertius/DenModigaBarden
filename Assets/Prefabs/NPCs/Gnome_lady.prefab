@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155, type: 3}
   repeatable: 1
+  showUntilCleared: 0
   offset: {x: 1.8, y: 1}
   npcTalk: 1
   state: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
@@ -253,6 +254,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: Thank you kindly
       mood: 0
@@ -265,7 +267,7 @@ MonoBehaviour:
       stayTime: 0
       originalStayTime: 0
     conditions:
-    - condition: 4
+    - condition: 5
       goComp: {fileID: 0}
       autoStart: 0
       convIndex: 0
@@ -288,6 +290,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: "You can\u2019t leave him like this, maybe there\u2019s a way to calm
         him down\u2026"
@@ -334,6 +337,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: Help me will you?
       mood: 0
@@ -351,6 +355,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}

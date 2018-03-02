@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4163654750406178}
   - component: {fileID: 114589814513952060}
   - component: {fileID: 58954912069533102}
+  - component: {fileID: 114961357693398506}
   m_Layer: 0
   m_Name: TalkZone
   m_TagString: Untagged
@@ -56,8 +57,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834050211338218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 29.52, y: 0.23227543, z: -0.047651947}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4163654750406178}
   m_Father: {fileID: 0}
@@ -173,6 +174,27 @@ MonoBehaviour:
   rb: {fileID: 0}
   coll: {fileID: 0}
   stateTimer: 0
+--- !u!114 &114961357693398506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090167677083056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed120c241e13544b8e9ce96f119f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155, type: 3}
+  repeatable: 1
+  showUntilCleared: 0
+  offset: {x: 0, y: 1.5}
+  npcTalk: 1
+  state: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
+  melodyPlayed: 0
+  melody: 0
+  actionPerformed: 0
+  buttonName: 
 --- !u!114 &114998635240277514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,6 +253,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: "\u2026Last winter the whole battalion got struck with the plague."
       mood: 0
@@ -242,6 +265,32 @@ MonoBehaviour:
       stay: 0
       stayTime: 0
       originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
+    keySpawner: {fileID: 0}
+  - texts:
+    - text: "Actually it was just a cold\u2026"
+      mood: 0
+      size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 21300000, guid: 63432f0047382e24590437316fa10f08, type: 3}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
+    speakOnce: 1
+    notEnd: 0
+    spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
+    keySpawner: {fileID: 0}
+  - texts:
     - text: "And I heard there\u2019s a fire breathing beast prowling the area."
       mood: 0
       size: {x: 0, y: 0}
@@ -268,6 +317,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: Stay in the village.
       mood: 0
@@ -285,6 +335,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
