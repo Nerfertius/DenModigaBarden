@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a13283fcd50ec1f4e933983bfd741c5d
-timeCreated: 1519053503
+timeCreated: 1519981114
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -76,7 +76,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -85,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -98,9 +98,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 84
         width: 9
-        height: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,10 +111,10 @@ TextureImporter:
       name: Notes_1
       rect:
         serializedVersion: 2
-        x: 9
-        y: 0
+        x: 0
+        y: 72
         width: 9
-        height: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,10 +125,10 @@ TextureImporter:
       name: Notes_2
       rect:
         serializedVersion: 2
-        x: 18
-        y: 0
+        x: 0
+        y: 60
         width: 9
-        height: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,10 +139,10 @@ TextureImporter:
       name: Notes_3
       rect:
         serializedVersion: 2
-        x: 27
-        y: 0
+        x: 0
+        y: 48
         width: 9
-        height: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +153,10 @@ TextureImporter:
       name: Notes_4
       rect:
         serializedVersion: 2
-        x: 36
-        y: 0
+        x: 0
+        y: 36
         width: 9
-        height: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,10 +167,10 @@ TextureImporter:
       name: Notes_5
       rect:
         serializedVersion: 2
-        x: 45
-        y: 0
+        x: 0
+        y: 24
         width: 9
-        height: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: Notes_6
       rect:
         serializedVersion: 2
-        x: 54
-        y: 0
+        x: 0
+        y: 12
         width: 9
-        height: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: Notes_7
       rect:
         serializedVersion: 2
-        x: 63
+        x: 0
         y: 0
         width: 9
-        height: 16
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

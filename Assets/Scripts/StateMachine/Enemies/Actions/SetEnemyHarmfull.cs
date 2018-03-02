@@ -10,6 +10,6 @@ public class SetEnemyHarmfull : StateAction {
     public override void ActOnce(StateController controller) {
         EnemyData data = (EnemyData)controller.data;
 
-        data.harmful = setValue;
+        data.playerDamageData.harmful = setValue;
     }
 }

@@ -14,8 +14,9 @@ public class NPCStartTalking : Condition
         {
             Debug.LogWarning("autoSpeakRange is 0");
         }
-        if (interactInRange || autospeak)
+        if (interactInRange || autospeak || (autospeak && data.startTalking))
         {
+            data.startTalking = false;
             data.inAutoRange = autospeak;
             return true;
         }

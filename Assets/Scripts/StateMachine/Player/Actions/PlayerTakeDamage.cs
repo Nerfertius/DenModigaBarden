@@ -13,6 +13,7 @@ public class PlayerTakeDamage : StateAction {
         if (data.hitInvincibilityTimer.IsDone()) {
             data.hitInvincibilityTimer.Start();
             if (data.lastDamageData != null) {
+
                 // take damage
                 if (data.lastDamageData.isMagical && data.magicShieldHealth > 0) {
                     data.magicShieldHealth -= data.lastDamageData.damage;

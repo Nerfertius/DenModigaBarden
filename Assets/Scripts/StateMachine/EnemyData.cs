@@ -22,8 +22,6 @@ public class EnemyData : MelodyInteractableData
     [HideInInspector] public Collider2D[] colliders;
 
     private ContactFilter2D playerCollisionFilter;
-
-    [HideInInspector] public bool harmful = true;
     
     private bool isTouchingPlayer = false;
     public bool switchingCollider = false;
@@ -32,6 +30,8 @@ public class EnemyData : MelodyInteractableData
     [HideInInspector] public ParticleSystem sleepSFXObject;
 
     public bool isHeavy;
+
+    [HideInInspector] public PlayerDamageData playerDamageData;
 
     protected virtual void Awake()
     {
@@ -47,6 +47,7 @@ public class EnemyData : MelodyInteractableData
     protected virtual void Start()
     {
         controller = GetComponent<StateController>();
+        playerDamageData = GetComponent<PlayerDamageData>();
         playerCollisionFilter.useLayerMask = true;
         playerCollisionFilter.layerMask = 1 << 13; // player layer = 13
 
@@ -70,7 +71,6 @@ public class EnemyData : MelodyInteractableData
 
         startDirection = currentDirection;
 
-        harmful = true;
         sleepSFXPrefab = Resources.Load<ParticleSystem>("SFX/Sleep SFX");
     }
 
@@ -79,7 +79,10 @@ public class EnemyData : MelodyInteractableData
         transform.position = startPos;
         transform.localScale = startScale;
         currentDirection = startDirection;
-        harmful = true;
+        if(playerDamageData != null) {
+            playerDamageData.harmful = true;
+        }
+        
         if(sleepSFXObject != null) {
             Destroy(sleepSFXObject.gameObject);
         }

@@ -19,6 +19,10 @@ public class AudioManager : MonoBehaviour
     public AudioSourceBuffer bgm;
     public AudioSourceBuffer notes;
 
+    public float masterVolume = 1;
+    public float soundEffectVolume = 1;
+    public float bgmVolume = 1;
+
     //public mainly for testing purpose but could be nice anyway
     public AudioClip defaultBGM;
     
@@ -36,6 +40,7 @@ public class AudioManager : MonoBehaviour
 
         bgm.Init();
         notes.Init();
+        notes.useSoundEffectVolume = true;
 
         /*
         bgm = new AudioSourceBuffer();
@@ -52,11 +57,45 @@ public class AudioManager : MonoBehaviour
         */
         oneShotSource = audioSourcePool.Get();
         ResetAudioSource(oneShotSource);
+
+        SetBGMVolume(bgmVolume);
+        SetSoundEffectVolume(soundEffectVolume);
+        SetMasterVolume(masterVolume);
+    }
+
+    public static void SetBGMVolume(float volume) {
+        instance.bgmVolume = volume;
+        instance.bgm.SetDefaultVolume(instance.masterVolume * instance.bgmVolume);
+    }
+    public static void SetSoundEffectVolume(float volume) {
+        instance.soundEffectVolume = volume;
+        instance.oneShotSource.volume = instance.soundEffectVolume * instance.masterVolume;
+        instance.notes.SetDefaultVolume(instance.masterVolume * instance.soundEffectVolume);
+    }
+    public static void SetMasterVolume(float volume) {
+        instance.masterVolume = volume;
+
+        SetBGMVolume(instance.bgmVolume);
+        SetSoundEffectVolume(instance.soundEffectVolume);
+
     }
 
     public void Update() {
         bgm.Update();
         notes.Update();
+
+        /*SetBGMVolume(bgmVolume);
+        SetSoundEffectVolume(soundEffectVolume);
+        SetMasterVolume(masterVolume);
+        */
+    }
+
+    private static float getBGMVolume() {
+        return instance.masterVolume * instance.bgmVolume;
+    }
+
+    private static float getSoundEffectVolume() {
+        return instance.masterVolume * instance.soundEffectVolume;
     }
 
     // =========================== Pool stuff =================================================================================
@@ -90,7 +129,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public static void PlayOneShot(AudioClip ac, float volume) {
-        instance.oneShotSource.PlayOneShot(ac, volume);
+        instance.oneShotSource.PlayOneShot(ac, volume * getSoundEffectVolume());
     }
 
     // =========================== BGM =================================================================================
@@ -151,8 +190,8 @@ public class AudioManager : MonoBehaviour
         private AudioSource current;
 
         //Settings
-        [Range(0, 1)]
-        [SerializeField] private float volume = 1;
+        private float volume = 1;
+        [HideInInspector] public bool useSoundEffectVolume = false;
         [Range(0, 1)]
         [Tooltip("Lower volume when playing flute to this percentage of volume (not used for notes)")]
         [SerializeField] private float fadedVolume = 0.3f;
@@ -180,6 +219,7 @@ public class AudioManager : MonoBehaviour
         }
 
         public void Play(AudioClip clip) {
+            
             if (current != null && !AllowSameClip && current.clip == clip) {
                 return;
             }

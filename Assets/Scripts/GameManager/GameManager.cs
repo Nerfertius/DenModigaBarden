@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator loadRoutine(int buildindex) {
         async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildindex);
-        async.allowSceneActivation = false;
+        //async.allowSceneActivation = false;
 
         yield return async;
     }
