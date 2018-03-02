@@ -25,16 +25,22 @@ public class AudioManager : MonoBehaviour
 
     //public mainly for testing purpose but could be nice anyway
     public AudioClip defaultBGM;
-    
-    private void Start()
+
+    void Awake()
     {
-        if(instance == null) {
+        if (instance == null)
+        {
+            DontDestroyOnLoad(transform.gameObject);
             instance = this;
         }
-        else {
+        else
+        {
             Debug.LogError("There should only be one audioManager " + this.gameObject);
         }
+    }
 
+    private void Start()
+    {
         audioSourcePool = new ComponentPool<AudioSource>(audioSourceObject, numberOfpooledObjects, this.transform);
         activeAudioSources = new LinkedList<AudioSource>();
 
@@ -77,7 +83,6 @@ public class AudioManager : MonoBehaviour
 
         SetBGMVolume(instance.bgmVolume);
         SetSoundEffectVolume(instance.soundEffectVolume);
-
     }
 
     public void Update() {
