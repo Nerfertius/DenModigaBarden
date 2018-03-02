@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -16,8 +17,10 @@ public class GameManager : MonoBehaviour {
     public Sprite fullHeart, halfHeart, emptyHeart;
     public Sprite[] notes = new Sprite[5];
 
+    public float bgAudio = 1, effectAudio = 1;
+
     [HideInInspector]
-    public Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas, GameOverCanvas;
+    public static Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas, GameOverCanvas;
 
     private AsyncOperation async;
 
@@ -76,7 +79,6 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator loadRoutine(int buildindex) {
         async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildindex);
-        //async.allowSceneActivation = false;
 
         yield return async;
     }

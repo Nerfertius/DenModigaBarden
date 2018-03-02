@@ -59,8 +59,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1636036458769274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.25, y: -2.48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.92, y: -2.36, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4567855250069836}
   m_Father: {fileID: 0}
@@ -220,6 +220,7 @@ MonoBehaviour:
   isMagical: 0
   knockbackPower: 400
   damage: 0.5
+  harmful: 1
 --- !u!114 &114353636810500938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,11 +281,11 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   sight: {fileID: 0}
   colliders: []
-  harmful: 1
   switchingCollider: 0
   sleepSFXPrefab: {fileID: 0}
   sleepSFXObject: {fileID: 0}
   isHeavy: 1
+  playerDamageData: {fileID: 0}
   idleCollider: {fileID: 60890881138470964}
   dashCollider: {fileID: 60771466991440520}
   velocityBeforeFrozen: {x: 0, y: 0}
@@ -298,6 +299,7 @@ MonoBehaviour:
     duration: 10
   platformEffector: {fileID: 0}
   DashForce: {x: 500, y: 300}
+  CanSeeThrughWalls: 0
 --- !u!212 &212347468482563898
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -312,7 +314,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6cc1f0e1239044945ad31f139d7f1302, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
