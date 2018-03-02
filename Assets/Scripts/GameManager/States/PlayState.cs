@@ -72,11 +72,13 @@ public class PlayState : GameState
                             Sprite sprite = Resources.Load<Sprite>("Icons/" + System.Enum.GetName(typeof(ItemType), i));
                             if (sprite != null)
                                 itemIcons[i].sprite = sprite;
-                            itemIcons[i].rectTransform.Translate(new Vector3(iconOffset, 0));
+                            itemIcons[i].rectTransform.Translate(new Vector3(-10, -20));
+                            itemIcons[i].rectTransform.sizeDelta = itemIcons[i].rectTransform.sizeDelta * 3;
                             iconOffset -= 60;
+                            playerData.hasKey = true;
                         }
                         lastValues[i] = playerData.items[i];
-                        itemIcons[i].GetComponentInChildren<Text>().text = "x" + playerData.items[i];
+                        //itemIcons[i].GetComponentInChildren<Text>().text = "x" + playerData.items[i];
                     }
                 }
                 //****************NOTES****************

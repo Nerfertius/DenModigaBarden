@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 2
-  inactiveColor: {r: 0, g: 0, b: 0, a: 0}
+  inactiveColor: {r: 0, g: 0, b: 0, a: 1}
   onTriggerEffect: {fileID: 198344968707537840, guid: f5cb941b86fe816488f9fb06635858d3,
     type: 2}
 --- !u!212 &212298609685036658
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2122280999
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 8f3943658a55f0c4c81a9b32ab0a2257, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

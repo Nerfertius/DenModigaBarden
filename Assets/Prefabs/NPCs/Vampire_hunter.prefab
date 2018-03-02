@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155, type: 3}
   repeatable: 1
+  showUntilCleared: 0
   offset: {x: 2.2, y: 0}
   npcTalk: 1
   state: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
@@ -242,6 +243,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: I remember when this valley was nothing but a thick, dark forest, vampires
         lurking in every tree.
@@ -270,6 +272,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
     - text: Why do I need a pie for vampire hunting? Huhuhu.
       mood: 0
@@ -328,8 +331,9 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   - texts:
-    - text: <size=12> 1/2 cup of sugar </size>
+    - text: 1/2 cup of sugar
       mood: 0
       size: {x: 0, y: 0}
       offset: {x: 0, y: 0}
@@ -455,6 +459,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 1
     autoSpeakRange: 18
+    keySpawner: {fileID: 0}
   - texts:
     - text: See anything you like?
       mood: 0
@@ -472,6 +477,7 @@ MonoBehaviour:
     spoken: 0
     autoSpeak: 0
     autoSpeakRange: 0
+    keySpawner: {fileID: 0}
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}

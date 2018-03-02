@@ -9,6 +9,7 @@ public class House : MonoBehaviour
     public bool automatic;
     public MapBoundary mb;
     public bool elevator;
+    public bool locked;
     
     private GameObject player;
     private bool playerNear;
@@ -24,7 +25,14 @@ public class House : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && playerNear && !automatic)
         {
-            StartCoroutine(EnterHouse());
+            if (!locked)
+            {
+                StartCoroutine(EnterHouse());
+            }
+            else if (locked && player.GetComponent<PlayerData>().hasKey)
+            {
+                StartCoroutine(EnterHouse());
+            }
         }
 	}
 
