@@ -8,12 +8,14 @@ public class EnterBattleSystem : StateAction
     public int enemyIndex;
     public Sprite battleBackground;
     public AudioClip battleMusic;
+    public int escapeChance;
 
     public override void ActOnce(StateController controller)
     {
         EnemyData eData = (EnemyData)controller.data;
 
         BattleScene.instance.SetEnemy(enemyIndex);
+        BattleScene.instance.escapeChance = escapeChance;
 
         if(battleBackground != null)
         {

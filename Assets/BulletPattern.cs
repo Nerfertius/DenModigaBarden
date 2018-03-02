@@ -12,10 +12,10 @@ public class BulletPattern
     public delegate void PatternEndedEventHandler();
     public static event PatternEndedEventHandler PatternEnded;
 
-    public enum PatternType { GoblinBite, EvilEyeHoming }
+    public enum PatternType { GoblinBite, EvilEyeHoming, GargoyleStomp }
     public PatternType pattern;
 
-    private int activeCoroutines = 0;
+    private static int activeCoroutines = 0;
 
     public void SetReferences(BulletHellSpawner spawner, List<GameObject> bullets, List<BulletData> datas)
     {
@@ -33,6 +33,8 @@ public class BulletPattern
                 spawner.StartCoroutine(GoblinBitePattern(3, 3, BattleScene.instance.bottomLeft.position, new Vector2(0.5f, -3f), new Vector2(0, 1)));                
                 break;
             case PatternType.EvilEyeHoming:
+                break;
+            case PatternType.GargoyleStomp:
                 break;
             default:
                 break;
@@ -53,11 +55,31 @@ public class BulletPattern
             PatternEnded.Invoke();
         }
     }
+    
+    IEnumerator HomingPattern()
+    {
+        activeCoroutines++;
+
+        //TODO
+
+        PatternEnding();
+        yield return null;
+    }
+
+    IEnumerator GargoyleStompPattern()
+    {
+        activeCoroutines++;
+
+        //TODO
+
+        PatternEnding();
+        yield return null;
+    }
 
     IEnumerator GoblinBitePattern(float times, float xAmount, Vector2 startPos, Vector2 offset, Vector2 direction)
     {
         activeCoroutines++;
-        float xPos = (TopDownController.Cadenza.position.x - 1.5f) + offset.x;
+        float xPos = TopDownController.Cadenza.position.x - 1.5f + offset.x;
         float yPos = TopDownController.Cadenza.position.y + offset.y;
         
         for (int x = 0; x < times; x++)

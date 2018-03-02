@@ -6,6 +6,7 @@ public class BattleScene : MonoBehaviour {
 
     public static BattleScene instance;
     public AudioClip battleMusic;
+    public int escapeChance;
 
     public GameObject[] enemies;
     public SpriteRenderer[] buttons;
@@ -64,6 +65,17 @@ public class BattleScene : MonoBehaviour {
                 playersTurn = false;
                 buttons[currentButtonIndex].color = Color.black;
 
+                if (currentButtonIndex == buttons.Length - 1)
+                {
+                    int roll = Random.Range(0, 99);
+
+                    if (roll < escapeChance)
+                    {
+                        GameManager.instance.switchState(new PlayState(GameManager.instance));
+                        return;
+                    }
+                }
+
                 if (EnemysTurn != null)
                 {
                     EnemysTurn.Invoke();
@@ -117,7 +129,7 @@ public class BattleScene : MonoBehaviour {
 
     public void SetEnemy(int index)
     {
-        enemyIndex = Mathf.Clamp(index, 0, enemies.Length);
+        enemyIndex = Mathf.Clamp(index, 0, enemies.Length - 1);
     }
 
     public void StartBattle()

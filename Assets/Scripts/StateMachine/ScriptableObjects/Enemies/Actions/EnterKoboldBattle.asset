@@ -8,7 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dfd00e37af5b974cace1fe3bddeaea9, type: 3}
-  m_Name: PlayerTakeDamage
+  m_Script: {fileID: 11500000, guid: 4b19dc5cbbbfc9649bb52b030086640e, type: 3}
+  m_Name: EnterKoboldBattle
   m_EditorClassIdentifier: 
-  knockbackForce: 0
+  enemyIndex: 3
+  battleBackground: {fileID: 0}
+  battleMusic: {fileID: 0}
+  escapeChance: 20
