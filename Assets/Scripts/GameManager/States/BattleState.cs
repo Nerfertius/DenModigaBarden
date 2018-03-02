@@ -6,7 +6,10 @@ public class BattleState : GameState
 {
     private CameraFollow2D camScript;
     private Canvas battleCanvas;
-    
+
+    public delegate void BattleEnteredEventHandler();
+    public static event BattleEnteredEventHandler BattleEntered;
+
     public delegate void BattleEndedEventHandler();
     public static event BattleEndedEventHandler BattleEnded;
 
@@ -18,11 +21,16 @@ public class BattleState : GameState
 
     public override void enter()
     {
+        if (BattleEntered != null)
+        {
+            BattleEntered.Invoke();
+        }
+
         gm.PlayCanvas.enabled = true;
         Time.timeScale = 0;
         EnemyManager.PauseEnemies();
         playerControl = false;
-
+        
         gm.StartCoroutine(StartBattle());
     }
 

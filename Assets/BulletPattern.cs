@@ -12,7 +12,7 @@ public class BulletPattern
     public delegate void PatternEndedEventHandler();
     public static event PatternEndedEventHandler PatternEnded;
 
-    public enum PatternType { GoblinBite, EvilEyeHoming, GargoyleStomp }
+    public enum PatternType { GoblinBite, EvilEyeHoming, GargoyleStomp, KoboldSpearAttack }
     public PatternType pattern;
 
     private static int activeCoroutines = 0;
@@ -29,12 +29,14 @@ public class BulletPattern
         switch (pattern)
         {
             case PatternType.GoblinBite:
-                spawner.StartCoroutine(GoblinBitePattern(3, 4, BattleScene.instance.topLeft.position, new Vector2(0, 3), new Vector2(0, -1)));
-                spawner.StartCoroutine(GoblinBitePattern(3, 3, BattleScene.instance.bottomLeft.position, new Vector2(0.5f, -3f), new Vector2(0, 1)));                
+                spawner.StartCoroutine(GoblinBitePattern(3, 4, new Vector2(0, 3), new Vector2(0, -1)));
+                spawner.StartCoroutine(GoblinBitePattern(3, 3, new Vector2(0.5f, -3f), new Vector2(0, 1)));                
                 break;
             case PatternType.EvilEyeHoming:
                 break;
             case PatternType.GargoyleStomp:
+                break;
+            case PatternType.KoboldSpearAttack:
                 break;
             default:
                 break;
@@ -60,7 +62,19 @@ public class BulletPattern
     {
         activeCoroutines++;
 
-        //TODO
+        for (int z = 0; z < bullets.Count; z++)
+        {
+            if (!bullets[z].activeSelf)
+            {
+                bullets[z].SetActive(true);
+                bullets[z].transform.position = BattleScene.instance.topLeft.position;
+                bullets[z].transform.localScale = new Vector3(1, 1, 1);
+
+
+                
+                break;
+            }
+        }
 
         PatternEnding();
         yield return null;
@@ -76,7 +90,17 @@ public class BulletPattern
         yield return null;
     }
 
-    IEnumerator GoblinBitePattern(float times, float xAmount, Vector2 startPos, Vector2 offset, Vector2 direction)
+    IEnumerator KoboldSpearAttack()
+    {
+        activeCoroutines++;
+
+        //TODO
+
+        PatternEnding();
+        yield return null;
+    }
+
+    IEnumerator GoblinBitePattern(float times, float xAmount, Vector2 offset, Vector2 direction)
     {
         activeCoroutines++;
         float xPos = TopDownController.Cadenza.position.x - 1.5f + offset.x;

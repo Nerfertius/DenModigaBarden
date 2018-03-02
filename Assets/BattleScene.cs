@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleScene : MonoBehaviour {
 
@@ -8,14 +9,18 @@ public class BattleScene : MonoBehaviour {
     public AudioClip battleMusic;
     public int escapeChance;
 
+    public GameObject battleTextbox;
     public GameObject[] enemies;
     public SpriteRenderer[] buttons;
+    public Sprite[] activatedSprites;
+    private List<Sprite> deactivatedSprites = new List<Sprite>();
     public Transform topLeft;
     public Transform bottomLeft;
 
     public delegate void EnemysTurnEventHandler();
     public static event EnemysTurnEventHandler EnemysTurn;
 
+    private Text battleText;
     private bool playersTurn;
     private bool axisDown;
     private int currentButtonIndex;
@@ -35,6 +40,13 @@ public class BattleScene : MonoBehaviour {
         {
             enemy.SetActive(false);
         }
+
+        foreach (SpriteRenderer button in buttons)
+        {
+            deactivatedSprites.Add(button.sprite);
+        }
+
+        battleText = battleTextbox.GetComponentInChildren<Text>();
     }
 
     void OnDestroy()
@@ -51,7 +63,8 @@ public class BattleScene : MonoBehaviour {
         }
 
         playersTurn = false;
-        buttons[currentButtonIndex].color = Color.black;
+        battleTextbox.SetActive(false);
+        buttons[currentButtonIndex].sprite = deactivatedSprites[currentButtonIndex];
         currentButtonIndex = 0;
         lastButtonIndex = 0;
     }
@@ -63,7 +76,7 @@ public class BattleScene : MonoBehaviour {
             if (Input.GetButtonDown("Interact"))
             {
                 playersTurn = false;
-                buttons[currentButtonIndex].color = Color.black;
+                buttons[currentButtonIndex].sprite = deactivatedSprites[currentButtonIndex];
 
                 if (currentButtonIndex == buttons.Length - 1)
                 {
@@ -71,22 +84,35 @@ public class BattleScene : MonoBehaviour {
 
                     if (roll < escapeChance)
                     {
-                        GameManager.instance.switchState(new PlayState(GameManager.instance));
-                        return;
+                        StartCoroutine(ShowBattleText("You ran away from " + enemies[enemyIndex].name, 1.5f, true));
+                    } else
+                    {
+                        StartCoroutine(ShowBattleText(enemies[enemyIndex].name + " is staring at you", 1.5f, false));
                     }
-                }
-
-                if (EnemysTurn != null)
-                {
-                    EnemysTurn.Invoke();
                 }
             }
         }
 	}
+    
+    IEnumerator ShowBattleText(string text, float duration, bool leaveBattle)
+    {
+        battleTextbox.SetActive(true);
+        battleText.text = text;
+        yield return new WaitForSeconds(duration);
+        battleTextbox.SetActive(false);
+        
+        if (EnemysTurn != null && !leaveBattle)
+        {
+            EnemysTurn.Invoke();
+        } else if (leaveBattle)
+        {
+            GameManager.instance.switchState(new PlayState(GameManager.instance));
+        }
+    }
 
     private void ButtonSelection()
     {
-        buttons[currentButtonIndex].color = Color.blue;
+        buttons[currentButtonIndex].sprite = activatedSprites[currentButtonIndex];
 
         if ((Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("BattleHorizontal") > 0) && !axisDown)
         {
@@ -96,7 +122,7 @@ public class BattleScene : MonoBehaviour {
             currentButtonIndex = Mathf.Clamp(currentButtonIndex + 1, 0, 2);
             if (currentButtonIndex != lastButtonIndex)
             {
-                buttons[lastButtonIndex].color = Color.black;
+                buttons[lastButtonIndex].sprite = deactivatedSprites[lastButtonIndex];
             }
         }
         else if ((Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("BattleHorizontal") < 0) && !axisDown)
@@ -107,7 +133,7 @@ public class BattleScene : MonoBehaviour {
             currentButtonIndex = Mathf.Clamp(currentButtonIndex - 1, 0, 2);
             if (currentButtonIndex != lastButtonIndex)
             {
-                buttons[lastButtonIndex].color = Color.black;
+                buttons[lastButtonIndex].sprite = deactivatedSprites[lastButtonIndex];
             }
         }
 

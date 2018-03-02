@@ -30,11 +30,13 @@ public class MapSettings : MonoBehaviour
         beginningArea = false;
 
         TransitionState.TransitionExited += StartMapFeatures;
+        BattleState.BattleEntered += HideTitleObject;
     }
 
     private void OnDestroy()
     {
         TransitionState.TransitionExited -= StartMapFeatures;
+        BattleState.BattleEntered -= HideTitleObject;
     }
 
     private void StartMapFeatures()
@@ -62,11 +64,16 @@ public class MapSettings : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (titleObject != null)
-            {
-                StopAllCoroutines();
-                titleObject.color = startColor;
-            }
+            HideTitleObject();
+        }
+    }
+
+    private void HideTitleObject()
+    {
+        if (titleObject != null)
+        {
+            StopAllCoroutines();
+            titleObject.color = startColor;
         }
     }
 
