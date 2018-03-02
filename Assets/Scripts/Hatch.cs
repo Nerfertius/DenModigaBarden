@@ -5,18 +5,30 @@ using UnityEngine;
 public class Hatch : MonoBehaviour
 {
     private bool opened;
+    private bool playerNear;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && Input.GetButtonDown("Interact") && !opened)
+        if (collision.CompareTag("Player"))
         {
-            Open();
+            playerNear = true;
         }
     }
 
-    void Open()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        GetComponent<Animator>().SetTrigger("Open");
-        opened = true;
+        if (collision.CompareTag("Player"))
+        {
+            playerNear = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (playerNear && Input.GetButtonDown("Interact") && !opened)
+        {
+            GetComponent<Animator>().SetBool("Open", true);
+            opened = true;
+        }
     }
 }

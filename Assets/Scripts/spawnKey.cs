@@ -6,19 +6,6 @@ public class spawnKey : MonoBehaviour
 {
     public GameObject key;
 
-	void Start ()
-    {
-        
-	}
-	
-	void Update ()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Spawn();
-        }
-	}
-
     public void Spawn()
     {
         GameObject mKey = Instantiate(key, transform.position, Quaternion.identity);

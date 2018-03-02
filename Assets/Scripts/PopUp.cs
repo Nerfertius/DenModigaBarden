@@ -117,7 +117,7 @@ public class PopUp : MonoBehaviour
                 }
             }
 
-            else if (actionPerformed && Input.GetButtonDown(buttonName))
+            else if (actionPerformed && Input.GetButtonDown(buttonName) || Input.GetAxisRaw(buttonName) > data.axisSensitivity)
             {
                 StopAllCoroutines();
                 StartCoroutine("FadeOut");
