@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lever : MonoBehaviour
 {
-    [Header("This pressure plate")]
+    [Header("This Lever")]
     public List<ActivatableReceiver> recievers;
 
     [Header("Linked Leveres")]

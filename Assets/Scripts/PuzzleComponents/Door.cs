@@ -24,4 +24,13 @@ public class Door : ActivatableReceiver
         anim.SetBool("Open", false);
         collider.enabled = true;
     }
+
+    public override void Toggle() {
+        if (anim.GetBool("Open")) {
+            Deactivate();
+        }
+        else {
+            Activate();
+        }
+    }
 }

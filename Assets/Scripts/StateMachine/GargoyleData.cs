@@ -15,6 +15,8 @@ public class GargoyleData : EnemyData {
 
     public Vector2 DashForce = new Vector2(500, 350);
 
+    public bool CanSeeThrughWalls = false;
+
     protected override void Awake() {
         base.Awake();
         platformEffector = GetComponent<PlatformEffector2D>();
@@ -34,11 +36,11 @@ public class GargoyleData : EnemyData {
 
     public override void OnEnable() {
         base.OnEnable();
-
         frozenColorBlinkData.End(spriteRenderer);
         SetPlatformEffector(false);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         gameObject.layer = 11; // Enemy
+        
     }
 
     public void SetPlatformEffector(bool enabled)
