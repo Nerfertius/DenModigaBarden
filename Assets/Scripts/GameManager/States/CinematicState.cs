@@ -13,15 +13,13 @@ public class CinematicState : GameState {
 
     public override void enter()
     {
-        levelLoad = gm.loadScene(0);
+        levelLoad = gm.loadScene(1);
     }
 
     public override void update()
     {
         if (levelLoad != null && levelLoad.progress >= 0.9f) {
-            if (Input.GetKey(KeyCode.Space)) {
-                levelLoad.allowSceneActivation = true;
-            }
+            levelLoad.allowSceneActivation = true;
             if(levelLoad.isDone)
                 gm.switchState(new PlayState(gm));
         }

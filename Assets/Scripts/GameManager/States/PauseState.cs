@@ -46,7 +46,7 @@ public class PauseState : GameState {
     void QuitGame() {
         Debug.Log("Quit game");
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
 }
