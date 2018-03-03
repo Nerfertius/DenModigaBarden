@@ -17,10 +17,13 @@ public class Lever : MonoBehaviour
     private Animator anim;
     private BoxCollider2D collider;
 
+    private AudioClip audioClip;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
+        audioClip = Resources.Load("SoundEffects/PuzzleComponents/Lever_Use") as AudioClip;
     }
 
     private void Update()
@@ -32,6 +35,7 @@ public class Lever : MonoBehaviour
             else {
                 anim.SetBool("Active", true);
             }
+            AudioManager.PlayOneShot(audioClip);
         }
 
 

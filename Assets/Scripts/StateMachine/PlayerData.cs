@@ -77,6 +77,8 @@ public class PlayerData : Data
     // Melody
     public MelodyData melodyData = new MelodyData();
 
+    //Audio
+    [HideInInspector] public PlayerAudioData audioData;
 
     // Respawn
     [HideInInspector] public int currentRespawnOrder;
@@ -264,6 +266,8 @@ public class PlayerData : Data
         hitInvincibilityTimer = new Timer(hitInvincibilityDuration);
         hitInvincibilityTimer.Start();
         hitInvincibilityTimer.InstantFinish();
+
+        audioData = new PlayerAudioData();
     }
 
 
@@ -328,5 +332,12 @@ public class PlayerData : Data
         mfx = Instantiate(melodyFXPrefab, new Vector2(transform.position.x - (0.75f * transform.localScale.x), collider.bounds.max.y), Quaternion.Euler(melodyFXPrefab.transform.rotation.eulerAngles));
         mfx.GetComponent<FXdestroyer>().hasPlayed = true;
         mfx.transform.SetParent(transform);
+    }
+
+    public class PlayerAudioData {
+
+        //public AudioClip hurt; used as stateaction
+        //public AudioClip jump; used as stateaction
+        public AudioClip doubleJump = Resources.Load("SoundEffects/Player/Player_Second_Jump") as AudioClip;
     }
 }
