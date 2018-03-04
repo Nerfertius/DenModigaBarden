@@ -29,6 +29,7 @@ public class BulletHellSpawner : MonoBehaviour {
     {
         BattleScene.EnemysTurn += StartNextAttack;
         BattleState.BattleEnded += DisableAllBullets;
+        BulletPattern.PatternEnded += DisableAllBullets;
 
         for (int i = 0; i < poolSize; i++)
         {
@@ -52,7 +53,8 @@ public class BulletHellSpawner : MonoBehaviour {
     private void OnDisable()
     {
         BattleScene.EnemysTurn -= StartNextAttack;
-        BattleState.BattleEnded -= DisableAllBullets;
+		BattleState.BattleEnded -= DisableAllBullets;
+        BulletPattern.PatternEnded -= DisableAllBullets;
 
         foreach (GameObject bullet in bullets)
         {
@@ -75,6 +77,7 @@ public class BulletHellSpawner : MonoBehaviour {
         foreach (GameObject bullet in bullets)
         {
             bullet.SetActive(false);
+            bullet.transform.parent = null;
         }
     }
 

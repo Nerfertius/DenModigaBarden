@@ -33,7 +33,7 @@ public class BulletPattern
                 spawner.StartCoroutine(GoblinBitePattern(3, 3, new Vector2(0.5f, -3f), new Vector2(0, 1)));                
                 break;
             case PatternType.EvilEyeHoming:
-                spawner.StartCoroutine(HomingPattern(10));
+				spawner.StartCoroutine(HomingPattern(BattleScene.instance.center.position));
                 break;
             case PatternType.GargoyleStomp:
                 break;
@@ -59,7 +59,7 @@ public class BulletPattern
         }
     }
     
-    IEnumerator HomingPattern(int amount)
+    IEnumerator HomingPattern(Vector3 spawnPosition)
     {
         activeCoroutines++;
 
@@ -72,16 +72,26 @@ public class BulletPattern
                 spawned++;
 
                 datas[z].bulletType = pattern;
+                datas[z].SetReferences(bullets, datas);
                 bullets[z].SetActive(true);
-                bullets[z].transform.position = BattleScene.instance.topLeft.position;
+                float offset = 2.5f;
+				switch (spawned) {
+					case 1:
+						bullets[z].transform.position = spawnPosition + new Vector3(-offset, 0, 0);
+						break;
+					case 2:
+						bullets[z].transform.position = spawnPosition + new Vector3(offset, 0, 0);
+						break;
+					default:
+						break;
+				}
                 bullets[z].transform.localScale = new Vector3(1, 1, 1);
+                bullets[z].transform.parent = BattleScene.instance.center;
                 
-                if (spawned >= amount)
+                if (spawned >= 2)
                 {
                     break;
                 }
-
-                yield return new WaitForSeconds(0.25f);
             }
         }
 

@@ -44,21 +44,23 @@ public class EnemyData : MelodyInteractableData
         rb = GetComponent<Rigidbody2D>();
     }
 
-    protected virtual void Start()
-    {
-        controller = GetComponent<StateController>();
-        playerDamageData = GetComponent<PlayerDamageData>();
-        playerCollisionFilter.useLayerMask = true;
-        playerCollisionFilter.layerMask = 1 << 13; // player layer = 13
+    protected virtual void Start ()
+	{
+		controller = GetComponent<StateController> ();
+		playerDamageData = GetComponent<PlayerDamageData> ();
+		playerCollisionFilter.useLayerMask = true;
+		playerCollisionFilter.layerMask = 1 << 13; // player layer = 13
 
-        if (behaveAsHitbox) return;
+		if (behaveAsHitbox)
+			return;
 
-        if (transform.childCount != 0)
-        {
-            sightColl = transform.GetChild(0).GetComponent<Collider2D>();
-        }
+		if (transform.childCount != 0) {
+			sightColl = transform.GetChild (0).GetComponent<Collider2D> ();
+		}
 
-        facingRight = GetComponent<SpriteRenderer>().flipX;
+		if (spriteRenderer != null) {
+			facingRight = spriteRenderer.flipX;
+		}
 
         if (facingRight)
         {
