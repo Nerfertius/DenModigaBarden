@@ -22,10 +22,10 @@ public class MapSettings : MonoBehaviour
     void Start()
     {
         mb = GetComponent<MapBoundary>();
-        startPos = titleObject.rectTransform.position;
 
         if (titleObject != null)
         {
+            startPos = titleObject.rectTransform.position;
             titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, 0);
             startColor = titleObject.color;
         }

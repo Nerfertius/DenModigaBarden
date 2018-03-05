@@ -27,6 +27,7 @@ public class PlayerData : Data
     
     [HideInInspector] public int[] items;
     [HideInInspector] public bool hasKey;
+    [HideInInspector] public bool hasReadNote;
 
     [HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;
@@ -279,6 +280,7 @@ public class PlayerData : Data
         axisSensitivity = 0.75f;
 
         hasKey = false;
+        hasReadNote = false;
 		
         audioData = new PlayerAudioData();
     }
