@@ -7,6 +7,9 @@ public class CameraFX : MonoBehaviour {
 
     private static CameraFX instance;
     public Image screenFade;
+    public Transform renderScreen;
+    private Vector3 rsStartScale;
+    private Quaternion rsStartRot;
 
     private CameraFollow2D camScript;
     private float timer = 0;
@@ -20,43 +23,63 @@ public class CameraFX : MonoBehaviour {
 
 	private void Start ()
     {
-        camScript = GetComponent<CameraFollow2D>();
+		camScript = GetComponent<CameraFollow2D>();
+		rsStartScale = renderScreen.localScale;
+		rsStartRot = renderScreen.rotation;
     }
 
-    // For Debug
-    
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Q)){
-    //        FadeIn();
-    //    } else if (Input.GetKeyDown(KeyCode.R)){
-    //        FadeOut();
-    //    } else if (Input.GetKeyDown(KeyCode.N))
-    //    {
-    //        Screenshake(0.10f, 0.025f, 0.025f);
-    //    }
-    //}
-    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q)){
+            //FadeIn();
+        } else if (Input.GetKeyDown(KeyCode.R)){
+            //FadeOut();
+        } else if (Input.GetKeyDown(KeyCode.N))
+        {
+            //Screenshake(0.10f, 0.025f, 0.025f);
+            ZoomIn(1f);
+        }
+    }
 
     public static void FadeIn()
     {
-        instance.StopAllCoroutines();
-        instance.camScript.enabled = true;
         instance.StartCoroutine("FadeInFX");
     }
 
     public static void FadeOut()
     {
-        instance.StopAllCoroutines();
-        instance.camScript.enabled = true;
         instance.StartCoroutine("FadeOutFX");
     }
 
     public static void Screenshake(float duration, float xIntensity, float yIntensity)
     {
-        instance.StopAllCoroutines();
         instance.StartCoroutine(instance.ScreenshakeFX(duration, xIntensity, yIntensity));
     }
+
+    public static void ZoomIn(float duration){
+    	instance.StartCoroutine(instance.ZoomInFX(duration));
+    }
+
+    public static void ResetRenderScreen ()
+	{
+		instance.renderScreen.localScale = instance.rsStartScale;
+		instance.renderScreen.rotation = instance.rsStartRot;
+	}
+
+    IEnumerator ZoomInFX (float duration)
+	{
+		while (timer < duration) {
+			timer += 0.05f;
+
+			renderScreen.localScale += new Vector3(500 * Time.unscaledDeltaTime, 500 * Time.unscaledDeltaTime, 0);
+			renderScreen.Rotate(0,0,1000*Time.unscaledDeltaTime);
+			yield return new WaitForSecondsRealtime(0.05f);
+		}
+
+		timer = 0;
+		renderScreen.localScale = rsStartScale;
+		renderScreen.rotation = rsStartRot;
+	}
 
     IEnumerator ScreenshakeFX(float duration, float xIntensity, float yIntensity)
     {

@@ -61,8 +61,10 @@ public class BattleState : GameState
     IEnumerator StartBattle()
     {
         CameraFX.FadeIn();
+        CameraFX.ZoomIn(1f);
         camScript.enabled = false;
         yield return new WaitForSecondsRealtime(1);
+        CameraFX.ResetRenderScreen();
         CameraFX.FadeOut();
         camScript.enabled = false;
         Time.timeScale = 1;

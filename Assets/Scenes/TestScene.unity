@@ -270,6 +270,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75e00b2a9e8ab1649b70fe202ab782b8, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &237572503 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4030984910743806, guid: e646678d4355a314594e9810a9cbd8d9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1530913897}
 --- !u!1 &302098806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3540,6 +3545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenFade: {fileID: 1727992470}
+  renderScreen: {fileID: 237572503}
   fadeSpeed: 4
 --- !u!114 &1980495134
 MonoBehaviour:
