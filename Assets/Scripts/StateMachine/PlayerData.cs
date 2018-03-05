@@ -15,9 +15,9 @@ public class PlayerData : Data
     [Header("Movement Settings")]
 	[Range(0, 10)] public float maxSpeed;
 	[Range(0, 100)] public float speedMod;
-    [Range(100, 500)] public float jumpPower;
-    [Range(100, 500)] public float boostedjumpPower;
-    [Range(100, 500)] public float doubleJumpPower;
+    [Range(100, 2000)] public float jumpPower;
+    [Range(100, 2000)] public float boostedjumpPower;
+    [Range(100, 2000)] public float doubleJumpPower;
 	[Range(0, 10)] public float climbSpeed;
 
     [Space(10)]
