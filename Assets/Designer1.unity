@@ -30344,6 +30344,7 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 114358190295785646, guid: 3981fecbfe4dcec4d97826470de054f3, type: 2}
     - {fileID: 61974392079103158, guid: 3981fecbfe4dcec4d97826470de054f3, type: 2}
+    - {fileID: 114627350746759824, guid: 3981fecbfe4dcec4d97826470de054f3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3981fecbfe4dcec4d97826470de054f3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &888167778
@@ -34558,7 +34559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
-  startScale: {x: 0, y: 0}
+  startScale: {x: 0, y: 0, z: 0}
   startDirection: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
@@ -69330,7 +69331,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4371184860106240, guid: a2d2f8f2ef4817e4c97da62b656cbabb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.789
+      value: -0.769
       objectReference: {fileID: 0}
     - target: {fileID: 4371184860106240, guid: a2d2f8f2ef4817e4c97da62b656cbabb, type: 2}
       propertyPath: m_LocalPosition.x
@@ -69339,7 +69340,7 @@ Prefab:
     - target: {fileID: 58036808034956848, guid: a2d2f8f2ef4817e4c97da62b656cbabb,
         type: 2}
       propertyPath: m_Radius
-      value: 0.2
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 114994033544878884, guid: a2d2f8f2ef4817e4c97da62b656cbabb,
         type: 2}
@@ -76600,7 +76601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
-  startScale: {x: 0, y: 0}
+  startScale: {x: 0, y: 0, z: 0}
   startDirection: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
@@ -84789,7 +84790,7 @@ MonoBehaviour:
   automatic: 0
   mb: {fileID: 1075694863}
   elevator: 0
-  locked: 0
+  locked: 1
 --- !u!61 &1818123565
 BoxCollider2D:
   m_ObjectHideFlags: 0

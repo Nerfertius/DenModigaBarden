@@ -301,7 +301,7 @@ public class PlayerData : Data
 
     IEnumerator JumpPause()
     {
-        float time = 0.5f;
+        float time = 0.1f;
         jumping = true;
         yield return new WaitForSeconds(time);
         jumping = false;
