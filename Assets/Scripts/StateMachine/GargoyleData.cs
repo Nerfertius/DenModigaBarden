@@ -17,6 +17,8 @@ public class GargoyleData : EnemyData {
 
     public bool CanSeeThrughWalls = false;
 
+    [HideInInspector] public AudioClipPlayLimiter gargoyleCollideSound;
+
     protected override void Awake() {
         base.Awake();
         platformEffector = GetComponent<PlatformEffector2D>();
@@ -27,6 +29,7 @@ public class GargoyleData : EnemyData {
     protected override void Start()
     {
         base.Start();
+        gargoyleCollideSound = new AudioClipPlayLimiter(Resources.Load("SoundEffects/Gargoyle/Gargoyle_Collision4") as AudioClip);
     }
 
     public void Update() {

@@ -20,6 +20,8 @@ public class PlayerDoubleJump : StateAction {
             data.body.AddForce(new Vector2(0, data.doubleJumpPower));
 
             data.melodyData.hasDoubleJump = false;
+
+            AudioManager.PlayOneShot(data.audioData.doubleJump);
         }
     }
 }

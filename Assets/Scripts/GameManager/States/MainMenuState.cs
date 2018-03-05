@@ -49,11 +49,11 @@ public class MainMenuState : GameState {
         optionsBtn = GameManager.MainMenuCanvas.transform.Find(options).GetComponent<Button>();
         quitBtn = GameManager.MainMenuCanvas.transform.Find(quit).GetComponent<Button>();
 
-        audio = GameManager.MainMenuCanvas.transform.Find("MasterAudio").GetComponent<Slider>();
+        audio = GameManager.MainMenuCanvas.transform.Find("OptionsMenu/MasterAudio").GetComponent<Slider>();
         audio.value = AudioListener.volume;
-        bgAudio = GameManager.MainMenuCanvas.transform.Find("BGAudio").GetComponent<Slider>();
+        bgAudio = GameManager.MainMenuCanvas.transform.Find("OptionsMenu/BGAudio").GetComponent<Slider>();
         bgAudio.value = GameManager.instance.bgAudio;
-        effectAudio = GameManager.MainMenuCanvas.transform.Find("EffectAudio").GetComponent<Slider>();
+        effectAudio = GameManager.MainMenuCanvas.transform.Find("OptionsMenu/EffectAudio").GetComponent<Slider>();
         effectAudio.value = GameManager.instance.effectAudio;
 
         GameManager.MainMenuCanvas.enabled = true;
@@ -68,9 +68,9 @@ public class MainMenuState : GameState {
             audio.onValueChanged.AddListener(volume => AudioListener.volume = volume);
 
         if (bgAudio)
-            bgAudio.onValueChanged.AddListener(volume => GameManager.instance.bgAudio = volume);
+            bgAudio.onValueChanged.AddListener(volume => AudioManager.SetBGMVolume(volume));
         if (effectAudio)
-            effectAudio.onValueChanged.AddListener(volume => GameManager.instance.effectAudio = volume);
+            effectAudio.onValueChanged.AddListener(volume => AudioManager.SetSoundEffectVolume(volume));
     }
 
     void QuitGame()

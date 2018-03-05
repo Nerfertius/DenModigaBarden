@@ -20,12 +20,23 @@ MonoBehaviour:
   - condition: {fileID: 11400000, guid: c2e0b5a761e174f4191ab8f714398585, type: 2}
     trueState: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
     falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
   - condition: {fileID: 11400000, guid: 12ab9c13f053d5446a92ab874f8a2aa8, type: 2}
     trueState: {fileID: 11400000, guid: 2589847d3d6c5394181eaa951e3db136, type: 2}
     falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 8435469265b0aec46ada971c2b3ac833, type: 2}
+    trueState: {fileID: 11400000, guid: e26935b3eea05fa48accc60267ec0431, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  conditionedActions: []
   hasExitTime: 0
   exitTimer: 0
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
   nextState: {fileID: 0}
+  timeOutActions: []
