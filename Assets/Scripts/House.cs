@@ -8,6 +8,8 @@ public class House : MonoBehaviour
     public Transform houseLocation;
     public bool automatic;
     public MapBoundary mb;
+
+    public AudioClip audioOnUse;
     
     private GameObject player;
     private bool playerNear;
@@ -30,6 +32,7 @@ public class House : MonoBehaviour
     IEnumerator EnterHouse()
     {
         CameraFX.FadeIn();
+        AudioManager.PlayOneShot(audioOnUse);
         yield return new WaitForSeconds(1f);
         player.transform.position = houseLocation.position;
         if (GetComponent<SpriteRenderer>() != null)        // Flip the player sprite if they are entering a house

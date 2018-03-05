@@ -19,6 +19,8 @@ public class AudioManager : MonoBehaviour
     public AudioSourceBuffer bgm;
     public AudioSourceBuffer notes;
 
+    public AudioSourceBuffer ambience;
+
     public float masterVolume = 1;
     public float soundEffectVolume = 1;
     public float bgmVolume = 1;
@@ -72,6 +74,7 @@ public class AudioManager : MonoBehaviour
     public static void SetBGMVolume(float volume) {
         instance.bgmVolume = volume;
         instance.bgm.SetDefaultVolume(instance.masterVolume * instance.bgmVolume);
+        instance.ambience.SetDefaultVolume(instance.masterVolume * instance.bgmVolume);
     }
     public static void SetSoundEffectVolume(float volume) {
         instance.soundEffectVolume = volume;
@@ -167,7 +170,12 @@ public class AudioManager : MonoBehaviour
         instance.notes.Play(music);
     }
 
- // =========================== Effects =================================================================================
+//  =========================== Ambience =================================================================================
+    public static void PlayAmbience(AudioClip music) {
+        instance.bgm.Play(music);
+    }
+
+    // =========================== Effects =================================================================================
     public static IEnumerator AudioFade(AudioSource audioSource, float startVolume, float endVolume, float duration) {
         audioSource.volume = startVolume;
         Timer timer = new Timer(duration, false);
