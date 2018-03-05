@@ -26,6 +26,7 @@ public class BattleState : GameState
             BattleEntered.Invoke();
         }
 
+        PlayerData.player.CancelPlayingMelody();
         BattleScene.instance.StartBattleMusic();
         gm.PlayCanvas.enabled = true;
         Time.timeScale = 0;

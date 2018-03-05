@@ -21,7 +21,7 @@ public class PlayerTakeDamage : StateAction {
                 }
                 else {
                     data.health -= data.lastDamageData.damage;
-                    data.CancelPlayingMelody();
+                    //data.CancelPlayingMelody();
                     //Debug.Log("Health: " + data.health);
                 }
 
