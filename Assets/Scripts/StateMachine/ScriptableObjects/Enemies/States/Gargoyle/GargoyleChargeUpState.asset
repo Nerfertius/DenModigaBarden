@@ -32,7 +32,8 @@ MonoBehaviour:
     actions:
     - {fileID: 11400000, guid: 1354daf53599806419940ea2f3ae2865, type: 2}
   - condition: {fileID: 11400000, guid: 84a77a2947ab8cd4d900664ce97eb6ec, type: 2}
-    actions: []
+    actions:
+    - {fileID: 11400000, guid: df825716921687c4ebf169d99831d0c9, type: 2}
   hasExitTime: 1
   exitTimer: 3
   useRandomTimer: 0
@@ -41,4 +42,3 @@ MonoBehaviour:
   nextState: {fileID: 11400000, guid: 6e34034fc73c0184fbc8a18e98244c9d, type: 2}
   timeOutActions:
   - {fileID: 11400000, guid: ba7346d130a1ac54cbab68b561cd3bfe, type: 2}
-  - {fileID: 11400000, guid: ad5d30ec92cb20d4c8636dcb6cfe1517, type: 2}

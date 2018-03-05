@@ -10,21 +10,22 @@ public class GMCanvasRegi : MonoBehaviour {
     
 	void Start () {
         Canvas canvas = GetComponent<Canvas>();
+        Debug.Log("Regi");
         switch (this.canvas) {
             case Canvases.MainMenu:
-                GameManager.instance.MainMenuCanvas = canvas;
+                GameManager.MainMenuCanvas = canvas;
                 break;
             case Canvases.Play:
-                GameManager.instance.PlayCanvas = canvas;
+                GameManager.PlayCanvas = canvas;
                 break;
             case Canvases.Pause:
-                GameManager.instance.PauseCanvas = canvas;
+                GameManager.PauseCanvas = canvas;
                 break;
             case Canvases.WorldSpace:
-                GameManager.instance.WorldSpaceCanvas = canvas;
+                GameManager.WorldSpaceCanvas = canvas;
                 break;
             case Canvases.GameOver:
-                GameManager.instance.GameOverCanvas = canvas;
+                GameManager.GameOverCanvas = canvas;
                 break;
         }
 	}

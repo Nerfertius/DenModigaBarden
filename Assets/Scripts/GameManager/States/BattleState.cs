@@ -28,11 +28,10 @@ public class BattleState : GameState
 
         PlayerData.player.CancelPlayingMelody();
         BattleScene.instance.StartBattleMusic();
-        gm.PlayCanvas.enabled = true;
-        Time.timeScale = 0;
+        GameManager.PlayCanvas.enabled = true;
         EnemyManager.PauseEnemies();
         playerControl = false;
-        
+        Time.timeScale = 0;
         gm.StartCoroutine(StartBattle());
     }
 
@@ -62,10 +61,11 @@ public class BattleState : GameState
 
     IEnumerator StartBattle()
     {
-        CameraFX.FadeIn();
         CameraFX.ZoomIn(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
+        CameraFX.FadeIn();
         camScript.enabled = false;
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(1.5f);
         CameraFX.ResetRenderScreen();
         CameraFX.FadeOut();
         camScript.enabled = false;

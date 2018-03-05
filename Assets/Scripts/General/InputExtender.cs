@@ -47,6 +47,9 @@ public class InputExtender : MonoBehaviour{
     public static Dictionary<string, InputNode> inputs;
 
     public static bool GetAxisDown(string button) {
+        if (inputs == null) {
+            return false;
+        }
         InputNode node = null;
         inputs.TryGetValue(button, out node);
         if (node == null) {
@@ -58,20 +61,18 @@ public class InputExtender : MonoBehaviour{
     }
 
     public static bool GetAxisUp(string button) {
-        try
-        {
-            InputNode node = null;
-            inputs.TryGetValue(button, out node);
-            if (node == null)
-            {
-                Debug.LogError(button + " not registered in InputExtenderManager");
-            }
-            float axisValue = Input.GetAxis(button);
 
-            return axisValue < node.threshold && node.lastValue >= node.threshold;
+        if(inputs == null) {
+            return false;
         }
-        catch (System.Exception e) {
-            return Input.GetAxis(button) > 0;
+        InputNode node = null;
+        inputs.TryGetValue(button, out node);
+
+        if (node == null) {
+            Debug.LogError(button + " not registered in InputExtenderManager");
         }
+        float axisValue = Input.GetAxis(button);
+
+        return axisValue < node.threshold && node.lastValue >= node.threshold;
     }
 }

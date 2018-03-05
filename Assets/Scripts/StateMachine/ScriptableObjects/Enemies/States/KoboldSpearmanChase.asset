@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: KoboldSpearmanChase
   m_EditorClassIdentifier: 
   entryActions:
-  - {fileID: 11400000, guid: a2efed8e7dab3cf4580f0b27e3bd72d5, type: 2}
+  - {fileID: 11400000, guid: 42fdf71bd40a841438e55607437aed88, type: 2}
   exitActions: []
   actions:
   - {fileID: 11400000, guid: b70e6f656d6f4c64ab79da862e826a9a, type: 2}

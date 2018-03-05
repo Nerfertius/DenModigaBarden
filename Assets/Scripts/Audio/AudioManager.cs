@@ -19,22 +19,30 @@ public class AudioManager : MonoBehaviour
     public AudioSourceBuffer bgm;
     public AudioSourceBuffer notes;
 
+    public AudioSourceBuffer ambience;
+
     public float masterVolume = 1;
     public float soundEffectVolume = 1;
     public float bgmVolume = 1;
 
     //public mainly for testing purpose but could be nice anyway
     public AudioClip defaultBGM;
-    
-    private void Start()
+
+    void Awake()
     {
-        if(instance == null) {
+        if (instance == null)
+        {
+            DontDestroyOnLoad(transform.gameObject);
             instance = this;
         }
-        else {
+        else
+        {
             Debug.LogError("There should only be one audioManager " + this.gameObject);
         }
+    }
 
+    private void Start()
+    {
         audioSourcePool = new ComponentPool<AudioSource>(audioSourceObject, numberOfpooledObjects, this.transform);
         activeAudioSources = new LinkedList<AudioSource>();
 
@@ -66,6 +74,7 @@ public class AudioManager : MonoBehaviour
     public static void SetBGMVolume(float volume) {
         instance.bgmVolume = volume;
         instance.bgm.SetDefaultVolume(instance.masterVolume * instance.bgmVolume);
+        instance.ambience.SetDefaultVolume(instance.masterVolume * instance.bgmVolume);
     }
     public static void SetSoundEffectVolume(float volume) {
         instance.soundEffectVolume = volume;
@@ -77,7 +86,6 @@ public class AudioManager : MonoBehaviour
 
         SetBGMVolume(instance.bgmVolume);
         SetSoundEffectVolume(instance.soundEffectVolume);
-
     }
 
     public void Update() {
@@ -162,7 +170,12 @@ public class AudioManager : MonoBehaviour
         instance.notes.Play(music);
     }
 
- // =========================== Effects =================================================================================
+//  =========================== Ambience =================================================================================
+    public static void PlayAmbience(AudioClip music) {
+        instance.bgm.Play(music);
+    }
+
+    // =========================== Effects =================================================================================
     public static IEnumerator AudioFade(AudioSource audioSource, float startVolume, float endVolume, float duration) {
         audioSource.volume = startVolume;
         Timer timer = new Timer(duration, false);

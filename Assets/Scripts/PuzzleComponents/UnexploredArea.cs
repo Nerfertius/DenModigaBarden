@@ -35,4 +35,10 @@ public class UnexploredArea : MonoBehaviour {
             timer.Start();
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D coll) {
+        if(coll.tag == "Player") {
+            Reveal();
+        }
+    }
 }

@@ -26,7 +26,7 @@ public class NPCTalkAction : StateAction
             Vector3 pos = controller.transform.position;
             if (data.text == null)
             {
-                data.text = Instantiate(textPrefab, GameManager.instance.WorldSpaceCanvas.transform).GetComponentInChildren<Text>();
+                data.text = Instantiate(textPrefab, GameManager.WorldSpaceCanvas.transform).GetComponentInChildren<Text>();
             }
             data.originalPos = pos;
             data.text.enabled = true;
@@ -35,6 +35,7 @@ public class NPCTalkAction : StateAction
             if (data.talkSound == null && talk)
             {
                 data.talkSound = talk;
+                talk.volume = GameManager.instance.effectAudio;
                 data.basePitch = talk.pitch;
             }
 
