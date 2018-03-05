@@ -10,7 +10,10 @@ public class House : MonoBehaviour
     public MapBoundary mb;
     public bool elevator;
     public bool locked;
-    
+
+
+    public AudioClip audioOnUse;
+
     private GameObject player;
     private bool playerNear;
 
@@ -46,6 +49,7 @@ public class House : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         CameraFX.FadeIn();
+        AudioManager.PlayOneShot(audioOnUse);
         yield return new WaitForSeconds(1f);
         player.transform.position = houseLocation.position;
 
