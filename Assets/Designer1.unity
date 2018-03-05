@@ -536,6 +536,7 @@ MonoBehaviour:
   mb: {fileID: 1813010406}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &19984673
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21636,6 +21637,7 @@ MonoBehaviour:
   mb: {fileID: 932578990}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &582593864
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22485,6 +22487,7 @@ MonoBehaviour:
   mb: {fileID: 42647124}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &615492385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22935,6 +22938,11 @@ Prefab:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[9].y
       value: 2.8519268
       objectReference: {fileID: 0}
+    - target: {fileID: 114642934573223228, guid: 66592d1cad66f3a4d94e9e4a4edb749f,
+        type: 2}
+      propertyPath: audioOnUse
+      value: 
+      objectReference: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66592d1cad66f3a4d94e9e4a4edb749f, type: 2}
   m_IsPrefabParent: 0
@@ -25665,6 +25673,7 @@ MonoBehaviour:
   mb: {fileID: 1813010406}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &753280913
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26434,6 +26443,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114642934573223228, guid: 66592d1cad66f3a4d94e9e4a4edb749f,
+        type: 2}
+      propertyPath: audioOnUse
+      value: 
+      objectReference: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
     m_RemovedComponents:
     - {fileID: 60966079125539530, guid: 66592d1cad66f3a4d94e9e4a4edb749f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 66592d1cad66f3a4d94e9e4a4edb749f, type: 2}
@@ -31111,6 +31125,7 @@ MonoBehaviour:
   mb: {fileID: 1813010406}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &893940386
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35308,6 +35323,7 @@ MonoBehaviour:
   mb: {fileID: 1282472105}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &1085328884
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70081,6 +70097,7 @@ MonoBehaviour:
   mb: {fileID: 1075694863}
   elevator: 1
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &1201655652
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -71802,6 +71819,7 @@ MonoBehaviour:
   mb: {fileID: 1813010406}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &1273400273
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72040,7 +72058,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4371184860106240, guid: a2d2f8f2ef4817e4c97da62b656cbabb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.789
+      value: -0.769
       objectReference: {fileID: 0}
     - target: {fileID: 4371184860106240, guid: a2d2f8f2ef4817e4c97da62b656cbabb, type: 2}
       propertyPath: m_LocalPosition.x
@@ -72049,7 +72067,7 @@ Prefab:
     - target: {fileID: 58036808034956848, guid: a2d2f8f2ef4817e4c97da62b656cbabb,
         type: 2}
       propertyPath: m_Radius
-      value: 0.2
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 114994033544878884, guid: a2d2f8f2ef4817e4c97da62b656cbabb,
         type: 2}
@@ -85368,6 +85386,7 @@ MonoBehaviour:
   mb: {fileID: 1522681912}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: 88a0c073cfa85194ba8e83118f8f52cf, type: 3}
 --- !u!61 &1692135269
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -85837,6 +85856,7 @@ MonoBehaviour:
   mb: {fileID: 361356533}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &1716630907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87983,6 +88003,7 @@ MonoBehaviour:
   mb: {fileID: 1813010406}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &1812785962
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -88108,6 +88129,7 @@ MonoBehaviour:
   mb: {fileID: 1075694863}
   elevator: 0
   locked: 1
+  audioOnUse: {fileID: 8300000, guid: 88a0c073cfa85194ba8e83118f8f52cf, type: 3}
 --- !u!61 &1818123565
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94278,6 +94300,7 @@ MonoBehaviour:
   mb: {fileID: 1945427389}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &1963420735
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -96957,6 +96980,7 @@ MonoBehaviour:
   mb: {fileID: 1708843027}
   elevator: 1
   locked: 0
+  audioOnUse: {fileID: 0}
 --- !u!61 &2058083414
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -98991,6 +99015,7 @@ MonoBehaviour:
   mb: {fileID: 748799625}
   elevator: 0
   locked: 0
+  audioOnUse: {fileID: 8300000, guid: fb3776635a79ccb409b86c18dc7cfae6, type: 3}
 --- !u!61 &2129657695
 BoxCollider2D:
   m_ObjectHideFlags: 0
