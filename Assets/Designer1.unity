@@ -3792,6 +3792,7 @@ MonoBehaviour:
   displayLength: 3
   beginningArea: 0
   backgroundMusic: {fileID: 8300000, guid: 87f3f966f51658d43a7d0d5601b152b0, type: 3}
+  ambience: {fileID: 0}
 --- !u!1 &141264781
 GameObject:
   m_ObjectHideFlags: 0
@@ -5792,6 +5793,7 @@ MonoBehaviour:
   displayLength: 3
   beginningArea: 0
   backgroundMusic: {fileID: 8300000, guid: 3cba05d537546464c8e9df344e7151c6, type: 3}
+  ambience: {fileID: 0}
 --- !u!1001 &219443909
 Prefab:
   m_ObjectHideFlags: 0
@@ -22744,6 +22746,7 @@ MonoBehaviour:
   displayLength: 3
   beginningArea: 0
   backgroundMusic: {fileID: 8300000, guid: 87f3f966f51658d43a7d0d5601b152b0, type: 3}
+  ambience: {fileID: 0}
 --- !u!4 &622889930 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4808558978902768, guid: d0815f6731b1cfe4faeea28483ab7240,
@@ -24894,6 +24897,7 @@ MonoBehaviour:
   displayLength: 3
   beginningArea: 0
   backgroundMusic: {fileID: 8300000, guid: 3cba05d537546464c8e9df344e7151c6, type: 3}
+  ambience: {fileID: 0}
 --- !u!114 &704711299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25581,6 +25585,7 @@ MonoBehaviour:
   displayLength: 3
   beginningArea: 0
   backgroundMusic: {fileID: 8300000, guid: 3cba05d537546464c8e9df344e7151c6, type: 3}
+  ambience: {fileID: 0}
 --- !u!1001 &749198112
 Prefab:
   m_ObjectHideFlags: 0
@@ -31006,6 +31011,7 @@ MonoBehaviour:
   displayLength: 3
   beginningArea: 0
   backgroundMusic: {fileID: 8300000, guid: 3cba05d537546464c8e9df344e7151c6, type: 3}
+  ambience: {fileID: 0}
 --- !u!1 &893750669
 GameObject:
   m_ObjectHideFlags: 0
@@ -78855,6 +78861,31 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 113ad211a0cd06f41b908ad416a4cb90, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1379039590 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1090340934391980, guid: 113ad211a0cd06f41b908ad416a4cb90,
+    type: 2}
+  m_PrefabInternal: {fileID: 1379039589}
+--- !u!114 &1379039591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1379039590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9c5eb78232a4b40b3b4f62170ce027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beginningPlayed: 0
+  titleSprite: {fileID: 0}
+  titleObject: {fileID: 0}
+  offset: {x: 0, y: 0}
+  fadeSpeed: 0
+  displayLength: 0
+  beginningArea: 0
+  backgroundMusic: {fileID: 8300000, guid: 87f3f966f51658d43a7d0d5601b152b0, type: 3}
+  ambience: {fileID: 8300000, guid: d50840fe48f906b4a9dc7c3307729f4b, type: 3}
 --- !u!1 &1385633883
 GameObject:
   m_ObjectHideFlags: 0
@@ -79478,6 +79509,7 @@ MonoBehaviour:
   displayLength: 0
   beginningArea: 0
   backgroundMusic: {fileID: 8300000, guid: e4d8a5ef4d4bd084bbb92a25c15a6b1f, type: 3}
+  ambience: {fileID: 0}
 --- !u!1001 &1407394714
 Prefab:
   m_ObjectHideFlags: 0
@@ -81744,6 +81776,7 @@ MonoBehaviour:
   displayLength: 3
   beginningArea: 1
   backgroundMusic: {fileID: 8300000, guid: 87f3f966f51658d43a7d0d5601b152b0, type: 3}
+  ambience: {fileID: 0}
 --- !u!1 &1524010099
 GameObject:
   m_ObjectHideFlags: 0
@@ -88075,7 +88108,8 @@ MonoBehaviour:
   fadeSpeed: 1
   displayLength: 3
   beginningArea: 0
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 87f3f966f51658d43a7d0d5601b152b0, type: 3}
+  ambience: {fileID: 8300000, guid: fe511120d5cec2545ba1ea780cf56c7b, type: 3}
 --- !u!1 &1813751137
 GameObject:
   m_ObjectHideFlags: 0
@@ -94135,8 +94169,8 @@ Transform:
   - {fileID: 140697762}
   - {fileID: 748906731}
   - {fileID: 704711297}
-  - {fileID: 219268698}
   - {fileID: 891807850}
+  - {fileID: 219268698}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
