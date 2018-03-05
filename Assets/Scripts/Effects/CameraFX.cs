@@ -83,6 +83,7 @@ public class CameraFX : MonoBehaviour {
 
     IEnumerator ScreenshakeFX(float duration, float xIntensity, float yIntensity)
     {
+        bool camScriptStatus = camScript.isActiveAndEnabled;
         camScript.enabled = false;
         
         Vector3 camPosition = transform.position;
@@ -100,7 +101,7 @@ public class CameraFX : MonoBehaviour {
 
         transform.position = camPosition;
         timer = 0;
-        camScript.enabled = true;
+        camScript.enabled = camScriptStatus;
     }
 
     IEnumerator FadeInFX()

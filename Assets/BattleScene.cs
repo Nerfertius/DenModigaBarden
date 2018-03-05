@@ -210,7 +210,7 @@ public class BattleScene : MonoBehaviour
     {
         if (battleMusic != null)
         {
-            AudioManager.PlayBGM(battleMusic);
+            AudioManager.PlayBGM(battleMusic, false);
         }
     }
 

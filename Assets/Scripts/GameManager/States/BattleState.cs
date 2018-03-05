@@ -65,7 +65,7 @@ public class BattleState : GameState
         yield return new WaitForSecondsRealtime(0.5f);
         CameraFX.FadeIn();
         camScript.enabled = false;
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(1f);
         CameraFX.ResetRenderScreen();
         CameraFX.FadeOut();
         camScript.enabled = false;

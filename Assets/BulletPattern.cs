@@ -36,6 +36,7 @@ public class BulletPattern
 				spawner.StartCoroutine(HomingPattern(BattleScene.instance.center.position));
                 break;
             case PatternType.GargoyleStomp:
+                spawner.StartCoroutine(GargoyleStompPattern(30));
                 break;
             case PatternType.KoboldSpearAttack:
                 break;
@@ -99,14 +100,55 @@ public class BulletPattern
         PatternEnding();
     }
 
-    IEnumerator GargoyleStompPattern()
+    IEnumerator GargoyleStompPattern(int times)
     {
         activeCoroutines++;
 
-        //TODO
+        int spawned = 0;
 
+        for (int i = 0; i < times; i++)
+        {
+            float xOffset = 11;
+            float yOffset = TopDownController.Cadenza.localPosition.y;
+            for (int n = 0; n < bullets.Count; n++)
+            {
+                if (!bullets[n].activeSelf)
+                {
+                    spawned++;
+
+                    datas[n].bulletType = pattern;
+                    
+                    switch (spawned)
+                    {
+                        case 1:
+                            bullets[n].transform.position = BattleScene.instance.center.position + new Vector3(-xOffset, yOffset);
+                            datas[n].direction = new Vector2(1, 0);
+                            bullets[n].transform.Rotate(0, 0, 90);
+                            bullets[n].transform.localScale = new Vector3(-1, 1, 1);
+                            break;
+                        case 2:
+                            bullets[n].transform.position = BattleScene.instance.center.position + new Vector3(xOffset, yOffset);
+                            datas[n].direction = new Vector2(-1, 0);
+                            bullets[n].transform.Rotate(0, 0, -90);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    bullets[n].SetActive(true);
+
+                    if (spawned >= 2)
+                    {
+                        spawned = 0;
+                        break;
+                    }
+                }
+            }
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        yield return new WaitForSeconds(10);
         PatternEnding();
-        yield return null;
     }
 
     IEnumerator KoboldSpearAttack()

@@ -69,11 +69,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
-  startScale: {x: 0, y: 0}
+  startScale: {x: 0, y: 0, z: 0}
   startDirection: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   startSpeed: 1
+  destroyable: 1
+  childProjectile: 0
+  childController: {fileID: 0}
   direction: {x: 0, y: 0}
   bulletType: 0
 --- !u!212 &212487739148950722
