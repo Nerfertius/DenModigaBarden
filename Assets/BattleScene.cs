@@ -206,13 +206,16 @@ public class BattleScene : MonoBehaviour
         enemyIndex = Mathf.Clamp(index, 0, enemies.Length - 1);
     }
 
-    public void StartBattle()
+    public void StartBattleMusic()
     {
         if (battleMusic != null)
         {
             AudioManager.PlayBGM(battleMusic);
         }
+    }
 
+    public void StartBattle()
+    {        
         enemies[enemyIndex].SetActive(true);
 
         playersTurn = true;
