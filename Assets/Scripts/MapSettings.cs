@@ -18,14 +18,15 @@ public class MapSettings : MonoBehaviour
     public bool beginningArea;
 
     public AudioClip backgroundMusic;
+    public AudioClip ambience;
 
     void Start()
     {
         mb = GetComponent<MapBoundary>();
-        startPos = titleObject.rectTransform.position;
 
         if (titleObject != null)
         {
+            startPos = titleObject.rectTransform.position;
             titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, 0);
             startColor = titleObject.color;
         }
@@ -42,8 +43,7 @@ public class MapSettings : MonoBehaviour
 
     private void StartMapFeatures()
     {
-        if(MapBoundary.currentMapBoundary == mb || (beginningArea && !beginningPlayed))
-        {
+        if (MapBoundary.currentMapBoundary == mb || (beginningArea && !beginningPlayed)) {
             if (!beginningArea || (beginningArea && !beginningPlayed))
             {
                 if (titleObject != null)
@@ -56,11 +56,12 @@ public class MapSettings : MonoBehaviour
                     StartCoroutine(FadeIn());
                     StartCoroutine(DelayedFadeOut());
                 }
-
+                
                 if (backgroundMusic != null)
                 {
                     AudioManager.SetDefaultBGM(backgroundMusic);
                 }
+                AudioManager.PlayAmbience(ambience);
 
                 if (!beginningPlayed)
                 {

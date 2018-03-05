@@ -172,7 +172,7 @@ public class AudioManager : MonoBehaviour
 
 //  =========================== Ambience =================================================================================
     public static void PlayAmbience(AudioClip music) {
-        instance.bgm.Play(music);
+        instance.ambience.Play(music);
     }
 
     // =========================== Effects =================================================================================
@@ -228,7 +228,10 @@ public class AudioManager : MonoBehaviour
         }
 
         public AudioClip getCurrentClip() {
-            return current.clip;
+            if(current != null) {
+                return current.clip;
+            }
+            return null;
         }
 
         public void Play(AudioClip clip) {
