@@ -36,7 +36,7 @@ public class BulletPattern
 				spawner.StartCoroutine(HomingPattern(BattleScene.instance.center.position));
                 break;
             case PatternType.GargoyleStomp:
-                spawner.StartCoroutine(GargoyleStompPattern(30));
+                spawner.StartCoroutine(GargoyleStompPattern(5));
                 break;
             case PatternType.KoboldSpearAttack:
                 break;
@@ -108,7 +108,7 @@ public class BulletPattern
 
         for (int i = 0; i < times; i++)
         {
-            float xOffset = 11;
+            float xOffset = 10.5f;
             float yOffset = TopDownController.Cadenza.localPosition.y;
             for (int n = 0; n < bullets.Count; n++)
             {
@@ -147,7 +147,7 @@ public class BulletPattern
             yield return new WaitForSeconds(1.5f);
         }
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(1);
         PatternEnding();
     }
 

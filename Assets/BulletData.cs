@@ -84,7 +84,7 @@ public class BulletData : Data {
     IEnumerator StompBehaviour()
     {
         float travelDistance = 0;
-        float maxTravelDistance = 1.5f;
+        float maxTravelDistance = 1f;
 
         while(travelDistance < maxTravelDistance) {
             travelDistance += Mathf.Abs(direction.x * speed * Time.deltaTime);
@@ -94,15 +94,15 @@ public class BulletData : Data {
 
         yield return new WaitForSeconds(0.5f);
         speed = 30f;
-        travelDistance = 0;
-        maxTravelDistance = 5.25f;
-        while (travelDistance < maxTravelDistance)
+
+		Vector3 targetPos = new Vector3(-direction.x * sprRend.sprite.bounds.size.y * 0.5f, transform.position.y, transform.position.z);
+
+        while (transform.position != targetPos)
         {
-            travelDistance += Mathf.Abs(direction.x * speed * Time.deltaTime);
-            transform.position += new Vector3(direction.x * speed * Time.deltaTime, 0, 0);
-            yield return null;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            yield return new WaitForEndOfFrame();
         }
-        CameraFX.Screenshake(0.05f, 0.2f, 0.2f);
+        CameraFX.Screenshake(0.05f, 0.25f, 0.25f);
 
         StartCoroutine(FadeOut());
     }
