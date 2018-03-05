@@ -52,3 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: {fileID: 1683969526777592, guid: 8d89016611302be4a929cd0ffeae2eec, type: 2}
+  soundOnObtain: {fileID: 8300000, guid: f9fc895f6cf7cf9468406773ea9b3a0b, type: 3}
