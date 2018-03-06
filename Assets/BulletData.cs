@@ -173,6 +173,31 @@ public class BulletData : Data {
         StartCoroutine(FadeOut());
     }
 
+    IEnumerator LockOnSpearBehaviour()
+    {
+        float timer = 0;
+        float lockOnTime = Random.Range(0.8f, 2f);
+        float travelDistance = 0;
+        float maxTravelDistance = 8f;
+        float velocity;
+
+        while (timer < lockOnTime)
+        {
+            transform.LookAt(TopDownController.Cadenza.transform);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        while (timer >= lockOnTime && travelDistance < maxTravelDistance)
+        {
+            speed += (speed + 1f) * Time.deltaTime;
+            velocity = direction.y * speed * Time.deltaTime;
+            transform.position += new Vector3(0, velocity, 0);
+            travelDistance += Mathf.Abs(velocity);
+            yield return null;
+        }
+
+        StartCoroutine(FadeOut());
+    }
 
     IEnumerator FadeOut()
     {

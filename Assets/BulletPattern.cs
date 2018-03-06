@@ -151,11 +151,22 @@ public class BulletPattern
         PatternEnding();
     }
 
-    IEnumerator KoboldSpearAttack()
+    IEnumerator KoboldSpearAttack(int times)
     {
         activeCoroutines++;
 
-        //TODO
+        float xOffset = 11f;
+        float yOffset = 8f;
+
+        for (int i = 0; i < times; i++)
+        {
+            float xPos = BattleScene.instance.center.position.x + (Random.Range(-1.2f, 1.2f) * xOffset * 1.2f);
+            float yPos = BattleScene.instance.center.position.y + (Random.Range(-1.2f, 1.2f) * yOffset * 1.2f);
+            if (xPos < xOffset && yPos < yOffset)
+            {
+
+            }
+        }
 
         PatternEnding();
         yield return null;
