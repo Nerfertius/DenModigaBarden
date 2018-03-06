@@ -3,25 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletHellSpawner : MonoBehaviour {
-    
-    public GameObject bulletPrefab;
-    public int poolSize;
 
     public BulletPattern[] patterns;
-
-    private List<GameObject> bullets;
-    private List<BulletData> datas;
-
-    void Awake()
-    {
-        bullets = new List<GameObject>();
-        datas = new List<BulletData>();
-    }
 
 	void Start () {
         for (int i = 0; i < patterns.Length; i++)
         {
-            patterns[i].SetReferences(this, bullets, datas);
+            patterns[i].SetReference(this);
         }
     }
 
@@ -31,22 +19,9 @@ public class BulletHellSpawner : MonoBehaviour {
         BattleState.BattleEnded += DisableAllBullets;
         BulletPattern.PatternEnded += DisableAllBullets;
 
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < patterns.Length; i++)
         {
-            GameObject bullet = Instantiate(bulletPrefab);
-            BulletData data = bullet.GetComponent<BulletData>();
-
-            if (data != null)
-            {
-                datas.Add(data);
-            }
-            else
-            {
-                Debug.LogWarning("Missing bullet data");
-            }
-
-            bullet.SetActive(false);
-            bullets.Add(bullet);
+            patterns[i].InstantiateBullets();
         }
     }
 
@@ -56,13 +31,10 @@ public class BulletHellSpawner : MonoBehaviour {
 		BattleState.BattleEnded -= DisableAllBullets;
         BulletPattern.PatternEnded -= DisableAllBullets;
 
-        foreach (GameObject bullet in bullets)
+        for (int i = 0; i < patterns.Length; i++)
         {
-            Destroy(bullet);
+            patterns[i].DestroyBullets();
         }
-
-        bullets.Clear();
-        datas.Clear();
     }
 
     private void DisableAllBullets()
@@ -72,12 +44,7 @@ public class BulletHellSpawner : MonoBehaviour {
         foreach (BulletPattern pattern in patterns)
         {
             pattern.ResetCoroutineCount();
-        }
-
-        foreach (GameObject bullet in bullets)
-        {
-            bullet.SetActive(false);
-            bullet.transform.parent = null;
+            pattern.DisableBullets();
         }
     }
 

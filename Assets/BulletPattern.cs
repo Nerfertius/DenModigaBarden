@@ -6,8 +6,12 @@ using UnityEngine;
 public class BulletPattern
 {
     private BulletHellSpawner spawner;
-    private List<GameObject> bullets;
-    private List<BulletData> datas;
+
+    public GameObject bulletPrefab;
+    public int poolSize;
+
+    private List<GameObject> bullets = new List<GameObject>();
+    private List<BulletData> datas = new List<BulletData>();
 
     public delegate void PatternEndedEventHandler();
     public static event PatternEndedEventHandler PatternEnded;
@@ -17,11 +21,50 @@ public class BulletPattern
 
     private static int activeCoroutines = 0;
 
-    public void SetReferences(BulletHellSpawner spawner, List<GameObject> bullets, List<BulletData> datas)
+    public void SetReference(BulletHellSpawner spawner)
     {
         this.spawner = spawner;
-        this.bullets = bullets;
-        this.datas = datas;
+    }
+
+    public void InstantiateBullets()
+    {
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject bullet = GameObject.Instantiate(bulletPrefab);
+            BulletData data = bullet.GetComponent<BulletData>();
+
+            if (data != null)
+            {
+                datas.Add(data);
+            }
+            else
+            {
+                Debug.LogWarning("Missing bullet data");
+            }
+
+            bullet.SetActive(false);
+            bullets.Add(bullet);
+        }
+    }
+
+    public void DestroyBullets()
+    {
+        foreach (GameObject bullet in bullets)
+        {
+            GameObject.Destroy(bullet);
+        }
+
+        bullets.Clear();
+        datas.Clear();
+    }
+
+    public void DisableBullets()
+    {
+        foreach (GameObject bullet in bullets)
+        {
+            bullet.SetActive(false);
+            bullet.transform.parent = null;
+        }
     }
 
     public void PlayPattern()
