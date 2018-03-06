@@ -15,6 +15,7 @@ public class EnterBattleSystem : StateAction
     {
         EnemyData eData = (EnemyData)controller.data;
 
+        BattleScene.caller = controller.gameObject;
         BattleScene.instance.SetEnemy(enemyIndex);
         BattleScene.instance.escapeChance = escapeChance;
         BattleScene.instance.enemyHP = enemyHP;

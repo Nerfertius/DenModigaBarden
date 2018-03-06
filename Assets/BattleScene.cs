@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class BattleScene : MonoBehaviour
 {
-
     public static BattleScene instance;
+    public static GameObject caller; //The enemy that initiated the battle
     public AudioClip battleMusic;
     public AudioClip buttonMoveSound;
     public AudioClip buttonSelectSound;
-    public int escapeChance;
-    public int enemyHP;
+    [HideInInspector] public int escapeChance;
+    [HideInInspector] public int enemyHP;
 
     public GameObject battleTextbox;
     public GameObject[] enemies;
+    private List<BattleText> textStrings = new List<BattleText>();
     public SpriteRenderer[] buttons;
     public Sprite[] activatedSprites;
     private List<Sprite> deactivatedSprites = new List<Sprite>();
@@ -43,6 +44,7 @@ public class BattleScene : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             enemy.SetActive(false);
+            textStrings.Add(enemy.GetComponent<BattleText>());
         }
 
         foreach (SpriteRenderer button in buttons)
@@ -93,12 +95,12 @@ public class BattleScene : MonoBehaviour
                     if (enemyHP > 0)
                     {
                         enemyHP--;
-                        string[] texts = { "You played the song of WRYYY", enemies[enemyIndex].name + " is getting drowzy..." };
+                        string[] texts = textStrings[enemyIndex].songText;
                         StartCoroutine(ShowBattleText(texts, 1.5f, false));
                     }
                     else if (enemyHP <= 0)
                     {
-                        string[] texts = { "You played the song of WRYYY", enemies[enemyIndex].name + " fell asleep..." };
+                        string[] texts = textStrings[enemyIndex].songWinText;
                         StartCoroutine(ShowBattleText(texts, 1.5f, true));
                     }
                 }
@@ -108,11 +110,12 @@ public class BattleScene : MonoBehaviour
 
                     if (roll < escapeChance)
                     {
-                        StartCoroutine(ShowBattleText("You ran away from " + enemies[enemyIndex].name, 1.5f, true));
+                        StartCoroutine(ShowBattleText(textStrings[enemyIndex].runSuccessText, 1.5f, true));
+                        caller.SetActive(false);
                     }
                     else
                     {
-                        StartCoroutine(ShowBattleText(enemies[enemyIndex].name + " is staring at you", 1.5f, false));
+                        StartCoroutine(ShowBattleText(textStrings[enemyIndex].runFailedText, 1.5f, false));
                     }
                 }
             }

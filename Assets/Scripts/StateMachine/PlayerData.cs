@@ -34,6 +34,8 @@ public class PlayerData : Data
     [HideInInspector] public Transform groundCheck;
     [HideInInspector] public Collider2D col;
 
+    public Transform startSpawn;
+
     // Ladder
     [HideInInspector] public Transform ladderBottom;
 	[HideInInspector] public Transform ladderTop;
@@ -245,7 +247,7 @@ public class PlayerData : Data
         items = new int[System.Enum.GetNames(typeof(ItemType)).Length];
 
         currentRespawnOrder = -1;
-        respawnLocation = transform;
+        respawnLocation = startSpawn;
 
         defaultMat = Resources.Load("Materials/Default") as PhysicsMaterial2D;
         fullFriction = Resources.Load("Materials/FullFriction") as PhysicsMaterial2D;
