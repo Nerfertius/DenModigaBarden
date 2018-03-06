@@ -23,7 +23,6 @@ public class TransitionState : GameState {
         }
 
         Time.timeScale = 0;
-        //gm.hideCanvas("PlayCanvas");
     }
 
     public override void exit()
@@ -34,7 +33,6 @@ public class TransitionState : GameState {
         {
             TransitionExited();
         }
-        //gm.showCanvas("PlayCanvas");
     }
 
     public override void update()
