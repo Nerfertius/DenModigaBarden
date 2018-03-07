@@ -27,7 +27,7 @@ public class PlayerTakeDamage : StateAction
                     data.health -= data.lastDamageData.damage;
                 }
 
-                if(data.magicShieldHealth <= 0){
+                if(data.magicShieldHealth <= 0 || !data.lastDamageData.isMagical){
                     data.CancelPlayingMelody();
                 }
 

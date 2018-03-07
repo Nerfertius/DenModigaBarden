@@ -42,6 +42,7 @@ public class Campfire : MonoBehaviour
             if (data.respawnLocation.GetComponent<Campfire>())
             {
                 data.respawnLocation.GetComponent<Animator>().SetBool("Active", false);
+                PlayerData.player.health = 3;
             }
             data.respawnLocation = transform;
             data.currentRespawnOrder = order;
