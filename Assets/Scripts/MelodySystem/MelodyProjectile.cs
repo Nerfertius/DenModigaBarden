@@ -36,7 +36,7 @@ public class MelodyProjectile : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Ground" || other.tag == "Enemy") {
+        if (other.tag == "Ground" || other.tag == "Enemy" || other.gameObject.layer == LayerMask.NameToLayer("NPC")) {
             Alive = false;
         }
     }
