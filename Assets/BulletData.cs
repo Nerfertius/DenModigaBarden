@@ -58,6 +58,9 @@ public class BulletData : Data {
             case BulletPattern.PatternType.GargoyleStomp:
                 StartCoroutine(StompBehaviour());
                 break;
+            case BulletPattern.PatternType.KoboldSpearAttack:
+                StartCoroutine(LockOnSpearBehaviour());
+                break;
 			default:
 				break;
 			}
@@ -183,7 +186,8 @@ public class BulletData : Data {
 
         while (timer < lockOnTime)
         {
-            transform.LookAt(TopDownController.Cadenza.transform);
+            direction = TopDownController.Cadenza.position - transform.position;
+            direction.Normalize();
             timer += Time.deltaTime;
             yield return null;
         }

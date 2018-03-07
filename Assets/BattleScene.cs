@@ -19,7 +19,7 @@ public class BattleScene : MonoBehaviour
     public SpriteRenderer[] buttons;
     public Sprite[] activatedSprites;
     private List<Sprite> deactivatedSprites = new List<Sprite>();
-    public Transform center, topLeft, topRight;
+    public Transform center, topLeft, topRight, playArea;
 
     public delegate void EnemysTurnEventHandler();
     public static event EnemysTurnEventHandler EnemysTurn;

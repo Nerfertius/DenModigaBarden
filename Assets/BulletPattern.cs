@@ -82,6 +82,7 @@ public class BulletPattern
                 spawner.StartCoroutine(GargoyleStompPattern(5));
                 break;
             case PatternType.KoboldSpearAttack:
+                spawner.StartCoroutine(KoboldSpearAttack(8));
                 break;
             default:
                 break;
@@ -203,11 +204,19 @@ public class BulletPattern
 
         for (int i = 0; i < times; i++)
         {
-            float xPos = BattleScene.instance.center.position.x + (Random.Range(-1.2f, 1.2f) * xOffset * 1.2f);
-            float yPos = BattleScene.instance.center.position.y + (Random.Range(-1.2f, 1.2f) * yOffset * 1.2f);
-            if (xPos < xOffset && yPos < yOffset)
+            for (int n = 0; n < bullets.Count; n++)
             {
+                if (!bullets[n].activeSelf)
+                {
+                    float xPos = 0;
+                    float yPos = 0;
+                    SpearRandomSpawn(out xPos, xOffset, out yPos, yOffset);
 
+                    datas[n].bulletType = pattern;
+                    bullets[n].SetActive(true);
+                    bullets[n].transform.position = BattleScene.instance.center.position + new Vector3(xPos, yPos, 0f);
+                }
+                yield return new WaitForSeconds(1.5f);
             }
         }
 
@@ -258,5 +267,27 @@ public class BulletPattern
 
         yield return new WaitForSeconds(1f);
         PatternEnding();
+    }
+
+    void SpearRandomSpawn(out float xValue, float xOffset, out float yValue, float yOffset)
+    {
+        xValue = 0;
+        yValue = 0;
+
+        xValue = Random.Range(-1f, 1f) * xOffset;
+        yValue = Random.Range(-1f, 1f) * yOffset;
+        Bounds playArea = BattleScene.instance.playArea.GetComponent<BoxCollider2D>().bounds;
+
+        if (xValue < playArea.min.x || xValue > playArea.max.x || yValue < playArea.min.y || yValue > playArea.max.y)
+        {
+            
+        }
+        else
+        {
+            xValue = Mathf.Clamp(xValue, Mathf.Abs(xOffset), Mathf.Abs(xOffset + 3f));
+            yValue = Mathf.Clamp(yValue, Mathf.Abs(yOffset), Mathf.Abs(yOffset + 3f));
+        }
+
+        Debug.Log(xValue + "          " + yValue);
     }
 }
