@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletHellSpawner : MonoBehaviour {
 
     public BulletPattern[] patterns;
+    private int patternIndex = 0;
 
 	void Start () {
         for (int i = 0; i < patterns.Length; i++)
@@ -19,6 +20,8 @@ public class BulletHellSpawner : MonoBehaviour {
         BattleState.BattleEnded += DisableAllBullets;
         BulletPattern.PatternEnded += DisableAllBullets;
 
+        patternIndex = 0;
+
         for (int i = 0; i < patterns.Length; i++)
         {
             patterns[i].InstantiateBullets();
@@ -30,6 +33,8 @@ public class BulletHellSpawner : MonoBehaviour {
         BattleScene.EnemysTurn -= StartNextAttack;
 		BattleState.BattleEnded -= DisableAllBullets;
         BulletPattern.PatternEnded -= DisableAllBullets;
+
+        patternIndex = 0;
 
         for (int i = 0; i < patterns.Length; i++)
         {
@@ -56,7 +61,12 @@ public class BulletHellSpawner : MonoBehaviour {
     IEnumerator DelayPattern()
     {
         yield return new WaitForSeconds(0.5f);
-        patterns[0].PlayPattern();
+        patterns[patternIndex].PlayPattern();
+        patternIndex++;
+        if(patternIndex >= patterns.Length)
+        {
+            patternIndex = 0;
+        }
     }
 
     /*

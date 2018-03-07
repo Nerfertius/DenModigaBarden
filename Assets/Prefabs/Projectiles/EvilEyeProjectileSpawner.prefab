@@ -87,11 +87,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
-  startScale: {x: 0, y: 0}
+  startScale: {x: 0, y: 0, z: 0}
   startDirection: {x: 0, y: 0}
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   startSpeed: 2.5
+  destroyable: 0
   childProjectile: 0
   childController: {fileID: 9100000, guid: 5a086a92a0afe044c9fddc787da690bf, type: 2}
   direction: {x: 0, y: 0}

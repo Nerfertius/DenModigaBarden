@@ -69,10 +69,10 @@ public class CameraFX : MonoBehaviour {
     IEnumerator ZoomInFX (float duration)
 	{
 		while (timer < duration) {
-			timer += 0.05f;
+            timer += 0.05f;
 
-			renderScreen.localScale += new Vector3(500 * Time.unscaledDeltaTime, 500 * Time.unscaledDeltaTime, 0);
-			renderScreen.Rotate(0,0,1000*Time.unscaledDeltaTime);
+			renderScreen.localScale += new Vector3(250 * Time.fixedUnscaledDeltaTime, 250 * Time.fixedUnscaledDeltaTime, 0);
+			renderScreen.Rotate(0,0,500*Time.fixedUnscaledDeltaTime);
 			yield return new WaitForSecondsRealtime(0.05f);
 		}
 

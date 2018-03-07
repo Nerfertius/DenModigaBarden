@@ -52,14 +52,17 @@ public class BulletData : Data {
 			case BulletPattern.PatternType.GoblinBite:
 				StartCoroutine (BiteBehaviour ());
 				break;
-			case BulletPattern.PatternType.EvilEyeHoming:
-				StartCoroutine (HomingBehaviour ());
+			case BulletPattern.PatternType.EvilEyeSpiral:
+				StartCoroutine (CirclingSpiralBehaviour ());
 				break;
             case BulletPattern.PatternType.GargoyleStomp:
                 StartCoroutine(StompBehaviour());
                 break;
             case BulletPattern.PatternType.KoboldSpearAttack:
                 StartCoroutine(LockOnSpearBehaviour());
+                break;
+            case BulletPattern.PatternType.EvilEyeCenter:
+                StartCoroutine(CirclingCenterBehaviour());
                 break;
 			default:
 				break;
@@ -110,26 +113,8 @@ public class BulletData : Data {
         StartCoroutine(FadeOut());
     }
 
-    IEnumerator HomingBehaviour ()
+    IEnumerator CirclingSpiralBehaviour ()
 	{
-		/*float travelDistance = 0;
-		float maxTravelDistance = 1f;
-
-		for (int i = 0; i < 5; i++) {
-			//Vector2 targetPos = TopDownController.Cadenza.position;
-			while (travelDistance < maxTravelDistance) {
-				travelDistance += speed * Time.deltaTime;
-				transform.position += new Vector3(0, -1 * speed * Time.deltaTime, 0);
-				//transform.position = Vector2.MoveTowards (transform.position, targetPos, speed * Time.deltaTime);
-				yield return null;
-			}
-
-
-
-            yield return new WaitForSeconds(1);
-            travelDistance = 0;
-        }*/
-
         yield return new WaitForSeconds(0.5f);
 		for (int n = 0; n < 42; n++) {
 			for (int m = 0; m < bullets.Count; m++) {
@@ -141,11 +126,36 @@ public class BulletData : Data {
 					bullets[m].SetActive(true);
 					bullets[m].transform.localPosition = transform.position;
 					datas[m].speed = 2f;
-					yield return new WaitForSeconds(0.15f);
-					break;
+                    yield return new WaitForSeconds(0.15f);
+                    break;
 				}
 			}
 		}
+
+        yield return new WaitForSeconds(2);
+        StartCoroutine(FadeOut());
+    }
+    IEnumerator CirclingCenterBehaviour()
+    {
+        yield return new WaitForSeconds(0.5f);
+        for (int n = 0; n < 35; n++)
+        {
+            for (int m = 0; m < bullets.Count; m++)
+            {
+                if (!bullets[m].activeSelf)
+                {
+                    datas[m].destroyable = true;
+                    datas[m].childProjectile = true;
+                    datas[m].direction = Vector3.Normalize(BattleScene.instance.center.position - transform.position);
+                    datas[m].anim.runtimeAnimatorController = childController;
+                    bullets[m].SetActive(true);
+                    bullets[m].transform.localPosition = transform.position;
+                    datas[m].speed = 2.5f;
+                    yield return new WaitForSeconds(0.25f);
+                    break;
+                }
+            }
+        }
 
         yield return new WaitForSeconds(2);
         StartCoroutine(FadeOut());

@@ -14,5 +14,5 @@ MonoBehaviour:
   enemyIndex: 3
   battleBackground: {fileID: 0}
   battleMusic: {fileID: 0}
-  escapeChance: 20
-  enemyHP: 5
+  escapeChance: 25
+  enemyHP: 3
