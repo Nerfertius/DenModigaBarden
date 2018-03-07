@@ -189,10 +189,9 @@ public class BulletData : Data {
     IEnumerator LockOnSpearBehaviour()
     {
         float timer = 0;
-        float lockOnTime = Random.Range(0.8f, 2f);
+        float lockOnTime = 1f;
         float travelDistance = 0;
-        float maxTravelDistance = 8f;
-        float velocity;
+        float maxTravelDistance = 2f;
 
         while (timer < lockOnTime)
         {
@@ -201,12 +200,11 @@ public class BulletData : Data {
             timer += Time.deltaTime;
             yield return null;
         }
+        yield return new WaitForSeconds(0.2f);
         while (timer >= lockOnTime && travelDistance < maxTravelDistance)
         {
-            speed += (speed + 1f) * Time.deltaTime;
-            velocity = direction.y * speed * Time.deltaTime;
-            transform.position += new Vector3(0, velocity, 0);
-            travelDistance += Mathf.Abs(velocity);
+            transform.Translate(Vector2.down * 10 * Time.deltaTime);
+            travelDistance += Time.deltaTime;
             yield return null;
         }
 

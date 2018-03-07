@@ -82,7 +82,7 @@ public class BulletPattern
                 spawner.StartCoroutine(GargoyleStompPattern(5));
                 break;
             case PatternType.KoboldSpearAttack:
-                spawner.StartCoroutine(KoboldSpearAttack(8));
+                spawner.StartCoroutine(KoboldSpearAttack(1000));
                 break;
             case PatternType.EvilEyeCenter:
                 spawner.StartCoroutine(CirclingCenterPattern(BattleScene.instance.center.position));
@@ -248,9 +248,7 @@ public class BulletPattern
     IEnumerator KoboldSpearAttack(int times)
     {
         activeCoroutines++;
-
-        float xOffset = 11f;
-        float yOffset = 8f;
+        bool axisToggle = false;
 
         for (int i = 0; i < times; i++)
         {
@@ -260,18 +258,20 @@ public class BulletPattern
                 {
                     float xPos = 0;
                     float yPos = 0;
-                    SpearRandomSpawn(out xPos, xOffset, out yPos, yOffset);
+                    SpearRandomSpawn(out xPos, out yPos, axisToggle);
+                    axisToggle = !axisToggle;
 
                     datas[n].bulletType = pattern;
-                    bullets[n].SetActive(true);
                     bullets[n].transform.position = BattleScene.instance.center.position + new Vector3(xPos, yPos, 0f);
+                    bullets[n].SetActive(true);
+                    break;
                 }
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
 
+        yield return new WaitForSeconds(4f);
         PatternEnding();
-        yield return null;
     }
 
     IEnumerator GoblinBitePattern(float times, float xAmount, Vector2 offset, Vector2 direction)
@@ -319,25 +319,50 @@ public class BulletPattern
         PatternEnding();
     }
 
-    void SpearRandomSpawn(out float xValue, float xOffset, out float yValue, float yOffset)
+    void SpearRandomSpawn(out float xValue, out float yValue, bool axisToggle)
     {
+        bool xRand = (Random.Range(-1f, 1f) > 0);
+        bool yRand = (Random.Range(-1f, 1f) > 0);
+        Bounds playArea = BattleScene.instance.playArea.GetComponent<BoxCollider2D>().bounds;
+
         xValue = 0;
         yValue = 0;
 
-        xValue = Random.Range(-1f, 1f) * xOffset;
-        yValue = Random.Range(-1f, 1f) * yOffset;
-        Bounds playArea = BattleScene.instance.playArea.GetComponent<BoxCollider2D>().bounds;
-
-        if (xValue < playArea.min.x || xValue > playArea.max.x || yValue < playArea.min.y || yValue > playArea.max.y)
+        if (axisToggle)
         {
+
+            xValue = Random.Range((-playArea.size.x * 0.5f) - 2f, (playArea.size.x * 0.5f) + 2f);
+
+            if (yRand)
+            {
+                yValue = Random.Range(playArea.size.y * 0.5f, (playArea.size.y * 0.5f) + 3f);
+            }
+            else
+            {
+                yValue = Random.Range(-playArea.size.y * 0.5f, (-playArea.size.y * 0.5f) - 3f);
+            }
+        }
+        else if (!axisToggle)
+        {
+            yValue = Random.Range((-playArea.size.y * 0.5f) - 3f, (playArea.size.y * 0.5f) + 3f);
+
+            if (xRand)
+            {
+                xValue = Random.Range(playArea.size.x * 0.5f, (playArea.size.x * 0.5f) + 2f);
+            }
+            else
+            {
+                xValue = Random.Range(-playArea.size.x * 0.5f, (-playArea.size.x * 0.5f) - 2f);
+            }
             
         }
-        else
-        {
-            xValue = Mathf.Clamp(xValue, Mathf.Abs(xOffset), Mathf.Abs(xOffset + 3f));
-            yValue = Mathf.Clamp(yValue, Mathf.Abs(yOffset), Mathf.Abs(yOffset + 3f));
-        }
+        
 
-        Debug.Log(xValue + "          " + yValue);
+        //Debug.Log("xValue: " + xValue + "     " + "YValue: " + yValue);
+        
+        if ((xValue > playArea.min.x && xValue < playArea.max.x) || (yValue > playArea.min.y && yValue < playArea.max.y))
+        {
+            Debug.Log("Wiiiiiie");
+        }
     }
 }
