@@ -88,6 +88,7 @@ public class PlayerData : Data
     // Materials
     [HideInInspector] public PhysicsMaterial2D defaultMat;
     [HideInInspector] public PhysicsMaterial2D fullFriction;
+    [HideInInspector] public PhysicsMaterial2D noFriction;
 
     [HideInInspector] public float groundCheckRadius;
 
@@ -253,6 +254,7 @@ public class PlayerData : Data
         
         defaultMat = Resources.Load("Materials/Default") as PhysicsMaterial2D;
         fullFriction = Resources.Load("Materials/FullFriction") as PhysicsMaterial2D;
+        noFriction = Resources.Load("Materials/NoFriction") as PhysicsMaterial2D;
         body.sharedMaterial = defaultMat;
 
         melodyData.Start();
@@ -330,7 +332,8 @@ public class PlayerData : Data
     public IEnumerator Respawn()
     {
         CameraFX.FadeIn();
-        yield return new WaitForSeconds(1);
+        body.velocity = Vector2.zero;
+        yield return new WaitForSeconds(0.4f);
         transform.position = new Vector2(respawnLocation.position.x, respawnLocation.GetComponent<SpriteRenderer>().bounds.max.y);
         body.velocity = Vector2.zero;
         jumping = false;

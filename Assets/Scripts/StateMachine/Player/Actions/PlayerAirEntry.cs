@@ -9,6 +9,7 @@ public class PlayerAirEntry : StateAction
     {
         PlayerData data = (PlayerData)controller.data;
         data.body.gravityScale = 1;
+        data.body.sharedMaterial = data.noFriction;
        
         if (data.jumping == false)
         {

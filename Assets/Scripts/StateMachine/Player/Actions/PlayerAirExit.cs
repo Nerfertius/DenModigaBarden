@@ -11,5 +11,6 @@ public class PlayerAirExit : StateAction
         data.falling = false;
         data.jumping = false;
         data.body.velocity = new Vector2(data.body.velocity.x, 0);
+        data.body.sharedMaterial = data.defaultMat;
     }
 }

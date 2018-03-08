@@ -8,7 +8,7 @@ public class Killbox : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            StartCoroutine(collision.GetComponent<PlayerData>().Respawn());
+            StartCoroutine(PlayerData.player.Respawn());
         }
     }
 }
