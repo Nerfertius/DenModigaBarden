@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212443757653551506}
   - component: {fileID: 95367235148324614}
   - component: {fileID: 114092335119204358}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: EvilEyeProjectileSmall
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

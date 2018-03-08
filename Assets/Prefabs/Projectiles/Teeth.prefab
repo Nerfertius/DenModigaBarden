@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212487739148950722}
   - component: {fileID: 114459149976539234}
   - component: {fileID: 70269367576471022}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Teeth
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

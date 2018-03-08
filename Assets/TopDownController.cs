@@ -7,7 +7,7 @@ public class TopDownController : MonoBehaviour
     public static Transform Cadenza;
     public static bool controllable;
     public float speed;
-    public Vector2 direction;
+    private Vector2 direction;
 
     private Vector3 startPos;
     private SpriteRenderer sprRend;

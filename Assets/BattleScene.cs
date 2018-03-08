@@ -20,6 +20,7 @@ public class BattleScene : MonoBehaviour
     public Sprite[] activatedSprites;
     private List<Sprite> deactivatedSprites = new List<Sprite>();
     public Transform center, topLeft, topRight, playArea;
+    public Bounds playAreaBounds;
 
     public delegate void EnemysTurnEventHandler();
     public static event EnemysTurnEventHandler EnemysTurn;
@@ -50,6 +51,14 @@ public class BattleScene : MonoBehaviour
         foreach (SpriteRenderer button in buttons)
         {
             deactivatedSprites.Add(button.sprite);
+        }
+
+        if (playArea != null)
+        {
+            playAreaBounds = playArea.GetComponent<BoxCollider2D>().bounds;
+        } else
+        {
+            Debug.LogWarning("PlayArea not set, some bullet patterns might not work as intended");
         }
 
         battleText = battleTextbox.GetComponentInChildren<Text>();

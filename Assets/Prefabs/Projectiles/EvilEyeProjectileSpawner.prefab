@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 95720320159214220}
   - component: {fileID: 114147879714970076}
   - component: {fileID: 58475055484579044}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: EvilEyeProjectileSpawner
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

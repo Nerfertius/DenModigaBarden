@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4551545590585828}
+  - component: {fileID: 114245167443789926}
   m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
@@ -85,6 +86,7 @@ GameObject:
   - component: {fileID: 212507441419234696}
   - component: {fileID: 95337557467476490}
   - component: {fileID: 114698530510045922}
+  - component: {fileID: 114437316937567032}
   m_Layer: 0
   m_Name: Gargoyle
   m_TagString: Untagged
@@ -103,6 +105,7 @@ GameObject:
   - component: {fileID: 212592907225257674}
   - component: {fileID: 95113887238060972}
   - component: {fileID: 114512484542610588}
+  - component: {fileID: 114478879473045106}
   m_Layer: 0
   m_Name: Kobold
   m_TagString: Untagged
@@ -121,6 +124,7 @@ GameObject:
   - component: {fileID: 212161522213119574}
   - component: {fileID: 95345517260379436}
   - component: {fileID: 114179730638555252}
+  - component: {fileID: 114006043438946586}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -143,6 +147,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1386203280586646
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4658555324982848}
+  - component: {fileID: 61588199146956706}
+  m_Layer: 0
+  m_Name: PlayArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1482737112801684
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +176,7 @@ GameObject:
   - component: {fileID: 61915815878980108}
   - component: {fileID: 61880610030659122}
   - component: {fileID: 212028448546572400}
+  - component: {fileID: 331796215801215402}
   m_Layer: 0
   m_Name: Battlefield
   m_TagString: Untagged
@@ -174,6 +195,7 @@ GameObject:
   - component: {fileID: 212188190628339688}
   - component: {fileID: 95304125618389284}
   - component: {fileID: 114773795657624414}
+  - component: {fileID: 114985925237699810}
   m_Layer: 0
   m_Name: Evil Eye
   m_TagString: Untagged
@@ -325,6 +347,19 @@ Transform:
   m_Father: {fileID: 4944824426529478}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4658555324982848
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386203280586646}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4842239670009840}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4739925323218570
 Transform:
   m_ObjectHideFlags: 1
@@ -377,6 +412,7 @@ Transform:
   - {fileID: 4551545590585828}
   - {fileID: 4011419531131104}
   - {fileID: 4980793434316760}
+  - {fileID: 4658555324982848}
   m_Father: {fileID: 4944824426529478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -473,6 +509,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.025, y: 1}
+  m_EdgeRadius: 0
+--- !u!61 &61588199146956706
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386203280586646}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.25}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 12, y: 6}
   m_EdgeRadius: 0
 --- !u!61 &61852807837135038
 BoxCollider2D:
@@ -632,6 +693,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114006043438946586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1346072310856596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14417ccdae6a58b438f8e194f4ed6901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songText:
+  - You played the Song of the Sleeping Beauty
+  - Goblin is getting drowzy...
+  songWinText:
+  - You played the Song of the Sleeping Beauty
+  - Goblin fell asleep...
+  runSuccessText: You ran away from Goblin!
+  runFailedText: Goblin is staring at you...
 --- !u!114 &114179730638555252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,11 +723,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa25ef4e2bdabb44896bce9ead4e1c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1829511287966880, guid: 5cf01d12166ab7f4fa50126e5a6bf012,
-    type: 2}
-  poolSize: 30
   patterns:
-  - pattern: 0
+  - bulletPrefab: {fileID: 1829511287966880, guid: 5cf01d12166ab7f4fa50126e5a6bf012,
+      type: 2}
+    poolSize: 20
+    pattern: 0
+--- !u!114 &114245167443789926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1030383717242610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0f3e467a3e29144bc03c4f51635a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114268978523746026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -659,7 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87fcd988c7176c4e8ef03ef203feb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleMusic: {fileID: 8300000, guid: 3cba05d537546464c8e9df344e7151c6, type: 3}
+  battleMusic: {fileID: 8300000, guid: ffb14dc193477874d93e7b8bfed931ac, type: 3}
   buttonMoveSound: {fileID: 8300000, guid: b235efa8910fa6b49bf027d7f290f527, type: 3}
   buttonSelectSound: {fileID: 8300000, guid: 6350067b6d61c3947b4e376eff5bb01b, type: 3}
   escapeChance: 0
@@ -681,6 +772,48 @@ MonoBehaviour:
   center: {fileID: 4551545590585828}
   topLeft: {fileID: 4011419531131104}
   topRight: {fileID: 4980793434316760}
+  playArea: {fileID: 4658555324982848}
+  playAreaBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+--- !u!114 &114437316937567032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1311445141881422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14417ccdae6a58b438f8e194f4ed6901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songText:
+  - You played the Song of the Great Mana
+  - Gargoyle is getting slower...
+  songWinText:
+  - You played the Song of the Great Mana
+  - Gargoyle is frozen in place!
+  runSuccessText: 
+  runFailedText: Gargoyle is intent on crushing you
+--- !u!114 &114478879473045106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344588224936460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14417ccdae6a58b438f8e194f4ed6901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songText:
+  - You played the Song of the Sleeping Beauty
+  - Kobold is getting drowzy...
+  songWinText:
+  - You played the Song of the Sleeping Beauty
+  - Kobold fell asleep...
+  runSuccessText: You ran away from Kobold!
+  runFailedText: Kobold is chasing after you!
 --- !u!114 &114512484542610588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -692,11 +825,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa25ef4e2bdabb44896bce9ead4e1c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1829511287966880, guid: 5cf01d12166ab7f4fa50126e5a6bf012,
-    type: 2}
-  poolSize: 30
   patterns:
-  - pattern: 0
+  - bulletPrefab: {fileID: 1373743225255090, guid: 174cd9f0f714ebb45a4ef2860d2795ba,
+      type: 2}
+    poolSize: 20
+    pattern: 3
 --- !u!114 &114698530510045922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -708,11 +841,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa25ef4e2bdabb44896bce9ead4e1c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1829511287966880, guid: 5cf01d12166ab7f4fa50126e5a6bf012,
-    type: 2}
-  poolSize: 30
   patterns:
-  - pattern: 0
+  - bulletPrefab: {fileID: 1291251298173268, guid: 1ea7b3806fbb000469e6526bb6204291,
+      type: 2}
+    poolSize: 6
+    pattern: 2
 --- !u!114 &114737010104915944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,11 +870,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa25ef4e2bdabb44896bce9ead4e1c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1049101994318490, guid: 541639605898a474db597c467ab9e132,
-    type: 2}
-  poolSize: 100
   patterns:
-  - pattern: 1
+  - bulletPrefab: {fileID: 1049101994318490, guid: 541639605898a474db597c467ab9e132,
+      type: 2}
+    poolSize: 70
+    pattern: 1
+  - bulletPrefab: {fileID: 1049101994318490, guid: 541639605898a474db597c467ab9e132,
+      type: 2}
+    poolSize: 140
+    pattern: 4
+--- !u!114 &114985925237699810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528832702868052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14417ccdae6a58b438f8e194f4ed6901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songText:
+  - You played the Song of the Sleeping Beauty
+  - Evil Eye is getting drowzy...
+  songWinText:
+  - You played the Song of the Sleeping Beauty
+  - Evil Eye fell asleep...
+  runSuccessText: Evil Eye ignored you and flew away!
+  runFailedText: Evil Eye is following you...
 --- !u!212 &212028448546572400
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1200,3 +1356,46 @@ RectTransform:
   m_AnchoredPosition: {x: 4, y: -4.5}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!331 &331796215801215402
+SpriteMask:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482737112801684}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e02ed09b49158114388cdcc967e6dc0b, type: 3}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0

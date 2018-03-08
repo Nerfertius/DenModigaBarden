@@ -82,7 +82,7 @@ public class BulletPattern
                 spawner.StartCoroutine(GargoyleStompPattern(5));
                 break;
             case PatternType.KoboldSpearAttack:
-                spawner.StartCoroutine(KoboldSpearAttack(1000));
+                spawner.StartCoroutine(KoboldSpearAttack(10));
                 break;
             case PatternType.EvilEyeCenter:
                 spawner.StartCoroutine(CirclingCenterPattern(BattleScene.instance.center.position));
@@ -143,7 +143,7 @@ public class BulletPattern
             }
         }
 
-        yield return new WaitForSeconds(12.5f);
+        yield return new WaitForSeconds(10f);
         PatternEnding();
     }
 
@@ -190,7 +190,7 @@ public class BulletPattern
             }
         }
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(12.5f);
         PatternEnding();
     }
 
@@ -266,7 +266,7 @@ public class BulletPattern
                     bullets[n].SetActive(true);
                     break;
                 }
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.2f);
             }
         }
 
@@ -321,9 +321,9 @@ public class BulletPattern
 
     void SpearRandomSpawn(out float xValue, out float yValue, bool axisToggle)
     {
-        bool xRand = (Random.Range(-1f, 1f) > 0);
-        bool yRand = (Random.Range(-1f, 1f) > 0);
-        Bounds playArea = BattleScene.instance.playArea.GetComponent<BoxCollider2D>().bounds;
+        bool xRand = Random.value > 0.5f;
+        bool yRand = Random.value > 0.5f;
+        Bounds playArea = BattleScene.instance.playAreaBounds;
 
         xValue = 0;
         yValue = 0;
@@ -335,11 +335,11 @@ public class BulletPattern
 
             if (yRand)
             {
-                yValue = Random.Range(playArea.size.y * 0.5f, (playArea.size.y * 0.5f) + 3f);
+                yValue = Random.Range(playArea.size.y * 0.5f + 1f, (playArea.size.y * 0.5f) + 3f);
             }
             else
             {
-                yValue = Random.Range(-playArea.size.y * 0.5f, (-playArea.size.y * 0.5f) - 3f);
+                yValue = Random.Range(-playArea.size.y * 0.5f - 1f, (-playArea.size.y * 0.5f) - 3f);
             }
         }
         else if (!axisToggle)

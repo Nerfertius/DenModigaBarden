@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212857603994422628}
   - component: {fileID: 114381276817839748}
   - component: {fileID: 60159458597467424}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: GargoyleFoot
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

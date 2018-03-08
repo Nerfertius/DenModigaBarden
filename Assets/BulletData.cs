@@ -203,7 +203,7 @@ public class BulletData : Data {
         yield return new WaitForSeconds(0.2f);
         while (timer >= lockOnTime && travelDistance < maxTravelDistance)
         {
-            transform.Translate(Vector2.down * 10 * Time.deltaTime);
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
             travelDistance += Time.deltaTime;
             yield return null;
         }
