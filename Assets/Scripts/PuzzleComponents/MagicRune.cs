@@ -2,51 +2,89 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicRune : MonoBehaviour {
+public class MagicRune : MonoBehaviour
+{
 
-    private Collider2D collider;
-    private SpriteRenderer renderer;
+    private Collider2D coll;
+    private SpriteRenderer rend;
 
     public float cooldown;
-    private Timer cooldownTimer;
-
-    public Color inactiveColor;
-    private Color defaultColor;
 
     public ParticleSystem onTriggerEffect;
 
     private PlayerDamageData playerDamageData;
 
+    private bool doOnce;
 
-    void Start() {
-        cooldownTimer = new Timer(cooldown);
-        cooldownTimer.Start();
-        cooldownTimer.InstantFinish();
-        collider = GetComponent<CircleCollider2D>();
-        renderer = GetComponent<SpriteRenderer>();
-        defaultColor = renderer.color;
+    void Start()
+    {
+        coll = GetComponent<CircleCollider2D>();
+        rend = GetComponent<SpriteRenderer>();
         playerDamageData = GetComponent<PlayerDamageData>();
+
+
+
+        PlayerPlayMelody.PlayedMagicResist += SetToHarmless;
+        PlayerPlayMelody.StoppedPlaying += SetToHarmful;
     }
 
-    void Update() {
-        if (cooldownTimer.IsDone()) {
-            renderer.color = defaultColor;
-            playerDamageData.harmful = true;
-        }
+    private void OnDestroy()
+    {
+        PlayerPlayMelody.PlayedMagicResist -= SetToHarmless;
+        PlayerPlayMelody.StoppedPlaying -= SetToHarmful;
     }
 
-	public void OnTriggerStay2D(Collider2D coll) {
-        if(coll.tag == "Player" && cooldownTimer.IsDone() && playerDamageData.harmful) {
-            //coll.GetComponent<StateController>().OnTriggerStay2D(this.collider);
-            cooldownTimer.Start();
-            renderer.color = inactiveColor;
-            StartCoroutine(setAsNotHarmful());
+    public void OnTriggerStay2D(Collider2D coll)
+    {
+        if (coll.tag == "Player" && playerDamageData.harmful && !doOnce)
+        {
+            doOnce = true;
+            StartCoroutine(SetAsNotHarmful());
             Instantiate(onTriggerEffect, transform.position, Quaternion.identity);
         }
     }
 
-    private IEnumerator setAsNotHarmful() {
-        yield return new WaitForEndOfFrame();
+    private void SetToHarmless()
+    {
+        StopAllCoroutines();
+        StartCoroutine(SetAsNotHarmful());
+    }
+
+    private void SetToHarmful()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeIn());
+    }
+
+    private IEnumerator SetAsNotHarmful()
+    {
+        yield return new WaitForSeconds(0.1f);
         playerDamageData.harmful = false;
+        doOnce = false;
+        Color newColor = rend.color;
+        while (rend.color.r > 0)
+        {
+            newColor.r -= Time.deltaTime;
+            newColor.g -= Time.deltaTime;
+            newColor.b -= Time.deltaTime;
+            rend.color = newColor;
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(cooldown);
+        StartCoroutine(FadeIn());
+    }
+
+    IEnumerator FadeIn()
+    {
+        Color newColor = rend.color;
+        while (rend.color.r < 1)
+        {
+            newColor.r += Time.deltaTime;
+            newColor.g += Time.deltaTime;
+            newColor.b += Time.deltaTime;
+            rend.color = newColor;
+            yield return new WaitForEndOfFrame();
+        }
+        playerDamageData.harmful = true;
     }
 }
