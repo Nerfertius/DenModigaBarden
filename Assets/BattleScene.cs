@@ -11,10 +11,13 @@ public class BattleScene : MonoBehaviour
     public AudioClip buttonMoveSound;
     public AudioClip buttonSelectSound;
     [HideInInspector] public int escapeChance;
-    [HideInInspector] public int enemyHP;
 
+
+    public SpriteRenderer topBackground;
     public GameObject battleTextbox;
+    public Image enemyHPBar;
     public GameObject[] enemies;
+    private List<Animator> enemiesAnim = new List<Animator>();
     private List<BattleText> textStrings = new List<BattleText>();
     public SpriteRenderer[] buttons;
     public Sprite[] activatedSprites;
@@ -26,6 +29,8 @@ public class BattleScene : MonoBehaviour
     public static event EnemysTurnEventHandler EnemysTurn;
 
     private Text battleText;
+    private float enemyMaxHP;
+    private float enemyCurrentHP;
     private bool playersTurn;
     private bool axisDown;
     private int currentButtonIndex;
@@ -46,6 +51,7 @@ public class BattleScene : MonoBehaviour
         {
             enemy.SetActive(false);
             textStrings.Add(enemy.GetComponent<BattleText>());
+            enemiesAnim.Add(enemy.GetComponent<Animator>());
         }
 
         foreach (SpriteRenderer button in buttons)
@@ -77,8 +83,14 @@ public class BattleScene : MonoBehaviour
             enemy.SetActive(false);
         }
 
+        foreach (Animator anim in enemiesAnim)
+        {
+            anim.SetBool("Sleeping", false);
+        }
+
         playersTurn = false;
         battleTextbox.SetActive(false);
+        enemyHPBar.fillAmount = 1;
         buttons[currentButtonIndex].sprite = deactivatedSprites[currentButtonIndex];
         currentButtonIndex = 0;
         lastButtonIndex = 0;
@@ -101,16 +113,19 @@ public class BattleScene : MonoBehaviour
                 }
                 else if (currentButtonIndex == 1)
                 {
-                    if (enemyHP > 0)
+                    enemyCurrentHP--;
+                    StartCoroutine(HealthReduction());
+                    enemyHPBar.gameObject.SetActive(true);
+                    if (enemyCurrentHP > 0)
                     {
-                        enemyHP--;
                         string[] texts = textStrings[enemyIndex].songText;
                         StartCoroutine(ShowBattleText(texts, 1.5f, false));
                     }
-                    else if (enemyHP <= 0)
+                    else if (enemyCurrentHP <= 0)
                     {
                         string[] texts = textStrings[enemyIndex].songWinText;
                         StartCoroutine(ShowBattleText(texts, 1.5f, true));
+                        enemiesAnim[enemyIndex].SetBool("Sleeping", true);
                     }
                 }
                 else if (currentButtonIndex == buttons.Length - 1)
@@ -128,6 +143,15 @@ public class BattleScene : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    IEnumerator HealthReduction()
+    {
+        for (float value = enemyHPBar.fillAmount; value >= enemyCurrentHP / enemyMaxHP; value -= 0.01f)
+        {
+            enemyHPBar.fillAmount = value;
+            yield return new WaitForSeconds(0.02f);
         }
     }
     
@@ -149,6 +173,8 @@ public class BattleScene : MonoBehaviour
         {
             GameManager.instance.switchState(new PlayState(GameManager.instance));
         }
+        
+        enemyHPBar.gameObject.SetActive(false);
     }
 
     IEnumerator ShowBattleText(string text, float duration, bool leaveBattle)
@@ -203,6 +229,10 @@ public class BattleScene : MonoBehaviour
         }
     }
 
+    public void SetTopBackground(Sprite spr)
+    {
+        topBackground.sprite = spr;
+    }
     public void SetBackground(Sprite spr)
     {
         sprRend.sprite = spr;
@@ -216,6 +246,12 @@ public class BattleScene : MonoBehaviour
     public void SetEnemy(int index)
     {
         enemyIndex = Mathf.Clamp(index, 0, enemies.Length - 1);
+    }
+
+    public void SetEnemyHP(int hp)
+    {
+        enemyMaxHP = hp;
+        enemyCurrentHP = hp;
     }
 
     public void StartBattleMusic()

@@ -11,6 +11,7 @@ public class EnemyData : MelodyInteractableData
     public float attackRange;
     public bool behaveAsHitbox;
     public bool childCollided;
+    public Sprite battleTopBackground;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public StateController controller;

@@ -15,10 +15,15 @@ public class EnterBattleSystem : StateAction
     {
         EnemyData eData = (EnemyData)controller.data;
 
+        if(eData.battleTopBackground != null)
+        {
+            BattleScene.instance.SetTopBackground(eData.battleTopBackground);
+        }
+
         BattleScene.caller = controller.gameObject;
         BattleScene.instance.SetEnemy(enemyIndex);
+        BattleScene.instance.SetEnemyHP(enemyHP);
         BattleScene.instance.escapeChance = escapeChance;
-        BattleScene.instance.enemyHP = enemyHP;
 
         if(battleBackground != null)
         {

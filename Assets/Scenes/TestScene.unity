@@ -280,25 +280,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75e00b2a9e8ab1649b70fe202ab782b8, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &129357312 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1710779718442450, guid: 61cd7de0723f9c140b12d1c4e84103e6,
-    type: 2}
-  m_PrefabInternal: {fileID: 413097159}
---- !u!114 &129357318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 129357312}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b59f614225fef514786c0b3f4b153995, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitSound: {fileID: 8300000, guid: 605f64da403625c4da07c754394fbdfa, type: 3}
-  activeTime: 1
-  layerName: Trap
 --- !u!4 &237572503 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4030984910743806, guid: e646678d4355a314594e9810a9cbd8d9,
@@ -454,6 +435,74 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &316195955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 316195956}
+  - component: {fileID: 316195958}
+  - component: {fileID: 316195957}
+  m_Layer: 5
+  m_Name: BattleEnemyHPBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &316195956
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316195955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 200, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1218658769}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 200}
+  m_SizeDelta: {x: 256, y: 16}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &316195957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316195955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.11724138, g: 1, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e02ed09b49158114388cdcc967e6dc0b, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &316195958
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316195955}
 --- !u!114 &321794505 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114994033544878884, guid: a2d2f8f2ef4817e4c97da62b656cbabb,
@@ -504,20 +553,19 @@ Prefab:
       propertyPath: battleTextbox
       value: 
       objectReference: {fileID: 1765377365}
-    - target: {fileID: 1710779718442450, guid: 61cd7de0723f9c140b12d1c4e84103e6, type: 2}
-      propertyPath: m_Layer
-      value: 13
+    - target: {fileID: 4944824426529478, guid: 61cd7de0723f9c140b12d1c4e84103e6, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114737010104915944, guid: 61cd7de0723f9c140b12d1c4e84103e6,
+    - target: {fileID: 4944824426529478, guid: 61cd7de0723f9c140b12d1c4e84103e6, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114268978523746026, guid: 61cd7de0723f9c140b12d1c4e84103e6,
         type: 2}
-      propertyPath: speed
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114737010104915944, guid: 61cd7de0723f9c140b12d1c4e84103e6,
-        type: 2}
-      propertyPath: direction.x
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: enemyHPBar
+      value: 
+      objectReference: {fileID: 316195957}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61cd7de0723f9c140b12d1c4e84103e6, type: 2}
   m_IsPrefabParent: 0
@@ -593,6 +641,22 @@ Transform:
   m_PrefabParentObject: {fileID: 4657775062587212, guid: 6e735bfc57b42c046a471425716cd00b,
     type: 2}
   m_PrefabInternal: {fileID: 766069087}
+--- !u!1 &587083288 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1482737112801684, guid: 61cd7de0723f9c140b12d1c4e84103e6,
+    type: 2}
+  m_PrefabInternal: {fileID: 413097159}
+--- !u!114 &587083296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587083288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17444e175f044604cbabd4ea49cab73d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &594275322
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +837,12 @@ Prefab:
       propertyPath: knockbackPower
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114370952378720996, guid: b2dda466810b6794a9ef0a9a0a7e69ef,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2dda466810b6794a9ef0a9a0a7e69ef, type: 2}
   m_IsPrefabParent: 0
@@ -1213,6 +1283,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114252480835615534, guid: 6e735bfc57b42c046a471425716cd00b,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e735bfc57b42c046a471425716cd00b, type: 2}
   m_IsPrefabParent: 0
@@ -3941,6 +4017,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9497b547ff5ff7d4499a1ffae504a5a0, type: 2}
+    - target: {fileID: 114367693822698130, guid: e89e51f22c41a9a49b325a7a3803cdbc,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 58f013fd55baae44d8a6a1a426366dcf,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e89e51f22c41a9a49b325a7a3803cdbc, type: 2}
   m_IsPrefabParent: 0
@@ -4107,6 +4189,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114010551126743276, guid: 63fc6826428a6d94387ca7b9a7faee9d,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 63fc6826428a6d94387ca7b9a7faee9d, type: 2}
   m_IsPrefabParent: 0

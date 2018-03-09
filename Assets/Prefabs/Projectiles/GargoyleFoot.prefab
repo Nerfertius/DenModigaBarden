@@ -154,6 +154,7 @@ MonoBehaviour:
   destroyable: 0
   childProjectile: 0
   childController: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 122cc8ef8c15ecf489982fc174b1b085, type: 3}
   direction: {x: 0, y: 0}
   bulletType: 0
 --- !u!212 &212857603994422628

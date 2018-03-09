@@ -16,7 +16,7 @@ public class BulletPattern
     public delegate void PatternEndedEventHandler();
     public static event PatternEndedEventHandler PatternEnded;
 
-    public enum PatternType { GoblinBite, EvilEyeSpiral, GargoyleStomp, KoboldSpearAttack, EvilEyeCenter}
+    public enum PatternType { GoblinBite, EvilEyeSpiral, GargoyleSmash, KoboldSpearAttack, EvilEyeCenter, GargoyleStomp }
     public PatternType pattern;
 
     private static int activeCoroutines = 0;
@@ -78,14 +78,17 @@ public class BulletPattern
             case PatternType.EvilEyeSpiral:
 				spawner.StartCoroutine(CirclingSpiralPattern(BattleScene.instance.center.position));
                 break;
-            case PatternType.GargoyleStomp:
-                spawner.StartCoroutine(GargoyleStompPattern(5));
+            case PatternType.GargoyleSmash:
+                spawner.StartCoroutine(GargoyleSmashPattern(5));
                 break;
             case PatternType.KoboldSpearAttack:
                 spawner.StartCoroutine(KoboldSpearAttack(10));
                 break;
             case PatternType.EvilEyeCenter:
                 spawner.StartCoroutine(CirclingCenterPattern(BattleScene.instance.center.position));
+                break;
+            case PatternType.GargoyleStomp:
+                spawner.StartCoroutine(GargoyleStompPattern());
                 break;
             default:
                 break;
@@ -107,6 +110,49 @@ public class BulletPattern
         }
     }
     
+    IEnumerator GargoyleStompPattern()
+    {
+        activeCoroutines++;
+
+        int spawned = 0;
+
+        /*
+        for (int z = 0; z < bullets.Count; z++)
+        {
+            if (!bullets[z].activeSelf)
+            {
+                spawned++;
+
+                datas[z].bulletType = pattern;
+                datas[z].SetReferences(bullets, datas);
+                bullets[z].SetActive(true);
+                float offset = 2.5f;
+                switch (spawned)
+                {
+                    case 1:
+                        bullets[z].transform.position = spawnPosition + new Vector3(-offset, 0, 0);
+                        break;
+                    case 2:
+                        bullets[z].transform.position = spawnPosition + new Vector3(offset, 0, 0);
+                        break;
+                    default:
+                        break;
+                }
+                bullets[z].transform.localScale = new Vector3(1, 1, 1);
+                bullets[z].transform.parent = BattleScene.instance.center;
+
+                if (spawned >= 2)
+                {
+                    break;
+                }
+            }
+        }
+        */
+
+        yield return new WaitForSeconds(10f);
+        PatternEnding();
+    }
+
     IEnumerator CirclingSpiralPattern(Vector3 spawnPosition)
     {
         activeCoroutines++;
@@ -194,7 +240,7 @@ public class BulletPattern
         PatternEnding();
     }
 
-    IEnumerator GargoyleStompPattern(int times)
+    IEnumerator GargoyleSmashPattern(int times)
     {
         activeCoroutines++;
 

@@ -14,6 +14,7 @@ public class OnHitEffect : MonoBehaviour
 	private SpriteRenderer sprRend;
 	private Color color;
 	private float timer;
+    private bool doOnce;
 
     public AudioClip hitSound;
 
@@ -56,13 +57,15 @@ public class OnHitEffect : MonoBehaviour
 		timer = activeTime;
 
         // Restore layer collission
+        doOnce = false;
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer(layerName), false);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Trap")
+        if (other.tag == "Trap" && doOnce == false)
         {
+            doOnce = true;
             AudioManager.PlayOneShot(hitSound);
             this.enabled = true;
         }

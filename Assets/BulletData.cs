@@ -7,7 +7,10 @@ public class BulletData : Data {
     public bool destroyable;
     public bool childProjectile;
     public RuntimeAnimatorController childController;
+    public AudioClip soundEffect;
+
     private float speed;
+    
 
     [HideInInspector] public Vector2 direction;
 	[HideInInspector] public BulletPattern.PatternType bulletType;
@@ -55,8 +58,8 @@ public class BulletData : Data {
 			case BulletPattern.PatternType.EvilEyeSpiral:
 				StartCoroutine (CirclingSpiralBehaviour ());
 				break;
-            case BulletPattern.PatternType.GargoyleStomp:
-                StartCoroutine(StompBehaviour());
+            case BulletPattern.PatternType.GargoyleSmash:
+                StartCoroutine(SmashBehaviour());
                 break;
             case BulletPattern.PatternType.KoboldSpearAttack:
                 StartCoroutine(LockOnSpearBehaviour());
@@ -87,7 +90,7 @@ public class BulletData : Data {
         this.datas = datas;
     }
 
-    IEnumerator StompBehaviour()
+    IEnumerator SmashBehaviour()
     {
         float travelDistance = 0;
         float maxTravelDistance = 1f;
@@ -108,7 +111,8 @@ public class BulletData : Data {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
-        CameraFX.Screenshake(0.05f, 0.25f, 0.25f);
+        AudioManager.PlayOneShot(soundEffect);
+        BattleBox.ShakeBox(0.5f, 0.10f, 0.10f);
 
         StartCoroutine(FadeOut());
     }
