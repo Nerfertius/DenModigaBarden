@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
-{
+public class AudioManager : MonoBehaviour {
     public GameObject audioSourceObject;
     public int numberOfpooledObjects;
 
@@ -28,21 +27,17 @@ public class AudioManager : MonoBehaviour
     //public mainly for testing purpose but could be nice anyway
     public AudioClip defaultBGM;
 
-    void Awake()
-    {
-        if (instance == null)
-        {
+    void Awake() {
+        if (instance == null) {
             DontDestroyOnLoad(transform.gameObject);
             instance = this;
         }
-        else
-        {
+        else {
             Debug.LogError("There should only be one audioManager " + this.gameObject);
         }
     }
 
-    private void Start()
-    {
+    private void Start() {
         audioSourcePool = new ComponentPool<AudioSource>(audioSourceObject, numberOfpooledObjects, this.transform);
         activeAudioSources = new LinkedList<AudioSource>();
 
@@ -143,7 +138,11 @@ public class AudioManager : MonoBehaviour
     // =========================== BGM =================================================================================
 
     public static void PlayBGM(AudioClip music) {
-        instance.bgm.Play(music); 
+        instance.bgm.Play(music);
+    }
+
+    public static void PlayBGM(AudioClip music, bool fadeInOnPlay) {
+        instance.bgm.Play(music, fadeInOnPlay);
     }
 
     public static void PlayDefaultBGM() {
@@ -165,12 +164,12 @@ public class AudioManager : MonoBehaviour
         instance.bgm.UseDefaultVolume();
     }
 
- // =========================== Notes =================================================================================
+    // =========================== Notes =================================================================================
     public static void PlayNote(AudioClip music) {
         instance.notes.Play(music);
     }
 
-//  =========================== Ambience =================================================================================
+    //  =========================== Ambience =================================================================================
     public static void PlayAmbience(AudioClip music) {
         instance.ambience.Play(music);
     }
@@ -179,7 +178,7 @@ public class AudioManager : MonoBehaviour
     public static IEnumerator AudioFade(AudioSource audioSource, float startVolume, float endVolume, float duration) {
         audioSource.volume = startVolume;
         Timer timer = new Timer(duration, false);
-        
+
         float volumeDiff = endVolume - startVolume;
         timer.Start();
         while (!timer.IsDone()) {
@@ -207,19 +206,23 @@ public class AudioManager : MonoBehaviour
         [HideInInspector] public bool useSoundEffectVolume = false;
         [Range(0, 1)]
         [Tooltip("Lower volume when playing flute to this percentage of volume (not used for notes)")]
-        [SerializeField] private float fadedVolume = 0.3f;
+        [SerializeField]
+        private float fadedVolume = 0.3f;
 
         [Tooltip("Volume fade speed per second when changing volume")]
-        [SerializeField] private float volumeFadeSpeed = 1f;
+        [SerializeField]
+        private float volumeFadeSpeed = 1f;
 
         [Tooltip("Fade out duration on AudioClip change")]
-        [SerializeField] private float fullFadeOutDuration = 0;
+        [SerializeField]
+        private float fullFadeOutDuration = 0;
 
         [SerializeField] private bool FadeInOnPlay = false;
         [SerializeField] private bool Loop = false;
 
         [Tooltip("On true, cancels previous audioclip and plays it again")]
-        [SerializeField] private bool AllowSameClip = true;
+        [SerializeField]
+        private bool AllowSameClip = true;
 
         private bool useFadedVolume = false;
 
@@ -235,12 +238,16 @@ public class AudioManager : MonoBehaviour
         }
 
         public void Play(AudioClip clip) {
-            
+            Play(clip, FadeInOnPlay);
+        }
+
+        public void Play(AudioClip clip, bool fadeInOnPlay) {
+
             if (current != null && !AllowSameClip && current.clip == clip) {
                 return;
             }
             AudioSource previous = current;
-            if(current != null) {
+            if (current != null) {
                 //fade out
                 AudioManager.instance.StartCoroutine(AudioManager.AudioFadeAndStop(current, current.volume, 0, fullFadeOutDuration));
             }
@@ -251,7 +258,7 @@ public class AudioManager : MonoBehaviour
                 current.loop = Loop;
                 current.clip = clip;
                 current.Play();
-                if (FadeInOnPlay) {
+                if (fadeInOnPlay) {
                     current.volume = 0;
                 }
                 else {
@@ -269,7 +276,7 @@ public class AudioManager : MonoBehaviour
         }
 
         public void Update() {
-            if(current != null) {
+            if (current != null) {
                 float targetVolume = useFadedVolume ? fadedVolumeBasedOnDefault : volume;
                 if (current.volume != targetVolume) {
                     float volumeDifference = current.volume - targetVolume;

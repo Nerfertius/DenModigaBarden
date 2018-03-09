@@ -31,15 +31,6 @@ public class NPCTalkAction : StateAction
             }
             data.originalPos = pos;
             data.text.enabled = true;
-
-            AudioSource talk = controller.GetComponent<AudioSource>();
-            if (data.talkSound == null && talk)
-            {
-                data.talkSound = talk;
-                talk.volume = GameManager.instance.effectAudio;
-                data.basePitch = talk.pitch;
-            }
-            
             data.getConversation();
 
             if (data.currentConvIndex == -1) {
@@ -242,9 +233,14 @@ public class NPCTalkAction : StateAction
         }
         data.text.text = "";
 
-        if (data.currentConv[data.currentText].shake)
-        {
-            data.shake();
+        if (data.talkSound != null) {
+            if (data.currentConv[data.currentText].voice != null)
+            {
+                data.talkSound.clip = data.currentConv[data.currentText].voice;
+            }
+            else {
+                data.talkSound.clip = data.defaultVoice;
+            }
         }
 
         data.setMoodAnimation(data.currentConv[data.currentText].mood);
