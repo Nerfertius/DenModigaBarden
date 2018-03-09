@@ -14,7 +14,11 @@ public class PopUpDescription : MonoBehaviour
 
     public void Description()
     {
-        StartCoroutine(FadeIn());
+        if (!hasShowed)
+        {
+            StartCoroutine(FadeIn());
+            hasShowed = true;
+        }
     }
 
     IEnumerator FadeIn()

@@ -51,8 +51,13 @@ public class PlayerData : Data
     // Note particle system
     public ParticleSystem noteFX;
     [HideInInspector] public ParticleSystem.TextureSheetAnimationModule noteAnim;
-    public ParticleSystem melodyFXPrefab;
+
+    // Melody aura particle system
     private ParticleSystem mfx;
+    public ParticleSystem melodyAura;
+    public Color jumpAuraColor;
+    public Color magicAuraColor;
+    public Color sleepAuraColor;
 
     // Variables used by Camera
     [HideInInspector] public bool inTransit;
@@ -187,13 +192,16 @@ public class PlayerData : Data
         }
     }
     public void MelodyPlayed(Melody.MelodyID ?id) {
+        var main = melodyAura.main;
         switch (id) {
             case Melody.MelodyID.JumpMelody:
                 AudioManager.PlayBGM(melodyData.jumpMelodySong);
+                main.startColor = jumpAuraColor;
                 break;
             case Melody.MelodyID.MagicResistMelody:
                 AudioManager.PlayBGM(melodyData.magicMelodySong);
                 magicShieldHealth = startMagicShieldHealth;
+                main.startColor = magicAuraColor;
                 break;
             case Melody.MelodyID.SleepMelody:
                 AudioManager.PlayBGM(melodyData.sleepMelodySong);
@@ -201,6 +209,7 @@ public class PlayerData : Data
                 {
                     campfire.SetSpawn(this);
                 }
+                main.startColor = sleepAuraColor;
                 break;
         }
         SpawnSFX();
@@ -329,8 +338,7 @@ public class PlayerData : Data
 
     void SpawnSFX()
     {
-        mfx = Instantiate(melodyFXPrefab, new Vector2(transform.position.x - (0.75f * transform.localScale.x), collider.bounds.max.y), Quaternion.Euler(melodyFXPrefab.transform.rotation.eulerAngles));
-        mfx.GetComponent<FXdestroyer>().hasPlayed = true;
+        mfx = Instantiate(melodyAura, new Vector2(col.bounds.center.x, col.bounds.min.y), Quaternion.Euler(melodyAura.transform.rotation.eulerAngles));
         mfx.transform.SetParent(transform);
     }
 
