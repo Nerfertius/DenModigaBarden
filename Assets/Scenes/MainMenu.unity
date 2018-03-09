@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 107897918}
   - component: {fileID: 107897917}
   - component: {fileID: 107897921}
+  - component: {fileID: 107897922}
   m_Layer: 5
   m_Name: PlayBtn
   m_TagString: Untagged
@@ -383,6 +384,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &107897922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 107897916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eea078273e404b4dbb1573961485758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  click: {fileID: 8300000, guid: f6b0706c2ba74f84e86262b9d92607bc, type: 3}
+  select: {fileID: 8300000, guid: ac860b80621aec1439937c6ad7e6382e, type: 3}
 --- !u!1 &123317377
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 153216320}
   - component: {fileID: 153216321}
+  - component: {fileID: 153216322}
   m_Layer: 5
   m_Name: BGAudio
   m_TagString: Untagged
@@ -620,6 +635,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &153216322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 153216319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eea078273e404b4dbb1573961485758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  click: {fileID: 8300000, guid: f6b0706c2ba74f84e86262b9d92607bc, type: 3}
+  select: {fileID: 8300000, guid: ac860b80621aec1439937c6ad7e6382e, type: 3}
 --- !u!1 &153494082
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +661,7 @@ GameObject:
   - component: {fileID: 153494085}
   - component: {fileID: 153494084}
   - component: {fileID: 153494087}
+  - component: {fileID: 153494088}
   m_Layer: 5
   m_Name: QuitBtn
   m_TagString: Untagged
@@ -755,6 +784,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &153494088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 153494082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eea078273e404b4dbb1573961485758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  click: {fileID: 8300000, guid: f6b0706c2ba74f84e86262b9d92607bc, type: 3}
+  select: {fileID: 8300000, guid: ac860b80621aec1439937c6ad7e6382e, type: 3}
 --- !u!1 &194308360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956310130}
   - component: {fileID: 956310131}
+  - component: {fileID: 956310132}
   m_Layer: 5
   m_Name: EffectAudio
   m_TagString: Untagged
@@ -1540,6 +1583,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &956310132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 956310129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eea078273e404b4dbb1573961485758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  click: {fileID: 8300000, guid: f6b0706c2ba74f84e86262b9d92607bc, type: 3}
+  select: {fileID: 8300000, guid: ac860b80621aec1439937c6ad7e6382e, type: 3}
 --- !u!1 &985383179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,6 +1702,7 @@ RectTransform:
   - {fileID: 2131710171}
   - {fileID: 123317378}
   - {fileID: 153494083}
+  - {fileID: 2003447246}
   m_Father: {fileID: 399267543}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1883,6 +1940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1824913057}
   - component: {fileID: 1824913058}
+  - component: {fileID: 1824913059}
   m_Layer: 5
   m_Name: MasterAudio
   m_TagString: Untagged
@@ -1959,6 +2017,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1824913059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1824913056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eea078273e404b4dbb1573961485758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  click: {fileID: 8300000, guid: f6b0706c2ba74f84e86262b9d92607bc, type: 3}
+  select: {fileID: 8300000, guid: ac860b80621aec1439937c6ad7e6382e, type: 3}
 --- !u!1 &1884371292
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,6 +2200,78 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1997151226}
+--- !u!1 &2003447245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1513371655864134, guid: cda9a12215e8d67439a0dc86745e588f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2003447246}
+  - component: {fileID: 2003447248}
+  - component: {fileID: 2003447247}
+  m_Layer: 5
+  m_Name: ScreenFade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2003447246
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224618526719252282, guid: cda9a12215e8d67439a0dc86745e588f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003447245}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 640, y: 360, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1150749860}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 590, y: 310}
+  m_SizeDelta: {x: 1280, y: 720}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2003447247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114919479652880278, guid: cda9a12215e8d67439a0dc86745e588f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003447245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e02ed09b49158114388cdcc967e6dc0b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &2003447248
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222529337872284880, guid: cda9a12215e8d67439a0dc86745e588f,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003447245}
 --- !u!1 &2131710170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2285,7 @@ GameObject:
   - component: {fileID: 2131710173}
   - component: {fileID: 2131710172}
   - component: {fileID: 2131710175}
+  - component: {fileID: 2131710176}
   m_Layer: 5
   m_Name: OptionsBtn
   m_TagString: Untagged
@@ -2264,6 +2408,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &2131710176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131710170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eea078273e404b4dbb1573961485758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  click: {fileID: 8300000, guid: f6b0706c2ba74f84e86262b9d92607bc, type: 3}
+  select: {fileID: 8300000, guid: ac860b80621aec1439937c6ad7e6382e, type: 3}
 --- !u!1 &2145962741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,6 +2432,7 @@ GameObject:
   - component: {fileID: 2145962744}
   - component: {fileID: 2145962743}
   - component: {fileID: 2145962742}
+  - component: {fileID: 2145962746}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2344,6 +2502,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2145962746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2145962741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8156c81518611a8488839ec04c138a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenFade: {fileID: 2003447247}
+  fadeSpeed: 4
 --- !u!1001 &2146874554
 Prefab:
   m_ObjectHideFlags: 0

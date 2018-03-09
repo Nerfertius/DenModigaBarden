@@ -60,12 +60,12 @@ public class MainMenuState : GameState {
 
     void SwPlayState()
     {
-        GameManager.MainMenuCanvas.GetComponent<AudioSource>().Play();
+        PlayClickSound();
         gm.switchState(new CinematicState(gm));
     }
 
     void OptionsState() {
-        GameManager.MainMenuCanvas.GetComponent<AudioSource>().Play();
+        PlayClickSound();
         showOptions = !showOptions;
         menuAnimator.SetBool("options", showOptions);
         if (showOptions)
@@ -77,6 +77,18 @@ public class MainMenuState : GameState {
         {
             optionsBtn.navigation = navCloseOptions[0];
             quitBtn.navigation = navCloseOptions[1];
+        }
+    }
+
+    private void PlayClickSound() {
+        AudioSource click = GameManager.MainMenuCanvas.GetComponent<AudioSource>();
+        if (click)
+        {
+            click.Play();
+        }
+        else
+        {
+            Debug.LogWarning("No AudioSource on MainMenuCanvas");
         }
     }
 
@@ -135,7 +147,7 @@ public class MainMenuState : GameState {
 
     void QuitGame()
     {
-        GameManager.MainMenuCanvas.GetComponent<AudioSource>().Play();
+        PlayClickSound();
         Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false;
     }
