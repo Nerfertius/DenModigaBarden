@@ -35,14 +35,46 @@ public class MainMenuState : GameState {
 
     void SwPlayState()
     {
+        PlayClickSound();
         gm.switchState(new CinematicState(gm));
     }
 
     void OptionsState() {
+
         
     }
 
     private void Listeners() {
+
+        PlayClickSound();
+        showOptions = !showOptions;
+        menuAnimator.SetBool("options", showOptions);
+        if (showOptions)
+        {
+            optionsBtn.navigation = navOpenOptions[0];
+            quitBtn.navigation = navOpenOptions[1];
+        }
+        else
+        {
+            optionsBtn.navigation = navCloseOptions[0];
+            quitBtn.navigation = navCloseOptions[1];
+        }
+    }
+
+    private void PlayClickSound() {
+        AudioSource click = GameManager.MainMenuCanvas.GetComponent<AudioSource>();
+        if (click)
+        {
+            click.Play();
+        }
+        else
+        {
+            Debug.LogWarning("No AudioSource on MainMenuCanvas");
+        }
+    }
+
+    private void Setup() {
+
         if (GameManager.MainMenuCanvas == null)
             return;
         playBtn = GameManager.MainMenuCanvas.transform.Find(play).GetComponent<Button>();
@@ -75,6 +107,7 @@ public class MainMenuState : GameState {
 
     void QuitGame()
     {
+        PlayClickSound();
         Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false;
     }
