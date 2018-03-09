@@ -30,7 +30,6 @@ public class NPCData : Data
     [HideInInspector] public Text text = null;
     [HideInInspector] public AudioSource talkSound = null;
     [HideInInspector] public float basePitch = 1;
-    [HideInInspector] public AudioClip defaultVoice;
 
     [HideInInspector]
     public string currentString;
@@ -54,14 +53,6 @@ public class NPCData : Data
             conv.Setup(this);
         }
         getConversation();
-        AudioSource talk = GetComponent<AudioSource>();
-        if (talk)
-        {
-            talkSound = talk;
-            basePitch = talk.pitch;
-            talk.volume = GameManager.instance.effectAudio;
-            defaultVoice = talk.clip;
-        }
     }
 
     public void setMoodAnimation(NPCMood mood = NPCMood.Inherit)
@@ -248,7 +239,6 @@ public class NPCData : Data
         public float stayTime = 0;
         [HideInInspector]
         public float originalStayTime = 0;
-        public AudioClip voice;
     }
 
     public void shake() {
