@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class CinematicState : GameState {
 
@@ -13,15 +10,12 @@ public class CinematicState : GameState {
 
     public override void enter()
     {
-        levelLoad = gm.loadScene(0);
+        levelLoad = gm.loadScene(1);
     }
 
     public override void update()
     {
         if (levelLoad != null && levelLoad.progress >= 0.9f) {
-            if (Input.GetKey(KeyCode.Space)) {
-                levelLoad.allowSceneActivation = true;
-            }
             if(levelLoad.isDone)
                 gm.switchState(new PlayState(gm));
         }

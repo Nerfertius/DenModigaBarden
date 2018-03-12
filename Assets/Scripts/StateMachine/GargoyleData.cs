@@ -15,6 +15,10 @@ public class GargoyleData : EnemyData {
 
     public Vector2 DashForce = new Vector2(500, 350);
 
+    public bool CanSeeThrughWalls = false;
+
+    [HideInInspector] public AudioClipPlayLimiter gargoyleCollideSound;
+
     protected override void Awake() {
         base.Awake();
         platformEffector = GetComponent<PlatformEffector2D>();
@@ -25,6 +29,7 @@ public class GargoyleData : EnemyData {
     protected override void Start()
     {
         base.Start();
+        gargoyleCollideSound = new AudioClipPlayLimiter(Resources.Load("SoundEffects/Gargoyle/Gargoyle_Collision4") as AudioClip);
     }
 
     public void Update() {
@@ -34,12 +39,11 @@ public class GargoyleData : EnemyData {
 
     public override void OnEnable() {
         base.OnEnable();
-
         frozenColorBlinkData.End(spriteRenderer);
         SetPlatformEffector(false);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         gameObject.layer = 11; // Enemy
-        harmful = true;
+        
     }
 
     public void SetPlatformEffector(bool enabled)

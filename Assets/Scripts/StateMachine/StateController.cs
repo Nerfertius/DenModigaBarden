@@ -86,9 +86,11 @@ public class StateController : MonoBehaviour
         //Debug.Log(sender + " -> " + nextState);
 
         currentState.DoExitActions(this);
-
-        foreach(StateAction action in transitionActions) {
-            action.ActOnce(this);
+        
+        if (transitionActions != null) { 
+            foreach(StateAction action in transitionActions) {
+                action.ActOnce(this);
+            }
         }
         previousState = currentState;
         currentState = nextState;

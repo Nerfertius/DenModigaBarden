@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4330499434451392}
   - component: {fileID: 114582206368910138}
   - component: {fileID: 58584982635615954}
+  - component: {fileID: 114140988621605176}
   m_Layer: 0
   m_Name: TalkZone
   m_TagString: Untagged
@@ -56,8 +57,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1574392716119006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.7864523, y: -0.9437449, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -68.1, y: -34.997, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4330499434451392}
   m_Father: {fileID: 0}
@@ -143,6 +144,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114140988621605176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554148764245800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed120c241e13544b8e9ce96f119f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155, type: 3}
+  repeatable: 1
+  offset: {x: 0, y: 1.8}
+  npcTalk: 1
+  state: {fileID: 11400000, guid: 6429aa692188c7047a6a61289c4fe7c8, type: 2}
+  melodyPlayed: 0
+  melody: 0
+  actionPerformed: 0
+  buttonName: 
 --- !u!114 &114582206368910138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,6 +211,7 @@ MonoBehaviour:
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   canWalk: 0
+  speed: 0
   waitTime: 0
   mood: 0
   conversation:
@@ -198,58 +220,99 @@ MonoBehaviour:
         I took it.
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 0}
+      shake: 0
+      stay: 1
+      stayTime: 0.5
+      originalStayTime: 0
     - text: "Doesn\u2019t it look great in here? It really ties the room together!"
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 0}
+      shake: 0
+      stay: 1
+      stayTime: 0.5
+      originalStayTime: 0
     - text: "Come over here, I wanna tell you something\u2026"
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 0
-      goComp: {fileID: 0}
-      convIndex: 0
-      convSpokIndex: 0
-      itemComp: 0
-      consumeItem: 0
+      offset: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 0}
+      shake: 0
+      stay: 1
+      stayTime: 1
+      originalStayTime: 0
+    conditions: []
     speakOnce: 1
+    notEnd: 0
     spoken: 0
+    autoSpeak: 1
+    autoSpeakRange: 12
   - texts:
     - text: "Hey listen, you\u2019re not mad are you? About what happened before I
         mean."
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 0}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: "You know it\u2019s not personal. We all have different roles, but we\u2019re
         all important, like a puzzle or something."
       mood: 0
       size: {x: 0, y: 0}
+      offset: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 0}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
     - text: "Maybe that sounds cheesy, but it\u2019s true!"
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 0
-      goComp: {fileID: 0}
-      convIndex: 0
-      convSpokIndex: 0
-      itemComp: 0
-      consumeItem: 0
+      offset: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 0}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
     speakOnce: 1
+    notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   - texts:
     - text: See you around!
       mood: 0
       size: {x: 0, y: 0}
-    condition:
-      condition: 0
-      goComp: {fileID: 0}
-      convIndex: 0
-      convSpokIndex: 0
-      itemComp: 0
-      consumeItem: 0
+      offset: {x: 0, y: 0}
+      visable: 1
+      textBackground: {fileID: 0}
+      shake: 0
+      stay: 0
+      stayTime: 0
+      originalStayTime: 0
+    conditions: []
     speakOnce: 0
+    notEnd: 0
     spoken: 0
+    autoSpeak: 0
+    autoSpeakRange: 0
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
+  originalPos: {x: 0, y: 0, z: 0}
   pitchDeviation: 0.3
   currentConvIndex: 0
   currentConv: []
@@ -267,6 +330,8 @@ MonoBehaviour:
   playSound: 0
   animator: {fileID: 0}
   playerInRange: 0
+  inAutoRange: 0
+  startTalking: 0
   player: {fileID: 0}
 --- !u!212 &212605593606398332
 SpriteRenderer:
@@ -282,7 +347,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9497b547ff5ff7d4499a1ffae504a5a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -300,7 +365,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2004588891
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3cd40b583e871e949a7767e6ab6a7a50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

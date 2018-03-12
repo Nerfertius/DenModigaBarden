@@ -15,6 +15,7 @@ public class NPCTalkAction : StateAction
     public override void ActOnce(StateController controller)
     {
         NPCData data = (NPCData)controller.data;
+        data.getConversation();
         if (data.playerInRange || data.inAutoRange)
         {
             if (defaultBackground == null) {
@@ -26,7 +27,7 @@ public class NPCTalkAction : StateAction
             Vector3 pos = controller.transform.position;
             if (data.text == null)
             {
-                data.text = Instantiate(textPrefab, GameManager.instance.WorldSpaceCanvas.transform).GetComponentInChildren<Text>();
+                data.text = Instantiate(textPrefab, GameManager.WorldSpaceCanvas.transform).GetComponentInChildren<Text>();
             }
             data.originalPos = pos;
             data.text.enabled = true;
@@ -35,9 +36,10 @@ public class NPCTalkAction : StateAction
             if (data.talkSound == null && talk)
             {
                 data.talkSound = talk;
+                talk.volume = GameManager.instance.effectAudio;
                 data.basePitch = talk.pitch;
             }
-
+            
             data.getConversation();
 
             if (data.currentConvIndex == -1) {
@@ -200,10 +202,6 @@ public class NPCTalkAction : StateAction
             parent.GetComponent<CanvasGroup>().alpha = 1;
             Sprite sprite = data.currentConv[data.currentText].textBackground;
             parent.GetComponent<Image>().sprite = sprite != null ? sprite : defaultBackground;
-            if (data.currentConv[data.currentText].shake)
-            {
-                data.shake();
-            }
         }
         else {
             data.text.transform.parent.GetComponent<CanvasGroup>().alpha = 0;
@@ -216,7 +214,7 @@ public class NPCTalkAction : StateAction
         if (data.currentConv[data.currentText].size.y != 0)
             boxSize.y = data.currentConv[data.currentText].size.y;
         data.text.rectTransform.sizeDelta = boxSize;
-        data.text.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(boxSize.x / 125, boxSize.y / 100);
+        //data.text.transform.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(boxSize.x / 125, boxSize.y / 100);               //Temp removed to fix speechBubble size
 
         Vector3 pos = data.originalPos;
         Vector2 textOffset = data.currentConv[data.currentText].offset;
@@ -243,6 +241,11 @@ public class NPCTalkAction : StateAction
             }
         }
         data.text.text = "";
+
+        if (data.currentConv[data.currentText].shake)
+        {
+            data.shake();
+        }
 
         data.setMoodAnimation(data.currentConv[data.currentText].mood);
     }

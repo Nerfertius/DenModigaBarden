@@ -11,3 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5fb20a7e219d246b2cf36966ec209f, type: 3}
   m_Name: PlayerDoubleJump
   m_EditorClassIdentifier: 
+  poofEffect: {fileID: 1481084295273472, guid: 4bd6f52162a27664fbe53542521df874, type: 2}
+  poofEffectOffset: {x: 0, y: -0.55, z: 0}

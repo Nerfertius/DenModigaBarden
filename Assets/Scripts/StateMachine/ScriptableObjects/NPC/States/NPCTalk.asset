@@ -21,9 +21,18 @@ MonoBehaviour:
   - condition: {fileID: 11400000, guid: 271745f64c22599449011381ca0877e2, type: 2}
     trueState: {fileID: 11400000, guid: b1d762ce8571ec147aac67aa5986228c, type: 2}
     falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  - condition: {fileID: 11400000, guid: 8435469265b0aec46ada971c2b3ac833, type: 2}
+    trueState: {fileID: 11400000, guid: e26935b3eea05fa48accc60267ec0431, type: 2}
+    falseState: {fileID: 0}
+    trueStateTransitionActions: []
+    falseStateTransitionActions: []
+  conditionedActions: []
   hasExitTime: 0
   exitTimer: 0
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
   nextState: {fileID: 0}
+  timeOutActions: []

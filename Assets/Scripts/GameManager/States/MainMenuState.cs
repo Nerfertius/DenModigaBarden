@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MainMenuState : GameState {
 
     private Button playBtn, optionsBtn, quitBtn;
+    private Slider audio, bgAudio, effectAudio;
     private string canvas = "MainMenuCanvas", play = "PlayBtn", options = "OptionsBtn", quit = "QuitBtn";
 
     public MainMenuState(GameManager gm)
@@ -15,45 +16,81 @@ public class MainMenuState : GameState {
 
     public override void enter()
     {
-        playBtn = gm.MainMenuCanvas.transform.Find(play).GetComponent<Button>();
-        optionsBtn = gm.MainMenuCanvas.transform.Find(options).GetComponent<Button>();
-        quitBtn = gm.MainMenuCanvas.transform.Find(quit).GetComponent<Button>();
-
-        gm.MainMenuCanvas.enabled = true;
-        if (playBtn)
-            playBtn.onClick.AddListener(swPlayState);
-        if (optionsBtn)
-            optionsBtn.onClick.AddListener(OptionsState);
-        if (quitBtn)
-            quitBtn.onClick.AddListener(QuitGame);
+        
     }
 
     public override void update()
     {
-
+        
     }
 
     public override void exit()
     {
-        gm.MainMenuCanvas.enabled = false;
+        GameManager.MainMenuCanvas.enabled = false;
         playBtn.onClick.RemoveAllListeners();
         optionsBtn.onClick.RemoveAllListeners();
         quitBtn.onClick.RemoveAllListeners();
     }
 
-    void swPlayState()
+    void SwPlayState()
     {
+        PlayClickSound();
         gm.switchState(new CinematicState(gm));
     }
 
     void OptionsState() {
-        Debug.Log("Options");
+
+        
+    }
+
+    private void PlayClickSound() {
+        AudioSource click = GameManager.MainMenuCanvas.GetComponent<AudioSource>();
+        if (click)
+        {
+            click.Play();
+        }
+        else
+        {
+            Debug.LogWarning("No AudioSource on MainMenuCanvas");
+        }
+    }
+
+    private void Setup() {
+
+        if (GameManager.MainMenuCanvas == null)
+            return;
+        playBtn = GameManager.MainMenuCanvas.transform.Find(play).GetComponent<Button>();
+        optionsBtn = GameManager.MainMenuCanvas.transform.Find(options).GetComponent<Button>();
+        quitBtn = GameManager.MainMenuCanvas.transform.Find(quit).GetComponent<Button>();
+
+        audio = GameManager.MainMenuCanvas.transform.Find("OptionsMenu/MasterAudio").GetComponent<Slider>();
+        audio.value = AudioListener.volume;
+        bgAudio = GameManager.MainMenuCanvas.transform.Find("OptionsMenu/BGAudio").GetComponent<Slider>();
+        bgAudio.value = GameManager.instance.bgAudio;
+        effectAudio = GameManager.MainMenuCanvas.transform.Find("OptionsMenu/EffectAudio").GetComponent<Slider>();
+        effectAudio.value = GameManager.instance.effectAudio;
+
+        GameManager.MainMenuCanvas.enabled = true;
+        if (GameManager.instance)
+        if (playBtn)
+            playBtn.onClick.AddListener(SwPlayState);
+        if (optionsBtn)
+            optionsBtn.onClick.AddListener(OptionsState);
+        if (quitBtn)
+            quitBtn.onClick.AddListener(QuitGame);
+        if (audio)
+            audio.onValueChanged.AddListener(volume => AudioListener.volume = volume);
+
+        if (bgAudio)
+            bgAudio.onValueChanged.AddListener(volume => AudioManager.SetBGMVolume(volume));
+        if (effectAudio)
+            effectAudio.onValueChanged.AddListener(volume => AudioManager.SetSoundEffectVolume(volume));
     }
 
     void QuitGame()
     {
-        Debug.Log("Quit game");
+        PlayClickSound();
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 }

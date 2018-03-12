@@ -48,11 +48,7 @@ public class MapBoundary : MonoBehaviour {
         {
             UpdateMapBounds();
             camScript.ActivateTransition();
-
-            if (currentMapBoundary == this)
-            {
-                currentMapBoundary = null;
-            }
+            
             GameManager.instance.switchState(new TransitionState(GameManager.instance));
         }
     }

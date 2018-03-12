@@ -5,12 +5,14 @@ using UnityEngine;
 public class PopUp : MonoBehaviour
 {
     private bool hasShowed;
-    public bool visible;
+    private bool hasCleared;
+    private bool visible;
     private SpriteRenderer rend;
     private StateController npcState;
     
     public Sprite sprite;
     public bool repeatable;
+    public bool showUntilCleared;
     public Vector2 offset;
 
     [Header("NPC")]
@@ -40,15 +42,18 @@ public class PopUp : MonoBehaviour
         GameObject empty = new GameObject();
         empty.AddComponent<SpriteRenderer>();
         GameObject prompt = Instantiate(empty, (Vector2)transform.position + offset, Quaternion.identity);
+        Destroy(empty);
+        prompt.transform.parent = transform;
         rend = prompt.GetComponent<SpriteRenderer>();
         rend.sprite = sprite;
         Color temp = rend.color;
         temp.a = 0;
         rend.color = temp;
+        rend.sortingLayerName = "UI";
 
         if (!npcTalk && !melodyPlayed && !actionPerformed)
         {
-            Debug.Log("Error, PopUp needs at least 1 condition");
+            Debug.Log(gameObject.ToString() + "Error, PopUp needs at least 1 condition");
         }
     }
 
@@ -68,6 +73,12 @@ public class PopUp : MonoBehaviour
                 StartCoroutine("FadeIn");
                 hasShowed = true;
             }
+            //else if (!repeatable && showUntilCleared && !hasCleared && !visible)
+            else if (!repeatable && showUntilCleared && !visible)
+            {
+                StopAllCoroutines();
+                StartCoroutine("FadeIn");
+            }
         }
     }
 
@@ -84,6 +95,10 @@ public class PopUp : MonoBehaviour
                 {
                     StopAllCoroutines();
                     StartCoroutine("FadeOut");
+                    if (showUntilCleared)
+                    {
+                        hasCleared = true;
+                    }
                 }
                 else if (npcState.currentState.ToString() == "NPCIdle (State)")
                 {
@@ -96,12 +111,20 @@ public class PopUp : MonoBehaviour
             {
                 StopAllCoroutines();
                 StartCoroutine("FadeOut");
+                if (showUntilCleared)
+                {
+                    hasCleared = true;
+                }
             }
 
-            else if (actionPerformed && Input.GetButtonDown(buttonName))
+            else if (actionPerformed && (Input.GetButtonDown(buttonName) || Input.GetAxisRaw(buttonName) > data.axisSensitivity))
             {
                 StopAllCoroutines();
                 StartCoroutine("FadeOut");
+                if (showUntilCleared)
+                {
+                    hasCleared = true;
+                }
             }
         }
     }
@@ -121,8 +144,6 @@ public class PopUp : MonoBehaviour
         Color newColor = rend.color;
         while (rend.color.a < 1)
         {
-            Debug.Log("In running");
-
             newColor.a += 0.01f;
             rend.color = newColor;
             yield return new WaitForEndOfFrame();
@@ -135,8 +156,6 @@ public class PopUp : MonoBehaviour
         Color newColor = rend.color;
         while (rend.color.a > 0)
         {
-            Debug.Log("Out running");
-
             newColor.a -= 0.01f;
             rend.color = newColor;
             yield return new WaitForEndOfFrame();

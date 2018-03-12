@@ -4,17 +4,17 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "StateMachine/Action/Player/PlayerPlayMelody")]
 public class PlayerPlayMelody : StateAction {
-
+    bool melodyAxisUp = true;
 
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
-        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody") > 0.75f) {
+        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody Dpad") > InputExtender.TriggerThreshold) {
             AudioManager.FadeBGM();
             mData.playingFlute = true;
 
-            if(mData.currentMelody != null) {
+            if (mData.currentMelody != null) {
                 data.MelodyStoppedPlaying(mData.currentMelody);
             }
             mData.currentMelody = null;
@@ -22,10 +22,11 @@ public class PlayerPlayMelody : StateAction {
             controller.anim.SetBool("Channeling", true);
 
             Note notePlayed = null;
-            if (Input.GetButton("PlayMelodyNoteShift"))
+            if (Input.GetButton("PlayMelodyNoteShift") || Input.GetAxisRaw("PlayMelodyNoteShift Dpad") > InputExtender.TriggerThreshold)
             {
                 foreach (Note note in mData.Notes2) {
-                    if (Input.GetButtonDown(note.Button)) {
+                    
+                    if (note.CheckButton()) {
                         mData.PlayedNotes.AddLast(note);
                         notePlayed = note;
                     }
@@ -34,7 +35,7 @@ public class PlayerPlayMelody : StateAction {
             else
             {
                 foreach (Note note in mData.Notes1) {
-                    if (Input.GetButtonDown(note.Button)) {
+                    if (note.CheckButton()) {
                         mData.PlayedNotes.AddLast(note);
                         notePlayed = note;
                     }
@@ -55,9 +56,8 @@ public class PlayerPlayMelody : StateAction {
             }
         }
 
-        if (Input.GetButtonUp("PlayMelody") || (Input.GetAxisRaw("PlayMelody") < 0.75f && Input.GetAxisRaw("PlayMelody") > 0)) {
+        if (Input.GetButtonUp("PlayMelody") || InputExtender.GetAxisUp("PlayMelody Dpad")) {
             bool melodyPlayed = false;
-
             
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {

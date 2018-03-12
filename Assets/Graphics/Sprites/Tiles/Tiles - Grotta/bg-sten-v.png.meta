@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: 9c0177a3f148e0b4f8fc76fa188ec815
-timeCreated: 1517489145
-licenseType: Free
+guid: 43cade25290382645864be16c2bf878c
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -36,7 +34,7 @@ TextureImporter:
     mipBias: -1
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

@@ -10,7 +10,7 @@ public class GargoyleFrozenExit : StateAction {
         data.SetPlatformEffector(false);
         data.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         data.gameObject.layer = 11; // Enemy
-        data.harmful = true;
+        data.playerDamageData.harmful = true;
 
         data.rb.velocity = data.velocityBeforeFrozen;
     }

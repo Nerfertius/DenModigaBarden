@@ -9,14 +9,10 @@ public class NPCStartTalking : Condition
     {
         NPCData data = (NPCData)controller.data;
         bool interactInRange = data.playerInRange && Input.GetButtonDown("Interact");
-        bool autospeak = data.autoSpeak && Vector2.Distance(GameManager.instance.player.transform.position, data.transform.position) <= data.autoSpeakRange;
-        if (data.autoSpeak && data.autoSpeakRange == 0)
+
+        bool autospeak = data.conversation[data.currentConvIndex].autoSpeak && Vector2.Distance(GameManager.instance.player.transform.position, data.transform.position) <= data.conversation[data.currentConvIndex].autoSpeakRange;
+        if (interactInRange || autospeak)
         {
-            Debug.LogWarning("autoSpeakRange is 0");
-        }
-        if (interactInRange || autospeak || (autospeak && data.startTalking))
-        {
-            data.startTalking = false;
             data.inAutoRange = autospeak;
             return true;
         }

@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571477561152280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.43, y: -2.82, z: -0.119140625}
+  m_LocalPosition: {x: -11.545472, y: -1.1607056, z: -0.119140625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,6 +72,7 @@ MonoBehaviour:
   isMagical: 1
   knockbackPower: 0
   damage: 1
+  harmful: 1
 --- !u!114 &114979977010944720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,6 +85,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 2
+  inactiveColor: {r: 0, g: 0, b: 0, a: 1}
+  onTriggerEffect: {fileID: 198344968707537840, guid: f5cb941b86fe816488f9fb06635858d3,
+    type: 2}
 --- !u!212 &212298609685036658
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -98,7 +102,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9497b547ff5ff7d4499a1ffae504a5a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,9 +119,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2004588891
+  m_SortingLayerID: 2122280999
   m_SortingLayer: 4
-  m_SortingOrder: -1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 8f3943658a55f0c4c81a9b32ab0a2257, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
