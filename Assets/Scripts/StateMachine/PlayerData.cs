@@ -25,9 +25,11 @@ public class PlayerData : Data
     [HideInInspector] public int climbFixLayer;
     [HideInInspector] public int playerLayer;
     
+    // Quest
     [HideInInspector] public int[] items;
     [HideInInspector] public bool hasKey;
     [HideInInspector] public bool hasReadNote;
+    [HideInInspector] public bool orcQuestDone;
 
     [HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;

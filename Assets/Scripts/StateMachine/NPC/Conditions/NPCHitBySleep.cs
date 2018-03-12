@@ -12,10 +12,16 @@ public class NPCHitBySleep : Condition
             if (Vector2.Distance(PlayerData.player.transform.position, controller.transform.position) <= 3f && 
                 PlayerData.player.melodyData.currentMelody == Melody.MelodyID.SleepMelody)
             {
-                return true;
+                if (controller.gameObject.ToString() == "Guard_captain" && PlayerData.player.orcQuestDone)
+                {
+                    return true;
+                }
+                else if (controller.gameObject.ToString() != "Guard_captain")
+                {
+                    return true;
+                }
             }
         }
-        
         return null;
     }
 }
