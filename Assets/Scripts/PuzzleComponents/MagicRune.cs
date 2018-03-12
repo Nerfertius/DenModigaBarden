@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MagicRune : MonoBehaviour
 {
-
-    private Collider2D coll;
     private SpriteRenderer rend;
 
     public float cooldown;
@@ -18,7 +16,6 @@ public class MagicRune : MonoBehaviour
 
     void Start()
     {
-        coll = GetComponent<CircleCollider2D>();
         rend = GetComponent<SpriteRenderer>();
         playerDamageData = GetComponent<PlayerDamageData>();
         

@@ -239,7 +239,6 @@ public class AudioManager : MonoBehaviour
             if (current != null && !AllowSameClip && current.clip == clip) {
                 return;
             }
-            AudioSource previous = current;
             if(current != null) {
                 //fade out
                 AudioManager.instance.StartCoroutine(AudioManager.AudioFadeAndStop(current, current.volume, 0, fullFadeOutDuration));

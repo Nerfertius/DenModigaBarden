@@ -45,7 +45,6 @@ public class PopUp : MonoBehaviour
         empty.AddComponent<SpriteRenderer>();
         GameObject prompt = Instantiate(empty, (Vector2)transform.position + offset, Quaternion.identity);
         Destroy(empty);
-        prompt.transform.parent = transform;
         rend = prompt.GetComponent<SpriteRenderer>();
         rend.sprite = this.prompt;
         Color temp = rend.color;
