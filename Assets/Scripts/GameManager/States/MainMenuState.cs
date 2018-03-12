@@ -16,13 +16,12 @@ public class MainMenuState : GameState {
 
     public override void enter()
     {
-        Listeners();
+        
     }
 
     public override void update()
     {
-        if(quitBtn == null)
-            Listeners();
+        
     }
 
     public override void exit()
@@ -42,23 +41,6 @@ public class MainMenuState : GameState {
     void OptionsState() {
 
         
-    }
-
-    private void Listeners() {
-
-        PlayClickSound();
-        showOptions = !showOptions;
-        menuAnimator.SetBool("options", showOptions);
-        if (showOptions)
-        {
-            optionsBtn.navigation = navOpenOptions[0];
-            quitBtn.navigation = navOpenOptions[1];
-        }
-        else
-        {
-            optionsBtn.navigation = navCloseOptions[0];
-            quitBtn.navigation = navCloseOptions[1];
-        }
     }
 
     private void PlayClickSound() {
