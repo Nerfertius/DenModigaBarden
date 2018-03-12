@@ -74,8 +74,8 @@ public class PopUp : MonoBehaviour
                 StartCoroutine("FadeIn");
                 hasShowed = true;
             }
-
-            else if (!repeatable && showUntilCleared && !hasCleared && !visible)
+            //else if (!repeatable && showUntilCleared && !hasCleared && !visible)
+            else if (!repeatable && showUntilCleared && !visible)
             {
                 StopAllCoroutines();
                 StartCoroutine("FadeIn");

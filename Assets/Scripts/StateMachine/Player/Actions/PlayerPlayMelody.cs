@@ -18,7 +18,6 @@ public class PlayerPlayMelody : StateAction {
         if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody Dpad") > InputExtender.TriggerThreshold) {
             AudioManager.FadeBGM();
             mData.playingFlute = true;
-            melodyAxisUp = false;
 
             if (mData.currentMelody != null) {
                 data.MelodyStoppedPlaying(mData.currentMelody);
@@ -64,7 +63,6 @@ public class PlayerPlayMelody : StateAction {
 
         if (Input.GetButtonUp("PlayMelody") || InputExtender.GetAxisUp("PlayMelody Dpad")) {
             bool melodyPlayed = false;
-            melodyAxisUp = true;
             
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {
