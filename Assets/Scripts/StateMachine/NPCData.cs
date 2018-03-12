@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum NPCMood { Normal, Happy, Sad, Angry, Inherit };
-public enum TalkCondition { None, Item, SpokenWith, convNotSpoken, convSpoken, CharacterState };
+public enum TalkCondition { None, ItemMissing, Item, SpokenWith, convNotSpoken, convSpoken, CharacterState };
 
 public class NPCData : Data
 {
@@ -20,8 +20,6 @@ public class NPCData : Data
     [HideInInspector]
     public Vector3 originalPos;
     public float pitchDeviation = 0.3f;
-    public bool autoSpeak = false;
-    public float autoSpeakRange = 0;
     [HideInInspector] public int currentConvIndex = 0;
     [HideInInspector] public TextPopup[] currentConv;
     [HideInInspector] public int currentText = 0, currentChar = 0;
@@ -32,7 +30,6 @@ public class NPCData : Data
     [HideInInspector] public Text text = null;
     [HideInInspector] public AudioSource talkSound = null;
     [HideInInspector] public float basePitch = 1;
-    [HideInInspector] public AudioClip defaultVoice;
 
     [HideInInspector]
     public string currentString;
@@ -56,14 +53,6 @@ public class NPCData : Data
             conv.Setup(this);
         }
         getConversation();
-        AudioSource talk = GetComponent<AudioSource>();
-        if (talk)
-        {
-            talkSound = talk;
-            basePitch = talk.pitch;
-            talk.volume = GameManager.instance.effectAudio;
-            defaultVoice = talk.clip;
-        }
     }
 
     public void setMoodAnimation(NPCMood mood = NPCMood.Inherit)
@@ -109,6 +98,12 @@ public class NPCData : Data
     public void spoken()
     {
         conversation[currentConvIndex].spoken = true;
+
+        if (conversation[currentConvIndex].keySpawner != null)
+        {
+            conversation[currentConvIndex].keySpawner.Spawn();
+        }
+
         if (DoneSpeaking != null)
             DoneSpeaking();
     }
@@ -122,6 +117,9 @@ public class NPCData : Data
         public bool notEnd = false;
         [HideInInspector]
         public bool spoken = false;
+        public bool autoSpeak = false;
+        public float autoSpeakRange = 0;
+        public spawnKey keySpawner;
 
         public void Setup(NPCData data) {
             foreach (Condition condition in conditions) {
@@ -139,6 +137,12 @@ public class NPCData : Data
                 switch (condition.condition)
                 {
                     case TalkCondition.None:
+                        break;
+                    case TalkCondition.ItemMissing:
+                        if (player != null && player.hasKey)
+                        {
+                            return false;
+                        }
                         break;
                     case TalkCondition.Item:
                         if (player.items[(int)condition.itemComp] <= 0)
@@ -235,7 +239,6 @@ public class NPCData : Data
         public float stayTime = 0;
         [HideInInspector]
         public float originalStayTime = 0;
-        public AudioClip voice;
     }
 
     public void shake() {
@@ -245,6 +248,7 @@ public class NPCData : Data
     IEnumerator ScreenshakeFX(NPCData data, float xIntensity, float yIntensity)
     {
         Transform textBox = data.text.transform.parent;
+        Debug.Log(textBox.position);
         Vector3 camPosition = textBox.position;
         float posX = textBox.position.x;
         float posY = textBox.position.y;

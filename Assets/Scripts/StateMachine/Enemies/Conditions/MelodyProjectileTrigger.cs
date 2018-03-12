@@ -12,7 +12,7 @@ public class MelodyProjectileTrigger : Condition {
         MelodyProjectile projectile = coll.GetComponent<MelodyProjectile>();
 
 
-        if (projectile != null && projectile.melodyID == melodyID) {
+        if (projectile != null && projectile.melodyID == melodyID && PlayerData.player.melodyData.currentMelody == melodyID) {
             return true;
         }
         else {

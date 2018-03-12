@@ -8,5 +8,5 @@ public class PlayerDamageData : MonoBehaviour{
     public float knockbackPower = 300;
     public float damage = 0.5f;
 
-    /*[HideInInspector]*/ public bool harmful = true;
+    [HideInInspector] public bool harmful = true;
 }

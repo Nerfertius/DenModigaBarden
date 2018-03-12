@@ -7,17 +7,7 @@ public class MainMenuState : GameState {
 
     private Button playBtn, optionsBtn, quitBtn;
     private Slider audio, bgAudio, effectAudio;
-    private string canvas = "MainMenuCanvas", play = "Interact/PlayBtn", options = "Interact/OptionsBtn", quit = "Interact/QuitBtn";
-    private bool showOptions = false, setup = false;
-
-    private Transform optionsTrans;
-
-    private Animator menuAnimator;
-
-    private AudioSource selectedSound;
-
-    private Navigation[] navCloseOptions, navOpenOptions;
-    private CanvasGroup cg;
+    private string canvas = "MainMenuCanvas", play = "PlayBtn", options = "OptionsBtn", quit = "QuitBtn";
 
     public MainMenuState(GameManager gm)
     {
@@ -26,20 +16,12 @@ public class MainMenuState : GameState {
 
     public override void enter()
     {
-        Setup();
+        
     }
 
     public override void update()
     {
-        if (!setup)
-            Setup();
-        if (cg.alpha == 1 && !cg.interactable)
-        {
-            UIVisible();
-        }
-        else {
-            cg.alpha += 0.4f * Time.deltaTime;
-        }
+        
     }
 
     public override void exit()
@@ -50,14 +32,6 @@ public class MainMenuState : GameState {
         quitBtn.onClick.RemoveAllListeners();
     }
 
-    public void UIVisible() {
-        cg.interactable = true;
-
-        Listeners();
-
-        playBtn.Select();
-    }
-
     void SwPlayState()
     {
         PlayClickSound();
@@ -65,19 +39,8 @@ public class MainMenuState : GameState {
     }
 
     void OptionsState() {
-        PlayClickSound();
-        showOptions = !showOptions;
-        menuAnimator.SetBool("options", showOptions);
-        if (showOptions)
-        {
-            optionsBtn.navigation = navOpenOptions[0];
-            quitBtn.navigation = navOpenOptions[1];
-        }
-        else
-        {
-            optionsBtn.navigation = navCloseOptions[0];
-            quitBtn.navigation = navCloseOptions[1];
-        }
+
+        
     }
 
     private void PlayClickSound() {
@@ -93,44 +56,22 @@ public class MainMenuState : GameState {
     }
 
     private void Setup() {
+
         if (GameManager.MainMenuCanvas == null)
             return;
         playBtn = GameManager.MainMenuCanvas.transform.Find(play).GetComponent<Button>();
         optionsBtn = GameManager.MainMenuCanvas.transform.Find(options).GetComponent<Button>();
         quitBtn = GameManager.MainMenuCanvas.transform.Find(quit).GetComponent<Button>();
 
-        cg = GameManager.MainMenuCanvas.transform.Find("Interact").GetComponent<CanvasGroup>();
-
-        audio = GameManager.MainMenuCanvas.transform.Find("Interact/OptionsMenu/MasterAudio").GetComponent<Slider>();
+        audio = GameManager.MainMenuCanvas.transform.Find("OptionsMenu/MasterAudio").GetComponent<Slider>();
         audio.value = AudioListener.volume;
-        bgAudio = GameManager.MainMenuCanvas.transform.Find("Interact/OptionsMenu/BGAudio").GetComponent<Slider>();
+        bgAudio = GameManager.MainMenuCanvas.transform.Find("OptionsMenu/BGAudio").GetComponent<Slider>();
         bgAudio.value = GameManager.instance.bgAudio;
-        effectAudio = GameManager.MainMenuCanvas.transform.Find("Interact/OptionsMenu/EffectAudio").GetComponent<Slider>();
+        effectAudio = GameManager.MainMenuCanvas.transform.Find("OptionsMenu/EffectAudio").GetComponent<Slider>();
         effectAudio.value = GameManager.instance.effectAudio;
 
-        menuAnimator = GameManager.MainMenuCanvas.GetComponent<Animator>();
-        navCloseOptions = new Navigation[2];
-        navOpenOptions = new Navigation[2];
-
         GameManager.MainMenuCanvas.enabled = true;
-
-        navCloseOptions[0] = optionsBtn.navigation;
-        navCloseOptions[1] = quitBtn.navigation;
-
-        Navigation temp = navCloseOptions[0];
-        temp.selectOnDown = audio;
-        navOpenOptions[0] = temp;
-
-        temp = navCloseOptions[1];
-        temp.selectOnUp = effectAudio;
-        navOpenOptions[1] = temp;
-
-        //selectedSound = cg.GetComponent<AudioSource>();
-
-        setup = true;
-    }
-
-    private void Listeners() {
+        if (GameManager.instance)
         if (playBtn)
             playBtn.onClick.AddListener(SwPlayState);
         if (optionsBtn)
@@ -139,6 +80,7 @@ public class MainMenuState : GameState {
             quitBtn.onClick.AddListener(QuitGame);
         if (audio)
             audio.onValueChanged.AddListener(volume => AudioListener.volume = volume);
+
         if (bgAudio)
             bgAudio.onValueChanged.AddListener(volume => AudioManager.SetBGMVolume(volume));
         if (effectAudio)

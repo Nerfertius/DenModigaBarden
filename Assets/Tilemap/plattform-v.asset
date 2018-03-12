@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: plattform-v
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 33b6d5cb4b7f74c4a9c6bc4f0e45f719, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 333161b83ecc7af48869475b8386d76c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

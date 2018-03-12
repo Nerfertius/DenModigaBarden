@@ -25,9 +25,13 @@ public class PlayerData : Data
     [HideInInspector] public int climbFixLayer;
     [HideInInspector] public int playerLayer;
     
+    // Quest
     [HideInInspector] public int[] items;
+    [HideInInspector] public bool hasKey;
+    [HideInInspector] public bool hasReadNote;
+    [HideInInspector] public bool orcQuestDone;
 
-	[HideInInspector] public float moveHorizontal;
+    [HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public Rigidbody2D body;
@@ -37,9 +41,6 @@ public class PlayerData : Data
     // Ladder
     [HideInInspector] public Transform ladderBottom;
 	[HideInInspector] public Transform ladderTop;
-
-    [HideInInspector] public Vector2 spawnLocation;
-    [HideInInspector] public Campfire campfire;
 
     // Movement
     [HideInInspector] public bool jumping;
@@ -51,13 +52,8 @@ public class PlayerData : Data
     // Note particle system
     public ParticleSystem noteFX;
     [HideInInspector] public ParticleSystem.TextureSheetAnimationModule noteAnim;
-
-    // Melody aura particle system
+    public ParticleSystem melodyFXPrefab;
     private ParticleSystem mfx;
-    public ParticleSystem melodyAura;
-    public Color jumpAuraColor;
-    public Color magicAuraColor;
-    public Color sleepAuraColor;
 
     // Variables used by Camera
     [HideInInspector] public bool inTransit;
@@ -88,12 +84,19 @@ public class PlayerData : Data
     // Respawn
     [HideInInspector] public int currentRespawnOrder;
     [HideInInspector] public Transform respawnLocation;
+    [HideInInspector] public Campfire campfire;
+    public Campfire startSpawn;
 
     // Materials
     [HideInInspector] public PhysicsMaterial2D defaultMat;
     [HideInInspector] public PhysicsMaterial2D fullFriction;
+    [HideInInspector] public PhysicsMaterial2D noFriction;
 
     [HideInInspector] public float groundCheckRadius;
+
+    // Gamepad
+    [HideInInspector] public bool gamepadConnected;
+    [HideInInspector] public float axisSensitivity;
 
     [System.Serializable]
     public class MelodyData {
@@ -192,16 +195,13 @@ public class PlayerData : Data
         }
     }
     public void MelodyPlayed(Melody.MelodyID ?id) {
-        var main = melodyAura.main;
         switch (id) {
             case Melody.MelodyID.JumpMelody:
                 AudioManager.PlayBGM(melodyData.jumpMelodySong);
-                main.startColor = jumpAuraColor;
                 break;
             case Melody.MelodyID.MagicResistMelody:
                 AudioManager.PlayBGM(melodyData.magicMelodySong);
                 magicShieldHealth = startMagicShieldHealth;
-                main.startColor = magicAuraColor;
                 break;
             case Melody.MelodyID.SleepMelody:
                 AudioManager.PlayBGM(melodyData.sleepMelodySong);
@@ -209,7 +209,6 @@ public class PlayerData : Data
                 {
                     campfire.SetSpawn(this);
                 }
-                main.startColor = sleepAuraColor;
                 break;
         }
         SpawnSFX();
@@ -245,7 +244,7 @@ public class PlayerData : Data
 		body = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         noteAnim = noteFX.textureSheetAnimation;
-        groundCheckRadius = 0.2f;
+        groundCheckRadius = 0.22f;
 
         climbFixLayer = LayerMask.NameToLayer("Blockable");
         playerLayer = LayerMask.NameToLayer("Player");
@@ -253,10 +252,12 @@ public class PlayerData : Data
         items = new int[System.Enum.GetNames(typeof(ItemType)).Length];
 
         currentRespawnOrder = -1;
-        respawnLocation = transform;
-
+        respawnLocation = startSpawn.transform;
+        
         defaultMat = Resources.Load("Materials/Default") as PhysicsMaterial2D;
         fullFriction = Resources.Load("Materials/FullFriction") as PhysicsMaterial2D;
+        noFriction = Resources.Load("Materials/NoFriction") as PhysicsMaterial2D;
+        body.sharedMaterial = defaultMat;
 
         melodyData.Start();
 
@@ -275,7 +276,16 @@ public class PlayerData : Data
         hitInvincibilityTimer = new Timer(hitInvincibilityDuration);
         hitInvincibilityTimer.Start();
         hitInvincibilityTimer.InstantFinish();
+		
+        if (Input.GetJoystickNames() != null)
+        {
+            gamepadConnected = true;
+        }
+        axisSensitivity = 0.75f;
 
+        hasKey = false;
+        hasReadNote = false;
+		
         audioData = new PlayerAudioData();
     }
 
@@ -297,7 +307,7 @@ public class PlayerData : Data
 
     IEnumerator JumpPause()
     {
-        float time = 0.5f;
+        float time = 0.1f;
         jumping = true;
         yield return new WaitForSeconds(time);
         jumping = false;
@@ -324,11 +334,13 @@ public class PlayerData : Data
     public IEnumerator Respawn()
     {
         CameraFX.FadeIn();
-        yield return new WaitForSeconds(1);
+        body.velocity = Vector2.zero;
+        yield return new WaitForSeconds(0.4f);
         transform.position = new Vector2(respawnLocation.position.x, respawnLocation.GetComponent<SpriteRenderer>().bounds.max.y);
         body.velocity = Vector2.zero;
         jumping = false;
         melodyData.currentMelody = null;
+        CancelPlayingMelody();
         health = 3;
         respawnLocation.GetComponent<Campfire>().mb.CalculateMapBounds();
         respawnLocation.GetComponent<Campfire>().mb.UpdateMapBounds();
@@ -338,7 +350,8 @@ public class PlayerData : Data
 
     void SpawnSFX()
     {
-        mfx = Instantiate(melodyAura, new Vector2(col.bounds.center.x, col.bounds.min.y), Quaternion.Euler(melodyAura.transform.rotation.eulerAngles));
+        mfx = Instantiate(melodyFXPrefab, new Vector2(transform.position.x - (0.75f * transform.localScale.x), collider.bounds.max.y), Quaternion.Euler(melodyFXPrefab.transform.rotation.eulerAngles));
+        mfx.GetComponent<FXdestroyer>().hasPlayed = true;
         mfx.transform.SetParent(transform);
     }
 
