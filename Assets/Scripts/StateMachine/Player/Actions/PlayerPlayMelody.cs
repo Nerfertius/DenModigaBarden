@@ -4,12 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "StateMachine/Action/Player/PlayerPlayMelody")]
 public class PlayerPlayMelody : StateAction {
-
-    public delegate void PlayedMagicResistEventHandler();
-    public static event PlayedMagicResistEventHandler PlayedMagicResist;
-    
-    public delegate void StoppedPlayingEventHandler();
-    public static event StoppedPlayingEventHandler StoppedPlaying;
+    bool melodyAxisUp = true;
 
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
@@ -67,15 +62,6 @@ public class PlayerPlayMelody : StateAction {
             foreach (Melody melody in mData.melodies) {
                 if (melody.CheckMelody(mData.PlayedNotes)) {
                     mData.currentMelody = melody.melodyID;
-
-                    if (mData.currentMelody == Melody.MelodyID.MagicResistMelody)
-                    {
-                        if (PlayedMagicResist != null)
-                        {
-                            PlayedMagicResist();
-                        }
-                    }
-
                     mData.MelodyRange.enabled = true;
                     melodyPlayed = true;
 

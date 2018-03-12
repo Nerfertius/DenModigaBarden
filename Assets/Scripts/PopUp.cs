@@ -5,13 +5,12 @@ using UnityEngine;
 public class PopUp : MonoBehaviour
 {
     private bool hasShowed;
-
+    private bool hasCleared;
     private bool visible;
-    private bool coroutineStopper;
     private SpriteRenderer rend;
     private StateController npcState;
     
-    public Sprite prompt;
+    public Sprite sprite;
     public bool repeatable;
     public bool showUntilCleared;
     public Vector2 offset;
@@ -46,11 +45,11 @@ public class PopUp : MonoBehaviour
         Destroy(empty);
         prompt.transform.parent = transform;
         rend = prompt.GetComponent<SpriteRenderer>();
-        rend.sprite = this.prompt;
+        rend.sprite = sprite;
         Color temp = rend.color;
         temp.a = 0;
         rend.color = temp;
-        rend.sortingLayerID = SortingLayer.NameToID("UI");
+        rend.sortingLayerName = "UI";
 
         if (!npcTalk && !melodyPlayed && !actionPerformed)
         {
@@ -87,41 +86,45 @@ public class PopUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerData data = PlayerData.player;
+            PlayerData data = collision.GetComponent<PlayerData>();
             PlayerData.MelodyData mData = data.melodyData;
 
-            if (npcTalk && !coroutineStopper)
+            if (npcTalk)
             {
                 if (npcState.currentState == state)
                 {
                     StopAllCoroutines();
-                    transform.GetChild(0).GetComponent<PopUpDescription>().Description();
                     StartCoroutine("FadeOut");
-                    coroutineStopper = true;
+                    if (showUntilCleared)
+                    {
+                        hasCleared = true;
+                    }
                 }
                 else if (npcState.currentState.ToString() == "NPCIdle (State)")
                 {
                     StopAllCoroutines();
-                    transform.GetChild(0).GetComponent<PopUpDescription>().Description();
                     StartCoroutine("FadeIn");
-                    coroutineStopper = true;
                 }
             }
 
-            else if (melodyPlayed && mData.currentMelody == melody && !coroutineStopper)
+            else if (melodyPlayed && mData.currentMelody == melody)
             {
                 StopAllCoroutines();
-                transform.GetChild(0).GetComponent<PopUpDescription>().Description();
                 StartCoroutine("FadeOut");
-                coroutineStopper = true;
+                if (showUntilCleared)
+                {
+                    hasCleared = true;
+                }
             }
 
-            else if (actionPerformed && Input.GetButtonDown(buttonName) && !coroutineStopper)
+            else if (actionPerformed && (Input.GetButtonDown(buttonName) || Input.GetAxisRaw(buttonName) > data.axisSensitivity))
             {
                 StopAllCoroutines();
-                transform.GetChild(0).GetComponent<PopUpDescription>().Description();
                 StartCoroutine("FadeOut");
-                coroutineStopper = true;
+                if (showUntilCleared)
+                {
+                    hasCleared = true;
+                }
             }
         }
     }
@@ -132,8 +135,6 @@ public class PopUp : MonoBehaviour
         {
             StopAllCoroutines();
             StartCoroutine("FadeOut");
-
-            coroutineStopper = false;
         }
     }
 

@@ -25,9 +25,11 @@ public class PlayerData : Data
     [HideInInspector] public int climbFixLayer;
     [HideInInspector] public int playerLayer;
     
+    // Quest
     [HideInInspector] public int[] items;
     [HideInInspector] public bool hasKey;
     [HideInInspector] public bool hasReadNote;
+    [HideInInspector] public bool orcQuestDone;
 
     [HideInInspector] public float moveHorizontal;
 	[HideInInspector] public float moveVertical;
@@ -50,13 +52,8 @@ public class PlayerData : Data
     // Note particle system
     public ParticleSystem noteFX;
     [HideInInspector] public ParticleSystem.TextureSheetAnimationModule noteAnim;
-
-    // Melody aura particle system
+    public ParticleSystem melodyFXPrefab;
     private ParticleSystem mfx;
-    public ParticleSystem melodyAura;
-    public Color jumpAuraColor;
-    public Color magicAuraColor;
-    public Color sleepAuraColor;
 
     // Variables used by Camera
     [HideInInspector] public bool inTransit;
@@ -198,16 +195,13 @@ public class PlayerData : Data
         }
     }
     public void MelodyPlayed(Melody.MelodyID ?id) {
-        var main = melodyAura.main;
         switch (id) {
             case Melody.MelodyID.JumpMelody:
                 AudioManager.PlayBGM(melodyData.jumpMelodySong);
-                main.startColor = jumpAuraColor;
                 break;
             case Melody.MelodyID.MagicResistMelody:
                 AudioManager.PlayBGM(melodyData.magicMelodySong);
                 magicShieldHealth = startMagicShieldHealth;
-                main.startColor = magicAuraColor;
                 break;
             case Melody.MelodyID.SleepMelody:
                 AudioManager.PlayBGM(melodyData.sleepMelodySong);
@@ -215,7 +209,6 @@ public class PlayerData : Data
                 {
                     campfire.SetSpawn(this);
                 }
-                main.startColor = sleepAuraColor;
                 break;
         }
         SpawnSFX();
@@ -357,7 +350,8 @@ public class PlayerData : Data
 
     void SpawnSFX()
     {
-        mfx = Instantiate(melodyAura, new Vector2(col.bounds.center.x, col.bounds.min.y), Quaternion.Euler(melodyAura.transform.rotation.eulerAngles));
+        mfx = Instantiate(melodyFXPrefab, new Vector2(transform.position.x - (0.75f * transform.localScale.x), collider.bounds.max.y), Quaternion.Euler(melodyFXPrefab.transform.rotation.eulerAngles));
+        mfx.GetComponent<FXdestroyer>().hasPlayed = true;
         mfx.transform.SetParent(transform);
     }
 
