@@ -3,18 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "StateMachine/Action/Player/PlayerPlayMelody")]
-public class PlayerPlayMelody : StateAction {
-    bool melodyAxisUp = true;
+public class PlayerPlayMelody : StateAction
+{
 
-    public override void Act(StateController controller) {
+    public delegate void PlayedMagicResistEventHandler();
+    public static event PlayedMagicResistEventHandler PlayedMagicResist;
+
+    public delegate void StoppedPlayingEventHandler();
+    public static event StoppedPlayingEventHandler StoppedPlaying;
+
+    public override void Act(StateController controller)
+    {
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
-        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody Dpad") > InputExtender.TriggerThreshold) {
+        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody Dpad") > InputExtender.TriggerThreshold)
+        {
             AudioManager.FadeBGM();
             mData.playingFlute = true;
 
-            if (mData.currentMelody != null) {
+            if (mData.currentMelody != null)
+            {
                 data.MelodyStoppedPlaying(mData.currentMelody);
             }
             mData.currentMelody = null;
@@ -24,9 +33,11 @@ public class PlayerPlayMelody : StateAction {
             Note notePlayed = null;
             if (Input.GetButton("PlayMelodyNoteShift") || Input.GetAxisRaw("PlayMelodyNoteShift Dpad") > InputExtender.TriggerThreshold)
             {
-                foreach (Note note in mData.Notes2) {
-                    
-                    if (note.CheckButton()) {
+                foreach (Note note in mData.Notes2)
+                {
+
+                    if (note.CheckButton())
+                    {
                         mData.PlayedNotes.AddLast(note);
                         notePlayed = note;
                     }
@@ -34,34 +45,50 @@ public class PlayerPlayMelody : StateAction {
             }
             else
             {
-                foreach (Note note in mData.Notes1) {
-                    if (note.CheckButton()) {
+                foreach (Note note in mData.Notes1)
+                {
+                    if (note.CheckButton())
+                    {
                         mData.PlayedNotes.AddLast(note);
                         notePlayed = note;
                     }
                 }
             }
-            if(notePlayed != null) {
+            if (notePlayed != null)
+            {
                 AudioManager.PlayNote(notePlayed.audio);
 
                 ParticleSystem m_fx = data.noteFX;
                 ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
                 m_anim.rowIndex = notePlayed.FXRowNumber;
-                Instantiate(m_fx, new Vector2(data.transform.position.x, data.collider.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
+                Instantiate(m_fx, new Vector2(data.transform.position.x, data.coll.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
                 m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
             }
-            
-            while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
+
+            while (mData.PlayedNotes.Count > mData.MaxSavedNotes)
+            {
                 mData.PlayedNotes.RemoveFirst();
             }
         }
 
-        if (Input.GetButtonUp("PlayMelody") || InputExtender.GetAxisUp("PlayMelody Dpad")) {
+        if (Input.GetButtonUp("PlayMelody") || InputExtender.GetAxisUp("PlayMelody Dpad"))
+        {
             bool melodyPlayed = false;
-            
-            foreach (Melody melody in mData.melodies) {
-                if (melody.CheckMelody(mData.PlayedNotes)) {
+
+            foreach (Melody melody in mData.melodies)
+            {
+                if (melody.CheckMelody(mData.PlayedNotes))
+                {
                     mData.currentMelody = melody.melodyID;
+
+                    if (mData.currentMelody == Melody.MelodyID.MagicResistMelody)
+                    {
+                        if (PlayedMagicResist != null)
+                        {
+                            PlayedMagicResist();
+                        }
+                    }
+
                     mData.MelodyRange.enabled = true;
                     melodyPlayed = true;
 
@@ -70,7 +97,8 @@ public class PlayerPlayMelody : StateAction {
                     break;
                 }
             }
-            if (!melodyPlayed) {
+            if (!melodyPlayed)
+            {
                 data.MelodyStoppedPlaying(mData.currentMelody);
                 mData.currentMelody = null;
                 mData.playingFlute = false;

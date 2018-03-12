@@ -5,24 +5,24 @@ using UnityEngine;
 public class Door : ActivatableReceiver
 {
     private Animator anim;
-    private BoxCollider2D collider;
+    private BoxCollider2D coll;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        collider = GetComponent<BoxCollider2D>();
+        coll = GetComponent<BoxCollider2D>();
     }
     
     public override void Activate()
     {
         anim.SetBool("Open", true);
-        collider.enabled = false;
+        coll.enabled = false;
     }
 
     public override void Deactivate()
     {
         anim.SetBool("Open", false);
-        collider.enabled = true;
+        coll.enabled = true;
     }
 
     public override void Toggle() {

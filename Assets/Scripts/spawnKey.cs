@@ -12,7 +12,7 @@ public class spawnKey : MonoBehaviour
     {
         GameObject mKey = Instantiate(key, transform.position, Quaternion.identity);
         Rigidbody2D body = mKey.GetComponent<Rigidbody2D>();
-        body.AddForce(new Vector2(50f * body.gravityScale, 200f * body.gravityScale));
+        body.AddForce(new Vector2(50f * body.gravityScale, 350f * body.gravityScale));
         AudioManager.PlayOneShot(soundOnObtain);
     }
 }

@@ -10,7 +10,7 @@ public class PlayerClimbOff : Condition
         PlayerData data = (PlayerData)controller.data;
         Collider2D botCol = data.ladderBottom.GetComponent<Collider2D>();
         Collider2D topCol = data.ladderTop.GetComponent<Collider2D>();
-        float feet = data.collider.bounds.min.y;
+        float feet = data.coll.bounds.min.y;
 
         //Bottom
         if (feet < botCol.bounds.min.y)

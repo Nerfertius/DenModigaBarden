@@ -15,14 +15,14 @@ public class Lever : MonoBehaviour
     private bool allLinkedActive;
 
     private Animator anim;
-    private BoxCollider2D collider;
+    private BoxCollider2D coll;
 
     private AudioClip audioClip;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        collider = GetComponent<BoxCollider2D>();
+        coll = GetComponent<BoxCollider2D>();
         audioClip = Resources.Load("SoundEffects/PuzzleComponents/Lever_Use") as AudioClip;
     }
 
