@@ -7,14 +7,18 @@ public class MapSettings : MonoBehaviour
 {
     private Color startColor;
     private MapBoundary mb;
+    private Vector2 startPos;
+    public bool beginningPlayed;
 
     public Sprite titleSprite;
     public Image titleObject;
+    public Vector2 offset;
     public float fadeSpeed;
     public float displayLength;
     public bool beginningArea;
 
     public AudioClip backgroundMusic;
+    public AudioClip ambience;
 
     void Start()
     {
@@ -22,12 +26,12 @@ public class MapSettings : MonoBehaviour
 
         if (titleObject != null)
         {
+            startPos = titleObject.rectTransform.position;
             titleObject.color = new Color(titleObject.color.r, titleObject.color.g, titleObject.color.b, 0);
             startColor = titleObject.color;
         }
 
         StartMapFeatures();
-        beginningArea = false;
 
         TransitionState.TransitionExited += StartMapFeatures;
         BattleState.BattleEntered += HideTitleObject;
@@ -41,21 +45,30 @@ public class MapSettings : MonoBehaviour
 
     private void StartMapFeatures()
     {
-        if(MapBoundary.currentMapBoundary == mb || beginningArea)
-        {
-            if (titleObject != null)
+        if (MapBoundary.currentMapBoundary == mb || (beginningArea && !beginningPlayed)) {
+            if (!beginningArea || (beginningArea && !beginningPlayed))
             {
-                StopAllCoroutines();
-                titleObject.color = startColor;
-                titleObject.sprite = titleSprite;
-                titleObject.SetNativeSize();
-                StartCoroutine(FadeIn());
-                StartCoroutine(DelayedFadeOut());
-            }
+                if (titleObject != null)
+                {
+                    StopAllCoroutines();
+                    titleObject.rectTransform.position = startPos + offset;
+                    titleObject.color = startColor;
+                    titleObject.sprite = titleSprite;
+                    titleObject.SetNativeSize();
+                    StartCoroutine(FadeIn());
+                    StartCoroutine(DelayedFadeOut());
+                }
+                
+                if (backgroundMusic != null)
+                {
+                    AudioManager.SetDefaultBGM(backgroundMusic);
+                }
+                AudioManager.PlayAmbience(ambience);
 
-            if (backgroundMusic != null)
-            {
-                AudioManager.SetDefaultBGM(backgroundMusic);
+                if (!beginningPlayed)
+                {
+                    beginningPlayed = true;
+                }
             }
         }
     }

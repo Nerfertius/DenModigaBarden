@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159113b621ec9b74da30a8cafd03293b, type: 3}
   m_Name: KoboldPurr1SoundEffect
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: c642fab7275a48649b8b323f14c3e56c, type: 3}
+  clip: {fileID: 8300000, guid: c457b1cc43522dc4b93ed2e7ead0924f, type: 3}

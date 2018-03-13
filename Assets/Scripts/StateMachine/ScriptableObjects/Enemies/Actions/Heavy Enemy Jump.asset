@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a4f8ffd574e2c4f8fa0778e309647a, type: 3}
   m_Name: Heavy Enemy Jump
   m_EditorClassIdentifier: 
-  JumpForce: 350
+  JumpForce: 450

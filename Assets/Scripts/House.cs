@@ -8,9 +8,12 @@ public class House : MonoBehaviour
     public Transform houseLocation;
     public bool automatic;
     public MapBoundary mb;
+    public bool elevator;
+    public bool locked;
+
 
     public AudioClip audioOnUse;
-    
+
     private GameObject player;
     private bool playerNear;
 
@@ -23,18 +26,39 @@ public class House : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetButtonDown("EnterHouse") && playerNear && !automatic)
+        if (Input.GetButtonDown("Interact") && playerNear && !automatic)
         {
-            StartCoroutine(EnterHouse());
+            if (!locked)
+            {
+                StartCoroutine(EnterHouse());
+            }
+            else if (locked && player.GetComponent<PlayerData>().hasKey)
+            {
+                StartCoroutine(EnterHouse());
+            }
         }
 	}
 
     IEnumerator EnterHouse()
     {
+        if (elevator)
+        {
+            Animator anim = transform.parent.GetComponent<Animator>();
+            anim.SetTrigger("Open");
+            StartCoroutine(ElevatorFadePlayer(2));
+            yield return new WaitForSeconds(1f);
+        }
         CameraFX.FadeIn();
         AudioManager.PlayOneShot(audioOnUse);
         yield return new WaitForSeconds(1f);
         player.transform.position = houseLocation.position;
+
+        if (elevator)
+        {
+            StopAllCoroutines();
+            player.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
         if (GetComponent<SpriteRenderer>() != null)        // Flip the player sprite if they are entering a house
         {
             player.transform.localScale = new Vector3(player.transform.localScale.x * spawnDirection, player.transform.localScale.y, player.transform.localScale.z);
@@ -62,6 +86,20 @@ public class House : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerNear = false;
+        }
+    }
+
+    IEnumerator ElevatorFadePlayer(float speed)
+    {
+        SpriteRenderer rend = player.GetComponent<SpriteRenderer>();
+        Color newColor = rend.color;
+        while (rend.color != Color.black * 0.80f)
+        {
+            newColor.b = Mathf.Lerp(newColor.b, 0, Time.deltaTime * speed);
+            newColor.g = Mathf.Lerp(newColor.g, 0, Time.deltaTime * speed);
+            newColor.r = Mathf.Lerp(newColor.r, 0, Time.deltaTime * speed);
+            rend.color = newColor;
+            yield return new WaitForEndOfFrame();
         }
     }
 }

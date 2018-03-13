@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: pelare-bot
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 94f64301254e26245b1640b108f5471c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e766b3ca9f7f7454aa1e2047b073aedb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

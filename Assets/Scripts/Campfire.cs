@@ -12,6 +12,10 @@ public class Campfire : MonoBehaviour
     void Start ()
     {
         anim = GetComponent<Animator>();
+        if (order == 0)
+        {
+            anim.SetBool("Active", true);
+        }
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,6 +42,7 @@ public class Campfire : MonoBehaviour
             if (data.respawnLocation.GetComponent<Campfire>())
             {
                 data.respawnLocation.GetComponent<Animator>().SetBool("Active", false);
+                PlayerData.player.health = 3;
             }
             data.respawnLocation = transform;
             data.currentRespawnOrder = order;

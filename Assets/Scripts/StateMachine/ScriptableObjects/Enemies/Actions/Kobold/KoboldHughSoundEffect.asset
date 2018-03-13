@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159113b621ec9b74da30a8cafd03293b, type: 3}
   m_Name: KoboldHughSoundEffect
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 552f581e31d83814dae04c33d278de85, type: 3}
+  clip: {fileID: 8300000, guid: 738ef72db4fef104a8a717e73f204435, type: 3}

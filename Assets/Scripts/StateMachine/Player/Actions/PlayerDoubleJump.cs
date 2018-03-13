@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "StateMachine/Action/Player/PlayerDoubleJump")]
 public class PlayerDoubleJump : StateAction {
 
+    public GameObject poofEffect;
+    public Vector3 poofEffectOffset;
+
     public override void Act(StateController controller) {
         PlayerData data = (PlayerData)controller.data;
 
@@ -20,6 +23,8 @@ public class PlayerDoubleJump : StateAction {
             data.body.AddForce(new Vector2(0, data.doubleJumpPower));
 
             data.melodyData.hasDoubleJump = false;
+
+            Instantiate(poofEffect, controller.transform.position + poofEffectOffset, Quaternion.identity);
 
             AudioManager.PlayOneShot(data.audioData.doubleJump);
         }

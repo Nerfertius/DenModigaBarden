@@ -20,13 +20,11 @@ public class PressurePlate : MonoBehaviour {
 
     //private bool down; 
     private Animator anim; // has a bool that checks if down
-    private BoxCollider2D collider;
 
     private bool allLinkedDown = false;
 
     void Start() {
         anim = GetComponent<Animator>();
-        collider = GetComponent<BoxCollider2D>();
     }
 
     private void Update() {

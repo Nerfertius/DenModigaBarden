@@ -8,9 +8,8 @@ public class Killbox : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            StartCoroutine(collision.GetComponent<PlayerData>().Respawn());
+            PlayerData.player.body.velocity = Vector2.zero;
+            StartCoroutine(PlayerData.player.Respawn());
         }
-        else
-            Destroy(collision.gameObject);
     }
 }

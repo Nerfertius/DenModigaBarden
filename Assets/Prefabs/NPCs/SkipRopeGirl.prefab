@@ -179,12 +179,14 @@ MonoBehaviour:
   currentDirection: {x: 0, y: 0}
   facingRight: 0
   canWalk: 0
+  speed: 0
   waitTime: 0
   mood: 0
   conversation: []
   textSpeed: 20
   fontSize: 0
   offset: {x: 0, y: 0}
+  originalPos: {x: 0, y: 0, z: 0}
   pitchDeviation: 0.3
   currentConvIndex: 0
   currentConv: []
@@ -202,6 +204,8 @@ MonoBehaviour:
   playSound: 0
   animator: {fileID: 0}
   playerInRange: 0
+  inAutoRange: 0
+  startTalking: 0
   player: {fileID: 0}
 --- !u!114 &114736369427226302
 MonoBehaviour:
@@ -228,7 +232,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9497b547ff5ff7d4499a1ffae504a5a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -246,7 +250,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2004588891
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7daba9e731b9979479be76c801e25584, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

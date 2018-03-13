@@ -27,19 +27,20 @@ public class CameraFX : MonoBehaviour {
 		rsStartScale = renderScreen.localScale;
 		rsStartRot = renderScreen.rotation;
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q)){
-            //FadeIn();
-        } else if (Input.GetKeyDown(KeyCode.R)){
-            //FadeOut();
-        } else if (Input.GetKeyDown(KeyCode.N))
-        {
-            //Screenshake(0.10f, 0.025f, 0.025f);
-            ZoomIn(1f);
-        }
-    }
+	
+    // For Debug
+    
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Q)){
+    //        FadeIn();
+    //    } else if (Input.GetKeyDown(KeyCode.R)){
+    //        FadeOut();
+    //    } else if (Input.GetKeyDown(KeyCode.N))
+    //    {
+    //        Screenshake(0.10f, 0.025f, 0.025f);
+    //    }
+    //}
 
     public static void FadeIn()
     {

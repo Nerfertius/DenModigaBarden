@@ -5,16 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "StateMachine/Condition/NPC/NPCHitBySleep")]
 public class NPCHitBySleep : Condition
 {
-    public override bool? CheckTriggerEnter(StateController controller, Collider2D other)
+    public override bool? CheckCondition(StateController controller)
     {
-        if (controller.gameObject.GetComponent<Animator>().HasState(0, Animator.StringToHash("Sleep")))
+        if (controller.anim != null && controller.anim.HasState(0, Animator.StringToHash("Sleep")) && PlayerData.player.hasReadNote)
         {
-            if (other.CompareTag("PlayerProjectile") && other.GetComponent<MelodyProjectile>().melodyID == Melody.MelodyID.SleepMelody)
+            if (Vector2.Distance(PlayerData.player.transform.position, controller.transform.position) <= 3f && 
+                PlayerData.player.melodyData.currentMelody == Melody.MelodyID.SleepMelody)
             {
-                return true;
+                if (controller.gameObject.ToString() == "Guard_captain" && PlayerData.player.orcQuestDone)
+                {
+                    return true;
+                }
+                else if (controller.gameObject.ToString() != "Guard_captain")
+                {
+                    return true;
+                }
             }
         }
-        
         return null;
     }
 }

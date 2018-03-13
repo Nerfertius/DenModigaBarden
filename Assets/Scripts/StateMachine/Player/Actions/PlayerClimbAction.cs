@@ -11,7 +11,6 @@ public class PlayerClimbAction : StateAction
         data.climbing = true;
         data.body.gravityScale = 0;
         data.body.velocity = Vector2.zero;
-        Collider2D topCol = data.ladderTop.GetComponent<Collider2D>();
 
         Physics2D.IgnoreLayerCollision(data.playerLayer, data.climbFixLayer, true);
 

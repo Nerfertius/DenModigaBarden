@@ -5,12 +5,16 @@ using UnityEngine;
 public class PopUp : MonoBehaviour
 {
     private bool hasShowed;
-    public bool visible;
+
+    private bool visible;
+    private bool coroutineStopper;
+    private bool hasCleared;
     private SpriteRenderer rend;
     private StateController npcState;
-    
-    public Sprite sprite;
+
+    public Sprite prompt;
     public bool repeatable;
+    public bool showUntilCleared;
     public Vector2 offset;
 
     [Header("NPC")]
@@ -30,7 +34,7 @@ public class PopUp : MonoBehaviour
         Gizmos.DrawCube(pos, Vector2.one / 2);
     }
 
-    void Start ()
+    void Start()
     {
         if (npcTalk)
         {
@@ -40,15 +44,19 @@ public class PopUp : MonoBehaviour
         GameObject empty = new GameObject();
         empty.AddComponent<SpriteRenderer>();
         GameObject prompt = Instantiate(empty, (Vector2)transform.position + offset, Quaternion.identity);
+        Destroy(empty);
+        prompt.transform.parent = transform;
+        prompt.AddComponent<PopUpDescription>();
         rend = prompt.GetComponent<SpriteRenderer>();
-        rend.sprite = sprite;
+        rend.sprite = this.prompt;
         Color temp = rend.color;
         temp.a = 0;
         rend.color = temp;
+        rend.sortingLayerID = SortingLayer.NameToID("UI");
 
         if (!npcTalk && !melodyPlayed && !actionPerformed)
         {
-            Debug.Log("Error, PopUp needs at least 1 condition");
+            Debug.Log(gameObject.ToString() + "Error, PopUp needs at least 1 condition");
         }
     }
 
@@ -68,6 +76,12 @@ public class PopUp : MonoBehaviour
                 StartCoroutine("FadeIn");
                 hasShowed = true;
             }
+
+            else if (!repeatable && showUntilCleared && !hasCleared && !visible)
+            {
+                StopAllCoroutines();
+                StartCoroutine("FadeIn");
+            }
         }
     }
 
@@ -75,33 +89,57 @@ public class PopUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerData data = collision.GetComponent<PlayerData>();
+            PlayerData data = PlayerData.player;
             PlayerData.MelodyData mData = data.melodyData;
 
-            if (npcTalk)
+            if (npcTalk && !coroutineStopper)
             {
                 if (npcState.currentState == state)
                 {
                     StopAllCoroutines();
+                    if (transform.GetChild(0) != null)
+                    {
+                        transform.GetChild(0).GetComponent<PopUpDescription>().Description();
+                    }
                     StartCoroutine("FadeOut");
+                    coroutineStopper = true;
+                    hasCleared = true;
                 }
                 else if (npcState.currentState.ToString() == "NPCIdle (State)")
                 {
                     StopAllCoroutines();
+                    if (transform.GetChild(0) != null)
+                    {
+                        transform.GetChild(0).GetComponent<PopUpDescription>().Description();
+                    }
                     StartCoroutine("FadeIn");
+                    coroutineStopper = true;
+                    hasCleared = true;
                 }
             }
 
-            else if (melodyPlayed && mData.currentMelody == melody)
+            else if (melodyPlayed && mData.currentMelody == melody && !coroutineStopper)
             {
                 StopAllCoroutines();
+                if (transform.GetChild(0) != null)
+                {
+                    transform.GetChild(0).GetComponent<PopUpDescription>().Description();
+                }
                 StartCoroutine("FadeOut");
+                coroutineStopper = true;
+                hasCleared = true;
             }
 
-            else if (actionPerformed && Input.GetButtonDown(buttonName))
+            else if (actionPerformed && Input.GetButtonDown(buttonName) && !coroutineStopper)
             {
                 StopAllCoroutines();
+                if (transform.GetChild(0) != null)
+                {
+                    transform.GetChild(0).GetComponent<PopUpDescription>().Description();
+                }
                 StartCoroutine("FadeOut");
+                coroutineStopper = true;
+                hasCleared = true;
             }
         }
     }
@@ -112,6 +150,8 @@ public class PopUp : MonoBehaviour
         {
             StopAllCoroutines();
             StartCoroutine("FadeOut");
+
+            coroutineStopper = false;
         }
     }
 
