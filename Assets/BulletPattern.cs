@@ -82,7 +82,7 @@ public class BulletPattern
                 spawner.StartCoroutine(GargoyleSmashPattern(5));
                 break;
             case PatternType.KoboldSpearAttack:
-                spawner.StartCoroutine(KoboldSpearAttack(10));
+                spawner.StartCoroutine(KoboldSpearAttack(20));
                 break;
             case PatternType.EvilEyeCenter:
                 spawner.StartCoroutine(CirclingCenterPattern(BattleScene.instance.center.position));
@@ -312,8 +312,9 @@ public class BulletPattern
                     bullets[n].SetActive(true);
                     break;
                 }
-                yield return new WaitForSeconds(0.2f);
             }
+
+            yield return new WaitForSeconds(0.4f);
         }
 
         yield return new WaitForSeconds(4f);
@@ -401,14 +402,6 @@ public class BulletPattern
                 xValue = Random.Range(-playArea.size.x * 0.5f, (-playArea.size.x * 0.5f) - 2f);
             }
             
-        }
-        
-
-        //Debug.Log("xValue: " + xValue + "     " + "YValue: " + yValue);
-        
-        if ((xValue > playArea.min.x && xValue < playArea.max.x) || (yValue > playArea.min.y && yValue < playArea.max.y))
-        {
-            Debug.Log("Wiiiiiie");
         }
     }
 }
