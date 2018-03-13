@@ -37,6 +37,9 @@ public class PopUpDescription : MonoBehaviour
     IEnumerator FadeOut()
     {
         Color newColor = rend.color;
+
+        Vector3 startPos = transform.position;
+
         while (rend.color.a > 0)
         {
             transform.localPosition += Vector3.up * Time.deltaTime;
@@ -44,5 +47,7 @@ public class PopUpDescription : MonoBehaviour
             rend.color = newColor;
             yield return new WaitForEndOfFrame();
         }
+
+        transform.position = startPos;
     }
 }
