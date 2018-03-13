@@ -5949,6 +5949,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82473047978744692, guid: e46cf04dabd52014180a00236ab40ad7,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e46cf04dabd52014180a00236ab40ad7, type: 2}
   m_IsPrefabParent: 0
@@ -33129,6 +33134,11 @@ Prefab:
     - target: {fileID: 4092824967005522, guid: eef5a751572600241a23db650c5c7d13, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 82738218790942164, guid: eef5a751572600241a23db650c5c7d13,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eef5a751572600241a23db650c5c7d13, type: 2}
@@ -90811,6 +90821,12 @@ Prefab:
       propertyPath: conversation.Array.data[2].texts.Array.data[0].offset.x
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 114961357693398506, guid: c9ce724a03247d0408cdcdb94d0d0b07,
+        type: 2}
+      propertyPath: prompt
+      value: 
+      objectReference: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9ce724a03247d0408cdcdb94d0d0b07, type: 2}
   m_IsPrefabParent: 0
@@ -98663,6 +98679,17 @@ Prefab:
       propertyPath: pitchDeviation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82942658300149228, guid: 2dc89ab18236d384bb0c45088583b6f8,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114004177145039640, guid: 2dc89ab18236d384bb0c45088583b6f8,
+        type: 2}
+      propertyPath: prompt
+      value: 
+      objectReference: {fileID: 21300004, guid: 25e191a0219883c46ad169e3ce2d3155,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2dc89ab18236d384bb0c45088583b6f8, type: 2}
   m_IsPrefabParent: 0
@@ -100236,6 +100263,11 @@ Prefab:
     - target: {fileID: 212357798954740262, guid: fdad7c00f5227ab40bae4d05051f2341,
         type: 2}
       propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82491700034311512, guid: fdad7c00f5227ab40bae4d05051f2341,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
