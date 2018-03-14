@@ -21,7 +21,7 @@ public class House : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = PlayerData.player.gameObject;
     }
 
     void Update ()

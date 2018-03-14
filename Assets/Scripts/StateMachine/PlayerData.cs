@@ -256,6 +256,7 @@ public class PlayerData : Data
     void Awake()
     {
         startScale = transform.localScale;
+        PlayerData.player = this;
     }
 
     void Start()
@@ -289,7 +290,6 @@ public class PlayerData : Data
         melodyData.MelodyRange = transform.Find("MelodyRange").GetComponent<CircleCollider2D>();
 
         // Statics
-        PlayerData.player = this;
 
         GameManager.instance.player = this;
 
