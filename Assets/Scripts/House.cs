@@ -65,7 +65,9 @@ public class House : MonoBehaviour
         }
         mb.CalculateMapBounds();
         mb.UpdateMapBounds();
-        Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
+        CameraFollow2D camScript = Camera.main.GetComponent<CameraFollow2D>();
+        camScript.enabled = true;
+        camScript.UpdateToMapBounds();
         CameraFX.FadeOut();
     }
 
