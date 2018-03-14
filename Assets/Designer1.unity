@@ -546,7 +546,7 @@ MonoBehaviour:
   offset: {x: 0.5, y: 1.56}
   npcTalk: 0
   state: {fileID: 0}
-  melodyPlayed: 0
+  melodyPlayed: 1
   melody: 0
   actionPerformed: 0
   buttonName: 
@@ -6762,7 +6762,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 260442063}
-  - component: {fileID: 260442066}
   - component: {fileID: 260442065}
   - component: {fileID: 260442064}
   m_Layer: 0
@@ -6824,18 +6823,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.84}
   serializedVersion: 2
   m_Radius: 2.41
---- !u!114 &260442066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114699508920077574, guid: 3981fecbfe4dcec4d97826470de054f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 260442062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a49edc6f31a78b4408545036a99d9fbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &260806518
 GameObject:
   m_ObjectHideFlags: 0
@@ -21990,7 +21977,7 @@ MonoBehaviour:
   offset: {x: 0.5, y: 1.56}
   npcTalk: 0
   state: {fileID: 0}
-  melodyPlayed: 0
+  melodyPlayed: 1
   melody: 2
   actionPerformed: 0
   buttonName: 
@@ -31076,7 +31063,7 @@ MonoBehaviour:
   offset: {x: 0.5, y: 1.56}
   npcTalk: 0
   state: {fileID: 0}
-  melodyPlayed: 0
+  melodyPlayed: 1
   melody: 0
   actionPerformed: 0
   buttonName: 
@@ -39089,7 +39076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &949361626
 Transform:
   m_ObjectHideFlags: 0
@@ -83975,7 +83962,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1178581596}
-  - component: {fileID: 1178581599}
   - component: {fileID: 1178581598}
   - component: {fileID: 1178581597}
   m_Layer: 0
@@ -84037,18 +84023,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.84}
   serializedVersion: 2
   m_Radius: 2.41
---- !u!114 &1178581599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114699508920077574, guid: 3981fecbfe4dcec4d97826470de054f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1178581595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a49edc6f31a78b4408545036a99d9fbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1178588652
 Prefab:
   m_ObjectHideFlags: 0
@@ -84468,7 +84442,7 @@ MonoBehaviour:
   offset: {x: 0.5, y: 1.56}
   npcTalk: 0
   state: {fileID: 0}
-  melodyPlayed: 0
+  melodyPlayed: 1
   melody: 2
   actionPerformed: 0
   buttonName: 
@@ -111689,7 +111663,7 @@ MonoBehaviour:
   offset: {x: 0.5, y: 1.56}
   npcTalk: 0
   state: {fileID: 0}
-  melodyPlayed: 0
+  melodyPlayed: 1
   melody: 2
   actionPerformed: 0
   buttonName: 
@@ -113899,7 +113873,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2069751212}
-  - component: {fileID: 2069751215}
   - component: {fileID: 2069751214}
   - component: {fileID: 2069751213}
   m_Layer: 0
@@ -113961,18 +113934,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.84}
   serializedVersion: 2
   m_Radius: 2.41
---- !u!114 &2069751215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114699508920077574, guid: 3981fecbfe4dcec4d97826470de054f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2069751211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a49edc6f31a78b4408545036a99d9fbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2073407360
 GameObject:
   m_ObjectHideFlags: 0
@@ -115640,7 +115601,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2096358164}
-  - component: {fileID: 2096358167}
   - component: {fileID: 2096358166}
   - component: {fileID: 2096358165}
   m_Layer: 0
@@ -115702,18 +115662,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.84}
   serializedVersion: 2
   m_Radius: 2.41
---- !u!114 &2096358167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114699508920077574, guid: 3981fecbfe4dcec4d97826470de054f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2096358163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a49edc6f31a78b4408545036a99d9fbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2096408019
 GameObject:
   m_ObjectHideFlags: 0
