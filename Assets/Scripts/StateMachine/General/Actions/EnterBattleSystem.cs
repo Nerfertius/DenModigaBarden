@@ -15,9 +15,13 @@ public class EnterBattleSystem : StateAction
     {
         EnemyData eData = (EnemyData)controller.data;
 
-        if(eData.battleTopBackground != null)
+        if (eData.battleTopBackground != null)
         {
             BattleScene.instance.SetTopBackground(eData.battleTopBackground);
+        }
+        else
+        {
+            BattleScene.instance.SetTopBackground(null);
         }
 
         BattleScene.caller = controller.gameObject;

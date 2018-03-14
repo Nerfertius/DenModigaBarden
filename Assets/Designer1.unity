@@ -1183,6 +1183,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114252480835615534, guid: 6e735bfc57b42c046a471425716cd00b,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e735bfc57b42c046a471425716cd00b, type: 2}
   m_IsPrefabParent: 0
@@ -4709,6 +4715,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.8333334
       objectReference: {fileID: 0}
+    - target: {fileID: 114252480835615534, guid: 6e735bfc57b42c046a471425716cd00b,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e735bfc57b42c046a471425716cd00b, type: 2}
   m_IsPrefabParent: 0
@@ -5789,6 +5801,12 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114252480835615534, guid: 6e735bfc57b42c046a471425716cd00b,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 58f013fd55baae44d8a6a1a426366dcf,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e735bfc57b42c046a471425716cd00b, type: 2}
   m_IsPrefabParent: 0
@@ -22918,6 +22936,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.8333334
       objectReference: {fileID: 0}
+    - target: {fileID: 114010551126743276, guid: 63fc6826428a6d94387ca7b9a7faee9d,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 63fc6826428a6d94387ca7b9a7faee9d, type: 2}
   m_IsPrefabParent: 0
@@ -25302,6 +25326,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.8333334
       objectReference: {fileID: 0}
+    - target: {fileID: 114252480835615534, guid: 6e735bfc57b42c046a471425716cd00b,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e735bfc57b42c046a471425716cd00b, type: 2}
   m_IsPrefabParent: 0
@@ -81391,6 +81421,16 @@ Prefab:
       propertyPath: enemyHPBar
       value: 
       objectReference: {fileID: 841229404}
+    - target: {fileID: 212368927160563862, guid: 61cd7de0723f9c140b12d1c4e84103e6,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 212368927160563862, guid: 61cd7de0723f9c140b12d1c4e84103e6,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61cd7de0723f9c140b12d1c4e84103e6, type: 2}
   m_IsPrefabParent: 0
@@ -84289,6 +84329,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114252480835615534, guid: 6e735bfc57b42c046a471425716cd00b,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e735bfc57b42c046a471425716cd00b, type: 2}
   m_IsPrefabParent: 0
@@ -85961,6 +86007,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.8333334
       objectReference: {fileID: 0}
+    - target: {fileID: 114252480835615534, guid: 6e735bfc57b42c046a471425716cd00b,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e735bfc57b42c046a471425716cd00b, type: 2}
   m_IsPrefabParent: 0
@@ -95958,6 +96010,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.8333334
       objectReference: {fileID: 0}
+    - target: {fileID: 114010551126743276, guid: 63fc6826428a6d94387ca7b9a7faee9d,
+        type: 2}
+      propertyPath: battleTopBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b1e07d24aaeb7464e8e6588aaf075729,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 63fc6826428a6d94387ca7b9a7faee9d, type: 2}
   m_IsPrefabParent: 0
