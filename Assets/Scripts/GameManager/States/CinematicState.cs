@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Video;
 
 public class CinematicState : GameState {
 
@@ -10,6 +11,13 @@ public class CinematicState : GameState {
 
     public override void enter()
     {
+        /*
+        GameObject camera = Camera.main.gameObject;
+        VideoPlayer vPlayer = camera.AddComponent<VideoPlayer>();
+        vPlayer.playOnAwake = true;
+        vPlayer.renderMode = VideoRenderMode.CameraNearPlane;
+        vPlayer.url = 
+        */
         levelLoad = gm.loadScene(1);
     }
 
@@ -24,6 +32,5 @@ public class CinematicState : GameState {
 
     public override void exit()
     {
-        
     }
 }

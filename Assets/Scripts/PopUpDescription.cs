@@ -42,7 +42,7 @@ public class PopUpDescription : MonoBehaviour
 
         while (rend.color.a > 0)
         {
-            transform.localPosition += Vector3.up * Time.deltaTime;
+            //transform.localPosition += Vector3.up * Time.deltaTime;
             newColor.a -= Time.deltaTime;
             rend.color = newColor;
             yield return new WaitForEndOfFrame();

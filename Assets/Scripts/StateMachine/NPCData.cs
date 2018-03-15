@@ -248,7 +248,6 @@ public class NPCData : Data
     IEnumerator ScreenshakeFX(NPCData data, float xIntensity, float yIntensity)
     {
         Transform textBox = data.text.transform.parent;
-        Debug.Log(textBox.position);
         Vector3 camPosition = textBox.position;
         float posX = textBox.position.x;
         float posY = textBox.position.y;

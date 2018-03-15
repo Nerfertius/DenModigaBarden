@@ -10,7 +10,6 @@ public class GMCanvasRegi : MonoBehaviour {
     
 	void Start () {
         Canvas canvas = GetComponent<Canvas>();
-        Debug.Log("Regi");
         switch (this.canvas) {
             case Canvases.MainMenu:
                 GameManager.MainMenuCanvas = canvas;

@@ -66,7 +66,6 @@ public class MagicRune : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(cooldown);
-        StartCoroutine(FadeIn());
     }
 
     IEnumerator FadeIn()
