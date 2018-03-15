@@ -41,14 +41,14 @@ public class CameraFX : MonoBehaviour {
     public static void FadeIn()
     {
         instance.StopAllCoroutines();
-        //instance.camScript.enabled = true;
+        instance.camScript.enabled = true;
         instance.StartCoroutine("FadeInFX");
     }
 
     public static void FadeOut()
     {
         instance.StopAllCoroutines();
-        //instance.camScript.enabled = true;
+        instance.camScript.enabled = true;
         instance.StartCoroutine("FadeOutFX");
     }
 
