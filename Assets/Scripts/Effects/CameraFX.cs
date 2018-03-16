@@ -21,6 +21,7 @@ public class CameraFX : MonoBehaviour {
 	private void Start ()
     {
         camScript = GetComponent<CameraFollow2D>();
+        FadeOut();
     }
 
     // For Debug
