@@ -41,6 +41,10 @@ public class VideoManager : MonoBehaviour {
         vPlayer.Play();
     }
 
+    public void Stop() {
+        vPlayer.Stop();
+    }
+
     public bool IsPlaying()
     {
         return vPlayer.isPlaying;
