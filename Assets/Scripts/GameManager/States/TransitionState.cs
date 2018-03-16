@@ -17,12 +17,12 @@ public class TransitionState : GameState {
 
     public override void enter()
     {
+        Time.timeScale = 0;
+
         if (TransitionEntered != null)
         {
             TransitionEntered();
         }
-
-        Time.timeScale = 0;
         //gm.hideCanvas("PlayCanvas");
     }
 

@@ -145,6 +145,11 @@ public class AudioManager : MonoBehaviour
     public static void PlayBGM(AudioClip music) {
         instance.bgm.Play(music); 
     }
+    public static void PlayBGM(AudioClip music, bool fadeInOnPlay)
+    {
+        instance.bgm.FadeInOnPlay = fadeInOnPlay;
+        instance.bgm.Play(music);
+    }
 
     public static void PlayDefaultBGM() {
         PlayBGM(instance.defaultBGM);
@@ -215,7 +220,7 @@ public class AudioManager : MonoBehaviour
         [Tooltip("Fade out duration on AudioClip change")]
         [SerializeField] private float fullFadeOutDuration = 0;
 
-        [SerializeField] private bool FadeInOnPlay = false;
+        [SerializeField] public bool FadeInOnPlay = false;
         [SerializeField] private bool Loop = false;
 
         [Tooltip("On true, cancels previous audioclip and plays it again")]

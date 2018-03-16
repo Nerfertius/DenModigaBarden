@@ -5,7 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class CameraFollow2D : MonoBehaviour
 {
-
     public Transform target;
     public Transform[] backgrounds;
     public bool hideCursor;
@@ -28,7 +27,7 @@ public class CameraFollow2D : MonoBehaviour
 
         if (!transitioning)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(posX, posY, transform.position.z), followSpeed * Time.unscaledDeltaTime * 5);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(posX, posY, transform.position.z), followSpeed * 10 * Time.unscaledDeltaTime);
 
             UpdateBackgroundPosition();
         }

@@ -27,8 +27,9 @@ public class Sound : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
         if (ignoreFirstSelect)
         {
             ignoreFirstSelect = false;
-            return;
         }
-		AudioManager.PlayOneShot(select);
+        else {
+		    AudioManager.PlayOneShot(select);
+        }
 	}
 }

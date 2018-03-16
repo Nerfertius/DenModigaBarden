@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MainMenuState : GameState
 {
@@ -10,6 +11,8 @@ public class MainMenuState : GameState
     private Slider audio, bgAudio, effectAudio;
     private string canvas = "MainMenuCanvas", play = "Interact/PlayBtn", options = "Interact/OptionsBtn", quit = "Interact/QuitBtn";
     private bool showOptions = false, setup = false;
+
+    private GameObject lastSelected = null;
 
     private Transform optionsTrans;
 
@@ -42,6 +45,15 @@ public class MainMenuState : GameState
         {
             cg.alpha += 0.4f * Time.deltaTime;
         }
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+        if (selected == null)
+        {
+            if (lastSelected != null)
+                EventSystem.current.SetSelectedGameObject(lastSelected);
+        }
+        else {
+            lastSelected = selected;
+        }
     }
 
     public override void exit()
@@ -57,7 +69,8 @@ public class MainMenuState : GameState
 
         Listeners();
 
-        playBtn.Select();
+        lastSelected = playBtn.gameObject;
+        lastSelected.GetComponent<Animator>().SetBool("Highlighted", true);
     }
 
     void SwPlayState()

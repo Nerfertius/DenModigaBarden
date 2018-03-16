@@ -21,7 +21,7 @@ public class House : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = PlayerData.player.gameObject;
     }
 
     void Update ()
@@ -65,7 +65,9 @@ public class House : MonoBehaviour
         }
         mb.CalculateMapBounds();
         mb.UpdateMapBounds();
-        Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
+        CameraFollow2D camScript = Camera.main.GetComponent<CameraFollow2D>();
+        camScript.enabled = true;
+        camScript.UpdateToMapBounds();
         CameraFX.FadeOut();
     }
 

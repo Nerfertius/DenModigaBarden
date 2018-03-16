@@ -276,6 +276,7 @@ MonoBehaviour:
   chaseSpeed: 0
   attackRange: 0
   behaveAsHitbox: 0
+  childCollided: 0
   rb: {fileID: 50525118852681516}
   controller: {fileID: 0}
   spriteRenderer: {fileID: 0}

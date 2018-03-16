@@ -1,0 +1,311 @@
+fileFormatVersion: 2
+guid: db66e639d79a4d845bcf3d8a1a0939a8
+timeCreated: 1520591810
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Dragon_Battle_Idle_Spritesheet_0
+    21300002: Dragon_Battle_Idle_Spritesheet_1
+    21300004: Dragon_Battle_Idle_Spritesheet_2
+    21300006: Dragon_Battle_Idle_Spritesheet_3
+    21300008: Dragon_Battle_Idle_Spritesheet_4
+    21300010: Dragon_Battle_Idle_Spritesheet_5
+    21300012: Dragon_Battle_Idle_Spritesheet_6
+    21300014: Dragon_Battle_Idle_Spritesheet_7
+    21300016: Dragon_Battle_Idle_Spritesheet_8
+    21300018: Dragon_Battle_Idle_Spritesheet_9
+    21300020: Dragon_Battle_Idle_Spritesheet_10
+    21300022: Dragon_Battle_Idle_Spritesheet_11
+    21300024: Dragon_Battle_Idle_Spritesheet_12
+    21300026: Dragon_Battle_Idle_Spritesheet_13
+    21300028: Dragon_Battle_Idle_Spritesheet_14
+    21300030: Dragon_Battle_Idle_Spritesheet_15
+    21300032: Dragon_Battle_Idle_Spritesheet_16
+    21300034: Dragon_Battle_Idle_Spritesheet_17
+    21300036: Dragon_Battle_Idle_Spritesheet_18
+    21300038: Dragon_Battle_Idle_Spritesheet_19
+    21300040: Dragon_Battle_Idle_Spritesheet_20
+    21300042: Dragon_Battle_Idle_Spritesheet_21
+    21300044: Dragon_Battle_Idle_Spritesheet_22
+    21300046: Dragon_Battle_Idle_Spritesheet_23
+    21300048: Dragon_Battle_Idle_Spritesheet_24
+    21300050: Dragon_Battle_Idle_Spritesheet_25
+    21300052: Dragon_Battle_Idle_Spritesheet_26
+    21300054: Dragon_Battle_Idle_Spritesheet_27
+    21300056: Dragon_Battle_Idle_Spritesheet_28
+    21300058: Dragon_Battle_Idle_Spritesheet_29
+    21300060: Dragon_Battle_Idle_Spritesheet_30
+    21300062: Dragon_Battle_Idle_Spritesheet_31
+    21300064: Dragon_Battle_Idle_Spritesheet_32
+    21300066: Dragon_Battle_Idle_Spritesheet_33
+    21300068: Dragon_Battle_Idle_Spritesheet_34
+    21300070: Dragon_Battle_Idle_Spritesheet_35
+    21300072: Dragon_Battle_Idle_Spritesheet_36
+    21300074: Dragon_Battle_Idle_Spritesheet_37
+    21300076: Dragon_Battle_Idle_Spritesheet_38
+    21300078: Dragon_Battle_Idle_Spritesheet_39
+    21300080: Dragon_Battle_Idle_Spritesheet_40
+    21300082: Dragon_Battle_Idle_Spritesheet_41
+    21300084: Dragon_Battle_Idle_Spritesheet_42
+    21300086: Dragon_Battle_Idle_Spritesheet_43
+    21300088: Dragon_Battle_Idle_Spritesheet_44
+    21300090: Dragon_Battle_Idle_Spritesheet_45
+    21300092: Dragon_Battle_Idle_Spritesheet_46
+    21300094: Dragon_Battle_Idle_Spritesheet_47
+    21300096: Dragon_Battle_Idle_Spritesheet_48
+    21300098: Dragon_Battle_Idle_Spritesheet_49
+    21300100: Dragon_Battle_Idle_Spritesheet_50
+    21300102: Dragon_Battle_Idle_Spritesheet_51
+    21300104: Dragon_Battle_Idle_Spritesheet_52
+    21300106: Dragon_Battle_Idle_Spritesheet_53
+    21300108: Dragon_Battle_Idle_Spritesheet_54
+    21300110: Dragon_Battle_Idle_Spritesheet_55
+    21300112: Dragon_Battle_Idle_Spritesheet_56
+    21300114: Dragon_Battle_Idle_Spritesheet_57
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 64
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1440
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1440
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1440
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1440
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 720
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 720
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 720
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Dragon_Battle_Idle_Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 1280
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
