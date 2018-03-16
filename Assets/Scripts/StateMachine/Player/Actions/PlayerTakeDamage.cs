@@ -25,10 +25,12 @@ public class PlayerTakeDamage : StateAction
                 else
                 {
                     data.health -= data.lastDamageData.damage;
+                    //data.CancelPlayingMelody();
+                    //Debug.Log("Health: " + data.health);
                 }
 
                 if(data.magicShieldHealth <= 0 || !data.lastDamageData.isMagical){
-                    data.CancelPlayingMelody();
+                    //data.CancelPlayingMelody();
                 }
 
                 data.rb.velocity = new Vector2(0, 0);

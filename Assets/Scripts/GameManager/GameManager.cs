@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 
     public GameState current = null;
 
-    public PlayerData player;
+    [HideInInspector] public PlayerData player;
 
     public Sprite fullHeart, halfHeart, emptyHeart;
     public Sprite[] notes = new Sprite[5];
@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
+        player = PlayerData.player;
+
         if (current == null)
         {
             if (player)

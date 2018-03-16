@@ -79,6 +79,7 @@ public class PlayerData : Data
 
     [HideInInspector] public Vector2 hitAngle;
     [HideInInspector] public bool goIdle, goWalk, goAir, goCrouch;
+    [HideInInspector] public EnemyData enemyToBattle;
 
 
     // Melody
@@ -255,6 +256,7 @@ public class PlayerData : Data
     void Awake()
     {
         startScale = transform.localScale;
+        PlayerData.player = this;
     }
 
     void Start()
@@ -288,7 +290,6 @@ public class PlayerData : Data
         melodyData.MelodyRange = transform.Find("MelodyRange").GetComponent<CircleCollider2D>();
 
         // Statics
-        PlayerData.player = this;
 
         GameManager.instance.player = this;
 
@@ -348,6 +349,7 @@ public class PlayerData : Data
 
     public void CallRespawn()
     {
+        GameManager.instance.switchState(new PlayState(GameManager.instance));
         StartCoroutine(Respawn());
     }
 

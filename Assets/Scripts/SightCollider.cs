@@ -12,6 +12,8 @@ public class SightCollider : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
+        eData.childCollided = true;
+
         if (coll.tag == "Player")
         {
             eData.player = coll.transform;

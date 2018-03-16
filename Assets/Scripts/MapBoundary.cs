@@ -44,7 +44,7 @@ public class MapBoundary : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && currentMapBoundary == this)
         {
             UpdateMapBounds();
             camScript.ActivateTransition();
