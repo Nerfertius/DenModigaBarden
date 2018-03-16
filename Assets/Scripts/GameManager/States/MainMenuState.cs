@@ -46,7 +46,6 @@ public class MainMenuState : GameState
 
     public override void exit()
     {
-        GameManager.MainMenuCanvas.enabled = false;
         playBtn.onClick.RemoveAllListeners();
         optionsBtn.onClick.RemoveAllListeners();
         quitBtn.onClick.RemoveAllListeners();
@@ -63,7 +62,14 @@ public class MainMenuState : GameState
 
     void SwPlayState()
     {
+        CameraFX.FadeIn();
         GameManager.MainMenuCanvas.GetComponent<AudioSource>().Play();
+        GameManager.instance.StartCoroutine(Delay());
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSecondsRealtime(1f);
         gm.switchState(new CinematicState(gm));
     }
 

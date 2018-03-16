@@ -309,6 +309,9 @@ public class BulletPattern
 
                     datas[n].bulletType = pattern;
                     bullets[n].transform.position = BattleScene.instance.center.position + new Vector3(xPos, yPos, 0f);
+                    datas[n].direction = TopDownController.Cadenza.position - bullets[n].transform.position;
+                    float angle = Mathf.Atan2(datas[n].direction.y, datas[n].direction.x) * Mathf.Rad2Deg + 90;
+                    bullets[n].transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                     bullets[n].SetActive(true);
                     break;
                 }

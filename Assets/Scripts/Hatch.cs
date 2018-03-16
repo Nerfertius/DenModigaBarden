@@ -28,6 +28,9 @@ public class Hatch : MonoBehaviour
         if (playerNear && Input.GetButtonDown("Interact") && !opened)
         {
             GetComponent<Animator>().SetBool("Open", true);
+
+            GetComponent<EdgeCollider2D>().enabled = false;
+
             opened = true;
         }
     }

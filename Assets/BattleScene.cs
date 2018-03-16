@@ -12,7 +12,6 @@ public class BattleScene : MonoBehaviour
     public AudioClip buttonSelectSound;
     [HideInInspector] public int escapeChance;
 
-
     public SpriteRenderer topBackground;
     public GameObject battleTextbox;
     public Image enemyHPBar;
@@ -29,6 +28,8 @@ public class BattleScene : MonoBehaviour
     public static event EnemysTurnEventHandler EnemysTurn;
 
     private Text battleText;
+    private bool firstBattle = true;
+    private bool firstTextShown = false;
     private float enemyMaxHP;
     private float enemyCurrentHP;
     private bool playersTurn;
@@ -36,6 +37,7 @@ public class BattleScene : MonoBehaviour
     private int currentButtonIndex;
     private int lastButtonIndex;
     private int enemyIndex;
+    private int fightCount = -1;
 
     private SpriteRenderer sprRend;
 
@@ -90,6 +92,7 @@ public class BattleScene : MonoBehaviour
 
         playersTurn = false;
         battleTextbox.SetActive(false);
+        enemyHPBar.gameObject.SetActive(false);
         enemyHPBar.fillAmount = 1;
         buttons[currentButtonIndex].sprite = deactivatedSprites[currentButtonIndex];
         currentButtonIndex = 0;
@@ -98,8 +101,16 @@ public class BattleScene : MonoBehaviour
 
     void Update()
     {
+        
         if (playersTurn)
         {
+            if (firstBattle) {
+                StartCoroutine(ShowText(new string[] { "You got engaged in a battle!", "The enemy will try to attack you", "Try your best to avoid his attacks!", "Select your move!" }, 1.5f));
+                firstBattle = false;
+            }
+
+            if (!firstTextShown) return;
+
             ButtonSelection();
             if (Input.GetButtonDown("Interact"))
             {
@@ -109,13 +120,38 @@ public class BattleScene : MonoBehaviour
 
                 if (currentButtonIndex == 0)
                 {
-                    StartCoroutine(ShowBattleText("You don't have proficiency in any weapons...", 1.5f, false));
+                    if (fightCount < 4)
+                    {
+                        fightCount++;
+                    }
+                    else {
+                        fightCount = 0;
+                    }
+                    switch (fightCount)
+                    {
+                        case 0:
+                            StartCoroutine(ShowBattleText("It is useless to fight.", 1.5f, false));
+                            break;
+                        case 1:
+                            StartCoroutine(ShowBattleText("You are a bard, you cannot fight.", 1.5f, false));
+                            break;
+                        case 2:
+                            StartCoroutine(ShowBattleText("You don't have proficiency in any weapons...", 1.5f, false));
+                            break;
+                        case 3:
+                            StartCoroutine(ShowBattleText("Stop fighting and play a song!", 1.5f, false));
+                            break;
+                        case 4:
+                            StartCoroutine(ShowBattleText(new string[] { "What are you trying to do?", "Hit it with your flute?" }, 1.5f, false));
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else if (currentButtonIndex == 1)
                 {
                     enemyCurrentHP--;
                     StartCoroutine(HealthReduction());
-                    enemyHPBar.gameObject.SetActive(true);
                     if (enemyCurrentHP > 0)
                     {
                         string[] texts = textStrings[enemyIndex].songText;
@@ -154,7 +190,26 @@ public class BattleScene : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
     }
-    
+    IEnumerator ShowText(string[] texts, float duration)
+    {
+        battleTextbox.SetActive(true);
+        foreach (string text in texts)
+        {
+            battleText.text = text;
+            yield return new WaitForSeconds(duration);
+        }
+        battleTextbox.SetActive(false);
+        firstTextShown = true;
+    }
+    IEnumerator ShowText(string text, float duration)
+    {
+        battleTextbox.SetActive(true);
+        battleText.text = text;
+        yield return new WaitForSeconds(duration);
+        battleTextbox.SetActive(false);
+        firstTextShown = true;
+    }
+
     IEnumerator ShowBattleText(string[] texts, float duration, bool leaveBattle)
     {
         battleTextbox.SetActive(true);
@@ -173,8 +228,6 @@ public class BattleScene : MonoBehaviour
         {
             GameManager.instance.switchState(new PlayState(GameManager.instance));
         }
-        
-        enemyHPBar.gameObject.SetActive(false);
     }
 
     IEnumerator ShowBattleText(string text, float duration, bool leaveBattle)
@@ -266,6 +319,7 @@ public class BattleScene : MonoBehaviour
     {        
         enemies[enemyIndex].SetActive(true);
 
+        enemyHPBar.gameObject.SetActive(true);
         playersTurn = true;
         currentButtonIndex = 0;
 
