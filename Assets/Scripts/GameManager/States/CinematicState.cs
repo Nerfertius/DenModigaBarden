@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CinematicState : GameState {
 
     public AsyncOperation levelLoad;
+    private float skipProg = 0, addTime = 0.6f, remTime = 0.8f;
+    private CanvasGroup skipGroup;
 
     public CinematicState(GameManager gm) {
         this.gm = gm;
@@ -15,6 +18,7 @@ public class CinematicState : GameState {
         VideoManager.instance.Play();
         gm.StartCoroutine(DeactivateCanvas());
         levelLoad = gm.loadScene(1);
+        skipGroup = GameManager.CinematicCanvas.GetComponentInChildren<CanvasGroup>();
     }
 
     IEnumerator DeactivateCanvas()
@@ -30,6 +34,26 @@ public class CinematicState : GameState {
     {
         if (levelLoad != null && levelLoad.progress >= 0.9f)
         {
+            if (gm.skipBtn != null) {
+                if (skipGroup.alpha == 1) {
+                    if (Input.GetButton("Interact"))
+                    {
+                        skipProg += addTime * Time.deltaTime;
+                        if (skipProg >= 1) {
+                            VideoManager.instance.Stop();
+                        }
+                    }
+                    else {
+                        skipProg -= remTime * Time.deltaTime;
+                        skipProg = skipProg < 0 ? 0 : skipProg;
+                    }
+                    gm.progressBar.fillAmount = skipProg;
+                } else{
+                    if(Input.GetButton("Interact"))
+                        skipGroup.alpha = 1;
+                }
+            }
+                
             if (!VideoManager.instance.IsPlaying())
             {
                 levelLoad.allowSceneActivation = true;
@@ -39,7 +63,6 @@ public class CinematicState : GameState {
                     gm.switchState(new PlayState(gm));
                 }
             }
-
         }
 
     }

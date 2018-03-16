@@ -92,6 +92,8 @@ public class PauseState : GameState {
         temp = navCloseOptions[1];
         temp.selectOnUp = effectAudio;
         navOpenOptions[1] = temp;
+
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(resumeBtn.gameObject);
     }
 
     private void Listeners()

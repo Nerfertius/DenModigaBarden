@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour {
     public float bgAudio = 1, effectAudio = 1;
 
     [HideInInspector]
-    public static Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas, GameOverCanvas;
+    public static Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas, GameOverCanvas, CinematicCanvas;
+
+    public Image skipBtn, progressBar;
 
     private AsyncOperation async;
 
