@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772a06d3c6f7df94fb357b0525a893bd, type: 3}
+  m_Name: EvilEyeDeepSleep
+  m_EditorClassIdentifier: 
+  entryActions:
+  - {fileID: 11400000, guid: 3bd904a1f77ef3c459806cfa1309a19e, type: 2}
+  - {fileID: 11400000, guid: 70cb5c2ec41ee15449d91679f749b44f, type: 2}
+  - {fileID: 11400000, guid: 96e7434e5c1ebe04e953c12c9b802c37, type: 2}
+  - {fileID: 11400000, guid: 619365231f7f9284e9f95e8c57dd2cd6, type: 2}
+  exitActions: []
+  actions: []
+  transitions: []
+  conditionedActions: []
+  hasExitTime: 0
+  exitTimer: 0
+  useRandomTimer: 0
+  minTime: 0
+  maxTime: 0
+  nextState: {fileID: 0}
+  timeOutActions: []

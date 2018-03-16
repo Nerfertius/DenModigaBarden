@@ -10,6 +10,8 @@ public class EnemyData : MelodyInteractableData
     public float chaseSpeed;
     public float attackRange;
     public bool behaveAsHitbox;
+    public bool childCollided;
+    public Sprite battleTopBackground;
 
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public StateController controller;
@@ -43,21 +45,23 @@ public class EnemyData : MelodyInteractableData
         rb = GetComponent<Rigidbody2D>();
     }
 
-    protected virtual void Start()
-    {
-        controller = GetComponent<StateController>();
-        playerDamageData = GetComponent<PlayerDamageData>();
-        playerCollisionFilter.useLayerMask = true;
-        playerCollisionFilter.layerMask = 1 << 13; // player layer = 13
+    protected virtual void Start ()
+	{
+		controller = GetComponent<StateController> ();
+		playerDamageData = GetComponent<PlayerDamageData> ();
+		playerCollisionFilter.useLayerMask = true;
+		playerCollisionFilter.layerMask = 1 << 13; // player layer = 13
 
-        if (behaveAsHitbox) return;
+		if (behaveAsHitbox)
+			return;
 
-        if (transform.childCount != 0)
-        {
-            sightColl = transform.GetChild(0).GetComponent<Collider2D>();
-        }
+		if (transform.childCount != 0) {
+			sightColl = transform.GetChild (0).GetComponent<Collider2D> ();
+		}
 
-        facingRight = GetComponent<SpriteRenderer>().flipX;
+		if (spriteRenderer != null) {
+			facingRight = spriteRenderer.flipX;
+		}
 
         if (facingRight)
         {
@@ -110,7 +114,8 @@ public class EnemyData : MelodyInteractableData
                                 if (!behaveAsHitbox) controller.OnTriggerStay2D(collRes);
                                 return;
                            }
-                            else {
+                            else
+                            {
                                 PlayerData.player.controller.OnTriggerEnter2D(coll);
                                 if (!behaveAsHitbox) controller.OnTriggerEnter2D(collRes);
                                 isTouchingPlayer = true;

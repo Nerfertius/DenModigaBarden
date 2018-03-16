@@ -6,6 +6,8 @@ public class EnemyManager : MonoBehaviour {
     List<Transform> enemies = new List<Transform>();
     List<StateController> controllers = new List<StateController>();
 
+    private static EnemyManager activeEM;
+    private static EnemyManager lastActiveEM;
     private bool toBeDeactivated;
     private MapBoundary mb;
 
@@ -25,12 +27,14 @@ public class EnemyManager : MonoBehaviour {
 
         TransitionState.TransitionEntered += ActivateEnemies;
         TransitionState.TransitionExited += StartDeactivation;
+        BattleState.BattleEnded += ActivateControllers;
 	}
 
     private void OnDestroy()
     {
         TransitionState.TransitionEntered -= ActivateEnemies;
         TransitionState.TransitionExited -= StartDeactivation;
+        BattleState.BattleEnded -= ActivateControllers;
     }
 
     void Update ()
@@ -50,12 +54,26 @@ public class EnemyManager : MonoBehaviour {
 
     void ActivateEnemies()
     {
-        if (mb == MapBoundary.currentMapBoundary) { 
+        if (mb == MapBoundary.currentMapBoundary) {
+            lastActiveEM = activeEM;
+            activeEM = this;
+
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].gameObject.SetActive(true);
                 controllers[i].enabled = true;
                 controllers[i].ResetStateController();
+            }
+        }
+    }
+
+    void ActivateControllers()
+    {
+        if (mb == MapBoundary.currentMapBoundary)
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                controllers[i].enabled = true;
             }
         }
     }
@@ -89,6 +107,14 @@ public class EnemyManager : MonoBehaviour {
         }
     }
 
+    public static void PauseEnemies()
+    {
+        for (int i = 0; i < activeEM.controllers.Count; i++)
+        {
+            activeEM.controllers[i].enabled = false;
+        }
+    }
+
     public void DeactivateAllEnemies ()
 	{
 		for (int i = 0; i < enemies.Count; i++) {
@@ -107,7 +133,7 @@ public class EnemyManager : MonoBehaviour {
 
     private void StartDeactivation()
     {
-        if (toBeDeactivated)
+        if (toBeDeactivated && lastActiveEM == this)
         {
             DeactivateAllEnemies();
             toBeDeactivated = false;

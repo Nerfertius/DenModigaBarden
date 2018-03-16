@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class SightColliderAV : MonoBehaviour {
     [HideInInspector] public PlayerData player;
+    private EnemyData eData;
+
+    private void Start()
+    {
+        eData = GetComponentInParent<EnemyData>();
+    }
 
     public void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.tag == "Player") {
+        eData.childCollided = true;
+
+        if (coll.tag == "Player") {
             player = coll.GetComponent<PlayerData>();
         }  
     }

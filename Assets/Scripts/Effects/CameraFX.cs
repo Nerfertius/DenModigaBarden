@@ -7,6 +7,9 @@ public class CameraFX : MonoBehaviour {
 
     private static CameraFX instance;
     public Image screenFade;
+    public Transform renderScreen;
+    private Vector3 rsStartScale;
+    private Quaternion rsStartRot;
 
     private CameraFollow2D camScript;
     private float timer = 0;
@@ -20,9 +23,11 @@ public class CameraFX : MonoBehaviour {
 
 	private void Start ()
     {
-        camScript = GetComponent<CameraFollow2D>();
+		camScript = GetComponent<CameraFollow2D>();
+		rsStartScale = renderScreen.localScale;
+		rsStartRot = renderScreen.rotation;
     }
-
+	
     // For Debug
     
     //private void Update()
@@ -36,30 +41,50 @@ public class CameraFX : MonoBehaviour {
     //        Screenshake(0.10f, 0.025f, 0.025f);
     //    }
     //}
-    
 
     public static void FadeIn()
     {
-        instance.StopAllCoroutines();
-        instance.camScript.enabled = true;
         instance.StartCoroutine("FadeInFX");
     }
 
     public static void FadeOut()
     {
-        instance.StopAllCoroutines();
-        instance.camScript.enabled = true;
         instance.StartCoroutine("FadeOutFX");
     }
 
     public static void Screenshake(float duration, float xIntensity, float yIntensity)
     {
-        instance.StopAllCoroutines();
         instance.StartCoroutine(instance.ScreenshakeFX(duration, xIntensity, yIntensity));
     }
 
+    public static void ZoomIn(float duration){
+    	instance.StartCoroutine(instance.ZoomInFX(duration));
+    }
+
+    public static void ResetRenderScreen ()
+	{
+		instance.renderScreen.localScale = instance.rsStartScale;
+		instance.renderScreen.rotation = instance.rsStartRot;
+	}
+
+    IEnumerator ZoomInFX (float duration)
+	{
+		while (timer < duration) {
+            timer += 0.05f;
+
+			renderScreen.localScale += new Vector3(250 * Time.fixedUnscaledDeltaTime, 250 * Time.fixedUnscaledDeltaTime, 0);
+			renderScreen.Rotate(0,0,500*Time.fixedUnscaledDeltaTime);
+			yield return new WaitForSecondsRealtime(0.05f);
+		}
+
+		timer = 0;
+		renderScreen.localScale = rsStartScale;
+		renderScreen.rotation = rsStartRot;
+	}
+
     IEnumerator ScreenshakeFX(float duration, float xIntensity, float yIntensity)
     {
+        bool camScriptStatus = camScript.isActiveAndEnabled;
         camScript.enabled = false;
         
         Vector3 camPosition = transform.position;
@@ -77,7 +102,7 @@ public class CameraFX : MonoBehaviour {
 
         transform.position = camPosition;
         timer = 0;
-        camScript.enabled = true;
+        camScript.enabled = camScriptStatus;
     }
 
     IEnumerator FadeInFX()
@@ -95,6 +120,7 @@ public class CameraFX : MonoBehaviour {
         c.a = 1;
         screenFade.color = c;
     }
+
     IEnumerator FadeOutFX()
     {
         Color c = screenFade.color;

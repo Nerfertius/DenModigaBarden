@@ -54,7 +54,7 @@ public class PlayState : GameState
                 //****************HEALTH****************
                 if (hp != null)
                 {
-                    hp.Update(playerData.health);
+                    hp.Update();
                 }
                 else {
                     hp = HP.GetInstance;
