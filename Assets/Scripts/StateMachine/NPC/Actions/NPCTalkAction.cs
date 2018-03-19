@@ -61,7 +61,7 @@ public class NPCTalkAction : StateAction
         NPCData data = (NPCData)controller.data;
         if (data.currentConvIndex == -1)
             ResetConv(data);
-        bool interact = Input.GetButtonDown("Interact");
+        bool interact = Input.GetButtonDown("Interact") && !PlayerData.player.melodyData.playMelodyState;
         bool moreText = data.currentText < data.currentConv.Length;
         NPCData.TextPopup currentTextBubble = data.currentConv[data.currentText];
 

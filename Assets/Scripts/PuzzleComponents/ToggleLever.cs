@@ -17,7 +17,7 @@ public class ToggleLever : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetButtonDown("Interact") && playerIsNear) {
+        if (Input.GetButtonDown("Interact") && playerIsNear && !PlayerData.player.melodyData.playMelodyState) {
             if (IsActive()) {
                 anim.SetBool("Active", false);
             }

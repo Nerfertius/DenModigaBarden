@@ -74,7 +74,7 @@ public class player_movement : MonoBehaviour
 		grounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
 		//WalkState
-		if (Input.GetButtonDown("Jump") && grounded == true && climbing == false)
+		if (Input.GetButtonDown("Jump") && grounded == true && climbing == false && !PlayerData.player.melodyData.playMelodyState)
 		{
 			body.AddForce(new Vector2(0, jumpPower));
 			grounded = false;
