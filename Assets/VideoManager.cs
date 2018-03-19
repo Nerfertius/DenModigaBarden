@@ -18,7 +18,13 @@ public class VideoManager : MonoBehaviour {
     }
 
 	void Start () {
-        instance = this;
+        if (instance == null) { 
+            instance = this;
+        } else
+        {
+            Debug.LogWarning("You have 2 VideoManagers! This one will be destroyed");
+            Destroy(this.gameObject);
+        }
 
         audioSource = GetComponent<AudioSource>();
         vPlayer = GetComponent<VideoPlayer>();
@@ -31,6 +37,9 @@ public class VideoManager : MonoBehaviour {
 
     public void Play()
     {
+        AudioManager.SetDefaultBGM(null);
+        AudioManager.PlayBGM(null);
+        vPlayer.targetCamera = Camera.main;
         vPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
         vPlayer.controlledAudioTrackCount = 1;
         vPlayer.EnableAudioTrack(0, true);

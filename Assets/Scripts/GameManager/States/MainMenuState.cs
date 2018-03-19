@@ -76,6 +76,7 @@ public class MainMenuState : GameState
     void SwPlayState()
     {
         CameraFX.FadeIn();
+        Camera.main.GetComponent<AudioSource>().Stop();
         GameManager.MainMenuCanvas.GetComponent<AudioSource>().Play();
         GameManager.instance.StartCoroutine(Delay());
     }

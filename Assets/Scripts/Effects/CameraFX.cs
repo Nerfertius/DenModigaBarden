@@ -15,6 +15,7 @@ public class CameraFX : MonoBehaviour {
     private float timer = 0;
 
     public float fadeSpeed;
+    public static float FadeSpeed { set { instance.fadeSpeed = value; }}
     
     private void Awake()
     {
