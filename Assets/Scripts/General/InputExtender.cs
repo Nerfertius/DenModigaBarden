@@ -10,7 +10,7 @@ public class InputExtender : MonoBehaviour{
 
     public void Start() {
         InputExtender.inputs = new Dictionary<string, InputExtender.InputNode>();
-        InputExtender.inputs.Add("Note G Dpad", new InputExtender.InputNode(NoteThreshold));
+       /* InputExtender.inputs.Add("Note G Dpad", new InputExtender.InputNode(NoteThreshold));
         InputExtender.inputs.Add("Note A Dpad", new InputExtender.InputNode(NoteThreshold));
         InputExtender.inputs.Add("Note B Dpad", new InputExtender.InputNode(NoteThreshold));
         InputExtender.inputs.Add("Note C Dpad", new InputExtender.InputNode(NoteThreshold));
@@ -18,17 +18,17 @@ public class InputExtender : MonoBehaviour{
         InputExtender.inputs.Add("Note E Dpad", new InputExtender.InputNode(NoteThreshold));
         InputExtender.inputs.Add("Note F+ Dpad", new InputExtender.InputNode(NoteThreshold));
         InputExtender.inputs.Add("Note G8va Dpad", new InputExtender.InputNode(NoteThreshold));
-
+        */
         InputExtender.inputs.Add("PlayMelody Trigger", new InputExtender.InputNode(TriggerThreshold));
-        InputExtender.inputs.Add("PlayMelodyNoteShift Dpad", new InputExtender.InputNode(TriggerThreshold));
+        //InputExtender.inputs.Add("PlayMelodyNoteShift Dpad", new InputExtender.InputNode(TriggerThreshold));
     }
 
-    //public void Update() {
-    //    foreach(KeyValuePair<string, InputExtender.InputNode> pair in InputExtender.inputs) {
-    //        pair.Value.lastValue = pair.Value.currentValue;
-    //        pair.Value.currentValue = Input.GetAxis(pair.Key);
-    //    }
-    //}
+    public void Update() {
+        foreach (KeyValuePair<string, InputExtender.InputNode> pair in InputExtender.inputs) {
+            pair.Value.lastValue = pair.Value.currentValue;
+            pair.Value.currentValue = Input.GetAxis(pair.Key);
+        }
+    }
 
     public class InputNode {
         public float lastValue;
@@ -56,7 +56,7 @@ public class InputExtender : MonoBehaviour{
             Debug.LogError(button + " not registered in InputExtenderManager");
         }
         float axisValue = Input.GetAxis(button);
-
+        
         return axisValue > node.threshold && node.lastValue <= node.threshold;
     }
 
