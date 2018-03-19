@@ -25,6 +25,10 @@ public class PlayerPlayMelody : StateAction
             if (mData.currentMelody != null)
             {
                 data.MelodyStoppedPlaying(mData.currentMelody);
+                if (mData.currentMelody == Melody.MelodyID.MagicResistMelody)
+                {
+                    StoppedPlaying();
+                }
             }
             mData.currentMelody = null;
             data.melodyData.MelodyRange.enabled = false;
@@ -104,10 +108,15 @@ public class PlayerPlayMelody : StateAction
                     StoppedPlaying();
                 }
                 data.MelodyStoppedPlaying(mData.currentMelody);
+                if (mData.currentMelody == Melody.MelodyID.MagicResistMelody)
+                {
+                    StoppedPlaying();
+                }
                 mData.currentMelody = null;
                 mData.playingFlute = false;
                 mData.MelodyRange.enabled = false;
                 controller.anim.SetBool("Channeling", false);
+                
             }
             AudioManager.FadeBGMBackToNormal();
             mData.PlayedNotes.Clear();
