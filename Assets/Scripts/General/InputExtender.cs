@@ -19,7 +19,7 @@ public class InputExtender : MonoBehaviour{
         InputExtender.inputs.Add("Note F+ Dpad", new InputExtender.InputNode(NoteThreshold));
         InputExtender.inputs.Add("Note G8va Dpad", new InputExtender.InputNode(NoteThreshold));
 
-        InputExtender.inputs.Add("PlayMelody Dpad", new InputExtender.InputNode(TriggerThreshold));
+        InputExtender.inputs.Add("PlayMelody Trigger", new InputExtender.InputNode(TriggerThreshold));
         InputExtender.inputs.Add("PlayMelodyNoteShift Dpad", new InputExtender.InputNode(TriggerThreshold));
     }
 

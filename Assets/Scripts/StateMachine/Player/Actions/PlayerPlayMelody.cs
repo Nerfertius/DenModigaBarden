@@ -17,6 +17,12 @@ public class PlayerPlayMelody : StateAction
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
+        if(Input.GetButtonDown("PlayMelody") || InputExtender.GetAxisDown("PlayMelody Trigger")) {
+            mData.playMelodyState = !mData.playMelodyState;
+
+            //reset
+        }
+
         if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody Dpad") > InputExtender.TriggerThreshold)
         {
             AudioManager.FadeBGM();

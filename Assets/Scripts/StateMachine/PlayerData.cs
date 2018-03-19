@@ -127,6 +127,7 @@ public class PlayerData : Data
         [HideInInspector] public AudioClip magicMelodySong;
         [HideInInspector] public AudioClip sleepMelodySong;
 
+        [HideInInspector] public bool playMelodyState = false;
         [HideInInspector] public Melody.MelodyID? currentMelody = null;
         [HideInInspector] public bool playingFlute = false;
 
