@@ -22,7 +22,6 @@ public class PlayerPlayMelody : StateAction
 
             // so you don't go to play melody when canceling a melody
             if(mData.currentMelody != null) {
-                Debug.Log("run");
                 mData.playMelodyState = false;
                 mData.playingFlute = false;
 
@@ -36,7 +35,6 @@ public class PlayerPlayMelody : StateAction
             }
 
             else if (mData.playMelodyState) { // on start reading input
-                Debug.Log("start playing");
                 AudioManager.FadeBGM();
                 mData.playingFlute = true;
 
@@ -88,8 +86,10 @@ public class PlayerPlayMelody : StateAction
             }
 
         // Checks id a melody have been played
-            foreach (Melody melody in mData.melodies) {
-                if (melody.CheckMelody(mData.PlayedNotes)) {
+            foreach (Melody melody in mData.melodies)
+            {
+                if (melody.CheckMelody(mData.PlayedNotes))
+                {
                     mData.currentMelody = melody.melodyID;
 
                     if (mData.currentMelody == Melody.MelodyID.MagicResistMelody) {
@@ -101,8 +101,6 @@ public class PlayerPlayMelody : StateAction
                     mData.MelodyRange.enabled = true;
 
                     data.MelodyPlayed(melody.melodyID);
-
-                    // melody played stuff
 
                     AudioManager.FadeBGMBackToNormal();
                     mData.PlayedNotes.Clear();
