@@ -13,6 +13,8 @@ public class Lever : MonoBehaviour
 
     private bool playerIsNear;
     private bool allLinkedActive;
+    private bool played;
+    public bool playOnce;
 
     private Animator anim;
 
@@ -26,7 +28,11 @@ public class Lever : MonoBehaviour
 
     private void Update()
     {
+        if (played) return;
+
         if (Input.GetButtonDown("Interact") && playerIsNear) {
+            if (playOnce) played = true;
+
             if (IsActive()) {
                 anim.SetBool("Active", false);
             }

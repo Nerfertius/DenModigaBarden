@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class Sound : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, ISelectHandler, ISubmitHandler {
 
     public AudioClip click, select;
+    public bool ignoreFirstSelect;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -23,6 +24,12 @@ public class Sound : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, I
 	}
 	
 	public void OnSelect(BaseEventData eventData){
-		AudioManager.PlayOneShot(select);
+        if (ignoreFirstSelect)
+        {
+            ignoreFirstSelect = false;
+        }
+        else {
+		    AudioManager.PlayOneShot(select);
+        }
 	}
 }

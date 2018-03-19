@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Canvases { MainMenu, Play, Pause, WorldSpace, GameOver }
+public enum Canvases { MainMenu, Play, Pause, WorldSpace, GameOver, CinematicCanvas }
 
 public class GMCanvasRegi : MonoBehaviour {
 
@@ -10,7 +10,6 @@ public class GMCanvasRegi : MonoBehaviour {
     
 	void Start () {
         Canvas canvas = GetComponent<Canvas>();
-        Debug.Log("Regi");
         switch (this.canvas) {
             case Canvases.MainMenu:
                 GameManager.MainMenuCanvas = canvas;
@@ -26,6 +25,9 @@ public class GMCanvasRegi : MonoBehaviour {
                 break;
             case Canvases.GameOver:
                 GameManager.GameOverCanvas = canvas;
+                break;
+            case Canvases.CinematicCanvas:
+                GameManager.CinematicCanvas = canvas;
                 break;
         }
 	}

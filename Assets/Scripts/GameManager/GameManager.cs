@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 
     public GameState current = null;
 
-    public PlayerData player;
+    [HideInInspector] public PlayerData player;
 
     public Sprite fullHeart, halfHeart, emptyHeart;
     public Sprite[] notes = new Sprite[5];
@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour {
     public float bgAudio = 1, effectAudio = 1;
 
     [HideInInspector]
-    public static Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas, GameOverCanvas;
+    public static Canvas MainMenuCanvas, PlayCanvas, PauseCanvas, WorldSpaceCanvas, GameOverCanvas, CinematicCanvas;
+
+    public Image skipBtn, progressBar;
 
     private AsyncOperation async;
 
@@ -31,6 +33,8 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
+        player = PlayerData.player;
+
         if (current == null)
         {
             if (player)
@@ -79,6 +83,7 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator loadRoutine(int buildindex) {
         async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(buildindex);
+        async.allowSceneActivation = false;
 
         yield return async;
     }

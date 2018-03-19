@@ -61,6 +61,7 @@ public class InputExtender : MonoBehaviour{
     }
 
     public static bool GetAxisUp(string button) {
+
         if(inputs == null) {
             return false;
         }

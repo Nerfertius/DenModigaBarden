@@ -25,10 +25,10 @@ MonoBehaviour:
   - condition: {fileID: 11400000, guid: 4095e9bcbb6788f468d96cda42becf64, type: 2}
     actions:
     - {fileID: 11400000, guid: 1354daf53599806419940ea2f3ae2865, type: 2}
-  hasExitTime: 1
-  exitTimer: 10
+  hasExitTime: 0
+  exitTimer: 0
   useRandomTimer: 0
   minTime: 0
   maxTime: 0
-  nextState: {fileID: 11400000, guid: 2b2d5c656d7925241929d07db8f889b4, type: 2}
+  nextState: {fileID: 0}
   timeOutActions: []
