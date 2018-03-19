@@ -8,7 +8,7 @@ public class PlayerJump : Condition
     public override bool? CheckCondition(StateController controller)
     {
         PlayerData data = (PlayerData)controller.data;
-        if (Input.GetButtonDown("Jump"))    //Are you jumping? 
+        if (Input.GetButtonDown("Jump") && !data.melodyData.playMelodyState)    //Are you jumping? 
         {
             if (data.climbing)
             {

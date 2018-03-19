@@ -8,7 +8,7 @@ public class NPCStartTalking : Condition
     public override bool? CheckCondition(StateController controller)
     {
         NPCData data = (NPCData)controller.data;
-        bool interactInRange = data.playerInRange && Input.GetButtonDown("Interact");
+        bool interactInRange = data.playerInRange && Input.GetButtonDown("Interact") && !PlayerData.player.melodyData.playMelodyState;
 
         bool autospeak = data.conversation[data.currentConvIndex].autoSpeak && Vector2.Distance(GameManager.instance.player.transform.position, data.transform.position) <= data.conversation[data.currentConvIndex].autoSpeakRange;
         if (interactInRange || autospeak)

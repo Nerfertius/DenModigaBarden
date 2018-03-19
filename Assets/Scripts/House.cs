@@ -26,7 +26,7 @@ public class House : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetButtonDown("Interact") && playerNear && !automatic)
+        if (Input.GetButtonDown("Interact") && playerNear && !automatic && !PlayerData.player.melodyData.playMelodyState)
         {
             if (!locked)
             {

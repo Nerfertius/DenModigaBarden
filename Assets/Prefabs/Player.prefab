@@ -21,11 +21,12 @@ GameObject:
   - component: {fileID: 4193907132306398}
   - component: {fileID: 114994033544878884}
   - component: {fileID: 212082342265056826}
-  - component: {fileID: 70489536338543862}
   - component: {fileID: 50047347635933524}
   - component: {fileID: 114195153534707582}
   - component: {fileID: 95186470628085012}
   - component: {fileID: 114308013929347790}
+  - component: {fileID: 114118164818865486}
+  - component: {fileID: 60343280716269010}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -73,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461975651749938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -71.8, y: 5, z: 0}
+  m_LocalPosition: {x: -72.07, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4371184860106240}
@@ -88,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1646152180992308}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: -0.769, z: 0}
+  m_LocalPosition: {x: -0.1, y: -0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4193907132306398}
@@ -177,8 +178,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 15
---- !u!70 &70489536338543862
-CapsuleCollider2D:
+--- !u!60 &60343280716269010
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -189,9 +190,22 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.099999994, y: -0.04206556}
-  m_Size: {x: 0.6, y: 1.8841311}
-  m_Direction: 0
+  m_Offset: {x: 0.09, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.3, y: 0.9}
+      - {x: 0.12, y: 0.9}
+      - {x: 0.12, y: -0.98}
+      - {x: -0.3, y: -0.98}
 --- !u!95 &95186470628085012
 Animator:
   serializedVersion: 3
@@ -209,6 +223,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114118164818865486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461975651749938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c7e9f1194584614ba62bc09a219d0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114195153534707582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,7 +251,7 @@ MonoBehaviour:
   anim: {fileID: 95186470628085012}
   sprRend: {fileID: 212082342265056826}
   rb: {fileID: 50047347635933524}
-  coll: {fileID: 70489536338543862}
+  coll: {fileID: 0}
   stateTimer: -0.0016275123
 --- !u!114 &114308013929347790
 MonoBehaviour:
@@ -239,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59f614225fef514786c0b3f4b153995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSound: {fileID: 0}
   activeTime: 1.45
   layerName: 
 --- !u!114 &114994033544878884
@@ -281,7 +307,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   body: {fileID: 50047347635933524}
   groundCheck: {fileID: 4371184860106240}
-  col: {fileID: 70489536338543862}
+  col: {fileID: 0}
   ladderBottom: {fileID: 0}
   ladderTop: {fileID: 0}
   jumping: 0
@@ -308,95 +334,80 @@ MonoBehaviour:
   goWalk: 0
   goAir: 0
   goCrouch: 0
+  enemyToBattle: {fileID: 0}
   melodyData:
     hasDoubleJump: 1
     melodies:
     - melodyID: 0
       Notes:
       - keyButton: 
-        DPadButton: 
         noteID: 0
         audio: {fileID: 8300000, guid: ee4a359835ae88447af513dfe96c33c5, type: 3}
         FXRowNumber: 0
       - keyButton: 
-        DPadButton: 
         noteID: 1
         audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
         FXRowNumber: 1
     - melodyID: 1
       Notes:
       - keyButton: 
-        DPadButton: 
         noteID: 2
         audio: {fileID: 8300000, guid: fa5661a6b40a9ea479c95582179e6e76, type: 3}
         FXRowNumber: 2
       - keyButton: 
-        DPadButton: 
         noteID: 2
         audio: {fileID: 8300000, guid: fa5661a6b40a9ea479c95582179e6e76, type: 3}
         FXRowNumber: 2
       - keyButton: 
-        DPadButton: 
         noteID: 2
         audio: {fileID: 8300000, guid: fa5661a6b40a9ea479c95582179e6e76, type: 3}
         FXRowNumber: 2
     - melodyID: 2
       Notes:
       - keyButton: 
-        DPadButton: 
         noteID: 1
         audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
         FXRowNumber: 1
       - keyButton: 
-        DPadButton: 
         noteID: 1
         audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
         FXRowNumber: 1
       - keyButton: 
-        DPadButton: 
         noteID: 1
         audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
         FXRowNumber: 1
     MaxSavedNotes: 5
     Notes1:
     - keyButton: 
-      DPadButton: 
       noteID: 0
       audio: {fileID: 8300000, guid: ee4a359835ae88447af513dfe96c33c5, type: 3}
       FXRowNumber: 0
     - keyButton: 
-      DPadButton: 
       noteID: 1
       audio: {fileID: 8300000, guid: cd85945b5358ba843b81d907ba696967, type: 3}
       FXRowNumber: 1
     - keyButton: 
-      DPadButton: 
       noteID: 2
       audio: {fileID: 8300000, guid: fa5661a6b40a9ea479c95582179e6e76, type: 3}
       FXRowNumber: 2
     - keyButton: 
-      DPadButton: 
       noteID: 3
       audio: {fileID: 8300000, guid: 387438303b80e7b4a8a6277ed2093e0e, type: 3}
       FXRowNumber: 3
     Notes2:
     - keyButton: 
-      DPadButton: 
       noteID: 4
       audio: {fileID: 8300000, guid: 398e74b4f981b88498d99bd0d85df44a, type: 3}
       FXRowNumber: 4
     - keyButton: 
-      DPadButton: 
       noteID: 5
       audio: {fileID: 8300000, guid: 7a64da91dd1a0c74baea58b3f8d16fef, type: 3}
       FXRowNumber: 5
     - keyButton: 
-      DPadButton: 
       noteID: 6
       audio: {fileID: 8300000, guid: 37d1729e03642fd42add32fc7db54496, type: 3}
       FXRowNumber: 6
     - keyButton: 
-      DPadButton: 
       noteID: 7
       audio: {fileID: 8300000, guid: 4e92880c49a85d843bde1e642db50d30, type: 3}
       FXRowNumber: 7

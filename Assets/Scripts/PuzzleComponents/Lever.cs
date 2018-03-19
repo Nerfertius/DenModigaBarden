@@ -30,7 +30,7 @@ public class Lever : MonoBehaviour
     {
         if (played) return;
 
-        if (Input.GetButtonDown("Interact") && playerIsNear) {
+        if (Input.GetButtonDown("Interact") && playerIsNear && !PlayerData.player.melodyData.playMelodyState) {
             if (playOnce) played = true;
 
             if (IsActive()) {

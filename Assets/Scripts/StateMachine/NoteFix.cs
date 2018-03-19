@@ -8,7 +8,7 @@ public class NoteFix : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetButtonDown("Interact") && note && !PlayerData.player.hasReadNote)
+        if (Input.GetButtonDown("Interact") && note && !PlayerData.player.hasReadNote && !PlayerData.player.melodyData.playMelodyState)
         {
             PlayerData.player.hasReadNote = true;
         }

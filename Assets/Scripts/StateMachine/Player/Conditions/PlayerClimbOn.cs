@@ -41,14 +41,14 @@ public class PlayerClimbOn : Condition
             {
                 Collider2D botCol = data.ladderBottom.GetComponent<Collider2D>();
                 Collider2D topCol = data.ladderTop.GetComponent<Collider2D>();
-                float feet = data.coll.bounds.min.y;
+                float feet = data.col.bounds.min.y;
 
-                if (data.coll.bounds.center.x > botCol.bounds.center.x - 0.3f
-                   && data.coll.bounds.center.x < botCol.bounds.center.x + 0.3f
+                if (data.col.bounds.center.x > botCol.bounds.center.x - 0.3f
+                   && data.col.bounds.center.x < botCol.bounds.center.x + 0.3f
                    && feet < topCol.bounds.max.y + 0.5f)
                 {
                     //Bottom
-                    if (Input.GetAxisRaw("Vertical") > data.axisSensitivity && feet > botCol.bounds.min.y && data.coll.bounds.center.y < topCol.bounds.min.y)
+                    if (Input.GetAxisRaw("Vertical") > data.axisSensitivity && feet > botCol.bounds.min.y && data.col.bounds.center.y < topCol.bounds.min.y)
                     {
                         return true;
                     }

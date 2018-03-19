@@ -25,7 +25,7 @@ public class Hatch : MonoBehaviour
 
     private void Update()
     {
-        if (playerNear && Input.GetButtonDown("Interact") && !opened)
+        if (playerNear && Input.GetButtonDown("Interact") && !opened && !PlayerData.player.melodyData.playMelodyState)
         {
             GetComponent<Animator>().SetBool("Open", true);
 
