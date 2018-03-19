@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95073802649310118}
   - component: {fileID: 114956909197107394}
   - component: {fileID: 61849491767461252}
+  - component: {fileID: 114771228143287478}
   m_Layer: 0
   m_Name: Campfire
   m_TagString: Untagged
@@ -85,6 +86,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114771228143287478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1335537348937118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed120c241e13544b8e9ce96f119f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: {fileID: 21300000, guid: 67354a2c8e8fb82429b13ef601598262, type: 3}
+  repeatable: 0
+  showUntilCleared: 1
+  offset: {x: 0, y: 2.5}
+  npcTalk: 0
+  state: {fileID: 0}
+  melodyPlayed: 1
+  melody: 1
+  actionPerformed: 0
+  buttonName: 
 --- !u!114 &114956909197107394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,7 +152,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2122280999
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9f2b07ab61a2ca742a0cfcf3f634c733, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

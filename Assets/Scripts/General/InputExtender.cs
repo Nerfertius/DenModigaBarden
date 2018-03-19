@@ -23,12 +23,12 @@ public class InputExtender : MonoBehaviour{
         InputExtender.inputs.Add("PlayMelodyNoteShift Dpad", new InputExtender.InputNode(TriggerThreshold));
     }
 
-    public void Update() {
-        foreach(KeyValuePair<string, InputExtender.InputNode> pair in InputExtender.inputs) {
-            pair.Value.lastValue = pair.Value.currentValue;
-            pair.Value.currentValue = Input.GetAxis(pair.Key);
-        }
-    }
+    //public void Update() {
+    //    foreach(KeyValuePair<string, InputExtender.InputNode> pair in InputExtender.inputs) {
+    //        pair.Value.lastValue = pair.Value.currentValue;
+    //        pair.Value.currentValue = Input.GetAxis(pair.Key);
+    //    }
+    //}
 
     public class InputNode {
         public float lastValue;
