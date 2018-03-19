@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 60210051898706976}
   m_Layer: 16
   m_Name: Spear
-  m_TagString: Trap
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   destroyable: 1
   childProjectile: 0
   childController: {fileID: 0}
+  soundEffect: {fileID: 0}
   direction: {x: 0, y: 0}
   bulletType: 0
 --- !u!212 &212347615297890622
@@ -137,7 +138,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2004588891
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 28a38f7fd7af60c4d841ba2a0219c05b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 60159458597467424}
   m_Layer: 16
   m_Name: GargoyleFoot
-  m_TagString: Trap
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +189,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2004588891
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6909e72daf2051240866815b87ca7ed8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

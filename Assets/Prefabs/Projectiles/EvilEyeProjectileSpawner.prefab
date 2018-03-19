@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 58475055484579044}
   m_Layer: 16
   m_Name: EvilEyeProjectileSpawner
-  m_TagString: Trap
+  m_TagString: Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   destroyable: 0
   childProjectile: 0
   childController: {fileID: 9100000, guid: 5a086a92a0afe044c9fddc787da690bf, type: 2}
+  soundEffect: {fileID: 0}
   direction: {x: 0, y: 0}
   bulletType: 0
 --- !u!212 &212459918468355552
@@ -129,7 +130,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2004588891
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300002, guid: b1185beae9653f64ca410d1c20f9e58c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
