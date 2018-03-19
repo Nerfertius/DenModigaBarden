@@ -1318,7 +1318,7 @@ Prefab:
     - target: {fileID: 114956909197107394, guid: a7f6faeed32334d4c84dfb6cbeda3260,
         type: 2}
       propertyPath: order
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114956909197107394, guid: a7f6faeed32334d4c84dfb6cbeda3260,
         type: 2}
@@ -1338,32 +1338,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4300577647117116, guid: a7f6faeed32334d4c84dfb6cbeda3260,
     type: 2}
   m_PrefabInternal: {fileID: 52799160}
---- !u!1 &52799162 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1335537348937118, guid: a7f6faeed32334d4c84dfb6cbeda3260,
-    type: 2}
-  m_PrefabInternal: {fileID: 52799160}
---- !u!114 &52799163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 52799162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ed120c241e13544b8e9ce96f119f67a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prompt: {fileID: 21300000, guid: 9ada7e198db111a409ee5712004b3098, type: 3}
-  repeatable: 1
-  showUntilCleared: 0
-  offset: {x: 0, y: 2.5}
-  npcTalk: 0
-  state: {fileID: 0}
-  melodyPlayed: 1
-  melody: 1
-  actionPerformed: 0
-  buttonName: 
 --- !u!1001 &57932958
 Prefab:
   m_ObjectHideFlags: 0
@@ -122183,7 +122157,7 @@ Prefab:
     - target: {fileID: 114956909197107394, guid: a7f6faeed32334d4c84dfb6cbeda3260,
         type: 2}
       propertyPath: order
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114956909197107394, guid: a7f6faeed32334d4c84dfb6cbeda3260,
         type: 2}
@@ -122203,32 +122177,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4300577647117116, guid: a7f6faeed32334d4c84dfb6cbeda3260,
     type: 2}
   m_PrefabInternal: {fileID: 2127402487}
---- !u!1 &2127402489 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1335537348937118, guid: a7f6faeed32334d4c84dfb6cbeda3260,
-    type: 2}
-  m_PrefabInternal: {fileID: 2127402487}
---- !u!114 &2127402490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2127402489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ed120c241e13544b8e9ce96f119f67a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prompt: {fileID: 21300000, guid: 9ada7e198db111a409ee5712004b3098, type: 3}
-  repeatable: 1
-  showUntilCleared: 0
-  offset: {x: 0, y: 2.5}
-  npcTalk: 0
-  state: {fileID: 0}
-  melodyPlayed: 1
-  melody: 1
-  actionPerformed: 0
-  buttonName: 
 --- !u!1 &2129657693 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1714143856325698, guid: 4463a85ca8908bf4fb17fd94b2ecb31e,

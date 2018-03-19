@@ -63,7 +63,7 @@ public class OnHitEffect : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Trap" && doOnce == false)
+        if (other.tag == "Hitbox" && doOnce == false)
         {
             doOnce = true;
             AudioManager.PlayOneShot(hitSound);

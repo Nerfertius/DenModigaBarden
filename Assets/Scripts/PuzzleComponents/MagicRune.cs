@@ -48,6 +48,7 @@ public class MagicRune : MonoBehaviour
     private void SetToHarmful()
     {
         StopAllCoroutines();
+        Debug.Log("test");
         StartCoroutine(FadeIn());
     }
 

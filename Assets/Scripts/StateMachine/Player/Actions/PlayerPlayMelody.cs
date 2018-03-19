@@ -103,6 +103,10 @@ public class PlayerPlayMelody : StateAction
             }
             if (!melodyPlayed)
             {
+                if (StoppedPlaying != null)
+                {
+                    StoppedPlaying();
+                }
                 data.MelodyStoppedPlaying(mData.currentMelody);
                 if (mData.currentMelody == Melody.MelodyID.MagicResistMelody)
                 {

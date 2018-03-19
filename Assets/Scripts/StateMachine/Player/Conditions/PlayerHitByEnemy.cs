@@ -9,8 +9,7 @@ public class PlayerHitByEnemy : Condition {
         PlayerData data = (PlayerData)controller.data;
         PlayerDamageData damageData = coll.GetComponent<PlayerDamageData>();
         
-        if(damageData != null && damageData.harmful && data.hitInvincibilityTimer.IsDone() &&
-        (coll.tag == "Trap")) {
+        if(damageData != null && damageData.harmful && data.hitInvincibilityTimer.IsDone() && coll.tag == "Trap") {
 
             data.lastDamageData = coll.GetComponent<PlayerDamageData>();
             data.hitAngle = (data.transform.position - coll.transform.position).normalized;
