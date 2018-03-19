@@ -99,6 +99,10 @@ public class PlayerPlayMelody : StateAction
             }
             if (!melodyPlayed)
             {
+                if (StoppedPlaying != null)
+                {
+                    StoppedPlaying();
+                }
                 data.MelodyStoppedPlaying(mData.currentMelody);
                 mData.currentMelody = null;
                 mData.playingFlute = false;
