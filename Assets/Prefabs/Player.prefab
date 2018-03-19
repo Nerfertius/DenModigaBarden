@@ -202,8 +202,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.3, y: 0.9}
-      - {x: 0.12, y: 0.9}
+    - - {x: -0.3, y: 0.7}
+      - {x: 0.12, y: 0.7}
       - {x: 0.12, y: -0.98}
       - {x: -0.3, y: -0.98}
 --- !u!95 &95186470628085012
@@ -326,7 +326,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 212082342265056826}
   anim: {fileID: 95186470628085012}
   rb: {fileID: 50047347635933524}
-  coll: {fileID: 0}
   controller: {fileID: 114195153534707582}
   hitInvincibilityDuration: 1.5
   hitAngle: {x: 0, y: 0}
@@ -420,6 +419,7 @@ MonoBehaviour:
     jumpMelodySong: {fileID: 8300000, guid: c99e3ba5e42130f4fa795d526853a77c, type: 3}
     magicMelodySong: {fileID: 8300000, guid: 16c25171404ee0a41ba729fcffc60e63, type: 3}
     sleepMelodySong: {fileID: 8300000, guid: 70b5e7bae6b314a42bdd8a699c87c289, type: 3}
+    playMelodyState: 0
     playingFlute: 0
     projectileCooldown: 0.5
     MelodyRange: {fileID: 58493443711893006}

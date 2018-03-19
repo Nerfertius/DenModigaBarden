@@ -6,17 +6,20 @@ public class GuardBlock : MonoBehaviour
 {
     public GameObject guardCaptain;
     private StateController controller;
+    private Animator anim;
 
     private void Start()
     {
         controller = guardCaptain.GetComponent<StateController>();
+        anim = GetComponent<Animator>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && controller.currentState.ToString() == "NPCSleep (State)")
         {
-            Destroy(gameObject);
+            anim.SetBool("Open", true);
+            Destroy(GetComponent<Collider>());
         }
     }
 }

@@ -84,7 +84,7 @@ public class PlayState : GameState
                 //****************NOTES****************
                 if (notesBg == null)
                     notesBg = playCanvas.transform.Find("UINotes").GetComponent<Image>();
-                if (Input.GetButton("PlayMelody"))
+                if (Input.GetButton("PlayMelody") || InputExtender.GetAxisDown("PlayMelody Trigger"))
                 {
                     CanvasGroup cg = notesBg.GetComponent<CanvasGroup>();
                     cg.alpha = 1;

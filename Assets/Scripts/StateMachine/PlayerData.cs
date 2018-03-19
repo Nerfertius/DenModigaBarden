@@ -28,9 +28,9 @@ public class PlayerData : Data
 
     // Quest
     [HideInInspector] public int[] items;
-    [HideInInspector] public bool hasKey;
-    [HideInInspector] public bool hasReadNote;
-    [HideInInspector] public bool orcQuestDone;
+    /*[HideInInspector]*/ public bool hasKey;
+    /*[HideInInspector]*/ public bool hasReadNote;
+    /*[HideInInspector]*/ public bool orcQuestDone;
 
     [HideInInspector] public float moveHorizontal;
     [HideInInspector] public float moveVertical;
