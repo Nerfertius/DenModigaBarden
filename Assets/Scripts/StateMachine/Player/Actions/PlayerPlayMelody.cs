@@ -81,6 +81,7 @@ public class PlayerPlayMelody : StateAction
 
             foreach (Melody melody in mData.melodies)
             {
+                Debug.Log("Notes played: " + mData.PlayedNotes);
                 if (melody.CheckMelody(mData.PlayedNotes))
                 {
                     mData.currentMelody = melody.melodyID;

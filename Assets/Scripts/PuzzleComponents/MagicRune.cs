@@ -48,7 +48,6 @@ public class MagicRune : MonoBehaviour
     private void SetToHarmful()
     {
         StopAllCoroutines();
-        Debug.Log("test");
         StartCoroutine(FadeIn());
     }
 
@@ -67,7 +66,10 @@ public class MagicRune : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(cooldown);
-        StartCoroutine(FadeIn());
+        if (PlayerData.player.melodyData.currentMelody != Melody.MelodyID.MagicResistMelody)
+        {
+            StartCoroutine(FadeIn());
+        }
     }
 
     IEnumerator FadeIn()
