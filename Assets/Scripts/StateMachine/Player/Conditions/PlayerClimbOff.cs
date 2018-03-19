@@ -10,7 +10,7 @@ public class PlayerClimbOff : Condition
         PlayerData data = (PlayerData)controller.data;
         Collider2D botCol = data.ladderBottom.GetComponent<Collider2D>();
         Collider2D topCol = data.ladderTop.GetComponent<Collider2D>();
-        float feet = data.coll.bounds.min.y;
+        float feet = data.col.bounds.min.y;
 
         //Bottom
         if (feet < botCol.bounds.min.y)
@@ -18,7 +18,7 @@ public class PlayerClimbOff : Condition
             return true;
         }
 
-        //Top with a platform behind
+        //Top with a platform behind        //Not used anymore
         else if (data.ladderBottom.GetComponent<LadderBuilder>().hasPlatformBehind && feet > topCol.bounds.center.y)
         {
             return true;

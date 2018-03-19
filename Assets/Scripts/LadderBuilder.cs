@@ -12,7 +12,7 @@ public class LadderBuilder : MonoBehaviour
 
     [HideInInspector]public Transform bottomLadder;
     [HideInInspector]public Transform topLadder;
-    [HideInInspector]public bool hasPlatformBehind;
+    [HideInInspector] public bool hasPlatformBehind;
     
     private GameObject newLadder;
 

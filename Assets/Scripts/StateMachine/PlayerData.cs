@@ -168,9 +168,9 @@ public class PlayerData : Data
             melodies = new Melody[3];
 
             // actual versions
-            Note[] jump = { Notes1[2], Notes1[3], Notes1[0], Notes1[2], Notes1[0] };
+            Note[] jump = { Notes1[2], Notes1[3], Notes1[0], Notes1[1], Notes1[0] };
             melodies[0] = new Melody(Melody.MelodyID.JumpMelody, jump);
-            Note[] sleep = { Notes1[0], Notes1[0], Notes1[2], Notes1[0], Notes1[0] };
+            Note[] sleep = { Notes1[0], Notes1[1], Notes1[2], Notes1[1], Notes1[0] };
             melodies[1] = new Melody(Melody.MelodyID.SleepMelody, sleep);
             Note[] magicResist = { Notes1[0], Notes1[2], Notes1[3], Notes1[0], Notes1[3] };
             melodies[2] = new Melody(Melody.MelodyID.MagicResistMelody, magicResist);

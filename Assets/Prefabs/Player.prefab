@@ -190,7 +190,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.09, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -204,9 +204,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.3, y: 0.9}
       - {x: 0.12, y: 0.9}
-      - {x: 0.12, y: -0.95}
-      - {x: -0.32, y: -0.95}
-      - {x: -0.32, y: 0.9}
+      - {x: 0.12, y: -0.98}
+      - {x: -0.3, y: -0.98}
 --- !u!95 &95186470628085012
 Animator:
   serializedVersion: 3
