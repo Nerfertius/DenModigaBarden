@@ -69,7 +69,7 @@ public class PlayerData : Data
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator anim;
     [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] public CapsuleCollider2D coll;
+    //[HideInInspector] public CapsuleCollider2D coll;
     [HideInInspector] public StateController controller;
 
 
@@ -286,7 +286,6 @@ public class PlayerData : Data
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<CapsuleCollider2D>();
         controller = GetComponent<StateController>();
         melodyData.MelodyRange = transform.Find("MelodyRange").GetComponent<CircleCollider2D>();
 

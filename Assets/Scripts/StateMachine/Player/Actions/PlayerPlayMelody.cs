@@ -77,7 +77,7 @@ public class PlayerPlayMelody : StateAction
                 ParticleSystem m_fx = data.noteFX;
                 ParticleSystem.TextureSheetAnimationModule m_anim = m_fx.textureSheetAnimation;
                 m_anim.rowIndex = notePlayed.FXRowNumber;
-                Instantiate(m_fx, new Vector2(data.transform.position.x, data.coll.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
+                Instantiate(m_fx, new Vector2(data.transform.position.x, data.col.bounds.max.y), Quaternion.Euler(data.noteFX.transform.rotation.eulerAngles));
                 m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
             }
 
