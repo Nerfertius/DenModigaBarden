@@ -17,49 +17,61 @@ public class PlayerPlayMelody : StateAction
         PlayerData data = (PlayerData)controller.data;
         PlayerData.MelodyData mData = data.melodyData;
 
-        if (Input.GetButton("PlayMelody") || Input.GetAxisRaw("PlayMelody Dpad") > InputExtender.TriggerThreshold)
-        {
-            AudioManager.FadeBGM();
-            mData.playingFlute = true;
+        if(Input.GetButtonDown("PlayMelody") || InputExtender.GetAxisDown("PlayMelody Trigger")) {
+            mData.playMelodyState = !mData.playMelodyState;
 
-            if (mData.currentMelody != null)
-            {
+            // so you don't go to play melody when canceling a melody
+            if(mData.currentMelody != null) {
+                mData.playMelodyState = false;
+                mData.playingFlute = false;
+
                 data.MelodyStoppedPlaying(mData.currentMelody);
-                if (mData.currentMelody == Melody.MelodyID.MagicResistMelody)
-                {
+                if (mData.currentMelody == Melody.MelodyID.MagicResistMelody) {
                     StoppedPlaying();
                 }
+                mData.currentMelody = null;
+                data.melodyData.MelodyRange.enabled = false;
+                controller.anim.SetBool("Channeling", false);
             }
-            mData.currentMelody = null;
-            data.melodyData.MelodyRange.enabled = false;
-            controller.anim.SetBool("Channeling", true);
 
+            else if (mData.playMelodyState) { // on start reading input
+                AudioManager.FadeBGM();
+                mData.playingFlute = true;
+
+
+                if (mData.currentMelody != null) {
+                    data.MelodyStoppedPlaying(mData.currentMelody);
+                    if (mData.currentMelody == Melody.MelodyID.MagicResistMelody) {
+                        StoppedPlaying();
+                    }
+                }
+                mData.currentMelody = null;
+                data.melodyData.MelodyRange.enabled = false;
+                controller.anim.SetBool("Channeling", true);
+            }
+            else { // on cancel playing
+                AudioManager.FadeBGMBackToNormal();
+                mData.playingFlute = false;
+                controller.anim.SetBool("Channeling", false);
+            }
+        }
+
+        if (mData.playMelodyState) {
+        // checks if a note is played
             Note notePlayed = null;
-            if (Input.GetButton("PlayMelodyNoteShift") || Input.GetAxisRaw("PlayMelodyNoteShift Dpad") > InputExtender.TriggerThreshold)
-            {
-                foreach (Note note in mData.Notes2)
-                {
-
-                    if (note.CheckButton())
-                    {
-                        mData.PlayedNotes.AddLast(note);
-                        notePlayed = note;
-                    }
+            //foreach (Note note in mData.Notes2) {
+            //    if (note.CheckButton()) {
+            //        mData.PlayedNotes.AddLast(note);
+            //        notePlayed = note;
+            //    }
+            //}
+            foreach (Note note in mData.Notes1) {
+                if (note.CheckButton()) {
+                    mData.PlayedNotes.AddLast(note);
+                    notePlayed = note;
                 }
             }
-            else
-            {
-                foreach (Note note in mData.Notes1)
-                {
-                    if (note.CheckButton())
-                    {
-                        mData.PlayedNotes.AddLast(note);
-                        notePlayed = note;
-                    }
-                }
-            }
-            if (notePlayed != null)
-            {
+            if (notePlayed != null) {
                 AudioManager.PlayNote(notePlayed.audio);
 
                 ParticleSystem m_fx = data.noteFX;
@@ -69,58 +81,33 @@ public class PlayerPlayMelody : StateAction
                 m_fx.GetComponent<FXdestroyer>().hasPlayed = true;
             }
 
-            while (mData.PlayedNotes.Count > mData.MaxSavedNotes)
-            {
+            while (mData.PlayedNotes.Count > mData.MaxSavedNotes) {
                 mData.PlayedNotes.RemoveFirst();
             }
-        }
 
-        if (Input.GetButtonUp("PlayMelody") || InputExtender.GetAxisUp("PlayMelody Dpad"))
-        {
-            bool melodyPlayed = false;
-
+        // Checks id a melody have been played
             foreach (Melody melody in mData.melodies)
             {
-                Debug.Log("Notes played: " + mData.PlayedNotes);
                 if (melody.CheckMelody(mData.PlayedNotes))
                 {
                     mData.currentMelody = melody.melodyID;
 
-                    if (mData.currentMelody == Melody.MelodyID.MagicResistMelody)
-                    {
-                        if (PlayedMagicResist != null)
-                        {
+                    if (mData.currentMelody == Melody.MelodyID.MagicResistMelody) {
+                        if (PlayedMagicResist != null) {
                             PlayedMagicResist();
                         }
                     }
-
+                    mData.playMelodyState = false;
                     mData.MelodyRange.enabled = true;
-                    melodyPlayed = true;
 
                     data.MelodyPlayed(melody.melodyID);
+
+                    AudioManager.FadeBGMBackToNormal();
+                    mData.PlayedNotes.Clear();
 
                     break;
                 }
             }
-            if (!melodyPlayed)
-            {
-                if (StoppedPlaying != null)
-                {
-                    StoppedPlaying();
-                }
-                data.MelodyStoppedPlaying(mData.currentMelody);
-                if (mData.currentMelody == Melody.MelodyID.MagicResistMelody)
-                {
-                    StoppedPlaying();
-                }
-                mData.currentMelody = null;
-                mData.playingFlute = false;
-                mData.MelodyRange.enabled = false;
-                controller.anim.SetBool("Channeling", false);
-                
-            }
-            AudioManager.FadeBGMBackToNormal();
-            mData.PlayedNotes.Clear();
-        }
+        }         
     }
 }
