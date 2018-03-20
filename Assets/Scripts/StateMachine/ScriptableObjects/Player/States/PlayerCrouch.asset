@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Name: PlayerCrouch
   m_EditorClassIdentifier: 
   entryActions:
-  - {fileID: 11400000, guid: 4428f59ef5af2434bb13115b8d202a2c, type: 2}
   - {fileID: 11400000, guid: d2c880726ecf5ea408d8c45cbeb12dfd, type: 2}
+  - {fileID: 11400000, guid: ea587f96bd589a54abe9199a1e4024ea, type: 2}
   exitActions:
   - {fileID: 11400000, guid: b52a372d9a61f7644b988b7f7e5cb16d, type: 2}
+  - {fileID: 11400000, guid: a3a8331f54efd5d42ba442cf33fd39ed, type: 2}
   actions:
   - {fileID: 11400000, guid: ed1341026d3005e4e96c76dd5fc7906c, type: 2}
   transitions:

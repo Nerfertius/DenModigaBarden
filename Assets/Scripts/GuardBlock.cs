@@ -14,12 +14,16 @@ public class GuardBlock : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Player") && controller.currentState.ToString() == "NPCSleep (State)")
+        if (Vector2.Distance(PlayerData.player.transform.position, controller.transform.position) <= 15f && controller.currentState.ToString() == "NPCSleep (State)"
+            && !anim.GetBool("Open"))
         {
             anim.SetBool("Open", true);
-            Destroy(GetComponent<Collider>());
+            foreach (Collider2D col in GetComponents<Collider2D>())
+            {
+                col.enabled = false;
+            }
         }
     }
 }
