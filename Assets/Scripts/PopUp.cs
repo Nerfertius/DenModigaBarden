@@ -11,8 +11,10 @@ public class PopUp : MonoBehaviour
     private bool hasCleared;
     private SpriteRenderer rend;
     private StateController npcState;
+    private Transform parent;
 
     public Sprite prompt;
+    public Sprite secondPrompt; //Only used for sleeps
     public bool repeatable;
     public bool showUntilCleared;
     public Vector2 offset;
@@ -38,7 +40,8 @@ public class PopUp : MonoBehaviour
     {
         if (npcTalk)
         {
-            npcState = transform.parent.GetComponent<StateController>();
+            parent = transform.parent;
+            npcState = parent.GetComponent<StateController>();
         }
 
         GameObject empty = new GameObject();
@@ -57,6 +60,19 @@ public class PopUp : MonoBehaviour
         if (!npcTalk && !melodyPlayed && !actionPerformed)
         {
             Debug.Log(gameObject.ToString() + "Error, PopUp needs at least 1 condition");
+        }
+    }
+
+    private void Update()
+    {
+        if (npcTalk && npcState.anim != null && npcState.anim.HasState(0, Animator.StringToHash("Sleep")) && PlayerData.player.hasReadNote
+            && parent.GetComponent<NPCData>().conversation[0].spoken)
+        {
+            rend.sprite = secondPrompt;
+            npcTalk = false;
+            melodyPlayed = true;
+            melody = Melody.MelodyID.SleepMelody;
+            offset.y += 2f;
         }
     }
 

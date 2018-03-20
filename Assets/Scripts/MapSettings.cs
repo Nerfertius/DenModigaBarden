@@ -43,13 +43,11 @@ public class MapSettings : MonoBehaviour
         BattleState.BattleEntered -= HideTitleObject;
     }
 
-    private void StartMapFeatures()
+    public void StartMapFeatures()
     {
         if (MapBoundary.currentMapBoundary == mb || (beginningArea && !beginningPlayed)) {
-            if (!beginningArea || (beginningArea && !beginningPlayed))
-            {
-                if (titleObject != null)
-                {
+            if (!beginningArea || (beginningArea && !beginningPlayed)) {
+                if (titleObject != null) {
                     StopAllCoroutines();
                     titleObject.rectTransform.position = startPos + offset;
                     titleObject.color = startColor;
@@ -58,17 +56,17 @@ public class MapSettings : MonoBehaviour
                     StartCoroutine(FadeIn());
                     StartCoroutine(DelayedFadeOut());
                 }
-                
-                if (backgroundMusic != null)
-                {
-                    AudioManager.SetDefaultBGM(backgroundMusic);
-                }
-                AudioManager.PlayAmbience(ambience);
 
-                if (!beginningPlayed)
-                {
-                    beginningPlayed = true;
-                }
+            }
+            if (backgroundMusic != null)
+            {
+                AudioManager.SetDefaultBGM(backgroundMusic);
+            }
+            AudioManager.PlayAmbience(ambience);
+
+            if (!beginningPlayed)
+            {
+                beginningPlayed = true;
             }
         }
     }

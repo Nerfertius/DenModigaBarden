@@ -44,7 +44,7 @@ public class LadderBuilder : MonoBehaviour
             topLadder = newLadder.transform;
             newLadder.GetComponent<SpriteRenderer>().sprite = ladderTopSprite;
             topLadder.gameObject.AddComponent<PlatformEffector2D>().useColliderMask = false;
-            topLadder.GetComponent<PlatformEffector2D>().surfaceArc = 90f;
+            topLadder.GetComponent<PlatformEffector2D>().surfaceArc = 120f;
             topLadder.gameObject.layer = 8;
             topLadder.GetComponent<BoxCollider2D>().isTrigger = false;
             topLadder.GetComponent<BoxCollider2D>().size = Vector2.one;

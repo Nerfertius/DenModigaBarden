@@ -28,9 +28,9 @@ public class PlayerData : Data
 
     // Quest
     [HideInInspector] public int[] items;
-    /*[HideInInspector]*/ public bool hasKey;
-    /*[HideInInspector]*/ public bool hasReadNote;
-    /*[HideInInspector]*/ public bool orcQuestDone;
+    [HideInInspector] public bool hasKey;
+    [HideInInspector] public bool hasReadNote;
+    [HideInInspector] public bool orcQuestDone;
 
     [HideInInspector] public float moveHorizontal;
     [HideInInspector] public float moveVertical;
@@ -69,7 +69,6 @@ public class PlayerData : Data
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public Animator anim;
     [HideInInspector] public Rigidbody2D rb;
-    //[HideInInspector] public CapsuleCollider2D coll;
     [HideInInspector] public StateController controller;
 
 
@@ -104,6 +103,9 @@ public class PlayerData : Data
     // Gamepad
     [HideInInspector] public bool gamepadConnected;
     [HideInInspector] public float axisSensitivity;
+
+    // Song Cheat-sheet
+    public GameObject songSheet;
 
     [System.Serializable]
     public class MelodyData
@@ -288,6 +290,7 @@ public class PlayerData : Data
         rb = GetComponent<Rigidbody2D>();
         controller = GetComponent<StateController>();
         melodyData.MelodyRange = transform.Find("MelodyRange").GetComponent<CircleCollider2D>();
+        songSheet.SetActive(false);
 
         // Statics
 
