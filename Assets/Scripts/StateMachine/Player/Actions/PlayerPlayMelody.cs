@@ -105,6 +105,7 @@ public class PlayerPlayMelody : StateAction
 
                     AudioManager.FadeBGMBackToNormal();
                     mData.PlayedNotes.Clear();
+                    data.songSheet.SetActive(false);
 
                     break;
                 }
