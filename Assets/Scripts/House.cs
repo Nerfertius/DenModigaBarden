@@ -16,14 +16,12 @@ public class House : MonoBehaviour
 
     private GameObject player;
     private bool playerNear;
-    private MapSettings mapSettings;
 
     private static int spawnDirection = -1;
 
     void Start()
     {
         player = PlayerData.player.gameObject;
-        mapSettings = mb.transform.GetComponent<MapSettings>();
     }
 
     void Update ()
@@ -69,15 +67,11 @@ public class House : MonoBehaviour
         mb.CalculateMapBounds();
         mb.UpdateMapBounds();
 
-        //Debug.Log(mapSettings.backgroundMusic + " " + mb);
-        if (mapSettings != null) 
-        {
-            mapSettings.StartMapFeatures();
-        }
-
+        GameManager.instance.switchState(new TransitionState(GameManager.instance));
 
         CameraFollow2D camScript = Camera.main.GetComponent<CameraFollow2D>();
         camScript.enabled = true;
+        camScript.ActivateTransition();
         camScript.UpdateToMapBounds();
         CameraFX.FadeOut();
     }

@@ -43,7 +43,7 @@ public class MapSettings : MonoBehaviour
         BattleState.BattleEntered -= HideTitleObject;
     }
 
-    public void StartMapFeatures()
+    private void StartMapFeatures()
     {
         if (MapBoundary.currentMapBoundary == mb || (beginningArea && !beginningPlayed)) {
             if (!beginningArea || (beginningArea && !beginningPlayed)) {
