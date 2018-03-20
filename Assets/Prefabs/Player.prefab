@@ -436,6 +436,7 @@ MonoBehaviour:
   groundCheckRadius: 0.1
   gamepadConnected: 0
   axisSensitivity: 0
+  songSheet: {fileID: 0}
 --- !u!212 &212082342265056826
 SpriteRenderer:
   m_ObjectHideFlags: 1

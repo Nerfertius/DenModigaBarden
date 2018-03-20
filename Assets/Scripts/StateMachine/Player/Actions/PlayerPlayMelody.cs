@@ -37,7 +37,7 @@ public class PlayerPlayMelody : StateAction
             else if (mData.playMelodyState) { // on start reading input
                 AudioManager.FadeBGM();
                 mData.playingFlute = true;
-
+                data.songSheet.SetActive(true);
 
                 if (mData.currentMelody != null) {
                     data.MelodyStoppedPlaying(mData.currentMelody);
@@ -52,6 +52,7 @@ public class PlayerPlayMelody : StateAction
             else { // on cancel playing
                 AudioManager.FadeBGMBackToNormal();
                 mData.playingFlute = false;
+                data.songSheet.SetActive(false);
                 controller.anim.SetBool("Channeling", false);
             }
         }
