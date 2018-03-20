@@ -77,7 +77,6 @@ public class MainMenuState : GameState
     {
         CameraFX.FadeIn();
         Camera.main.GetComponent<AudioSource>().Stop();
-        GameManager.MainMenuCanvas.GetComponent<AudioSource>().Play();
         GameManager.instance.StartCoroutine(Delay());
     }
 
@@ -89,7 +88,6 @@ public class MainMenuState : GameState
 
     void OptionsState()
     {
-        GameManager.MainMenuCanvas.GetComponent<AudioSource>().Play();
         showOptions = !showOptions;
         menuAnimator.SetBool("options", showOptions);
         if (showOptions)
@@ -161,7 +159,6 @@ public class MainMenuState : GameState
 
     void QuitGame()
     {
-        GameManager.MainMenuCanvas.GetComponent<AudioSource>().Play();
         Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false;
     }
