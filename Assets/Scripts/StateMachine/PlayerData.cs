@@ -315,6 +315,7 @@ public class PlayerData : Data
         MelodyStoppedPlaying(melodyData.currentMelody);
         melodyData.currentMelody = null;
         melodyData.playingFlute = false;
+        melodyData.playMelodyState = false;
         melodyData.MelodyRange.enabled = false;
         melodyData.PlayedNotes.Clear();
         controller.anim.SetBool("Channeling", false);
