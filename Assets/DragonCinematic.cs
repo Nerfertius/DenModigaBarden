@@ -64,7 +64,7 @@ public class DragonCinematic : MonoBehaviour {
         CameraFX.FadeIn();
         yield return new WaitForSeconds(1f);
         VideoManager.instance.Stop();
-        Destroy(VideoManager.instance);
+        Destroy(VideoManager.instance.gameObject);
         AsyncOperation levelLoad = GameManager.instance.loadScene(0);
         levelLoad.allowSceneActivation = true;
 
