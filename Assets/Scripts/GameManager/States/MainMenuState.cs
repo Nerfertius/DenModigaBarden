@@ -119,6 +119,9 @@ public class MainMenuState : GameState
         effectAudio = GameManager.MainMenuCanvas.transform.Find("Interact/OptionsMenu/EffectAudio").GetComponent<Slider>();
         effectAudio.value = GameManager.instance.effectAudio;
 
+        AudioManager.SetDefaultBGM(null);
+        AudioManager.PlayBGM(null);
+
         menuAnimator = GameManager.MainMenuCanvas.GetComponent<Animator>();
         navCloseOptions = new Navigation[2];
         navOpenOptions = new Navigation[2];
