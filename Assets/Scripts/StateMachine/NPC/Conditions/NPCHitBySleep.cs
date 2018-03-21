@@ -16,7 +16,7 @@ public class NPCHitBySleep : Condition
                 {
                     return true;
                 }
-                else if (controller.gameObject.ToString() != "Guard_captain")
+                else if (controller.gameObject.ToString() != "Guard_captain" && controller.GetComponent<NPCData>().conversation[0].spoken)
                 {
                     return true;
                 }
