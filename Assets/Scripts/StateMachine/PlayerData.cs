@@ -353,7 +353,6 @@ public class PlayerData : Data
 
     public void CallRespawn()
     {
-        GameManager.instance.switchState(new PlayState(GameManager.instance));
         StartCoroutine(Respawn());
     }
 
@@ -372,6 +371,7 @@ public class PlayerData : Data
         respawnLocation.GetComponent<Campfire>().mb.UpdateMapBounds();
         Camera.main.GetComponent<CameraFollow2D>().UpdateToMapBounds();
         CameraFX.FadeOut();
+        GameManager.instance.switchState(new PlayState(GameManager.instance));
     }
 
     void SpawnSFX()
