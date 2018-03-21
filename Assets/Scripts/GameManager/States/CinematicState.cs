@@ -9,6 +9,8 @@ public class CinematicState : GameState {
     private float skipProg = 0, addTime = 0.6f, remTime = 0.8f;
     private CanvasGroup skipGroup;
 
+    private bool videoStartedPlaying = false;
+
     public CinematicState(GameManager gm) {
         this.gm = gm;
     }
@@ -27,6 +29,8 @@ public class CinematicState : GameState {
         {
             yield return new WaitForSeconds(1f);
         }
+        
+        videoStartedPlaying = true;
         GameManager.MainMenuCanvas.enabled = false;
     }
     
@@ -34,27 +38,32 @@ public class CinematicState : GameState {
     {
         if (levelLoad != null && levelLoad.progress >= 0.9f)
         {
-            if (gm.skipBtn != null) {
-                if (skipGroup.alpha == 1) {
+            if (gm.skipBtn != null)
+            {
+                if (skipGroup.alpha == 1)
+                {
                     if (Input.GetButton("Interact"))
                     {
                         skipProg += addTime * Time.deltaTime;
-                        if (skipProg >= 1) {
+                        if (skipProg >= 1)
+                        {
                             VideoManager.instance.Stop();
                         }
                     }
-                    else {
+                    else
+                    {
                         skipProg -= remTime * Time.deltaTime;
                         skipProg = skipProg < 0 ? 0 : skipProg;
                     }
                     gm.progressBar.fillAmount = skipProg;
-                } else{
+                } else
+                {
                     if(Input.GetButton("Interact"))
                         skipGroup.alpha = 1;
                 }
             }
                 
-            if (!VideoManager.instance.IsPlaying())
+            if (!VideoManager.instance.IsPlaying() && videoStartedPlaying)
             {
                 levelLoad.allowSceneActivation = true;
 
@@ -69,5 +78,6 @@ public class CinematicState : GameState {
 
     public override void exit()
     {
+        videoStartedPlaying = false;
     }
 }

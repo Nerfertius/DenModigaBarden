@@ -28,6 +28,8 @@ public class VideoManager : MonoBehaviour {
 
         audioSource = GetComponent<AudioSource>();
         vPlayer = GetComponent<VideoPlayer>();
+
+        vPlayer.prepareCompleted += PrepareCompleted;
     }
 
     public void SetVideoClip(VideoClip clip)
@@ -47,6 +49,10 @@ public class VideoManager : MonoBehaviour {
         vPlayer.source = VideoSource.VideoClip;
         vPlayer.clip = clip;
         vPlayer.Prepare();
+    }
+
+    private void PrepareCompleted(VideoPlayer vPlayer)
+    {
         vPlayer.Play();
     }
 
