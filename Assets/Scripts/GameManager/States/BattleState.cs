@@ -50,11 +50,12 @@ public class BattleState : GameState
 
     public override void update()
     {
+        /* FOR DEBUG
         if (Input.GetKeyDown(KeyCode.G))
         {
             Debug.Log("Exiting Battle State");
             GameManager.instance.switchState(new PlayState(GameManager.instance));
-        }
+        }*/
 
         HP.GetInstance.Update();
     }

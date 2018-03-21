@@ -39,11 +39,11 @@ public class EnemyManager : MonoBehaviour {
 
     void Update ()
     {
-        // FOR DEBUG
+        /* FOR DEBUG
         if (mb == MapBoundary.currentMapBoundary && Input.GetKeyDown (KeyCode.M)) {
 			Debug.Log("Deactivating " + enemies.Count + " enemies in " + transform.name);
 			DeactivateAllEnemies();
-		}
+		}*/
 
         if(mb == MapBoundary.currentMapBoundary && beginningArea)
         {
