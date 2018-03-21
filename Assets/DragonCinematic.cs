@@ -44,7 +44,7 @@ public class DragonCinematic : MonoBehaviour {
 
         while (!VideoManager.instance.IsPlaying())
         {
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(1f);
         }
 
         GameManager.PlayCanvas.enabled = false;
